@@ -7,7 +7,7 @@ redirect_from:
   - /resume
 ---
 
-[Download PDF File to See Complete Experience](http://HaomingCai.github.io/files/CV.pdf)
+❗️[Download PDF File to See Complete Experience](http://HaomingCai.github.io/files/CV.pdf)
 
 Education
 ======
@@ -15,7 +15,7 @@ Education
 
 Work experience
 ======
-* Summer 2015: Visiting Student
+* Summer 2020: Visiting Student
   * Shenzhen Institutes of Advanced Technology，Chinese Academy of Sciences
   * Supervisor: Professor [Chao Dong](https://scholar.google.com/citations?hl=en&user=OSDCB0UAAAAJ) and Professor [Yu Qiao](https://scholar.google.com/citations?user=gFtI-8QAAAAJ&hl=en).
 
