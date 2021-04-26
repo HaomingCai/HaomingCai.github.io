@@ -23,4 +23,34 @@ More details are coming soon.
         <td ><center><img src="https://www.haomingcai.com/images/Habits_Photo/WechatIMG398.jpeg?v=M44lzPylqQ">Dunhuang, Gansu Province | Sand Dunes beside the City</center></td>
         <td ><center><img src="https://www.haomingcai.com/images/Habits_Photo/WechatIMG399.jpeg?v=M44lzPylqQ">Haixi, Qinghai Province | Catch Sunset</center></td>
     </tr>
+
+    <tr>
+        <td ><center><img src="https://www.haomingcai.com/images/Habits_Photo/WechatIMG468.jpeg?v=M44lzPylqQ">Jiuquan, Gansu Province | Electricity Grid Along Highs-Speed Way</center></td>
+        <td ><center><img src="https://www.haomingcai.com/images/Habits_Photo/WechatIMG469.jpeg?v=M44lzPylqQ">Dunhuang, Gansu Province | Sand Dunes beside the City</center></td>
+        <td ><center><img src="https://www.haomingcai.com/images/Habits_Photo/WechatIMG463.jpeg?v=M44lzPylqQ">Haixi, Qinghai Province | Catch Sunset</center></td>
+    </tr>
+
+    <tr>
+        <td ><center><img src="https://www.haomingcai.com/images/Habits_Photo/WechatIMG470.jpeg?v=M44lzPylqQ">Jiuquan, Gansu Province | Electricity Grid Along Highs-Speed Way</center></td>
+        <td ><center><img src="https://www.haomingcai.com/images/Habits_Photo/WechatIMG466.jpeg?v=M44lzPylqQ">Dunhuang, Gansu Province | Sand Dunes beside the City</center></td>
+        <td ><center><img src="https://www.haomingcai.com/images/Habits_Photo/WechatIMG465.jpeg?v=M44lzPylqQ">Haixi, Qinghai Province | Catch Sunset</center></td>
+    </tr>
+
+    <tr>
+        <td ><center><img src="https://www.haomingcai.com/images/Habits_Photo/WechatIMG396.jpeg?v=M44lzPylqQ">Jiuquan, Gansu Province | Electricity Grid Along Highs-Speed Way</center></td>
+        <td ><center><img src="https://www.haomingcai.com/images/Habits_Photo/WechatIMG398.jpeg?v=M44lzPylqQ">Dunhuang, Gansu Province | Sand Dunes beside the City</center></td>
+        <td ><center><img src="https://www.haomingcai.com/images/Habits_Photo/WechatIMG399.jpeg?v=M44lzPylqQ">Haixi, Qinghai Province | Catch Sunset</center></td>
+    </tr>
+
+    <tr>
+        <td ><center><img src="https://www.haomingcai.com/images/Habits_Photo/WechatIMG396.jpeg?v=M44lzPylqQ">Jiuquan, Gansu Province | Electricity Grid Along Highs-Speed Way</center></td>
+        <td ><center><img src="https://www.haomingcai.com/images/Habits_Photo/WechatIMG398.jpeg?v=M44lzPylqQ">Dunhuang, Gansu Province | Sand Dunes beside the City</center></td>
+        <td ><center><img src="https://www.haomingcai.com/images/Habits_Photo/WechatIMG399.jpeg?v=M44lzPylqQ">Haixi, Qinghai Province | Catch Sunset</center></td>
+    </tr>
+
+    <tr>
+        <td ><center><img src="https://www.haomingcai.com/images/Habits_Photo/WechatIMG458.jpeg?v=M44lzPylqQ">Jiuquan, Gansu Province | Electricity Grid Along Highs-Speed Way</center></td>
+        <td ><center><img src="https://www.haomingcai.com/images/Habits_Photo/WechatIMG459.jpeg?v=M44lzPylqQ">Dunhuang, Gansu Province | Sand Dunes beside the City</center></td>
+        <td ><center><img src="https://www.haomingcai.com/images/Habits_Photo/WechatIMG460.jpeg?v=M44lzPylqQ">Haixi, Qinghai Province | Catch Sunset</center></td>
+    </tr>
 </table>
