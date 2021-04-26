@@ -17,7 +17,7 @@ Work experience
 ======
 * Summer 2015: Visiting Student
   * Shenzhen Institutes of Advanced Technology，Chinese Academy of Sciences
-  * Supervisor: Professor Chao Dong
+  * Supervisor: Professor [Chao Dong](https://scholar.google.com/citations?hl=en&user=OSDCB0UAAAAJ) and Professor [Yu Qiao](https://scholar.google.com/citations?user=gFtI-8QAAAAJ&hl=en).
 
   
 
@@ -29,7 +29,7 @@ Publications
   
 Software Development
 ======
-* ReyeR: AI-based Image Tooolbox. More in [ReyeR Intro]().
+* ReyeR: AI-based Image Tooolbox. More in [ReyeR Intro](https://www.haomingcai.com/reyer/).
 
   
 Research Activity
