@@ -1,11 +1,10 @@
 ---
-title: "Pipal: a large-scale image quality assessment dataset for perceptual image restoration"
-authors: '   - Gu Jinjin, Cai Haoming, Chen Haoyu, Ye Xiaoxing, Jimmy S Ren, Dong Chao'
+title: "NTIRE 2021 Challenge on Perceptual Image Quality Assessment"
 collection: publications
-permalink: /publication/2020-05-01-PIPAL-ECCV-1
-date: 2020-11-27
-venue: 'ECCV'
+permalink: /publication/2021-04-23-IQAChallenge-NTIRE-4
+date: 2021-04-23
+venue: 'CVPR NTIRE Workshop'
 paperurl: 'http://academicpages.github.io/files/PIPAL_ECCV2020.pdf'
 ---
 
-Gu Jinjin, **Cai Haoming**, Chen Haoyu, Ye Xiaoxing, Jimmy S Ren, Dong Chao
+Jinjin Gu, **Haoming Cai**, Chao Dong, Jimmy S. Ren, Yu Qiao, Shuhang Gu, Radu Timofte, et al.
