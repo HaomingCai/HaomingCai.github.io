@@ -37,15 +37,15 @@ More details are coming soon.
     </tr>
 
     <tr>
-        <td ><center><img src="https://www.haomingcai.com/images/Habits_Photo/WechatIMG396.jpeg?v=M44lzPylqQ">Jiuquan, Gansu Province | Electricity Grid Along Highs-Speed Way</center></td>
-        <td ><center><img src="https://www.haomingcai.com/images/Habits_Photo/WechatIMG398.jpeg?v=M44lzPylqQ">Dunhuang, Gansu Province | Sand Dunes beside the City</center></td>
-        <td ><center><img src="https://www.haomingcai.com/images/Habits_Photo/WechatIMG399.jpeg?v=M44lzPylqQ">Haixi, Qinghai Province | Catch Sunset</center></td>
+        <td ><center><img src="https://www.haomingcai.com/images/Habits_Photo/WechatIMG473.jpeg?v=M44lzPylqQ">Jiuquan, Gansu Province | Electricity Grid Along Highs-Speed Way</center></td>
+        <td ><center><img src="https://www.haomingcai.com/images/Habits_Photo/WechatIMG467.jpeg?v=M44lzPylqQ">Dunhuang, Gansu Province | Sand Dunes beside the City</center></td>
+        <td ><center><img src="https://www.haomingcai.com/images/Habits_Photo/WechatIMG464.jpeg?v=M44lzPylqQ">Haixi, Qinghai Province | Catch Sunset</center></td>
     </tr>
 
     <tr>
-        <td ><center><img src="https://www.haomingcai.com/images/Habits_Photo/WechatIMG396.jpeg?v=M44lzPylqQ">Jiuquan, Gansu Province | Electricity Grid Along Highs-Speed Way</center></td>
-        <td ><center><img src="https://www.haomingcai.com/images/Habits_Photo/WechatIMG398.jpeg?v=M44lzPylqQ">Dunhuang, Gansu Province | Sand Dunes beside the City</center></td>
-        <td ><center><img src="https://www.haomingcai.com/images/Habits_Photo/WechatIMG399.jpeg?v=M44lzPylqQ">Haixi, Qinghai Province | Catch Sunset</center></td>
+        <td ><center><img src="https://www.haomingcai.com/images/Habits_Photo/WechatIMG462.jpeg?v=M44lzPylqQ">Jiuquan, Gansu Province | Electricity Grid Along Highs-Speed Way</center></td>
+        <td ><center><img src="https://www.haomingcai.com/images/Habits_Photo/WechatIMG461.jpeg?v=M44lzPylqQ">Dunhuang, Gansu Province | Sand Dunes beside the City</center></td>
+        <td ><center><img src="https://www.haomingcai.com/images/Habits_Photo/WechatIMG474.jpeg?v=M44lzPylqQ">Haixi, Qinghai Province | Catch Sunset</center></td>
     </tr>
 
     <tr>
