@@ -34,8 +34,8 @@ Software Development
   
 Research Activity
 ======
-* Co-organizer of NTIRE 2021 IQA Challenge
-* Reviewer of CVPR 2021 Workshop
+* **Co-organizer** of NTIRE 2021 IQA Challenge
+* **Reviewer** of CVPR 2021 Workshop
 
 
 Skills
