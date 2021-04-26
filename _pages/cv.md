@@ -7,7 +7,7 @@ redirect_from:
   - /resume
 ---
 
-[Download PDF File](http://HaomingCai.github.io/files/CV.pdf)
+[Download PDF File to See Complete Experience](http://HaomingCai.github.io/files/CV.pdf)
 
 Education
 ======
@@ -17,7 +17,6 @@ Work experience
 ======
 * Summer 2015: Visiting Student
   * Shenzhen Institutes of Advanced Technology，Chinese Academy of Sciences
-  * Duties included: Tagging issues
   * Supervisor: Professor Chao Dong
 
   
