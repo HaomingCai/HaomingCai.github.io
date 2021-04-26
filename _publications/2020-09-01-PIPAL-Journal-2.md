@@ -8,3 +8,5 @@ paperurl: 'http://HaomingCai.github.io/files/PIPAL_Journal.pdf'
 ---
 
 Gu Jinjin, **Cai Haoming**, Chen Haoyu, Ye Xiaoxing, Jimmy S Ren, Dong Chao
+
+[Download paper here]('https://arxiv.org/pdf/2011.15002.pdf')
