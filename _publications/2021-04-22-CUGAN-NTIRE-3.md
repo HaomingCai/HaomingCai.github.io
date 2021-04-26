@@ -4,7 +4,7 @@ collection: publications
 permalink: /publication/2020-05-01-PIPAL-ECCV-1
 date: 2021-04-22
 venue: 'CVPR NTIRE Workshop'
-paperurl: 'http://academicpages.github.io/files/PIPAL_ECCV2020.pdf'
+paperurl: 
 ---
 
 **Haoming Cai**, Jingwen He, Yu Qiao, Chao Dong 
