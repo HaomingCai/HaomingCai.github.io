@@ -17,6 +17,12 @@ main:
     
   - title: "CV"
     url: /cv/
+
+  - title: "Habits"
+    url: /habits/
+
+  - title: "ReyeR"
+    url: /reyer/
     
   # - title: "Guide"
   #   url: /markdown/
