@@ -4,7 +4,7 @@ collection: publications
 permalink: /publication/2020-09-01-PIPAL-Journal-2
 date: 2020-09-01
 venue: 'ArXiv (Under Review by IJCV)'
-paperurl: 'http://HaomingCai.github.io/files/PIPAL_Journal.pdf'
+paperurl: 'https://arxiv.org/pdf/2011.15002.pdf'
 ---
 
 Gu Jinjin, **Cai Haoming**, Chen Haoyu, Ye Xiaoxing, Jimmy S Ren, Dong Chao
