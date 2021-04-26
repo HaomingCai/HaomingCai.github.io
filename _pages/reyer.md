@@ -12,5 +12,5 @@ This page provides a quick exhibition for **front-end design of ReyeR**.
 
 
 <p align="center">
-<img src="images/ReyeR.jpg" >
+<img src="https://www.haomingcai.com/images/ReyeR.jpg" >
 </p>
