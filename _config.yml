@@ -84,14 +84,14 @@ analytics:
 author:
   name             : "Haoming Cai"
   avatar           : "profile.jpg"
-  bio              : "Computer Science, The Chinese University of Hong Kong 
+  bio              : "Junior CS student at The Chinese University of Hong Kong Shenzhen
                     (Visiting Student, SIAT, Chinese Academy)"
-  location         : "Location"
+  location         : "Shenzhen, Guangdong, China"
   employer         :
   pubmed           : "https://www.ncbi.nlm.nih.gov/pubmed/?term=john+snow"
-  googlescholar    : "http://yourfullgooglescholarurl.com"
+  googlescholar    : "https://scholar.google.com/citations?user=mePn76IAAAAJ&hl=en"
   email            :
-  researchgate     :  # example: "https://www.researchgate.net/profile/yourprofile"
+  researchgate     :  "https://www.researchgate.net/profile/Haoming-Cai-3"
   uri              :
   bitbucket        :
   codepen          :
@@ -99,7 +99,7 @@ author:
   flickr           :
   facebook         :
   foursquare       :
-  github           : "academicpages"
+  github           : "HaomingCai"
   google_plus      :
   keybase          :
   instagram        :
@@ -112,7 +112,7 @@ author:
   stackoverflow    : # http://stackoverflow.com/users/123456/username
   steam            :
   tumblr           :
-  twitter          : "replacethistwitterhandle"
+  twitter          : 
   vine             :
   weibo            :
   xing             :
