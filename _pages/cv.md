@@ -7,7 +7,7 @@ redirect_from:
   - /resume
 ---
 
-# ❗️[Download PDF File to See the Complete Experience](http://HaomingCai.github.io/files/CV.pdf)
+# ❗️ Download [PDF File](http://HaomingCai.github.io/files/CV.pdf) to See the Complete Experience.
 
 Education
 ======
