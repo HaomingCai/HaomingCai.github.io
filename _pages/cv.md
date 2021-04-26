@@ -7,26 +7,38 @@ redirect_from:
   - /resume
 ---
 
-{% include base_path %}
+[Download PDF File](http://HaomingCai.github.io/files/CV.pdf)
 
 Education
 ======
-* B.S. in GitHub, GitHub University, 2012
-* M.S. in Jekyll, GitHub University, 2014
-* Ph.D in Version Control Theory, GitHub University, 2018 (expected)
+* B.S. in the School of Data Science, the Chinese University of Hong Kong, Shenzhen, 2022
 
 Work experience
 ======
-* Summer 2015: Research Assistant
-  * Github University
+* Summer 2015: Visiting Student
+  * Shenzhen Institutes of Advanced Technology，Chinese Academy of Sciences
   * Duties included: Tagging issues
-  * Supervisor: Professor Git
+  * Supervisor: Professor Chao Dong
 
-* Fall 2015: Research Assistant
-  * Github University
-  * Duties included: Merging pull requests
-  * Supervisor: Professor Hub
   
+
+Publications
+======
+  <ul>{% for post in site.publications %}
+    {% include archive-single-cv.html %}
+  {% endfor %}</ul>
+  
+Software Development
+======
+* ReyeR: AI-based Image Tooolbox. More in [ReyeR Intro]().
+
+  
+Research Activity
+======
+* Co-organizer of NTIRE 2021 IQA Challenge
+* Reviewer of CVPR 2021 Workshop
+
+
 Skills
 ======
 * Skill 1
@@ -35,25 +47,3 @@ Skills
   * Sub-skill 2.2
   * Sub-skill 2.3
 * Skill 3
-
-Publications
-======
-  <ul>{% for post in site.publications %}
-    {% include archive-single-cv.html %}
-  {% endfor %}</ul>
-  
-Talks
-======
-  <ul>{% for post in site.talks %}
-    {% include archive-single-talk-cv.html %}
-  {% endfor %}</ul>
-  
-Teaching
-======
-  <ul>{% for post in site.teaching %}
-    {% include archive-single-cv.html %}
-  {% endfor %}</ul>
-  
-Service and leadership
-======
-* Currently signed in to 43 different slack teams
