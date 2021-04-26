@@ -14,6 +14,8 @@ I currently study as visiting student in [X-Pixel](https://xpixel.group/people.h
 
 Recently, I mainly focus on the Generative Model, Image Quality Assessment and Interpretability of Deep Learning in Image Processing field.
 
+Emil Address : haomingcai@link.cuhk.edu.cn
+
 🔥  NEWS !
 ======
 1. [2021-04-23] The report of NTIRE IQA Challenge was completed and accepted by CVPR 2021 NTIRE workshop. More in [NTIRE 2021 Codalab](https://data.vision.ee.ethz.ch/cvl/ntire21/)
