@@ -37,6 +37,11 @@ Research Activity
 * **Co-organizer** of NTIRE 2021 IQA Challenge
 * **Reviewer** of CVPR 2021 Workshop
 
+Society Activity
+======
+* **Lecturer** of Popular Science for students in grade 2 at The Experimentaal School of Shenzhen Institute of Advanced Technology. [Lecture PPT](https://www.haomingcai.com//files/PopularScience.pptx)
+
+
 
 Skills
 ======
