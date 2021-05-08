@@ -18,6 +18,7 @@ Emil Address : haomingcai@link.cuhk.edu.cn
 
 🔥  NEWS !
 ======
+1. [2021-05-07] Give a talk of popular sciecne for grade 8 students.[Lecture PPT](https://www.haomingcai.com//files/PopularScience.pptx)
 1. [2021-04-23] The report of NTIRE IQA Challenge was completed and accepted by CVPR 2021 NTIRE workshop. More in [NTIRE 2021 Codalab](https://data.vision.ee.ethz.ch/cvl/ntire21/)
 1. [2021-04-22] Toward Interactive Modulation for Photo-Realistic Image Restoration was accepted by CVPR 2021 NTIRE workshop.
 1. [2021-03-01] Upload Habit Page in My Homepage
