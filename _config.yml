@@ -9,7 +9,7 @@
 locale                   : "en-US"
 title                    : "Haoming Cai"
 title_separator          : "-"
-name                     : &name "Haoming Cai"
+name                     : &name "Haoming Cai (蔡 昊明)"
 description              : &description "I am a junior student major in Computer Science in the School of Data Science at the Chinese University of Hong Kong, Shenzhen. 
                                         I currently study as visiting student in X-Pixel Group supervised by Prof. Chao Dong. I work closely with Ph.D. Jinjin Gu who is intresed in interpretability of deep learning algorithm.
                                         Recently, I mainly focus on the Generative Model, Image Quality Assessment and Interpretability of Deep Learning in Image Processing field."
