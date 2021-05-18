@@ -8,11 +8,11 @@ redirect_from:
   - /about.html
 ---
 
-I am a junior student major in Computer Science in the School of Data Science at the Chinese University of Hong Kong, Shenzhen.
+Haoming is a 3-year undergraduate student of the Computer Science and Engineering (CSE) in the CUHK(SZ)
 
-I currently study as visiting student in [X-Pixel](https://xpixel.group/people.html) Group supervised by Prof. [Chao Dong](https://scholar.google.com/citations?hl=zh-CN&user=OSDCB0UAAAAJ). I work closely with Ph.D. [Jinjin Gu](https://scholar.google.com/citations?user=uMQ-G-QAAAAJ&hl=eng) who is intresed in interpretability of deep learning algorithm.
+He currently studies as visiting student in [X-Pixel](https://xpixel.group/people.html) Group supervised by Prof. [Chao Dong](https://scholar.google.com/citations?hl=zh-CN&user=OSDCB0UAAAAJ). He works closely with Ph.D. [Jinjin Gu](https://scholar.google.com/citations?user=uMQ-G-QAAAAJ&hl=eng) who is interested in interpretability of deep learning algorithm.
 
-Recently, I mainly focus on the Generative Model, Image Quality Assessment and Interpretability of Deep Learning in Image Processing field.
+Recently, He mainly focuses on the Generative Model, Image Quality Assessment, and Interpretability of Deep Learning in the Image Processing field.
 
 Emil Address : haomingcai@link.cuhk.edu.cn
 
