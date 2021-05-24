@@ -14,7 +14,7 @@ He currently studies as visiting student in [X-Pixel](https://xpixel.group/peopl
 
 Recently, He mainly focuses on the Generative Model, Image Quality Assessment, and Interpretability of Deep Learning in the Image Processing field.
 
-🎓　*Now, he is pursuing a Ph.D. position in Fall 2022.*
+🎓　*Now, he is looking for a Ph.D. position in Fall 2022.*
 
 Feel free to send me a e-mail if you have a question regarding my research.
 Emil Address : haomingcai@link.cuhk.edu.cn
