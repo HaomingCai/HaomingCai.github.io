@@ -21,6 +21,7 @@ Emil Address : haomingcai@link.cuhk.edu.cn
 
 🔥  NEWS !
 ======
+1. [2021-07-01] Update My CV.
 1. [2021-05-07] Give a talk of popular sciecne for grade 8 students.[Lecture PPT](https://www.haomingcai.com//files/PopularScience.pptx)
 1. [2021-04-23] [One paper](https://arxiv.org/abs/2105.03072) (The report of NTIRE IQA Challenge) got accepted to CVPR 2021 NTIRE workshop. More in [NTIRE 2021 Codalab](https://data.vision.ee.ethz.ch/cvl/ntire21/)
 1. [2021-04-22] [One paper](https://arxiv.org/abs/2105.03085) got accepted to CVPR 2021 NTIRE workshop.
