@@ -18,7 +18,7 @@ He is currently a research assisstant in [X-Pixel](https://xpixel.group/people.h
 
 Recently, He mainly focuses on the Generative Model, Image Quality Assessment, and Interpretability of Deep Learning in the Image Processing field. 
 
-Feel free to send me an e-mail if you have a question regarding my research.
+Feel free to send me an e-mail if you have any question regarding my research.
 Emil Address : [haomingcai@link.cuhk.edu.cn](haomingcai@link.cuhk.edu.cn)
 
 🔥  Research Update
