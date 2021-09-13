@@ -14,8 +14,7 @@ Haoming is a year-4 undergraduate student of the Computer Science and Engineerin
 
 🎓　*Now, he is looking for a Ph.D. position in Fall 2022.*
 
-
-He currently studies as research assisstant in [X-Pixel](https://xpixel.group/people.html) at [SIAT-CAS](http://english.siat.cas.cn) supervised by Prof.[Dong Chao](https://scholar.google.com/citations?hl=zh-CN&user=OSDCB0UAAAAJ) and Prof.[Qiao Yu](https://scholar.google.com/citations?user=gFtI-8QAAAAJ&hl=zh-CN). He works closely with Ph.D. student [Jinjin Gu](https://scholar.google.com/citations?user=uMQ-G-QAAAAJ&hl=eng) who is interested in interpretability of deep learning algorithm.
+He is currently a research assisstant in [X-Pixel](https://xpixel.group/people.html) at [SIAT-CAS](http://english.siat.cas.cn) supervised by Prof.[Dong Chao](https://scholar.google.com/citations?hl=zh-CN&user=OSDCB0UAAAAJ) and Prof.[Qiao Yu](https://scholar.google.com/citations?user=gFtI-8QAAAAJ&hl=zh-CN). He works closely with Ph.D. student [Jinjin Gu](https://scholar.google.com/citations?user=uMQ-G-QAAAAJ&hl=eng) who is interested in interpretability of deep learning algorithm.
 
 Recently, He mainly focuses on the Generative Model, Image Quality Assessment, and Interpretability of Deep Learning in the Image Processing field. 
 
