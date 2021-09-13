@@ -10,7 +10,7 @@ redirect_from:
 
 Haoming is a year-4 undergraduate student of the Computer Science and Engineering (CSE) in the CUHK(SZ).
 
-🎓　* <u></u><font color=#C62E7B> GGoogle Scholar Citations : 42 </font> (Up to August 2021)*
+🎓　* <span style="color:red;"> GGoogle Scholar Citations : 42 </span> (Up to August 2021)*
 
 🎓　*Now, he is looking for a Ph.D. position in Fall 2022.*
 
