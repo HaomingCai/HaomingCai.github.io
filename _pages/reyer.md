@@ -7,7 +7,7 @@ redirect_from:
   - /resume
 ---
 
-ReyeR is an iOS software developed by Haoming Cai and Haoyu Chen to operate AI-based image processings, such as Reverse Anime Image Search, Anime Image Tags Recognition, Photo Cartoonization, and Human Face to Anime Face。
+ReyeR is an iOS software developed by Haoming Cai and Haoyu Chen to operate Auto image processings, such as Reverse Anime Image Search, Anime Image Tags Recognition, Photo Cartoonization, and Human Face to Anime Face。
 This page provides a quick exhibition for **front-end design of ReyeR**.
 
 
