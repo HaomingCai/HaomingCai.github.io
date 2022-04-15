@@ -13,10 +13,10 @@ Education
 ======
 * B.S. in the School of Data Science, the Chinese University of Hong Kong, Shenzhen, 2022
 
-Work experience
+Research Internship
 ======
 * Summer 2020: Visiting Student
-  * Shenzhen Institutes of Advanced Technology，Chinese Academy of Sciences
+  * Shenzhen Institutes of Advanced Technology
   * Supervisor: Professor [Chao Dong](https://scholar.google.com/citations?hl=en&user=OSDCB0UAAAAJ) and Professor [Yu Qiao](https://scholar.google.com/citations?user=gFtI-8QAAAAJ&hl=en).
 
   
