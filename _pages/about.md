@@ -8,15 +8,15 @@ redirect_from:
   - /about.html
 ---
 
-Haoming is a year-4 undergraduate student of the Computer Science and Engineering (CSE) in the CUHK(SZ).
+Haoming is a final-year undergraduate student of the Computer Science and Engineering (CSE) in the CUHK(SZ).
 
-🎓　<span style="color:red;">Google Scholar Citations : 51</span> (Up to Octorber 2021)
+<!-- 🎓　<span style="color:red;">Google Scholar Citations : 51</span> (Up to Octorber 2021) -->
 
 🎓　*Now, he is looking for a Ph.D. position in Fall 2022.*
 
-He is currently a research assisstant in [X-Pixel](https://xpixel.group/people.html) at [SIAT-CAS](http://english.siat.cas.cn) supervised by Prof.[Dong Chao](https://scholar.google.com/citations?hl=zh-CN&user=OSDCB0UAAAAJ) and Prof.[Qiao Yu](https://scholar.google.com/citations?user=gFtI-8QAAAAJ&hl=zh-CN). He works closely with Ph.D. student [Jinjin Gu](https://scholar.google.com/citations?user=uMQ-G-QAAAAJ&hl=eng) who is interested in interpretability of deep learning algorithm.
+He is currently a research intern in [X-Pixel](https://xpixel.group/people.html) supervised by Prof.[Dong Chao](https://scholar.google.com/citations?hl=zh-CN&user=OSDCB0UAAAAJ) and Prof.[Qiao Yu](https://scholar.google.com/citations?user=gFtI-8QAAAAJ&hl=zh-CN). He works closely with Ph.D. student [Jinjin Gu](https://scholar.google.com/citations?user=uMQ-G-QAAAAJ&hl=eng) who is interested in interpretability of deep learning algorithm.
 
-Recently, He mainly focuses on the Generative Model, Image Quality Assessment, and Interpretability of Deep Learning in the Image Processing field. 
+Recently, He mainly focuses on the Image Quality Assessment and Efficient Image Restoration. 
 
 Feel free to send me an e-mail if you have any question regarding my research.
 Emil Address : [haomingcai@link.cuhk.edu.cn](haomingcai@link.cuhk.edu.cn)
