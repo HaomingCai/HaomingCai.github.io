@@ -1,6 +1,6 @@
 ---
 layout: archive
-title: "ReyeR: AI-based Image Toolbox"
+title: "ReyeR: Auto Image Toolbox"
 permalink: /reyer/
 author_profile: true
 redirect_from:
