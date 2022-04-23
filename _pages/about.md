@@ -13,7 +13,7 @@ Click to see [My Resume](http://HaomingCai.github.io/files/CV.pdf)
 
 <!-- 🎓　<span style="color:red;">Google Scholar Citations : 51</span> (Up to Octorber 2021) -->
 
-🎓 Awesome! I will be a CS Ph.D. student at the University of Maryland, College Park, with a Dean Fellowship. It took me two years to become a qualified Ph.D. applicant. Thanks to XPixel, Prof.Dong Chao, and my colleagues in XPixel. The experience in this warmful family is a gift of lifetime for me.
+🎓 Awesome! I will be a CS Ph.D. student at the University of Maryland-College Park, with a Dean Fellowship. It took me two years to become a qualified Ph.D. applicant. Thanks to XPixel, Prof.Dong Chao, and my colleagues in XPixel. The experience in this warmful family is a gift of lifetime for me.
 
 
 Currently, I am a research intern in [X-Pixel](https://xpixel.group/people.html) supervised by Prof.[Dong Chao](https://scholar.google.com/citations?hl=zh-CN&user=OSDCB0UAAAAJ) and Prof.[Qiao Yu](https://scholar.google.com/citations?user=gFtI-8QAAAAJ&hl=zh-CN). I work closely with Ph.D. student [Jinjin Gu](https://scholar.google.com/citations?user=uMQ-G-QAAAAJ&hl=eng) who is interested in interpretability of deep learning algorithm.
