@@ -8,21 +8,22 @@ redirect_from:
   - /about.html
 ---
 
-Haoming is a final-year undergraduate student of the Computer Science and Engineering (CSE) in the CUHK(SZ).
+Hao-Ming Cai is a final-year undergraduate student of the Computer Science and Engineering (CSE) in the CUHK(SZ).
+Click to see [My Resume](http://HaomingCai.github.io/files/CV.pdf)
 
 <!-- 🎓　<span style="color:red;">Google Scholar Citations : 51</span> (Up to Octorber 2021) -->
 
-🎓　*Now, he is looking for a Ph.D. position in Fall 2022.*
-
-🎓 Click to see [My Resume](http://HaomingCai.github.io/files/CV.pdf)
+🎓 Awesome! I will be a CS Ph.D. student at the University of Maryland, College Park, with a Dean Fellowship. It took me two years to become a qualified Ph.D. applicant. Thanks to XPixel, Prof.Dong Chao, and my colleagues in XPixel. The experience in this warmful family is a gift of lifetime for me.
 
 
-He is currently a research intern in [X-Pixel](https://xpixel.group/people.html) supervised by Prof.[Dong Chao](https://scholar.google.com/citations?hl=zh-CN&user=OSDCB0UAAAAJ) and Prof.[Qiao Yu](https://scholar.google.com/citations?user=gFtI-8QAAAAJ&hl=zh-CN). He works closely with Ph.D. student [Jinjin Gu](https://scholar.google.com/citations?user=uMQ-G-QAAAAJ&hl=eng) who is interested in interpretability of deep learning algorithm.
+Currently, I am a research intern in [X-Pixel](https://xpixel.group/people.html) supervised by Prof.[Dong Chao](https://scholar.google.com/citations?hl=zh-CN&user=OSDCB0UAAAAJ) and Prof.[Qiao Yu](https://scholar.google.com/citations?user=gFtI-8QAAAAJ&hl=zh-CN). I work closely with Ph.D. student [Jinjin Gu](https://scholar.google.com/citations?user=uMQ-G-QAAAAJ&hl=eng) who is interested in interpretability of deep learning algorithm.
 
-Recently, He mainly focuses on the Image Quality Assessment and Efficient Image Restoration. 
+Recently, I mainly focuses on the Image Quality Assessment and Efficient Image Restoration. 
 
 Feel free to send me an e-mail if you have any question regarding my research.
+I will be exiciting to read your email. 
 Emil Address : [haomingcai@link.cuhk.edu.cn](haomingcai@link.cuhk.edu.cn)
+
 
 🔥  Research Update
 ======
