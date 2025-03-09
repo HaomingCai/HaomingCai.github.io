@@ -1,0 +1,216 @@
+---
+---
+
+//
+// IMPORTS
+//
+
+//@import "reset";
+//@import "variables";
+// Syntax highlighting @import is at the bottom of this file
+
+/**************/
+/* BASE RULES */
+/**************/
+// a {
+//   color: #1772d0;
+//   text-decoration: none;
+// }
+a {
+  color: #3f99f3;
+  font-size: 17px;
+  text-decoration: none;
+}
+
+a2 {
+  color: #3f99f3;
+  font-size: 17px;
+  text-decoration: none;
+}
+
+a:focus,
+a:hover {
+  color: #f09228;
+  text-decoration: none;
+}
+
+body,
+td,
+th,
+tr,
+
+p {
+  font-family: 'Lato', Verdana, Helvetica, sans-serif;
+  font-size: 14px;
+  font-display: auto;
+  color: #ffffff; /* New heading color */
+}
+
+p2 {
+  font-family: 'Lato', Verdana, Helvetica, sans-serif;
+  font-size: 17px;
+  font-display: auto;
+  color: #ffffff; /* New heading color */
+}
+
+quote {
+  font-family: 'Great Vibes', cursive;
+  font-size: 24px; /* Adjust font size as needed */
+  letter-spacing: 0.02em; /* Adjust letter spacing as needed */
+  font-display: auto;
+  color: #ffffff; /* New heading color */
+}
+
+a {
+  font-family: 'Lato', Verdana, Helvetica, sans-serif;
+  font-size: 14px;
+  font-display: auto;
+}
+
+strong {
+  font-family: 'Lato', Verdana, Helvetica, sans-serif;
+  font-size: 14px;
+  font-display: auto;
+  color: #f85503; /* New heading color */
+}
+
+strongnews {
+  font-family: 'Lato', Verdana, Helvetica, sans-serif;
+  font-size: 14px;
+  font-display: auto;
+  color: #f8bb03; /* New heading color */
+}
+
+strongvenue {
+  font-family: 'Lato', Verdana, Helvetica, sans-serif;
+  font-size: 14px;
+  font-display: auto;
+  color:#D8B694; /* New heading color */
+}
+
+small {
+  font-family: 'Lato', Verdana, Helvetica, sans-serif;
+  font-size: 10px;
+  font-display: auto;
+  font-weight: normal;
+  padding: 0px;
+  margin: 0px;
+  display:inline; 
+  color: #ffffff; /* New heading color */
+}
+
+h2 {
+  font-family: 'Lato', Verdana, Helvetica, sans-serif;
+  font-size: 22px;
+  font-display: auto;
+  font-weight: normal;
+  padding: 0px;
+  margin: 0px;
+  display:inline; 
+  color: #f85503; /* New heading color */
+}
+
+h25 {
+  font-family: 'Lato', Verdana, Helvetica, sans-serif;
+  font-size: 18px;
+  font-display: auto;
+  font-weight: normal;
+  padding: 0px;
+  margin: 0px;
+  display:inline; 
+  color: #FFD700; /* New heading color */
+}
+
+
+
+// h3 {
+//   font-family: 'Lato', Verdana, Helvetica, sans-serif;
+//   font-size: 14px;
+//   font-weight: 700;
+//   font-display: auto;
+//   padding: 0px;
+//   margin: 0px;
+//   display:inline; 
+//   color: #1E90FF; /* New heading color */
+// }
+// 
+h3 {
+  font-family: 'Lato', Verdana, Helvetica, sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+  font-display: auto;
+  padding: 0px;
+  margin: 0px;
+  display:inline; 
+  color: #1E90FF; /* New heading color */
+}
+
+// h3 {
+//   font-family: 'Lato', Verdana, Helvetica, sans-serif;
+//   font-size: 14px;
+//   font-weight: 700;
+//   font-display: auto;
+//   padding: 0px;
+//   margin: 0px;
+//   display:inline; 
+//   color: #ff7300d6; /* New heading color */
+// }
+
+h1 {
+  font-family: 'Lato', Verdana, Helvetica, sans-serif;
+  font-size: 32px;
+  font-weight: normal;
+  font-display: auto;
+  text-align: center;
+  padding: 0px;
+  margin-block-start: 14px;
+  margin-block-end: 14px;
+  margin-left: 0px;
+  margin-right: 0px;
+  color: #ffffff; /* New heading color */
+}
+
+h11 {
+  font-family: 'Lato', Verdana, Helvetica, sans-serif;
+  font-size: 16px;
+  font-weight: normal;
+  font-display: auto;
+  text-align: center;
+  padding: 0px;
+  margin-block-start: 14px;
+  margin-block-end: 14px;
+  margin-left: 0px;
+  margin-right: 0px;
+  color: #ffffff; /* New heading color */
+}
+
+.one {
+  width: 160px;
+  height: 160px;
+  position: relative;
+}
+
+.two {
+  width: 160px;
+  height: 160px;
+  position: absolute;
+  transition: opacity .2s ease-in-out;
+  -moz-transition: opacity .2s ease-in-out;
+  -webkit-transition: opacity .2s ease-in-out;
+}
+
+.fade {
+  transition: opacity .2s ease-in-out;
+  -moz-transition: opacity .2s ease-in-out;
+  -webkit-transition: opacity .2s ease-in-out;
+}
+
+span.highlight {
+  background-color: #ffffff;
+}
+
+
+// Settled on moving the import of syntax highlighting to the bottom of the CSS
+// ... Otherwise it really bloats up the top of the CSS file and makes it difficult to find the start
+//@import "highlights";
+//@import "svg-icons";

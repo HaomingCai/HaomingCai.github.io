@@ -1,0 +1,13 @@
+---
+layout: post
+title:  "Efficient image super-resolution using vast-receptive-field attention"
+date:   2023-08-09 22:21:59 +00:00
+image: /images/00_Pub_22_VapSR.png
+categories: SR
+author: "Leo Keselman"
+authors: "<strong>Haoming Cai*</strong>, Lin Zhou*, Jinjin Gu, Zheyuan Li, Yingqi Liu, Xiangyu Chen, Yu Qiao, Chao ."
+venue: "<strongvenue>AIM'22 @ ECCV</strongvenue>"
+arxiv: https://arxiv.org/pdf/2210.05960
+code:  https://github.com/zhoumumu/VapSR
+---
+This study improves super-resolution networks by refining the attention mechanism, leading to VapSR, which outperforms lightweight networks with fewer parameters, achieving similar results as IMDB and RFDN networks with significantly fewer parameters.

@@ -1,0 +1,13 @@
+---
+layout: post
+title:  "Super-resolution by predicting offsets: An ultra-efficient super-resolution network for rasterized images"
+date:   2023-08-09 22:21:59 +00:00
+image: /images/00_Pub_22_SRPO.png
+categories: SR
+author: "Leo Keselman"
+authors: "Jinjin Gu, <strong>Haoming Cai</strong>, Chenyu Dong, Ruofan Zhang, Yulun Zhang, Wenming Yang, Chun Yuan."
+venue: "<strongvenue>ECCV'22</strongvenue>"
+arxiv: https://arxiv.org/pdf/2210.04198
+code:  https://github.com/HaomingCai/SRPO
+---
+SRPO is a real-time super-resolution method for computer graphics, achieving superior visual effects with minimal computational cost by leveraging rasterized image features and offset prediction.
