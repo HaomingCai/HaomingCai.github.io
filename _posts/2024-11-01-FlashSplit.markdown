@@ -6,4 +6,5 @@ image: /images/00_Pub_25_FlashSplit.png
 categories: GenAI
 authors: "Tianfu Wang*, Mingyang Xie*, <strong>Haoming Cai</strong>, Sachin Shah, Christopher Metzler"
 venue: "<strongvenue>CVPR'25</strongvenue>"
+arxiv: https://arxiv.org/pdf/2501.00637
 ---

@@ -7,5 +7,7 @@ categories: GenAI
 author: "Leo Keselman"
 authors: "Jingxi Chen, Brandon Y. Feng, <strong>Haoming Cai</strong>, Tianfu Wang, Levi Burner, Dehao Yuan, Cornelia Fermuller, Christopher Metzler, Yiannis Aloimonos"
 venue: "<strongvenue>CVPR'25</strongvenue>"
+arxiv: https://arxiv.org/pdf/2412.07761
+website: https://vdm-evfi.github.io/
 ---
 
