@@ -1,0 +1,495 @@
+<!--
+  Nerfies: Deformable Neural Radiance Fields Project Page
+  Author: Keunhong Park et al.
+  This HTML file presents the project, paper, video, code, and related resources.
+  Main sections:
+    - Navigation bar with research links
+    - Hero section with project title, authors, and links
+    - Teaser video and subtitle
+    - Results carousel with example videos
+    - Abstract describing the method
+    - Paper video
+    - Visual Effects and Matting demos
+    - Animation section with interpolation and re-rendering demos
+    - Related links to concurrent work
+    - BibTeX citation
+    - Footer with license and source code info
+-->
+<!DOCTYPE html>
+<html>
+<head>
+  <!-- Meta tags and page title -->
+  <meta charset="utf-8">
+  <meta name="description"
+        content="Deformable Neural Radiance Fields creates free-viewpoint portraits (nerfies) from casually captured videos.">
+  <meta name="keywords" content="Nerfies, D-NeRF, NeRF">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Vid2Bokeh</title>
+
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-PYVRSFMDRL"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+
+    function gtag() {
+      dataLayer.push(arguments);
+    }
+
+    gtag('js', new Date());
+
+    gtag('config', 'G-PYVRSFMDRL');
+  </script>
+
+  <!-- External CSS and JS libraries -->
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
+        rel="stylesheet">
+
+  <link rel="stylesheet" href="./static/css/bulma.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
+  <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+  <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="./static/css/index.css">
+  <link rel="icon" href="./static/images/bokeh.png">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script defer src="./static/js/fontawesome.all.min.js"></script>
+  <script src="./static/js/bulma-carousel.min.js"></script>
+  <script src="./static/js/bulma-slider.min.js"></script>
+  <script src="./static/js/index.js"></script>
+  <!-- 新增：我们的交互脚本 -->
+  <script src="./static/js/CVPR_Mine_DataGen_Bokeh.js"></script>
+  <!-- Our Method Playground 交互 -->
+  <script src="./static/js/CVPR_Mine_OurMethod_Playground.js"></script>
+</head>
+<body>
+
+<!-- Hero section: Project title and CVPR ID -->
+<section class="hero">
+  <div class="hero-body">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered">
+        <div class="column has-text-centered">
+          <h1 class="title is-3 publication-title" style="line-height:1.2;">
+            Vid2Bokeh <br> Synthesizing Large-Scale Light Field Datasets from Videos Enables<br>
+            Joint Focus and Depth-of-Field Image Editing
+          </h1>
+          <!-- Navigation bar with research links -->
+          <nav class="navbar" role="navigation" aria-label="main navigation">
+            <div class="navbar-brand">
+              <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
+                <span aria-hidden="true"></span>
+                <span aria-hidden="true"></span>
+                <span aria-hidden="true"></span>
+              </a>
+            </div>
+            <div class="navbar-menu">
+              <div class="navbar-start" style="flex-grow: 1; justify-content: center;">
+                <a class="navbar-item" href="#Video">Overview Video</a>
+                <a class="navbar-item" href="#OurMethodDemo">Real-World Results (Interactive)</a>
+                <a class="navbar-item" href="#VisualEffects">Vid2Bokeh Dataset Samples (Interactive)</a>
+              </div>
+            </div>
+            </div>
+          </nav>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Teaser video and subtitle -->
+<!-- <section class="hero teaser">
+  <div class="container is-max-desktop">
+    <div class="hero-body">
+      <video id="teaser" autoplay muted loop playsinline height="100%">
+        <source src="./static/videos/teaser.mp4"
+                type="video/mp4">
+      </video>
+      <h2 class="subtitle has-text-centered">
+        <span class="dnerf">Nerfies</span> turns selfie videos from your phone into
+        free-viewpoint
+        portraits.
+      </h2>
+    </div>
+  </div>
+</section> -->
+
+
+
+
+
+
+
+<!-- Main content section -->
+<section class="section" id="Abstract" style="padding-bottom: 0;">
+  <div class="container is-max-desktop">
+
+    <!-- Paper video section -->
+    <div class="columns is-centered has-text-centered" id="Video">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3" style="margin-bottom: 0.5rem;">1. Explanation Video</h2>
+        <p style="color: #666; font-style: italic; margin-bottom: 1rem;">
+          The explanation video will be released after review.
+        </p>
+          <div class="publication-video" style="display: none;">
+
+            <!-- <video controls preload="metadata" style="width: 100%; border-radius: 8px;">
+              <source src="./static/videos/output_v0.2.mp4" type="video/mp4">
+              Your browser does not support HTML5 video.
+            </video> -->
+          </div>
+      </div>
+    </div>
+    <!--/ Paper video section -->
+  </div>
+</section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- Our Method Playground (NEW) -->
+<div class="columns is-centered" id="OurMethodDemo" style="margin-top: 0;">
+  <div class="column is-full-width">
+    <!-- ⭐ 新增：统一控制尺寸的外壳 -->
+    <div class="ourmethod-card">
+
+      <h2 class="title is-3">2. Our Method Tested on Real-World Images</h2>
+
+      <div class="content has-text-justified">
+        <p>
+          Interactively explore our method’s joint control of focal plane and aperture radius. Drag the sliders to see how focus and depth-of-field change on real photographs.
+        </p>
+      </div>
+
+      <!-- Scene selector -->
+      <div class="content has-text-centered" style="margin-bottom: 1rem;">
+        <div class="buttons is-centered">
+          <button class="button is-small is-rounded is-info ourmethod-scene-button is-active"
+                  data-scene="scene1">Scene 1</button>
+          <button class="button is-small is-rounded is-light ourmethod-scene-button"
+                  data-scene="scene2">Scene 2</button>
+          <button class="button is-small is-rounded is-light ourmethod-scene-button"
+                  data-scene="scene3">Scene 3</button>
+          <!-- <button class="button is-small is-rounded is-light ourmethod-scene-button"
+                  data-scene="scene4">Scene 4</button>
+          <button class="button is-small is-rounded is-light ourmethod-scene-button"
+                  data-scene="scene5">Scene 5</button> -->
+        </div>
+      </div>
+
+
+
+      <!-- Interactive area -->
+      <div class="columns is-vcentered interpolation-panel">
+        <div class="column interpolation-video-column">
+
+
+          <!-- Note under scene selector -->
+          <div class="content has-text-centered" style="margin-top:-0.8rem; margin-bottom:1.2rem;">
+            <p style="color:#fb0307; font-size:0.95rem;">
+              <strong>Note:</strong> Focal-plane adjustment is highly sensitive, as most positions will lead to out-of-focus results when the input image has a sparse depth distribution.
+            </p>
+          </div>
+
+          <!-- Image viewer -->
+          <div id="ourmethod-viewer"
+              style="display:flex; justify-content:center; align-items:flex-start; gap:16px;">
+
+            <!-- 左：Input -->
+            <div class="ourmethod-img-box">
+              <img id="ourmethod-input-img"
+                  style="width:100%; height:auto; border-radius:6px; display:none;" />
+              <div class="ourmethod-img-label">Input</div>
+            </div>
+
+            <!-- 右：Ours -->
+            <div class="ourmethod-img-box">
+              <img id="ourmethod-output-img"
+                  style="width:100%; height:auto; border-radius:6px;" />
+              <div class="ourmethod-img-label">Ours</div>
+            </div>
+
+          </div>
+
+
+          <!-- Focal slider -->
+          <!-- Focal slider -->
+          <div class="content" style="margin-top: 1rem;">
+            <p><strong>&#916; Focal Plane (Relative Shift)</strong></p>
+
+            <div style="display:flex; align-items:center; width:100%;">
+              <span style="width:50px; text-align:left; font-size:0.9rem; color:#666;">Toward Background</span>
+
+              <!-- 中点文字 + 原点都放在 wrapper 里 -->
+              <div class="ourmethod-slider-wrapper">
+                <input class="slider is-fullwidth is-large is-info"
+                      id="ourmethod-focal-slider"
+                      step="1" min="0" max="100" value="50" type="range">
+
+                <!-- 中点原点 -->
+                <div class="ourmethod-origin-dot"></div>
+
+                <!-- 中点上方文字 -->
+                <div class="ourmethod-origin-tag">Original Focal Plane</div>
+              </div>
+
+              <span style="width:50px; text-align:right; font-size:0.9rem; color:#666;">Toward Foreground</span>
+            </div>
+          </div>
+
+
+
+          <!-- Aperture slider -->
+          <!-- Aperture slider -->
+          <div class="content" style="margin-top: 1rem;">
+            <p><strong>&#916; Aperture Radius (Relative Change)</strong></p>
+
+            <div style="display:flex; align-items:center; width:100%;">
+              <span style="width:60px; text-align:left; font-size:0.9rem; color:#666;">Less Blur</span>
+
+              <!-- 中点文字 + 原点都放在 wrapper 里 -->
+              <div class="ourmethod-slider-wrapper">
+                <input class="slider is-fullwidth is-large is-warning"
+                      id="ourmethod-aperture-slider"
+                      step="1" min="0" max="100" value="50" type="range">
+
+                <!-- 中点原点 -->
+                <div class="ourmethod-origin-dot"></div>
+
+                <!-- 中点上方文字 -->
+                <div class="ourmethod-origin-tag">Original Aperture Radius</div>
+              </div>
+
+              <span style="width:60px; text-align:right; font-size:0.9rem; color:#666;">More Blur</span>
+            </div>
+          </div>
+
+
+        </div>
+      </div>
+
+      <br/>
+    </div>  <!-- ⭐ ourmethod-card 结束 -->
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- Visual Effects, Matting, and Animation demos -->
+<section class="section" id="VisualEffects">
+  <div class="container is-max-desktop">
+
+    <!-- Bokeh Data Sample -->
+    <div class="columns is-centered" id="BokehData">
+      <div class="column is-full-width">
+        <h2 class="title is-3">3.Vid2Bokeh Dataset</h2>
+        <h3 class="title is-4">Sample Bokeh Images Used for Training</h3>
+
+        <!-- <h3 class="title is-4">Interactive Exploration</h3> -->
+        <div class="content has-text-justified">
+          <p>
+            Use the sliders below to explore variations in focal plane and aperture radius. These bokeh samples are directly generated from our Vid2Bokeh pipeline.
+          </p>
+        </div>
+
+        <div class="content has-text-centered" style="margin-top:-0.8rem; margin-bottom:1.2rem;">
+          <p style="color:#fb03a0; font-size:0.95rem;">
+            <strong>Note:</strong> Minor artifacts are visible due to video compression and the reduced resolution used to keep the file size small.
+          </p>
+        </div>
+
+        <!-- Scene selector -->
+        <div class="content has-text-centered" style="margin-bottom: 1rem;">
+          <div class="buttons is-centered">
+            <button class="button is-small is-rounded is-info bokehdata-scene-button is-active"
+                    data-scene="scene1">Scene 1</button>
+            <button class="button is-small is-rounded is-light bokehdata-scene-button"
+                    data-scene="scene2">Scene 2</button>
+            <!-- <button class="button is-small is-rounded is-light bokehdata-scene-button"
+                    data-scene="scene3">Scene 3</button>
+            <button class="button is-small is-rounded is-light bokehdata-scene-button"
+                    data-scene="scene4">Scene 4</button>
+            <button class="button is-small is-rounded is-light bokehdata-scene-button"
+                    data-scene="scene5">Scene 5</button> -->
+          </div>
+        </div>
+
+        <!-- Interactive area -->
+        <div class="columns is-vcentered interpolation-panel">
+          <div class="column interpolation-video-column">
+
+
+          <!-- ⭐ Video Pairs for All Scenes -->
+          <div id="bokehdata-video-wrapper" style="margin-top: 1rem; margin-bottom: 1.5rem;">
+
+
+
+            <!-- Scene 1 -->
+            <div class="bokehdata-video-pair" id="bokehdata-video-scene1" style="display: none;">
+              <div style="display: flex; justify-content: center; gap: 20px; flex-wrap: wrap;">
+                <div style="text-align: center;">
+                  <div class="video-title">Step 1: will be released after review</div>
+                </div>
+                <div style="text-align: center;">
+                  <div class="video-title">Step 2: will be released after review</div>
+                </div>
+              </div>
+            </div>
+
+
+            <!-- Scene 2 -->
+            <div class="bokehdata-video-pair" id="bokehdata-video-scene2" style="display: block;">
+              <div style="display: flex; justify-content: center; gap: 20px; flex-wrap: wrap;">
+                <div style="text-align: center;">
+                  <div class="video-title">Step 1: will be released after review</div>
+                </div>
+                <div style="text-align: center;">
+                  <div class="video-title">Step 2: will be released after review</div>
+                </div>
+              </div>
+            </div>
+
+
+            <!-- Scene 3 -->
+            <div class="bokehdata-video-pair" id="bokehdata-video-scene3" style="display: none;">
+              <div style="display: flex; justify-content: center; gap: 20px; flex-wrap: wrap;">
+                <div style="text-align: center;">
+                  <div class="video-title">Step 1: Original Video</div>
+                  <video src="./static/DataGen_Bokeh/CityHall_h264.mp4"
+                        autoplay muted loop playsinline controls
+                        style="width: 420px; border-radius: 8px;"></video>
+                </div>
+                <div style="text-align: center;">
+                  <div class="video-title">Step 2: Synthesized Light Field at Selected View (row by row)</div>
+                  <video src="./static/DataGen_Bokeh/CityHall_h264.mp4"
+                        autoplay muted loop playsinline controls
+                        style="width: 420px; border-radius: 8px;"></video>
+                </div>
+              </div>
+            </div>
+
+            <!-- Scene 4 -->
+            <div class="bokehdata-video-pair" id="bokehdata-video-scene4" style="display: none;">
+              <div style="display: flex; justify-content: center; gap: 20px; flex-wrap: wrap;">
+                <div style="text-align: center;">
+                  <div class="video-title">Step 1: Original Video</div>
+                  <video src="./static/DataGen_Bokeh/CityHall_h264.mp4"
+                        autoplay muted loop playsinline controls
+                        style="width: 420px; border-radius: 8px;"></video>
+                </div>
+                <div style="text-align: center;">
+                  <div class="video-title">Step 2: Synthesized Light Field at Selected View (row by row)</div>
+                  <video src="./static/DataGen_Bokeh/CityHall_h264.mp4"
+                        autoplay muted loop playsinline controls
+                        style="width: 420px; border-radius: 8px;"></video>
+                </div>
+              </div>
+            </div>
+
+            <!-- Scene 5 -->
+            <div class="bokehdata-video-pair" id="bokehdata-video-scene5" style="display: none;">
+              <div style="display: flex; justify-content: center; gap: 20px; flex-wrap: wrap;">
+                <div style="text-align: center;">
+                  <div class="video-title">Step 1: Original Video</div>
+                  <video src="./static/DataGen_Bokeh/CityHall_h264.mp4"
+                        autoplay muted loop playsinline controls
+                        style="width: 420px; border-radius: 8px;"></video>
+                </div>
+                <div style="text-align: center;">
+                  <div class="video-title">Step 2: Synthesized Light Field at Selected View (row by row)</div>
+                  <video src="./static/DataGen_Bokeh/CityHall_h264.mp4"
+                        autoplay muted loop playsinline controls
+                        style="width: 420px; border-radius: 8px;"></video>
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+            <!-- Image viewer title -->
+            <div class="content has-text-centered" style="margin-bottom: 0.5rem;">
+              <span class="bokehdata-image-title">
+                Step 3: Bokeh images Rendered from Light Field
+              </span>
+            </div>
+
+            <!-- Image viewer -->
+            <div id="bokehdata-viewer">Loading...</div>
+
+            <!-- Focal slider -->
+            <div class="content" style="margin-top: 1rem;">
+              <p><strong>Focal Plane</strong></p>
+
+              <div style="display:flex; align-items:center; width:100%;">
+                <span style="width:50px; text-align:left; font-size:0.9rem; color:#666;">Far</span>
+
+                <input class="slider is-fullwidth is-large is-info"
+                      id="bokehdata-focal-slider"
+                      step="1" min="0" max="100" value="50" type="range"
+                      style="flex:1; margin: 0 10px;">
+
+                <span style="width:50px; text-align:right; font-size:0.9rem; color:#666;">Near</span>
+              </div>
+            </div>
+
+            <!-- Aperture slider -->
+            <div class="content" style="margin-top: 1rem;">
+              <p><strong>Aperture Radius</strong></p>
+
+              <div style="display:flex; align-items:center; width:100%;">
+                <span style="width:50px; text-align:left; font-size:0.9rem; color:#666;">Small</span>
+
+                <input class="slider is-fullwidth is-large is-warning"
+                      id="bokehdata-aperture-slider"
+                      step="1" min="0" max="100" value="50" type="range"
+                      style="flex:1; margin: 0 10px;">
+
+                <span style="width:50px; text-align:right; font-size:0.9rem; color:#666;">Large</span>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <br/>
+      </div>
+    </div>
+    <!--/ Bokeh Data Sample -->
+
+
+
+
+
+
+  </div>
+</section>
+
+
+
+</body>
+</html>

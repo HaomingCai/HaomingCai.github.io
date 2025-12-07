@@ -1,0 +1,312 @@
+body {
+  font-family: 'Noto Sans', sans-serif;
+}
+
+
+.footer .icon-link {
+    font-size: 25px;
+    color: #000;
+}
+
+.link-block a {
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+.dnerf {
+  font-variant: small-caps;
+}
+
+
+.teaser .hero-body {
+  padding-top: 0;
+  padding-bottom: 3rem;
+}
+
+.teaser {
+  font-family: 'Google Sans', sans-serif;
+}
+
+
+.publication-title {
+}
+
+.publication-banner {
+  max-height: parent;
+
+}
+
+.publication-banner video {
+  position: relative;
+  left: auto;
+  top: auto;
+  transform: none;
+  object-fit: fit;
+}
+
+.publication-header .hero-body {
+}
+
+.publication-title {
+    font-family: 'Google Sans', sans-serif;
+}
+
+.publication-authors {
+    font-family: 'Google Sans', sans-serif;
+}
+
+.publication-venue {
+    color: #555;
+    width: fit-content;
+    font-weight: bold;
+}
+
+.publication-awards {
+    color: #ff3860;
+    width: fit-content;
+    font-weight: bolder;
+}
+
+.publication-authors {
+}
+
+.publication-authors a {
+   color: hsl(204, 86%, 53%) !important;
+}
+
+.publication-authors a:hover {
+    text-decoration: underline;
+}
+
+.author-block {
+  display: inline-block;
+}
+
+.publication-banner img {
+}
+
+.publication-authors {
+  /*color: #4286f4;*/
+}
+
+.publication-video {
+    position: relative;
+    width: 100%;
+    height: 0;
+    padding-bottom: 56.25%;
+
+    overflow: hidden;
+    border-radius: 10px !important;
+}
+
+.publication-video iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.publication-body img {
+}
+
+.results-carousel {
+  overflow: hidden;
+}
+
+.results-carousel .item {
+  margin: 5px;
+  overflow: hidden;
+  border: 1px solid #bbb;
+  border-radius: 10px;
+  padding: 0;
+  font-size: 0;
+}
+
+.results-carousel video {
+  margin: 0;
+}
+
+
+.interpolation-panel {
+  background: #f5f5f5;
+  border-radius: 10px;
+}
+
+.interpolation-panel .interpolation-image {
+  width: 100%;
+  border-radius: 5px;
+}
+
+.interpolation-video-column {
+}
+
+.interpolation-panel .slider {
+  margin: 0 !important;
+}
+
+.interpolation-panel .slider {
+  margin: 0 !important;
+}
+
+#interpolation-image-wrapper {
+  width: 100%;
+}
+#interpolation-image-wrapper img {
+  border-radius: 5px;
+}
+
+
+
+
+
+
+/* Our Method playground image wrapper */
+#ourmethod-viewer {
+  /* 让图片居中 */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* 控制图片大小 */
+#ourmethod-viewer img {
+  /* 你想要的最大宽度 / 高度 */
+  max-width: 600px;   /* 或 100% 看你想占多少 */
+  max-height: 600px;
+
+  width: 100%;        /* 保持响应式缩放 */
+  height: auto;       /* 维持纵横比 */
+  object-fit: contain;
+}
+
+
+
+
+
+/* ===== Our Method Playground 尺寸控制 ===== */
+
+/* 整个卡片的总宽度（图片 + 两个 slider 一起缩放） */
+#OurMethodDemo .ourmethod-card {
+  max-width: 900px;    /* ⭐ 想更窄就改成 720 / 700 / 640 等 */
+  margin: 0 auto;      /* 居中 */
+  padding: 16px 20px 20px;
+}
+
+/* 图片最大宽度（再往下调就会一起变小） */
+#OurMethodDemo #ourmethod-viewer img {
+  width: 45%;
+  max-width: 700px;    /* ⭐ 控制图像宽度，和 slider 对齐 */
+  height: auto;
+  border-radius: 8px;
+  object-fit: contain;
+}
+
+/* 让图片区域本身别撑太宽 */
+#OurMethodDemo #ourmethod-viewer {
+  justify-content: center;
+}
+
+/* 只缩 Our Method 这块的两个 slider 的有效长度 */
+
+
+/* slider 外面那行内容稍微居中一点（可选） */
+#OurMethodDemo .content > div {
+  justify-content: center;
+}
+
+/* Our Method 双图 + 标签布局 */
+.ourmethod-img-box {
+  max-width: 45%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.ourmethod-img-box img {
+  width: 100%;
+  height: auto;
+  border-radius: 6px;
+}
+
+.ourmethod-img-label {
+  margin-top: 6px;
+  font-size: 0.9rem;
+  color: #555;
+  font-weight: 600;
+}
+
+
+
+
+
+.video-title {
+  font-size: 1rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+
+.bokehdata-image-title {
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+
+
+
+/* 外层：包住 slider，用来做定位 */
+.ourmethod-slider-wrapper {
+  position: relative;
+  flex: 1;
+  margin: 0 10px;
+}
+
+/* range 铺满 */
+.ourmethod-slider-wrapper input[type="range"] {
+  width: 100%;
+}
+
+/* 中点的小圆点 */
+.ourmethod-origin-dot {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  border: 2px solid #fb03a0;
+  background-color: #fff;
+  pointer-events: none;
+}
+
+/* 原点上方的文字 */
+.ourmethod-origin-tag {
+  position: absolute;
+  left: 50%;
+  top: -1.3rem;          /* 上移一点，觉得太高/太低可以微调这个值 */
+  transform: translateX(-50%);
+  font-size: 0.85rem;
+  color: #777;
+  white-space: nowrap;
+  pointer-events: none;
+}
+
+
+
+
+
+/* 全局让每个大 section 间距变大 */
+/* section.section {
+  padding-top: 10rem !important;
+  padding-bottom: 10rem !important;
+}
+/* 灰色那块 carousel 下面多留一点空白 */
+.hero.is-light.is-small {
+  padding-bottom: 3rem;   /* 增大灰块内部的下边距 */
+  margin-bottom: 2rem;    /* 灰块和下一块之间再多一点外边距 */
+}
+/* Our Method Playground 顶部再留一点空间（可选） */
+#OurMethodDemo {
+  margin-top: 10rem;
+} */
