@@ -1,0 +1,17 @@
+---
+layout: post
+title:  "Vid2Bokeh: Synthesizing Large-Scale Light Field Datasets from Videos Enables Joint Focus and Depth-of-Field Image Editing"
+date:   2025-11-01 22:21:59 +00:00
+image: /images/vid2bokeh_image1.jpg
+image2: /images/vid2bokeh_image2.jpg
+# image3: /images/vid2bokeh_image3.jpg
+# image4: /images/vid2bokeh_image4.jpg
+# image5: /images/vid2bokeh_image5.jpg
+# image6: /images/vid2bokeh_image6.jpg
+# image7: /images/vid2bokeh_image7.jpg
+categories: GenAI
+authors: "<strong>Haoming Cai</strong>, Zhoutong Zhang, Christopher Metzler, Shumian Xin"
+website: www.google.com
+venue: "<strongvenue>Under Review 2025 Nov</strongvenue>"
+---
+A large image bokeh dataset from video for joint focus and DoF editing on any image

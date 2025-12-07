@@ -6,8 +6,8 @@ image: /images/00_Pub_22_BSRN.png
 categories: SR
 author: "Leo Keselman"
 authors: "Zheyuan Li, Yingqi Liu, Xiangyu Chen, <strong>Haoming Cai</strong>, Jinjin Gu, Yu Qiao, Chao Dong."
-venue: "<strongvenue>NTIRE'23 @ CVPR</strongvenue>"
+venue: "<strongvenue>NTIRE Challenge @ CVPR 2023</strongvenue>"
 arxiv: https://openaccess.thecvf.com/content/CVPR2022W/NTIRE/papers/Li_Blueprint_Separable_Residual_Network_for_Efficient_Image_Super-Resolution_CVPRW_2022_paper.pdf
-code: https://github.com/xiaom233/BSRN
+website: https://github.com/xiaom233/BSRN
 ---
-Winner of Efficient Image Super-Resolution Track @ New Trends in Image Restoration and Enhancement (NTIRE) workshop of CVPR'23
+Winner of Efficient Image Super-Resolution Track @ NTIRE workshop of CVPR'23

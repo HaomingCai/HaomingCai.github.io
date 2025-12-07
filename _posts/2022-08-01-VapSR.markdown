@@ -6,8 +6,8 @@ image: /images/00_Pub_22_VapSR.png
 categories: SR
 author: "Leo Keselman"
 authors: "<strong>Haoming Cai*</strong>, Lin Zhou*, Jinjin Gu, Zheyuan Li, Yingqi Liu, Xiangyu Chen, Yu Qiao, Chao ."
-venue: "<strongvenue>AIM'22 @ ECCV</strongvenue>"
+venue: "<strongvenue>AIM Challenge @ ECCV 2022</strongvenue>"
 arxiv: https://arxiv.org/pdf/2210.05960
-code:  https://github.com/zhoumumu/VapSR
+website:  https://github.com/zhoumumu/VapSR
 ---
-This study improves super-resolution networks by refining the attention mechanism, leading to VapSR, which outperforms lightweight networks with fewer parameters, achieving similar results as IMDB and RFDN networks with significantly fewer parameters.
+Vast receptive field and more attention for super-resolution

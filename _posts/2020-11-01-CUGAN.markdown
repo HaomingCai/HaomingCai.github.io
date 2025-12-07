@@ -8,6 +8,6 @@ author: "Haoming Cai"
 authors:  <strong>Haoming Cai</strong>, Jingwen He, Yu Qiao, Chao Dong.
 venue: "<strongvenue>CVPRW'21</strongvenue>"
 arxiv: https://openaccess.thecvf.com/content/CVPR2021W/NTIRE/papers/Cai_Toward_Interactive_Modulation_for_Photo-Realistic_Image_Restoration_CVPRW_2021_paper.pdf
-code: https://github.com/HaomingCai/CUGAN
+website: https://github.com/HaomingCai/CUGAN
 ---
-This paper presents CUGAN, a Controllable Unet GAN, for modulating image restoration tasks with fine texture details. Through dynamic level adjustments and condition networks, CUGAN outperforms previous methods, offering smooth user control over output effects.
+2D controllable deblurring and denoising with a GAN-based neural network
