@@ -12,6 +12,6 @@ image2: /images/vid2bokeh_image2.jpg
 categories: GenAI
 authors: "<strong>Haoming Cai</strong>, Zhoutong Zhang, Christopher Metzler, Shumian Xin"
 website: https://www.hm-cai.com/tn/projects_html/vis2bokeh/index.html
-venue: "<strongvenue>Under Review 2025 Nov</strongvenue>"
+venue: "<strongvenue> Check the playground in the website! </strongvenue> "
 ---
 A large image bokeh dataset from video for joint focus and DoF editing on any image
