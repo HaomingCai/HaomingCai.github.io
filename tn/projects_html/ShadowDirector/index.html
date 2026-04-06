@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="description"
+        content="Parametric Shadow Control for Portrait Generation in Text-to-Image Diffusion Models">
+  <meta name="keywords" content="Nerfies, D-NeRF, NeRF">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Shadow Director</title>
+
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-PYVRSFMDRL"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+
+    function gtag() {
+      dataLayer.push(arguments);
+    }
+
+    gtag('js', new Date());
+
+    gtag('config', 'G-PYVRSFMDRL');
+  </script>
+
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
+        rel="stylesheet">
+
+  <link rel="stylesheet" href="./static/css/bulma.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
+  <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+  <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="./static/css/index.css">
+  <link rel="icon" href="./static/images/umdicon.svg">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script defer src="./static/js/fontawesome.all.min.js"></script>
+  <script src="./static/js/bulma-carousel.min.js"></script>
+  <script src="./static/js/bulma-slider.min.js"></script>
+  <script src="./static/js/index.js"></script>
+</head>
+<body>
+
+<nav class="navbar" role="navigation" aria-label="main navigation">
+  <div class="navbar-brand">
+    <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+    </a>
+  </div>
+</nav>
+
+
+<section class="hero">
+  <div class="hero-body">
+    <div class="container is-widescreen">
+      <div class="columns is-centered">
+        <div class="column has-text-centered">
+          <h1 class="title is-1 publication-title" style="max-width: 1200px; margin: 0 auto;">Parametric Shadow Control for Portrait Generation in Text-to-Image Diffusion Models</h1>
+          <div class="is-size-5 publication-authors">
+            <span class="author-block">
+              <a href="http://www.hm-cai.com">Haoming Cai</a><sup>1</sup>,</span>
+            <span class="author-block">
+              <a href="https://www.linkedin.com/in/tsung-wei-huang-63b728122/">Tsung-Wei Huang</a><sup>2</sup>,</span>
+            <span class="author-block">
+              <a href="https://scholar.google.com/citations?user=SmSs6d0AAAAJ&hl=en">Shiv Gehlot</a><sup>2</sup>,
+            </span>
+            <span class="author-block">
+              <a href="https://brandonyfeng.github.io/">Brandon Y. Feng</a><sup>3</sup>,
+            </span>
+            <span class="author-block">
+              <a href="https://scholar.google.com/citations?user=kWq6VHIAAAAJ">Sachin Shah</a><sup>1</sup>,
+            </span>
+            <span class="author-block">
+              <a href="https://sites.google.com/site/wwwgmsu/">Guan-Ming Su</a><sup>2</sup>,
+            </span>
+            <span class="author-block">
+              <a href="https://www.cs.umd.edu/people/metzler">Christopher Metzler</a><sup>1</sup>
+            </span>
+          </div>
+
+          <div class="is-size-5 publication-authors">
+            <span class="author-block"><sup>1</sup>University of Maryland</span>
+            <span class="author-block"><sup>2</sup>Dolby Labs,</span>
+            <span class="author-block"><sup>3</sup>MIT</span>
+            
+          </div>
+
+          <p class="shadowdirector-venue-iccv has-text-centered">ICCV 2025</p>
+
+          <div class="column has-text-centered">
+            <div class="publication-links">
+              <span class="link-block">
+                <a href="https://openaccess.thecvf.com/content/ICCV2025/papers/Cai_Parametric_Shadow_Control_for_Portrait_Generation_in_Text-to-Image_Diffusion_Models_ICCV_2025_paper.pdf"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fas fa-file-pdf"></i>
+                  </span>
+                  <span>Paper</span>
+                </a>
+              </span>
+              <span class="link-block shadowdirector-tooltip-wrap">
+                <span class="button is-normal is-rounded shadowdirector-btn-code"
+                      role="button"
+                      tabindex="0"
+                      aria-describedby="shadowdirector-code-tip">
+                  <span class="icon">
+                    <i class="fas fa-code"></i>
+                  </span>
+                  <span>Code</span>
+                </span>
+                <span id="shadowdirector-code-tip" class="shadowdirector-tooltip-bubble" role="tooltip">
+                  Due to the copyright issue, we cannot release the code.
+                </span>
+              </span>
+              <span class="link-block">
+                <span class="button is-normal is-rounded shadowdirector-btn-soon"
+                      role="button"
+                      tabindex="0">
+                  <span class="icon">
+                    <i class="fas fa-video"></i>
+                  </span>
+                  <span>Explanation Video (coming soon)</span>
+                </span>
+              </span>
+              <span class="link-block">
+                <a href="#bibtex"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                    <i class="fas fa-book"></i>
+                  </span>
+                  <span>BibTeX</span>
+                </a>
+              </span>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+<section style="text-align: center; padding: 20px;">
+  <h2 style="font-size: 24px; font-family: Arial, sans-serif;">
+    <strong>Shadow Director</strong> enables parametric shadow control over <span class="shadowdirector-teaser-ul">strength</span>, <span class="shadowdirector-teaser-ul">placement</span>, <span class="shadowdirector-teaser-ul">shape</span>, and <span class="shadowdirector-teaser-ul">directional lighting</span> in generated portraits, with few hours training on single A6000.
+  </h2>
+  <div style="display: flex; justify-content: center; align-items: center; margin-top: 20px;">
+    <img src="static\images\Fig_01_Teaser.png" alt="Neural Gaffer Example" style="max-width: 80%; height: auto; border-radius: 10px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);">
+  </div>
+</section>
+
+
+<!-- <section class="section">
+  <div class="container has-text-centered">
+    <h2 class="title is-3">Video Explaination</h2>
+    <div class="video-container">
+      <iframe width="800" height="450" src="https://www.youtube.com/embed/2CnxQ4YUlbI" frameborder="0" allowfullscreen></iframe>
+    </div>
+  </div>
+</section> -->
+
+
+<!-- <section class="section">
+  <div class="container has-text-centered">
+    <h2 class="title is-3">Video Explaination (Coming Soon)</h2>
+  </div>
+</section> -->
+
+
+<section class="section">
+  <div class="container has-text-centered">
+    <h2 class="title is-3">Directional Light Position - Left Light</h2>
+    <img src="static\images\Fig_04_Exp_LightPos_02.png" alt="Neural Gaffer Example" style="max-width: 70%; height: auto; border-radius: 10px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);">
+  </div>
+</section>
+
+
+<section class="section">
+  <div class="container has-text-centered">
+    <h2 class="title is-3">Directional Light Position - From Left to Right</h2>
+    <img src="static\images\Fig_04_Exp_LightPos.png" alt="Neural Gaffer Example" style="max-width: 90%; height: auto; border-radius: 10px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);">
+  </div>
+</section>
+
+
+<section class="section">
+  <div class="container has-text-centered">
+    <h2 class="title is-3">Shadow Strength</h2>
+    <img src="static\images\Fig_04_Exp_ShadowIntensity.png" alt="Neural Gaffer Example" style="max-width: 60%; height: auto; border-radius: 10px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);">
+  </div>
+</section>
+
+
+<section class="section">
+  <div class="container has-text-centered">
+    <h2 class="title is-3">Shadow Placement and Shape</h2>
+    <img src="static\images\Fig_04_Exp_ShadowShape.png" alt="Neural Gaffer Example" style="max-width: 60%; height: auto; border-radius: 10px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);">
+  </div>
+</section>
+
+
+
+
+
+
+<section class="section" id="bibtex">
+  <div class="container is-max-desktop content">
+    <h2 class="title is-3 has-text-centered">BibTeX</h2>
+    <pre class="shadowdirector-bibtex"><code>@inproceedings{cai2025parametric,
+  title={Parametric shadow control for portrait generation in text-to-image diffusion models},
+  author={Cai, Haoming and Huang, Tsung-Wei and Gehlot, Shiv and Feng, Brandon Y and Shah, Sachin and Su, Guan-Ming and Metzler, Christopher},
+  booktitle={Proceedings of the IEEE/CVF International Conference on Computer Vision},
+  pages={18207--18217},
+  year={2025}
+}</code></pre>
+  </div>
+</section>
+
+
+<footer class="footer">
+  <div class="container">
+    <div class="content has-text-centered">
+    </div>
+    <div class="columns is-centered">
+      <div class="column is-8">
+        <div class="content">
+          <p>
+            This website is licensed under a <a rel="license"
+                                                href="http://creativecommons.org/licenses/by-sa/4.0/">Creative
+            Commons Attribution-ShareAlike 4.0 International License</a>.
+          </p>
+          <p>
+            This means you are free to borrow the <a
+              href="https://github.com/nerfies/nerfies.github.io">source code</a> of this website,
+            we just ask that you link back to this page in the footer.
+            Please remember to remove the analytics code included in the header of the website which
+            you do not want on your website.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script type='text/javascript' id='clustrmaps' src='//cdn.clustrmaps.com/map_v2.js?cl=ffffff&w=100&t=n&d=Ywtv9TBUjXmIiact7SuwmFbDbwzhN7g_dH0LaN56ptk'></script>
+
+</body>
+</html>

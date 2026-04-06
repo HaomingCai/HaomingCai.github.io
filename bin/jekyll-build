@@ -1,0 +1,15 @@
+#!/usr/bin/env bash
+set -euo pipefail
+ROOT="$(cd "$(dirname "$0")/.." && pwd)"
+cd "$ROOT"
+
+if [[ -x /opt/homebrew/opt/ruby/bin/bundle ]]; then
+  PATH="/opt/homebrew/opt/ruby/bin:$PATH"
+elif [[ -x /usr/local/opt/ruby/bin/bundle ]]; then
+  PATH="/usr/local/opt/ruby/bin:$PATH"
+else
+  echo "Homebrew Ruby not found. Install: brew install ruby" >&2
+  exit 1
+fi
+export PATH
+exec bundle exec jekyll build "$@"

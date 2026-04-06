@@ -14,7 +14,7 @@ categories: GenAI
 authors: "<strong>Haoming Cai</strong>, Tsung-Wei Huang, Shiv Gehlot, Brandon Y. Feng, Sachin Shah, Guan-Ming Su, Christopher Metzler"
 venue: "<strongvenue>ICCV 2025</strongvenue>"
 arxiv: https://arxiv.org/pdf/2503.21943
-website: https://www.hm-cai.com/ShadowDirector/
+website: /tn/projects_html/ShadowDirector/
 ---
 Add a shadow knob to AI portraits without heavy compute
 

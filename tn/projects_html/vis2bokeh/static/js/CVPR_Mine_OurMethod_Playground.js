@@ -29,3927 +29,3927 @@ const OURMETHOD_MANIFESTS = {
   scene1: {
     basePath: "./static/Our_Res_Playground/Case_01_Sparse/images",
     records: [
-    {
-      "id": "ddminus1.80_dsminus1.20",
-      "delta": {
-        "dof": -1.8,
-        "slope": -1.2
-      },
-      "end": null,
-      "panel_path": "panel_ddminus1.80_dsminus1.20.jpg"
-    },
-    {
-      "id": "ddminus1.80_dsminus1.00",
-      "delta": {
-        "dof": -1.8,
-        "slope": -1.0
-      },
-      "end": null,
-      "panel_path": "panel_ddminus1.80_dsminus1.00.jpg"
-    },
-    {
-      "id": "ddminus1.80_dsminus0.80",
-      "delta": {
-        "dof": -1.8,
-        "slope": -0.8
-      },
-      "end": null,
-      "panel_path": "panel_ddminus1.80_dsminus0.80.jpg"
-    },
-    {
-      "id": "ddminus1.80_dsminus0.60",
-      "delta": {
-        "dof": -1.8,
-        "slope": -0.6
-      },
-      "end": null,
-      "panel_path": "panel_ddminus1.80_dsminus0.60.jpg"
-    },
-    {
-      "id": "ddminus1.80_dsminus0.40",
-      "delta": {
-        "dof": -1.8,
-        "slope": -0.4
-      },
-      "end": null,
-      "panel_path": "panel_ddminus1.80_dsminus0.40.jpg"
-    },
-    {
-      "id": "ddminus1.80_dsminus0.20",
-      "delta": {
-        "dof": -1.8,
-        "slope": -0.2
-      },
-      "end": null,
-      "panel_path": "panel_ddminus1.80_dsminus0.20.jpg"
-    },
-    {
-      "id": "ddminus1.80_dsplus0.00",
-      "delta": {
-        "dof": -1.8,
-        "slope": 0.0
-      },
-      "end": null,
-      "panel_path": "panel_ddminus1.80_dsplus0.00.jpg"
-    },
-    {
-      "id": "ddminus1.80_dsplus0.20",
-      "delta": {
-        "dof": -1.8,
-        "slope": 0.2
-      },
-      "end": null,
-      "panel_path": "panel_ddminus1.80_dsplus0.20.jpg"
-    },
-    {
-      "id": "ddminus1.80_dsplus0.40",
-      "delta": {
-        "dof": -1.8,
-        "slope": 0.4
-      },
-      "end": null,
-      "panel_path": "panel_ddminus1.80_dsplus0.40.jpg"
-    },
-    {
-      "id": "ddminus1.80_dsplus0.60",
-      "delta": {
-        "dof": -1.8,
-        "slope": 0.6
-      },
-      "end": null,
-      "panel_path": "panel_ddminus1.80_dsplus0.60.jpg"
-    },
-    {
-      "id": "ddminus1.80_dsplus0.80",
-      "delta": {
-        "dof": -1.8,
-        "slope": 0.8
-      },
-      "end": null,
-      "panel_path": "panel_ddminus1.80_dsplus0.80.jpg"
-    },
-    {
-      "id": "ddminus1.80_dsplus1.00",
-      "delta": {
-        "dof": -1.8,
-        "slope": 1.0
-      },
-      "end": null,
-      "panel_path": "panel_ddminus1.80_dsplus1.00.jpg"
-    },
-    {
-      "id": "ddminus1.80_dsplus1.20",
-      "delta": {
-        "dof": -1.8,
-        "slope": 1.2
-      },
-      "end": null,
-      "panel_path": "panel_ddminus1.80_dsplus1.20.jpg"
-    },
-    {
-      "id": "ddminus1.80_dsplus1.40",
-      "delta": {
-        "dof": -1.8,
-        "slope": 1.4
-      },
-      "end": null,
-      "panel_path": "panel_ddminus1.80_dsplus1.40.jpg"
-    },
-    {
-      "id": "ddminus1.80_dsplus1.60",
-      "delta": {
-        "dof": -1.8,
-        "slope": 1.6
-      },
-      "end": null,
-      "panel_path": "panel_ddminus1.80_dsplus1.60.jpg"
-    },
-    {
-      "id": "ddminus1.60_dsminus1.20",
-      "delta": {
-        "dof": -1.6,
-        "slope": -1.2
-      },
-      "end": null,
-      "panel_path": "panel_ddminus1.60_dsminus1.20.jpg"
-    },
-    {
-      "id": "ddminus1.60_dsminus1.00",
-      "delta": {
-        "dof": -1.6,
-        "slope": -1.0
-      },
-      "end": null,
-      "panel_path": "panel_ddminus1.60_dsminus1.00.jpg"
-    },
-    {
-      "id": "ddminus1.60_dsminus0.80",
-      "delta": {
-        "dof": -1.6,
-        "slope": -0.8
-      },
-      "end": null,
-      "panel_path": "panel_ddminus1.60_dsminus0.80.jpg"
-    },
-    {
-      "id": "ddminus1.60_dsminus0.60",
-      "delta": {
-        "dof": -1.6,
-        "slope": -0.6
-      },
-      "end": null,
-      "panel_path": "panel_ddminus1.60_dsminus0.60.jpg"
-    },
-    {
-      "id": "ddminus1.60_dsminus0.40",
-      "delta": {
-        "dof": -1.6,
-        "slope": -0.4
-      },
-      "end": null,
-      "panel_path": "panel_ddminus1.60_dsminus0.40.jpg"
-    },
-    {
-      "id": "ddminus1.60_dsminus0.20",
-      "delta": {
-        "dof": -1.6,
-        "slope": -0.2
-      },
-      "end": null,
-      "panel_path": "panel_ddminus1.60_dsminus0.20.jpg"
-    },
-    {
-      "id": "ddminus1.60_dsplus0.00",
-      "delta": {
-        "dof": -1.6,
-        "slope": 0.0
-      },
-      "end": null,
-      "panel_path": "panel_ddminus1.60_dsplus0.00.jpg"
-    },
-    {
-      "id": "ddminus1.60_dsplus0.20",
-      "delta": {
-        "dof": -1.6,
-        "slope": 0.2
-      },
-      "end": null,
-      "panel_path": "panel_ddminus1.60_dsplus0.20.jpg"
-    },
-    {
-      "id": "ddminus1.60_dsplus0.40",
-      "delta": {
-        "dof": -1.6,
-        "slope": 0.4
-      },
-      "end": null,
-      "panel_path": "panel_ddminus1.60_dsplus0.40.jpg"
-    },
-    {
-      "id": "ddminus1.60_dsplus0.60",
-      "delta": {
-        "dof": -1.6,
-        "slope": 0.6
-      },
-      "end": null,
-      "panel_path": "panel_ddminus1.60_dsplus0.60.jpg"
-    },
-    {
-      "id": "ddminus1.60_dsplus0.80",
-      "delta": {
-        "dof": -1.6,
-        "slope": 0.8
-      },
-      "end": null,
-      "panel_path": "panel_ddminus1.60_dsplus0.80.jpg"
-    },
-    {
-      "id": "ddminus1.60_dsplus1.00",
-      "delta": {
-        "dof": -1.6,
-        "slope": 1.0
-      },
-      "end": null,
-      "panel_path": "panel_ddminus1.60_dsplus1.00.jpg"
-    },
-    {
-      "id": "ddminus1.60_dsplus1.20",
-      "delta": {
-        "dof": -1.6,
-        "slope": 1.2
-      },
-      "end": null,
-      "panel_path": "panel_ddminus1.60_dsplus1.20.jpg"
-    },
-    {
-      "id": "ddminus1.60_dsplus1.40",
-      "delta": {
-        "dof": -1.6,
-        "slope": 1.4
-      },
-      "end": null,
-      "panel_path": "panel_ddminus1.60_dsplus1.40.jpg"
-    },
-    {
-      "id": "ddminus1.60_dsplus1.60",
-      "delta": {
-        "dof": -1.6,
-        "slope": 1.6
-      },
-      "end": null,
-      "panel_path": "panel_ddminus1.60_dsplus1.60.jpg"
-    },
-    {
-      "id": "ddminus1.40_dsminus1.20",
-      "delta": {
-        "dof": -1.4,
-        "slope": -1.2
-      },
-      "end": null,
-      "panel_path": "panel_ddminus1.40_dsminus1.20.jpg"
-    },
-    {
-      "id": "ddminus1.40_dsminus1.00",
-      "delta": {
-        "dof": -1.4,
-        "slope": -1.0
-      },
-      "end": null,
-      "panel_path": "panel_ddminus1.40_dsminus1.00.jpg"
-    },
-    {
-      "id": "ddminus1.40_dsminus0.80",
-      "delta": {
-        "dof": -1.4,
-        "slope": -0.8
-      },
-      "end": null,
-      "panel_path": "panel_ddminus1.40_dsminus0.80.jpg"
-    },
-    {
-      "id": "ddminus1.40_dsminus0.60",
-      "delta": {
-        "dof": -1.4,
-        "slope": -0.6
-      },
-      "end": null,
-      "panel_path": "panel_ddminus1.40_dsminus0.60.jpg"
-    },
-    {
-      "id": "ddminus1.40_dsminus0.40",
-      "delta": {
-        "dof": -1.4,
-        "slope": -0.4
-      },
-      "end": null,
-      "panel_path": "panel_ddminus1.40_dsminus0.40.jpg"
-    },
-    {
-      "id": "ddminus1.40_dsminus0.20",
-      "delta": {
-        "dof": -1.4,
-        "slope": -0.2
-      },
-      "end": null,
-      "panel_path": "panel_ddminus1.40_dsminus0.20.jpg"
-    },
-    {
-      "id": "ddminus1.40_dsplus0.00",
-      "delta": {
-        "dof": -1.4,
-        "slope": 0.0
-      },
-      "end": null,
-      "panel_path": "panel_ddminus1.40_dsplus0.00.jpg"
-    },
-    {
-      "id": "ddminus1.40_dsplus0.20",
-      "delta": {
-        "dof": -1.4,
-        "slope": 0.2
-      },
-      "end": null,
-      "panel_path": "panel_ddminus1.40_dsplus0.20.jpg"
-    },
-    {
-      "id": "ddminus1.40_dsplus0.40",
-      "delta": {
-        "dof": -1.4,
-        "slope": 0.4
-      },
-      "end": null,
-      "panel_path": "panel_ddminus1.40_dsplus0.40.jpg"
-    },
-    {
-      "id": "ddminus1.40_dsplus0.60",
-      "delta": {
-        "dof": -1.4,
-        "slope": 0.6
-      },
-      "end": null,
-      "panel_path": "panel_ddminus1.40_dsplus0.60.jpg"
-    },
-    {
-      "id": "ddminus1.40_dsplus0.80",
-      "delta": {
-        "dof": -1.4,
-        "slope": 0.8
-      },
-      "end": null,
-      "panel_path": "panel_ddminus1.40_dsplus0.80.jpg"
-    },
-    {
-      "id": "ddminus1.40_dsplus1.00",
-      "delta": {
-        "dof": -1.4,
-        "slope": 1.0
-      },
-      "end": null,
-      "panel_path": "panel_ddminus1.40_dsplus1.00.jpg"
-    },
-    {
-      "id": "ddminus1.40_dsplus1.20",
-      "delta": {
-        "dof": -1.4,
-        "slope": 1.2
-      },
-      "end": null,
-      "panel_path": "panel_ddminus1.40_dsplus1.20.jpg"
-    },
-    {
-      "id": "ddminus1.40_dsplus1.40",
-      "delta": {
-        "dof": -1.4,
-        "slope": 1.4
-      },
-      "end": null,
-      "panel_path": "panel_ddminus1.40_dsplus1.40.jpg"
-    },
-    {
-      "id": "ddminus1.40_dsplus1.60",
-      "delta": {
-        "dof": -1.4,
-        "slope": 1.6
-      },
-      "end": null,
-      "panel_path": "panel_ddminus1.40_dsplus1.60.jpg"
-    },
-    {
-      "id": "ddminus1.20_dsminus1.20",
-      "delta": {
-        "dof": -1.2,
-        "slope": -1.2
-      },
-      "end": null,
-      "panel_path": "panel_ddminus1.20_dsminus1.20.jpg"
-    },
-    {
-      "id": "ddminus1.20_dsminus1.00",
-      "delta": {
-        "dof": -1.2,
-        "slope": -1.0
-      },
-      "end": null,
-      "panel_path": "panel_ddminus1.20_dsminus1.00.jpg"
-    },
-    {
-      "id": "ddminus1.20_dsminus0.80",
-      "delta": {
-        "dof": -1.2,
-        "slope": -0.8
-      },
-      "end": null,
-      "panel_path": "panel_ddminus1.20_dsminus0.80.jpg"
-    },
-    {
-      "id": "ddminus1.20_dsminus0.60",
-      "delta": {
-        "dof": -1.2,
-        "slope": -0.6
-      },
-      "end": null,
-      "panel_path": "panel_ddminus1.20_dsminus0.60.jpg"
-    },
-    {
-      "id": "ddminus1.20_dsminus0.40",
-      "delta": {
-        "dof": -1.2,
-        "slope": -0.4
-      },
-      "end": null,
-      "panel_path": "panel_ddminus1.20_dsminus0.40.jpg"
-    },
-    {
-      "id": "ddminus1.20_dsminus0.20",
-      "delta": {
-        "dof": -1.2,
-        "slope": -0.2
-      },
-      "end": null,
-      "panel_path": "panel_ddminus1.20_dsminus0.20.jpg"
-    },
-    {
-      "id": "ddminus1.20_dsplus0.00",
-      "delta": {
-        "dof": -1.2,
-        "slope": 0.0
-      },
-      "end": null,
-      "panel_path": "panel_ddminus1.20_dsplus0.00.jpg"
-    },
-    {
-      "id": "ddminus1.20_dsplus0.20",
-      "delta": {
-        "dof": -1.2,
-        "slope": 0.2
-      },
-      "end": null,
-      "panel_path": "panel_ddminus1.20_dsplus0.20.jpg"
-    },
-    {
-      "id": "ddminus1.20_dsplus0.40",
-      "delta": {
-        "dof": -1.2,
-        "slope": 0.4
-      },
-      "end": null,
-      "panel_path": "panel_ddminus1.20_dsplus0.40.jpg"
-    },
-    {
-      "id": "ddminus1.20_dsplus0.60",
-      "delta": {
-        "dof": -1.2,
-        "slope": 0.6
-      },
-      "end": null,
-      "panel_path": "panel_ddminus1.20_dsplus0.60.jpg"
-    },
-    {
-      "id": "ddminus1.20_dsplus0.80",
-      "delta": {
-        "dof": -1.2,
-        "slope": 0.8
-      },
-      "end": null,
-      "panel_path": "panel_ddminus1.20_dsplus0.80.jpg"
-    },
-    {
-      "id": "ddminus1.20_dsplus1.00",
-      "delta": {
-        "dof": -1.2,
-        "slope": 1.0
-      },
-      "end": null,
-      "panel_path": "panel_ddminus1.20_dsplus1.00.jpg"
-    },
-    {
-      "id": "ddminus1.20_dsplus1.20",
-      "delta": {
-        "dof": -1.2,
-        "slope": 1.2
-      },
-      "end": null,
-      "panel_path": "panel_ddminus1.20_dsplus1.20.jpg"
-    },
-    {
-      "id": "ddminus1.20_dsplus1.40",
-      "delta": {
-        "dof": -1.2,
-        "slope": 1.4
-      },
-      "end": null,
-      "panel_path": "panel_ddminus1.20_dsplus1.40.jpg"
-    },
-    {
-      "id": "ddminus1.20_dsplus1.60",
-      "delta": {
-        "dof": -1.2,
-        "slope": 1.6
-      },
-      "end": null,
-      "panel_path": "panel_ddminus1.20_dsplus1.60.jpg"
-    },
-    {
-      "id": "ddminus1.00_dsminus1.20",
-      "delta": {
-        "dof": -1.0,
-        "slope": -1.2
-      },
-      "end": null,
-      "panel_path": "panel_ddminus1.00_dsminus1.20.jpg"
-    },
-    {
-      "id": "ddminus1.00_dsminus1.00",
-      "delta": {
-        "dof": -1.0,
-        "slope": -1.0
-      },
-      "end": null,
-      "panel_path": "panel_ddminus1.00_dsminus1.00.jpg"
-    },
-    {
-      "id": "ddminus1.00_dsminus0.80",
-      "delta": {
-        "dof": -1.0,
-        "slope": -0.8
-      },
-      "end": null,
-      "panel_path": "panel_ddminus1.00_dsminus0.80.jpg"
-    },
-    {
-      "id": "ddminus1.00_dsminus0.60",
-      "delta": {
-        "dof": -1.0,
-        "slope": -0.6
-      },
-      "end": null,
-      "panel_path": "panel_ddminus1.00_dsminus0.60.jpg"
-    },
-    {
-      "id": "ddminus1.00_dsminus0.40",
-      "delta": {
-        "dof": -1.0,
-        "slope": -0.4
-      },
-      "end": null,
-      "panel_path": "panel_ddminus1.00_dsminus0.40.jpg"
-    },
-    {
-      "id": "ddminus1.00_dsminus0.20",
-      "delta": {
-        "dof": -1.0,
-        "slope": -0.2
-      },
-      "end": null,
-      "panel_path": "panel_ddminus1.00_dsminus0.20.jpg"
-    },
-    {
-      "id": "ddminus1.00_dsplus0.00",
-      "delta": {
-        "dof": -1.0,
-        "slope": 0.0
-      },
-      "end": null,
-      "panel_path": "panel_ddminus1.00_dsplus0.00.jpg"
-    },
-    {
-      "id": "ddminus1.00_dsplus0.20",
-      "delta": {
-        "dof": -1.0,
-        "slope": 0.2
-      },
-      "end": null,
-      "panel_path": "panel_ddminus1.00_dsplus0.20.jpg"
-    },
-    {
-      "id": "ddminus1.00_dsplus0.40",
-      "delta": {
-        "dof": -1.0,
-        "slope": 0.4
-      },
-      "end": null,
-      "panel_path": "panel_ddminus1.00_dsplus0.40.jpg"
-    },
-    {
-      "id": "ddminus1.00_dsplus0.60",
-      "delta": {
-        "dof": -1.0,
-        "slope": 0.6
-      },
-      "end": null,
-      "panel_path": "panel_ddminus1.00_dsplus0.60.jpg"
-    },
-    {
-      "id": "ddminus1.00_dsplus0.80",
-      "delta": {
-        "dof": -1.0,
-        "slope": 0.8
-      },
-      "end": null,
-      "panel_path": "panel_ddminus1.00_dsplus0.80.jpg"
-    },
-    {
-      "id": "ddminus1.00_dsplus1.00",
-      "delta": {
-        "dof": -1.0,
-        "slope": 1.0
-      },
-      "end": null,
-      "panel_path": "panel_ddminus1.00_dsplus1.00.jpg"
-    },
-    {
-      "id": "ddminus1.00_dsplus1.20",
-      "delta": {
-        "dof": -1.0,
-        "slope": 1.2
-      },
-      "end": null,
-      "panel_path": "panel_ddminus1.00_dsplus1.20.jpg"
-    },
-    {
-      "id": "ddminus1.00_dsplus1.40",
-      "delta": {
-        "dof": -1.0,
-        "slope": 1.4
-      },
-      "end": null,
-      "panel_path": "panel_ddminus1.00_dsplus1.40.jpg"
-    },
-    {
-      "id": "ddminus1.00_dsplus1.60",
-      "delta": {
-        "dof": -1.0,
-        "slope": 1.6
-      },
-      "end": null,
-      "panel_path": "panel_ddminus1.00_dsplus1.60.jpg"
-    },
-    {
-      "id": "ddminus0.80_dsminus1.20",
-      "delta": {
-        "dof": -0.8,
-        "slope": -1.2
-      },
-      "end": null,
-      "panel_path": "panel_ddminus0.80_dsminus1.20.jpg"
-    },
-    {
-      "id": "ddminus0.80_dsminus1.00",
-      "delta": {
-        "dof": -0.8,
-        "slope": -1.0
-      },
-      "end": null,
-      "panel_path": "panel_ddminus0.80_dsminus1.00.jpg"
-    },
-    {
-      "id": "ddminus0.80_dsminus0.80",
-      "delta": {
-        "dof": -0.8,
-        "slope": -0.8
-      },
-      "end": null,
-      "panel_path": "panel_ddminus0.80_dsminus0.80.jpg"
-    },
-    {
-      "id": "ddminus0.80_dsminus0.60",
-      "delta": {
-        "dof": -0.8,
-        "slope": -0.6
-      },
-      "end": null,
-      "panel_path": "panel_ddminus0.80_dsminus0.60.jpg"
-    },
-    {
-      "id": "ddminus0.80_dsminus0.40",
-      "delta": {
-        "dof": -0.8,
-        "slope": -0.4
-      },
-      "end": null,
-      "panel_path": "panel_ddminus0.80_dsminus0.40.jpg"
-    },
-    {
-      "id": "ddminus0.80_dsminus0.20",
-      "delta": {
-        "dof": -0.8,
-        "slope": -0.2
-      },
-      "end": null,
-      "panel_path": "panel_ddminus0.80_dsminus0.20.jpg"
-    },
-    {
-      "id": "ddminus0.80_dsplus0.00",
-      "delta": {
-        "dof": -0.8,
-        "slope": 0.0
-      },
-      "end": null,
-      "panel_path": "panel_ddminus0.80_dsplus0.00.jpg"
-    },
-    {
-      "id": "ddminus0.80_dsplus0.20",
-      "delta": {
-        "dof": -0.8,
-        "slope": 0.2
-      },
-      "end": null,
-      "panel_path": "panel_ddminus0.80_dsplus0.20.jpg"
-    },
-    {
-      "id": "ddminus0.80_dsplus0.40",
-      "delta": {
-        "dof": -0.8,
-        "slope": 0.4
-      },
-      "end": null,
-      "panel_path": "panel_ddminus0.80_dsplus0.40.jpg"
-    },
-    {
-      "id": "ddminus0.80_dsplus0.60",
-      "delta": {
-        "dof": -0.8,
-        "slope": 0.6
-      },
-      "end": null,
-      "panel_path": "panel_ddminus0.80_dsplus0.60.jpg"
-    },
-    {
-      "id": "ddminus0.80_dsplus0.80",
-      "delta": {
-        "dof": -0.8,
-        "slope": 0.8
-      },
-      "end": null,
-      "panel_path": "panel_ddminus0.80_dsplus0.80.jpg"
-    },
-    {
-      "id": "ddminus0.80_dsplus1.00",
-      "delta": {
-        "dof": -0.8,
-        "slope": 1.0
-      },
-      "end": null,
-      "panel_path": "panel_ddminus0.80_dsplus1.00.jpg"
-    },
-    {
-      "id": "ddminus0.80_dsplus1.20",
-      "delta": {
-        "dof": -0.8,
-        "slope": 1.2
-      },
-      "end": null,
-      "panel_path": "panel_ddminus0.80_dsplus1.20.jpg"
-    },
-    {
-      "id": "ddminus0.80_dsplus1.40",
-      "delta": {
-        "dof": -0.8,
-        "slope": 1.4
-      },
-      "end": null,
-      "panel_path": "panel_ddminus0.80_dsplus1.40.jpg"
-    },
-    {
-      "id": "ddminus0.80_dsplus1.60",
-      "delta": {
-        "dof": -0.8,
-        "slope": 1.6
-      },
-      "end": null,
-      "panel_path": "panel_ddminus0.80_dsplus1.60.jpg"
-    },
-    {
-      "id": "ddminus0.60_dsminus1.20",
-      "delta": {
-        "dof": -0.6,
-        "slope": -1.2
-      },
-      "end": null,
-      "panel_path": "panel_ddminus0.60_dsminus1.20.jpg"
-    },
-    {
-      "id": "ddminus0.60_dsminus1.00",
-      "delta": {
-        "dof": -0.6,
-        "slope": -1.0
-      },
-      "end": null,
-      "panel_path": "panel_ddminus0.60_dsminus1.00.jpg"
-    },
-    {
-      "id": "ddminus0.60_dsminus0.80",
-      "delta": {
-        "dof": -0.6,
-        "slope": -0.8
-      },
-      "end": null,
-      "panel_path": "panel_ddminus0.60_dsminus0.80.jpg"
-    },
-    {
-      "id": "ddminus0.60_dsminus0.60",
-      "delta": {
-        "dof": -0.6,
-        "slope": -0.6
-      },
-      "end": null,
-      "panel_path": "panel_ddminus0.60_dsminus0.60.jpg"
-    },
-    {
-      "id": "ddminus0.60_dsminus0.40",
-      "delta": {
-        "dof": -0.6,
-        "slope": -0.4
-      },
-      "end": null,
-      "panel_path": "panel_ddminus0.60_dsminus0.40.jpg"
-    },
-    {
-      "id": "ddminus0.60_dsminus0.20",
-      "delta": {
-        "dof": -0.6,
-        "slope": -0.2
-      },
-      "end": null,
-      "panel_path": "panel_ddminus0.60_dsminus0.20.jpg"
-    },
-    {
-      "id": "ddminus0.60_dsplus0.00",
-      "delta": {
-        "dof": -0.6,
-        "slope": 0.0
-      },
-      "end": null,
-      "panel_path": "panel_ddminus0.60_dsplus0.00.jpg"
-    },
-    {
-      "id": "ddminus0.60_dsplus0.20",
-      "delta": {
-        "dof": -0.6,
-        "slope": 0.2
-      },
-      "end": null,
-      "panel_path": "panel_ddminus0.60_dsplus0.20.jpg"
-    },
-    {
-      "id": "ddminus0.60_dsplus0.40",
-      "delta": {
-        "dof": -0.6,
-        "slope": 0.4
-      },
-      "end": null,
-      "panel_path": "panel_ddminus0.60_dsplus0.40.jpg"
-    },
-    {
-      "id": "ddminus0.60_dsplus0.60",
-      "delta": {
-        "dof": -0.6,
-        "slope": 0.6
-      },
-      "end": null,
-      "panel_path": "panel_ddminus0.60_dsplus0.60.jpg"
-    },
-    {
-      "id": "ddminus0.60_dsplus0.80",
-      "delta": {
-        "dof": -0.6,
-        "slope": 0.8
-      },
-      "end": null,
-      "panel_path": "panel_ddminus0.60_dsplus0.80.jpg"
-    },
-    {
-      "id": "ddminus0.60_dsplus1.00",
-      "delta": {
-        "dof": -0.6,
-        "slope": 1.0
-      },
-      "end": null,
-      "panel_path": "panel_ddminus0.60_dsplus1.00.jpg"
-    },
-    {
-      "id": "ddminus0.60_dsplus1.20",
-      "delta": {
-        "dof": -0.6,
-        "slope": 1.2
-      },
-      "end": null,
-      "panel_path": "panel_ddminus0.60_dsplus1.20.jpg"
-    },
-    {
-      "id": "ddminus0.60_dsplus1.40",
-      "delta": {
-        "dof": -0.6,
-        "slope": 1.4
-      },
-      "end": null,
-      "panel_path": "panel_ddminus0.60_dsplus1.40.jpg"
-    },
-    {
-      "id": "ddminus0.60_dsplus1.60",
-      "delta": {
-        "dof": -0.6,
-        "slope": 1.6
-      },
-      "end": null,
-      "panel_path": "panel_ddminus0.60_dsplus1.60.jpg"
-    },
-    {
-      "id": "ddminus0.40_dsminus1.20",
-      "delta": {
-        "dof": -0.4,
-        "slope": -1.2
-      },
-      "end": null,
-      "panel_path": "panel_ddminus0.40_dsminus1.20.jpg"
-    },
-    {
-      "id": "ddminus0.40_dsminus1.00",
-      "delta": {
-        "dof": -0.4,
-        "slope": -1.0
-      },
-      "end": null,
-      "panel_path": "panel_ddminus0.40_dsminus1.00.jpg"
-    },
-    {
-      "id": "ddminus0.40_dsminus0.80",
-      "delta": {
-        "dof": -0.4,
-        "slope": -0.8
-      },
-      "end": null,
-      "panel_path": "panel_ddminus0.40_dsminus0.80.jpg"
-    },
-    {
-      "id": "ddminus0.40_dsminus0.60",
-      "delta": {
-        "dof": -0.4,
-        "slope": -0.6
-      },
-      "end": null,
-      "panel_path": "panel_ddminus0.40_dsminus0.60.jpg"
-    },
-    {
-      "id": "ddminus0.40_dsminus0.40",
-      "delta": {
-        "dof": -0.4,
-        "slope": -0.4
-      },
-      "end": null,
-      "panel_path": "panel_ddminus0.40_dsminus0.40.jpg"
-    },
-    {
-      "id": "ddminus0.40_dsminus0.20",
-      "delta": {
-        "dof": -0.4,
-        "slope": -0.2
-      },
-      "end": null,
-      "panel_path": "panel_ddminus0.40_dsminus0.20.jpg"
-    },
-    {
-      "id": "ddminus0.40_dsplus0.00",
-      "delta": {
-        "dof": -0.4,
-        "slope": 0.0
-      },
-      "end": null,
-      "panel_path": "panel_ddminus0.40_dsplus0.00.jpg"
-    },
-    {
-      "id": "ddminus0.40_dsplus0.20",
-      "delta": {
-        "dof": -0.4,
-        "slope": 0.2
-      },
-      "end": null,
-      "panel_path": "panel_ddminus0.40_dsplus0.20.jpg"
-    },
-    {
-      "id": "ddminus0.40_dsplus0.40",
-      "delta": {
-        "dof": -0.4,
-        "slope": 0.4
-      },
-      "end": null,
-      "panel_path": "panel_ddminus0.40_dsplus0.40.jpg"
-    },
-    {
-      "id": "ddminus0.40_dsplus0.60",
-      "delta": {
-        "dof": -0.4,
-        "slope": 0.6
-      },
-      "end": null,
-      "panel_path": "panel_ddminus0.40_dsplus0.60.jpg"
-    },
-    {
-      "id": "ddminus0.40_dsplus0.80",
-      "delta": {
-        "dof": -0.4,
-        "slope": 0.8
-      },
-      "end": null,
-      "panel_path": "panel_ddminus0.40_dsplus0.80.jpg"
-    },
-    {
-      "id": "ddminus0.40_dsplus1.00",
-      "delta": {
-        "dof": -0.4,
-        "slope": 1.0
-      },
-      "end": null,
-      "panel_path": "panel_ddminus0.40_dsplus1.00.jpg"
-    },
-    {
-      "id": "ddminus0.40_dsplus1.20",
-      "delta": {
-        "dof": -0.4,
-        "slope": 1.2
-      },
-      "end": null,
-      "panel_path": "panel_ddminus0.40_dsplus1.20.jpg"
-    },
-    {
-      "id": "ddminus0.40_dsplus1.40",
-      "delta": {
-        "dof": -0.4,
-        "slope": 1.4
-      },
-      "end": null,
-      "panel_path": "panel_ddminus0.40_dsplus1.40.jpg"
-    },
-    {
-      "id": "ddminus0.40_dsplus1.60",
-      "delta": {
-        "dof": -0.4,
-        "slope": 1.6
-      },
-      "end": null,
-      "panel_path": "panel_ddminus0.40_dsplus1.60.jpg"
-    },
-    {
-      "id": "ddminus0.20_dsminus1.20",
-      "delta": {
-        "dof": -0.2,
-        "slope": -1.2
-      },
-      "end": null,
-      "panel_path": "panel_ddminus0.20_dsminus1.20.jpg"
-    },
-    {
-      "id": "ddminus0.20_dsminus1.00",
-      "delta": {
-        "dof": -0.2,
-        "slope": -1.0
-      },
-      "end": null,
-      "panel_path": "panel_ddminus0.20_dsminus1.00.jpg"
-    },
-    {
-      "id": "ddminus0.20_dsminus0.80",
-      "delta": {
-        "dof": -0.2,
-        "slope": -0.8
-      },
-      "end": null,
-      "panel_path": "panel_ddminus0.20_dsminus0.80.jpg"
-    },
-    {
-      "id": "ddminus0.20_dsminus0.60",
-      "delta": {
-        "dof": -0.2,
-        "slope": -0.6
-      },
-      "end": null,
-      "panel_path": "panel_ddminus0.20_dsminus0.60.jpg"
-    },
-    {
-      "id": "ddminus0.20_dsminus0.40",
-      "delta": {
-        "dof": -0.2,
-        "slope": -0.4
-      },
-      "end": null,
-      "panel_path": "panel_ddminus0.20_dsminus0.40.jpg"
-    },
-    {
-      "id": "ddminus0.20_dsminus0.20",
-      "delta": {
-        "dof": -0.2,
-        "slope": -0.2
-      },
-      "end": null,
-      "panel_path": "panel_ddminus0.20_dsminus0.20.jpg"
-    },
-    {
-      "id": "ddminus0.20_dsplus0.00",
-      "delta": {
-        "dof": -0.2,
-        "slope": 0.0
-      },
-      "end": null,
-      "panel_path": "panel_ddminus0.20_dsplus0.00.jpg"
-    },
-    {
-      "id": "ddminus0.20_dsplus0.20",
-      "delta": {
-        "dof": -0.2,
-        "slope": 0.2
-      },
-      "end": null,
-      "panel_path": "panel_ddminus0.20_dsplus0.20.jpg"
-    },
-    {
-      "id": "ddminus0.20_dsplus0.40",
-      "delta": {
-        "dof": -0.2,
-        "slope": 0.4
-      },
-      "end": null,
-      "panel_path": "panel_ddminus0.20_dsplus0.40.jpg"
-    },
-    {
-      "id": "ddminus0.20_dsplus0.60",
-      "delta": {
-        "dof": -0.2,
-        "slope": 0.6
-      },
-      "end": null,
-      "panel_path": "panel_ddminus0.20_dsplus0.60.jpg"
-    },
-    {
-      "id": "ddminus0.20_dsplus0.80",
-      "delta": {
-        "dof": -0.2,
-        "slope": 0.8
-      },
-      "end": null,
-      "panel_path": "panel_ddminus0.20_dsplus0.80.jpg"
-    },
-    {
-      "id": "ddminus0.20_dsplus1.00",
-      "delta": {
-        "dof": -0.2,
-        "slope": 1.0
-      },
-      "end": null,
-      "panel_path": "panel_ddminus0.20_dsplus1.00.jpg"
-    },
-    {
-      "id": "ddminus0.20_dsplus1.20",
-      "delta": {
-        "dof": -0.2,
-        "slope": 1.2
-      },
-      "end": null,
-      "panel_path": "panel_ddminus0.20_dsplus1.20.jpg"
-    },
-    {
-      "id": "ddminus0.20_dsplus1.40",
-      "delta": {
-        "dof": -0.2,
-        "slope": 1.4
-      },
-      "end": null,
-      "panel_path": "panel_ddminus0.20_dsplus1.40.jpg"
-    },
-    {
-      "id": "ddminus0.20_dsplus1.60",
-      "delta": {
-        "dof": -0.2,
-        "slope": 1.6
-      },
-      "end": null,
-      "panel_path": "panel_ddminus0.20_dsplus1.60.jpg"
-    },
-    {
-      "id": "ddplus0.00_dsminus1.20",
-      "delta": {
-        "dof": 0.0,
-        "slope": -1.2
-      },
-      "end": null,
-      "panel_path": "panel_ddplus0.00_dsminus1.20.jpg"
-    },
-    {
-      "id": "ddplus0.00_dsminus1.00",
-      "delta": {
-        "dof": 0.0,
-        "slope": -1.0
-      },
-      "end": null,
-      "panel_path": "panel_ddplus0.00_dsminus1.00.jpg"
-    },
-    {
-      "id": "ddplus0.00_dsminus0.80",
-      "delta": {
-        "dof": 0.0,
-        "slope": -0.8
-      },
-      "end": null,
-      "panel_path": "panel_ddplus0.00_dsminus0.80.jpg"
-    },
-    {
-      "id": "ddplus0.00_dsminus0.60",
-      "delta": {
-        "dof": 0.0,
-        "slope": -0.6
-      },
-      "end": null,
-      "panel_path": "panel_ddplus0.00_dsminus0.60.jpg"
-    },
-    {
-      "id": "ddplus0.00_dsminus0.40",
-      "delta": {
-        "dof": 0.0,
-        "slope": -0.4
-      },
-      "end": null,
-      "panel_path": "panel_ddplus0.00_dsminus0.40.jpg"
-    },
-    {
-      "id": "ddplus0.00_dsminus0.20",
-      "delta": {
-        "dof": 0.0,
-        "slope": -0.2
-      },
-      "end": null,
-      "panel_path": "panel_ddplus0.00_dsminus0.20.jpg"
-    },
-    {
-      "id": "ddplus0.00_dsplus0.20",
-      "delta": {
-        "dof": 0.0,
-        "slope": 0.2
-      },
-      "end": null,
-      "panel_path": "panel_ddplus0.00_dsplus0.20.jpg"
-    },
-    {
-      "id": "ddplus0.00_dsplus0.40",
-      "delta": {
-        "dof": 0.0,
-        "slope": 0.4
-      },
-      "end": null,
-      "panel_path": "panel_ddplus0.00_dsplus0.40.jpg"
-    },
-    {
-      "id": "ddplus0.00_dsplus0.60",
-      "delta": {
-        "dof": 0.0,
-        "slope": 0.6
-      },
-      "end": null,
-      "panel_path": "panel_ddplus0.00_dsplus0.60.jpg"
-    },
-    {
-      "id": "ddplus0.00_dsplus0.80",
-      "delta": {
-        "dof": 0.0,
-        "slope": 0.8
-      },
-      "end": null,
-      "panel_path": "panel_ddplus0.00_dsplus0.80.jpg"
-    },
-    {
-      "id": "ddplus0.00_dsplus1.00",
-      "delta": {
-        "dof": 0.0,
-        "slope": 1.0
-      },
-      "end": null,
-      "panel_path": "panel_ddplus0.00_dsplus1.00.jpg"
-    },
-    {
-      "id": "ddplus0.00_dsplus1.20",
-      "delta": {
-        "dof": 0.0,
-        "slope": 1.2
-      },
-      "end": null,
-      "panel_path": "panel_ddplus0.00_dsplus1.20.jpg"
-    },
-    {
-      "id": "ddplus0.00_dsplus1.40",
-      "delta": {
-        "dof": 0.0,
-        "slope": 1.4
-      },
-      "end": null,
-      "panel_path": "panel_ddplus0.00_dsplus1.40.jpg"
-    },
-    {
-      "id": "ddplus0.00_dsplus1.60",
-      "delta": {
-        "dof": 0.0,
-        "slope": 1.6
-      },
-      "end": null,
-      "panel_path": "panel_ddplus0.00_dsplus1.60.jpg"
-    },
-    {
-      "id": "ddplus0.20_dsminus1.20",
-      "delta": {
-        "dof": 0.2,
-        "slope": -1.2
-      },
-      "end": null,
-      "panel_path": "panel_ddplus0.20_dsminus1.20.jpg"
-    },
-    {
-      "id": "ddplus0.20_dsminus1.00",
-      "delta": {
-        "dof": 0.2,
-        "slope": -1.0
-      },
-      "end": null,
-      "panel_path": "panel_ddplus0.20_dsminus1.00.jpg"
-    },
-    {
-      "id": "ddplus0.20_dsminus0.80",
-      "delta": {
-        "dof": 0.2,
-        "slope": -0.8
-      },
-      "end": null,
-      "panel_path": "panel_ddplus0.20_dsminus0.80.jpg"
-    },
-    {
-      "id": "ddplus0.20_dsminus0.60",
-      "delta": {
-        "dof": 0.2,
-        "slope": -0.6
-      },
-      "end": null,
-      "panel_path": "panel_ddplus0.20_dsminus0.60.jpg"
-    },
-    {
-      "id": "ddplus0.20_dsminus0.40",
-      "delta": {
-        "dof": 0.2,
-        "slope": -0.4
-      },
-      "end": null,
-      "panel_path": "panel_ddplus0.20_dsminus0.40.jpg"
-    },
-    {
-      "id": "ddplus0.20_dsminus0.20",
-      "delta": {
-        "dof": 0.2,
-        "slope": -0.2
-      },
-      "end": null,
-      "panel_path": "panel_ddplus0.20_dsminus0.20.jpg"
-    },
-    {
-      "id": "ddplus0.20_dsplus0.00",
-      "delta": {
-        "dof": 0.2,
-        "slope": 0.0
-      },
-      "end": null,
-      "panel_path": "panel_ddplus0.20_dsplus0.00.jpg"
-    },
-    {
-      "id": "ddplus0.20_dsplus0.20",
-      "delta": {
-        "dof": 0.2,
-        "slope": 0.2
-      },
-      "end": null,
-      "panel_path": "panel_ddplus0.20_dsplus0.20.jpg"
-    },
-    {
-      "id": "ddplus0.20_dsplus0.40",
-      "delta": {
-        "dof": 0.2,
-        "slope": 0.4
-      },
-      "end": null,
-      "panel_path": "panel_ddplus0.20_dsplus0.40.jpg"
-    },
-    {
-      "id": "ddplus0.20_dsplus0.60",
-      "delta": {
-        "dof": 0.2,
-        "slope": 0.6
-      },
-      "end": null,
-      "panel_path": "panel_ddplus0.20_dsplus0.60.jpg"
-    },
-    {
-      "id": "ddplus0.20_dsplus0.80",
-      "delta": {
-        "dof": 0.2,
-        "slope": 0.8
-      },
-      "end": null,
-      "panel_path": "panel_ddplus0.20_dsplus0.80.jpg"
-    },
-    {
-      "id": "ddplus0.20_dsplus1.00",
-      "delta": {
-        "dof": 0.2,
-        "slope": 1.0
-      },
-      "end": null,
-      "panel_path": "panel_ddplus0.20_dsplus1.00.jpg"
-    },
-    {
-      "id": "ddplus0.20_dsplus1.20",
-      "delta": {
-        "dof": 0.2,
-        "slope": 1.2
-      },
-      "end": null,
-      "panel_path": "panel_ddplus0.20_dsplus1.20.jpg"
-    },
-    {
-      "id": "ddplus0.20_dsplus1.40",
-      "delta": {
-        "dof": 0.2,
-        "slope": 1.4
-      },
-      "end": null,
-      "panel_path": "panel_ddplus0.20_dsplus1.40.jpg"
-    },
-    {
-      "id": "ddplus0.20_dsplus1.60",
-      "delta": {
-        "dof": 0.2,
-        "slope": 1.6
-      },
-      "end": null,
-      "panel_path": "panel_ddplus0.20_dsplus1.60.jpg"
-    },
-    {
-      "id": "ddplus0.40_dsminus1.20",
-      "delta": {
-        "dof": 0.4,
-        "slope": -1.2
-      },
-      "end": null,
-      "panel_path": "panel_ddplus0.40_dsminus1.20.jpg"
-    },
-    {
-      "id": "ddplus0.40_dsminus1.00",
-      "delta": {
-        "dof": 0.4,
-        "slope": -1.0
-      },
-      "end": null,
-      "panel_path": "panel_ddplus0.40_dsminus1.00.jpg"
-    },
-    {
-      "id": "ddplus0.40_dsminus0.80",
-      "delta": {
-        "dof": 0.4,
-        "slope": -0.8
-      },
-      "end": null,
-      "panel_path": "panel_ddplus0.40_dsminus0.80.jpg"
-    },
-    {
-      "id": "ddplus0.40_dsminus0.60",
-      "delta": {
-        "dof": 0.4,
-        "slope": -0.6
-      },
-      "end": null,
-      "panel_path": "panel_ddplus0.40_dsminus0.60.jpg"
-    },
-    {
-      "id": "ddplus0.40_dsminus0.40",
-      "delta": {
-        "dof": 0.4,
-        "slope": -0.4
-      },
-      "end": null,
-      "panel_path": "panel_ddplus0.40_dsminus0.40.jpg"
-    },
-    {
-      "id": "ddplus0.40_dsminus0.20",
-      "delta": {
-        "dof": 0.4,
-        "slope": -0.2
-      },
-      "end": null,
-      "panel_path": "panel_ddplus0.40_dsminus0.20.jpg"
-    },
-    {
-      "id": "ddplus0.40_dsplus0.00",
-      "delta": {
-        "dof": 0.4,
-        "slope": 0.0
-      },
-      "end": null,
-      "panel_path": "panel_ddplus0.40_dsplus0.00.jpg"
-    },
-    {
-      "id": "ddplus0.40_dsplus0.20",
-      "delta": {
-        "dof": 0.4,
-        "slope": 0.2
-      },
-      "end": null,
-      "panel_path": "panel_ddplus0.40_dsplus0.20.jpg"
-    },
-    {
-      "id": "ddplus0.40_dsplus0.40",
-      "delta": {
-        "dof": 0.4,
-        "slope": 0.4
-      },
-      "end": null,
-      "panel_path": "panel_ddplus0.40_dsplus0.40.jpg"
-    },
-    {
-      "id": "ddplus0.40_dsplus0.60",
-      "delta": {
-        "dof": 0.4,
-        "slope": 0.6
-      },
-      "end": null,
-      "panel_path": "panel_ddplus0.40_dsplus0.60.jpg"
-    },
-    {
-      "id": "ddplus0.40_dsplus0.80",
-      "delta": {
-        "dof": 0.4,
-        "slope": 0.8
-      },
-      "end": null,
-      "panel_path": "panel_ddplus0.40_dsplus0.80.jpg"
-    },
-    {
-      "id": "ddplus0.40_dsplus1.00",
-      "delta": {
-        "dof": 0.4,
-        "slope": 1.0
-      },
-      "end": null,
-      "panel_path": "panel_ddplus0.40_dsplus1.00.jpg"
-    },
-    {
-      "id": "ddplus0.40_dsplus1.20",
-      "delta": {
-        "dof": 0.4,
-        "slope": 1.2
-      },
-      "end": null,
-      "panel_path": "panel_ddplus0.40_dsplus1.20.jpg"
-    },
-    {
-      "id": "ddplus0.40_dsplus1.40",
-      "delta": {
-        "dof": 0.4,
-        "slope": 1.4
-      },
-      "end": null,
-      "panel_path": "panel_ddplus0.40_dsplus1.40.jpg"
-    },
-    {
-      "id": "ddplus0.40_dsplus1.60",
-      "delta": {
-        "dof": 0.4,
-        "slope": 1.6
-      },
-      "end": null,
-      "panel_path": "panel_ddplus0.40_dsplus1.60.jpg"
-    },
-    {
-      "id": "ddplus0.60_dsminus1.20",
-      "delta": {
-        "dof": 0.6,
-        "slope": -1.2
-      },
-      "end": null,
-      "panel_path": "panel_ddplus0.60_dsminus1.20.jpg"
-    },
-    {
-      "id": "ddplus0.60_dsminus1.00",
-      "delta": {
-        "dof": 0.6,
-        "slope": -1.0
-      },
-      "end": null,
-      "panel_path": "panel_ddplus0.60_dsminus1.00.jpg"
-    },
-    {
-      "id": "ddplus0.60_dsminus0.80",
-      "delta": {
-        "dof": 0.6,
-        "slope": -0.8
-      },
-      "end": null,
-      "panel_path": "panel_ddplus0.60_dsminus0.80.jpg"
-    },
-    {
-      "id": "ddplus0.60_dsminus0.60",
-      "delta": {
-        "dof": 0.6,
-        "slope": -0.6
-      },
-      "end": null,
-      "panel_path": "panel_ddplus0.60_dsminus0.60.jpg"
-    },
-    {
-      "id": "ddplus0.60_dsminus0.40",
-      "delta": {
-        "dof": 0.6,
-        "slope": -0.4
-      },
-      "end": null,
-      "panel_path": "panel_ddplus0.60_dsminus0.40.jpg"
-    },
-    {
-      "id": "ddplus0.60_dsminus0.20",
-      "delta": {
-        "dof": 0.6,
-        "slope": -0.2
-      },
-      "end": null,
-      "panel_path": "panel_ddplus0.60_dsminus0.20.jpg"
-    },
-    {
-      "id": "ddplus0.60_dsplus0.00",
-      "delta": {
-        "dof": 0.6,
-        "slope": 0.0
-      },
-      "end": null,
-      "panel_path": "panel_ddplus0.60_dsplus0.00.jpg"
-    },
-    {
-      "id": "ddplus0.60_dsplus0.20",
-      "delta": {
-        "dof": 0.6,
-        "slope": 0.2
-      },
-      "end": null,
-      "panel_path": "panel_ddplus0.60_dsplus0.20.jpg"
-    },
-    {
-      "id": "ddplus0.60_dsplus0.40",
-      "delta": {
-        "dof": 0.6,
-        "slope": 0.4
-      },
-      "end": null,
-      "panel_path": "panel_ddplus0.60_dsplus0.40.jpg"
-    },
-    {
-      "id": "ddplus0.60_dsplus0.60",
-      "delta": {
-        "dof": 0.6,
-        "slope": 0.6
-      },
-      "end": null,
-      "panel_path": "panel_ddplus0.60_dsplus0.60.jpg"
-    },
-    {
-      "id": "ddplus0.60_dsplus0.80",
-      "delta": {
-        "dof": 0.6,
-        "slope": 0.8
-      },
-      "end": null,
-      "panel_path": "panel_ddplus0.60_dsplus0.80.jpg"
-    },
-    {
-      "id": "ddplus0.60_dsplus1.00",
-      "delta": {
-        "dof": 0.6,
-        "slope": 1.0
-      },
-      "end": null,
-      "panel_path": "panel_ddplus0.60_dsplus1.00.jpg"
-    },
-    {
-      "id": "ddplus0.60_dsplus1.20",
-      "delta": {
-        "dof": 0.6,
-        "slope": 1.2
-      },
-      "end": null,
-      "panel_path": "panel_ddplus0.60_dsplus1.20.jpg"
-    },
-    {
-      "id": "ddplus0.60_dsplus1.40",
-      "delta": {
-        "dof": 0.6,
-        "slope": 1.4
-      },
-      "end": null,
-      "panel_path": "panel_ddplus0.60_dsplus1.40.jpg"
-    },
-    {
-      "id": "ddplus0.60_dsplus1.60",
-      "delta": {
-        "dof": 0.6,
-        "slope": 1.6
-      },
-      "end": null,
-      "panel_path": "panel_ddplus0.60_dsplus1.60.jpg"
-    },
-    {
-      "id": "ddplus0.80_dsminus1.20",
-      "delta": {
-        "dof": 0.8,
-        "slope": -1.2
-      },
-      "end": null,
-      "panel_path": "panel_ddplus0.80_dsminus1.20.jpg"
-    },
-    {
-      "id": "ddplus0.80_dsminus1.00",
-      "delta": {
-        "dof": 0.8,
-        "slope": -1.0
-      },
-      "end": null,
-      "panel_path": "panel_ddplus0.80_dsminus1.00.jpg"
-    },
-    {
-      "id": "ddplus0.80_dsminus0.80",
-      "delta": {
-        "dof": 0.8,
-        "slope": -0.8
-      },
-      "end": null,
-      "panel_path": "panel_ddplus0.80_dsminus0.80.jpg"
-    },
-    {
-      "id": "ddplus0.80_dsminus0.60",
-      "delta": {
-        "dof": 0.8,
-        "slope": -0.6
-      },
-      "end": null,
-      "panel_path": "panel_ddplus0.80_dsminus0.60.jpg"
-    },
-    {
-      "id": "ddplus0.80_dsminus0.40",
-      "delta": {
-        "dof": 0.8,
-        "slope": -0.4
-      },
-      "end": null,
-      "panel_path": "panel_ddplus0.80_dsminus0.40.jpg"
-    },
-    {
-      "id": "ddplus0.80_dsminus0.20",
-      "delta": {
-        "dof": 0.8,
-        "slope": -0.2
-      },
-      "end": null,
-      "panel_path": "panel_ddplus0.80_dsminus0.20.jpg"
-    },
-    {
-      "id": "ddplus0.80_dsplus0.00",
-      "delta": {
-        "dof": 0.8,
-        "slope": 0.0
-      },
-      "end": null,
-      "panel_path": "panel_ddplus0.80_dsplus0.00.jpg"
-    },
-    {
-      "id": "ddplus0.80_dsplus0.20",
-      "delta": {
-        "dof": 0.8,
-        "slope": 0.2
-      },
-      "end": null,
-      "panel_path": "panel_ddplus0.80_dsplus0.20.jpg"
-    },
-    {
-      "id": "ddplus0.80_dsplus0.40",
-      "delta": {
-        "dof": 0.8,
-        "slope": 0.4
-      },
-      "end": null,
-      "panel_path": "panel_ddplus0.80_dsplus0.40.jpg"
-    },
-    {
-      "id": "ddplus0.80_dsplus0.60",
-      "delta": {
-        "dof": 0.8,
-        "slope": 0.6
-      },
-      "end": null,
-      "panel_path": "panel_ddplus0.80_dsplus0.60.jpg"
-    },
-    {
-      "id": "ddplus0.80_dsplus0.80",
-      "delta": {
-        "dof": 0.8,
-        "slope": 0.8
-      },
-      "end": null,
-      "panel_path": "panel_ddplus0.80_dsplus0.80.jpg"
-    },
-    {
-      "id": "ddplus0.80_dsplus1.00",
-      "delta": {
-        "dof": 0.8,
-        "slope": 1.0
-      },
-      "end": null,
-      "panel_path": "panel_ddplus0.80_dsplus1.00.jpg"
-    },
-    {
-      "id": "ddplus0.80_dsplus1.20",
-      "delta": {
-        "dof": 0.8,
-        "slope": 1.2
-      },
-      "end": null,
-      "panel_path": "panel_ddplus0.80_dsplus1.20.jpg"
-    },
-    {
-      "id": "ddplus0.80_dsplus1.40",
-      "delta": {
-        "dof": 0.8,
-        "slope": 1.4
-      },
-      "end": null,
-      "panel_path": "panel_ddplus0.80_dsplus1.40.jpg"
-    },
-    {
-      "id": "ddplus0.80_dsplus1.60",
-      "delta": {
-        "dof": 0.8,
-        "slope": 1.6
-      },
-      "end": null,
-      "panel_path": "panel_ddplus0.80_dsplus1.60.jpg"
-    },
-    {
-      "id": "ddplus1.00_dsminus1.20",
-      "delta": {
-        "dof": 1.0,
-        "slope": -1.2
-      },
-      "end": null,
-      "panel_path": "panel_ddplus1.00_dsminus1.20.jpg"
-    },
-    {
-      "id": "ddplus1.00_dsminus1.00",
-      "delta": {
-        "dof": 1.0,
-        "slope": -1.0
-      },
-      "end": null,
-      "panel_path": "panel_ddplus1.00_dsminus1.00.jpg"
-    },
-    {
-      "id": "ddplus1.00_dsminus0.80",
-      "delta": {
-        "dof": 1.0,
-        "slope": -0.8
-      },
-      "end": null,
-      "panel_path": "panel_ddplus1.00_dsminus0.80.jpg"
-    },
-    {
-      "id": "ddplus1.00_dsminus0.60",
-      "delta": {
-        "dof": 1.0,
-        "slope": -0.6
-      },
-      "end": null,
-      "panel_path": "panel_ddplus1.00_dsminus0.60.jpg"
-    },
-    {
-      "id": "ddplus1.00_dsminus0.40",
-      "delta": {
-        "dof": 1.0,
-        "slope": -0.4
-      },
-      "end": null,
-      "panel_path": "panel_ddplus1.00_dsminus0.40.jpg"
-    },
-    {
-      "id": "ddplus1.00_dsminus0.20",
-      "delta": {
-        "dof": 1.0,
-        "slope": -0.2
-      },
-      "end": null,
-      "panel_path": "panel_ddplus1.00_dsminus0.20.jpg"
-    },
-    {
-      "id": "ddplus1.00_dsplus0.00",
-      "delta": {
-        "dof": 1.0,
-        "slope": 0.0
-      },
-      "end": null,
-      "panel_path": "panel_ddplus1.00_dsplus0.00.jpg"
-    },
-    {
-      "id": "ddplus1.00_dsplus0.20",
-      "delta": {
-        "dof": 1.0,
-        "slope": 0.2
-      },
-      "end": null,
-      "panel_path": "panel_ddplus1.00_dsplus0.20.jpg"
-    },
-    {
-      "id": "ddplus1.00_dsplus0.40",
-      "delta": {
-        "dof": 1.0,
-        "slope": 0.4
-      },
-      "end": null,
-      "panel_path": "panel_ddplus1.00_dsplus0.40.jpg"
-    },
-    {
-      "id": "ddplus1.00_dsplus0.60",
-      "delta": {
-        "dof": 1.0,
-        "slope": 0.6
-      },
-      "end": null,
-      "panel_path": "panel_ddplus1.00_dsplus0.60.jpg"
-    },
-    {
-      "id": "ddplus1.00_dsplus0.80",
-      "delta": {
-        "dof": 1.0,
-        "slope": 0.8
-      },
-      "end": null,
-      "panel_path": "panel_ddplus1.00_dsplus0.80.jpg"
-    },
-    {
-      "id": "ddplus1.00_dsplus1.00",
-      "delta": {
-        "dof": 1.0,
-        "slope": 1.0
-      },
-      "end": null,
-      "panel_path": "panel_ddplus1.00_dsplus1.00.jpg"
-    },
-    {
-      "id": "ddplus1.00_dsplus1.20",
-      "delta": {
-        "dof": 1.0,
-        "slope": 1.2
-      },
-      "end": null,
-      "panel_path": "panel_ddplus1.00_dsplus1.20.jpg"
-    },
-    {
-      "id": "ddplus1.00_dsplus1.40",
-      "delta": {
-        "dof": 1.0,
-        "slope": 1.4
-      },
-      "end": null,
-      "panel_path": "panel_ddplus1.00_dsplus1.40.jpg"
-    },
-    {
-      "id": "ddplus1.00_dsplus1.60",
-      "delta": {
-        "dof": 1.0,
-        "slope": 1.6
-      },
-      "end": null,
-      "panel_path": "panel_ddplus1.00_dsplus1.60.jpg"
-    },
-    {
-      "id": "ddplus1.20_dsminus1.20",
-      "delta": {
-        "dof": 1.2,
-        "slope": -1.2
-      },
-      "end": null,
-      "panel_path": "panel_ddplus1.20_dsminus1.20.jpg"
-    },
-    {
-      "id": "ddplus1.20_dsminus1.00",
-      "delta": {
-        "dof": 1.2,
-        "slope": -1.0
-      },
-      "end": null,
-      "panel_path": "panel_ddplus1.20_dsminus1.00.jpg"
-    },
-    {
-      "id": "ddplus1.20_dsminus0.80",
-      "delta": {
-        "dof": 1.2,
-        "slope": -0.8
-      },
-      "end": null,
-      "panel_path": "panel_ddplus1.20_dsminus0.80.jpg"
-    },
-    {
-      "id": "ddplus1.20_dsminus0.60",
-      "delta": {
-        "dof": 1.2,
-        "slope": -0.6
-      },
-      "end": null,
-      "panel_path": "panel_ddplus1.20_dsminus0.60.jpg"
-    },
-    {
-      "id": "ddplus1.20_dsminus0.40",
-      "delta": {
-        "dof": 1.2,
-        "slope": -0.4
-      },
-      "end": null,
-      "panel_path": "panel_ddplus1.20_dsminus0.40.jpg"
-    },
-    {
-      "id": "ddplus1.20_dsminus0.20",
-      "delta": {
-        "dof": 1.2,
-        "slope": -0.2
-      },
-      "end": null,
-      "panel_path": "panel_ddplus1.20_dsminus0.20.jpg"
-    },
-    {
-      "id": "ddplus1.20_dsplus0.00",
-      "delta": {
-        "dof": 1.2,
-        "slope": 0.0
-      },
-      "end": null,
-      "panel_path": "panel_ddplus1.20_dsplus0.00.jpg"
-    },
-    {
-      "id": "ddplus1.20_dsplus0.20",
-      "delta": {
-        "dof": 1.2,
-        "slope": 0.2
-      },
-      "end": null,
-      "panel_path": "panel_ddplus1.20_dsplus0.20.jpg"
-    },
-    {
-      "id": "ddplus1.20_dsplus0.40",
-      "delta": {
-        "dof": 1.2,
-        "slope": 0.4
-      },
-      "end": null,
-      "panel_path": "panel_ddplus1.20_dsplus0.40.jpg"
-    },
-    {
-      "id": "ddplus1.20_dsplus0.60",
-      "delta": {
-        "dof": 1.2,
-        "slope": 0.6
-      },
-      "end": null,
-      "panel_path": "panel_ddplus1.20_dsplus0.60.jpg"
-    },
-    {
-      "id": "ddplus1.20_dsplus0.80",
-      "delta": {
-        "dof": 1.2,
-        "slope": 0.8
-      },
-      "end": null,
-      "panel_path": "panel_ddplus1.20_dsplus0.80.jpg"
-    },
-    {
-      "id": "ddplus1.20_dsplus1.00",
-      "delta": {
-        "dof": 1.2,
-        "slope": 1.0
-      },
-      "end": null,
-      "panel_path": "panel_ddplus1.20_dsplus1.00.jpg"
-    },
-    {
-      "id": "ddplus1.20_dsplus1.20",
-      "delta": {
-        "dof": 1.2,
-        "slope": 1.2
-      },
-      "end": null,
-      "panel_path": "panel_ddplus1.20_dsplus1.20.jpg"
-    },
-    {
-      "id": "ddplus1.20_dsplus1.40",
-      "delta": {
-        "dof": 1.2,
-        "slope": 1.4
-      },
-      "end": null,
-      "panel_path": "panel_ddplus1.20_dsplus1.40.jpg"
-    },
-    {
-      "id": "ddplus1.20_dsplus1.60",
-      "delta": {
-        "dof": 1.2,
-        "slope": 1.6
-      },
-      "end": null,
-      "panel_path": "panel_ddplus1.20_dsplus1.60.jpg"
-    },
-    {
-      "id": "ddplus1.40_dsminus1.20",
-      "delta": {
-        "dof": 1.4,
-        "slope": -1.2
-      },
-      "end": null,
-      "panel_path": "panel_ddplus1.40_dsminus1.20.jpg"
-    },
-    {
-      "id": "ddplus1.40_dsminus1.00",
-      "delta": {
-        "dof": 1.4,
-        "slope": -1.0
-      },
-      "end": null,
-      "panel_path": "panel_ddplus1.40_dsminus1.00.jpg"
-    },
-    {
-      "id": "ddplus1.40_dsminus0.80",
-      "delta": {
-        "dof": 1.4,
-        "slope": -0.8
-      },
-      "end": null,
-      "panel_path": "panel_ddplus1.40_dsminus0.80.jpg"
-    },
-    {
-      "id": "ddplus1.40_dsminus0.60",
-      "delta": {
-        "dof": 1.4,
-        "slope": -0.6
-      },
-      "end": null,
-      "panel_path": "panel_ddplus1.40_dsminus0.60.jpg"
-    },
-    {
-      "id": "ddplus1.40_dsminus0.40",
-      "delta": {
-        "dof": 1.4,
-        "slope": -0.4
-      },
-      "end": null,
-      "panel_path": "panel_ddplus1.40_dsminus0.40.jpg"
-    },
-    {
-      "id": "ddplus1.40_dsminus0.20",
-      "delta": {
-        "dof": 1.4,
-        "slope": -0.2
-      },
-      "end": null,
-      "panel_path": "panel_ddplus1.40_dsminus0.20.jpg"
-    },
-    {
-      "id": "ddplus1.40_dsplus0.00",
-      "delta": {
-        "dof": 1.4,
-        "slope": 0.0
-      },
-      "end": null,
-      "panel_path": "panel_ddplus1.40_dsplus0.00.jpg"
-    },
-    {
-      "id": "ddplus1.40_dsplus0.20",
-      "delta": {
-        "dof": 1.4,
-        "slope": 0.2
-      },
-      "end": null,
-      "panel_path": "panel_ddplus1.40_dsplus0.20.jpg"
-    },
-    {
-      "id": "ddplus1.40_dsplus0.40",
-      "delta": {
-        "dof": 1.4,
-        "slope": 0.4
-      },
-      "end": null,
-      "panel_path": "panel_ddplus1.40_dsplus0.40.jpg"
-    },
-    {
-      "id": "ddplus1.40_dsplus0.60",
-      "delta": {
-        "dof": 1.4,
-        "slope": 0.6
-      },
-      "end": null,
-      "panel_path": "panel_ddplus1.40_dsplus0.60.jpg"
-    },
-    {
-      "id": "ddplus1.40_dsplus0.80",
-      "delta": {
-        "dof": 1.4,
-        "slope": 0.8
-      },
-      "end": null,
-      "panel_path": "panel_ddplus1.40_dsplus0.80.jpg"
-    },
-    {
-      "id": "ddplus1.40_dsplus1.00",
-      "delta": {
-        "dof": 1.4,
-        "slope": 1.0
-      },
-      "end": null,
-      "panel_path": "panel_ddplus1.40_dsplus1.00.jpg"
-    },
-    {
-      "id": "ddplus1.40_dsplus1.20",
-      "delta": {
-        "dof": 1.4,
-        "slope": 1.2
-      },
-      "end": null,
-      "panel_path": "panel_ddplus1.40_dsplus1.20.jpg"
-    },
-    {
-      "id": "ddplus1.40_dsplus1.40",
-      "delta": {
-        "dof": 1.4,
-        "slope": 1.4
-      },
-      "end": null,
-      "panel_path": "panel_ddplus1.40_dsplus1.40.jpg"
-    },
-    {
-      "id": "ddplus1.40_dsplus1.60",
-      "delta": {
-        "dof": 1.4,
-        "slope": 1.6
-      },
-      "end": null,
-      "panel_path": "panel_ddplus1.40_dsplus1.60.jpg"
-    }
+      {
+        "id": "ddminus1.80_dsminus1.20",
+        "delta": {
+          "dof": -1.8,
+          "slope": -1.2
+        },
+        "end": null,
+        "panel_path": "panel_ddminus1.80_dsminus1.20.jpg"
+      },
+      {
+        "id": "ddminus1.80_dsminus1.00",
+        "delta": {
+          "dof": -1.8,
+          "slope": -1.0
+        },
+        "end": null,
+        "panel_path": "panel_ddminus1.80_dsminus1.00.jpg"
+      },
+      {
+        "id": "ddminus1.80_dsminus0.80",
+        "delta": {
+          "dof": -1.8,
+          "slope": -0.8
+        },
+        "end": null,
+        "panel_path": "panel_ddminus1.80_dsminus0.80.jpg"
+      },
+      {
+        "id": "ddminus1.80_dsminus0.60",
+        "delta": {
+          "dof": -1.8,
+          "slope": -0.6
+        },
+        "end": null,
+        "panel_path": "panel_ddminus1.80_dsminus0.60.jpg"
+      },
+      {
+        "id": "ddminus1.80_dsminus0.40",
+        "delta": {
+          "dof": -1.8,
+          "slope": -0.4
+        },
+        "end": null,
+        "panel_path": "panel_ddminus1.80_dsminus0.40.jpg"
+      },
+      {
+        "id": "ddminus1.80_dsminus0.20",
+        "delta": {
+          "dof": -1.8,
+          "slope": -0.2
+        },
+        "end": null,
+        "panel_path": "panel_ddminus1.80_dsminus0.20.jpg"
+      },
+      {
+        "id": "ddminus1.80_dsplus0.00",
+        "delta": {
+          "dof": -1.8,
+          "slope": 0.0
+        },
+        "end": null,
+        "panel_path": "panel_ddminus1.80_dsplus0.00.jpg"
+      },
+      {
+        "id": "ddminus1.80_dsplus0.20",
+        "delta": {
+          "dof": -1.8,
+          "slope": 0.2
+        },
+        "end": null,
+        "panel_path": "panel_ddminus1.80_dsplus0.20.jpg"
+      },
+      {
+        "id": "ddminus1.80_dsplus0.40",
+        "delta": {
+          "dof": -1.8,
+          "slope": 0.4
+        },
+        "end": null,
+        "panel_path": "panel_ddminus1.80_dsplus0.40.jpg"
+      },
+      {
+        "id": "ddminus1.80_dsplus0.60",
+        "delta": {
+          "dof": -1.8,
+          "slope": 0.6
+        },
+        "end": null,
+        "panel_path": "panel_ddminus1.80_dsplus0.60.jpg"
+      },
+      {
+        "id": "ddminus1.80_dsplus0.80",
+        "delta": {
+          "dof": -1.8,
+          "slope": 0.8
+        },
+        "end": null,
+        "panel_path": "panel_ddminus1.80_dsplus0.80.jpg"
+      },
+      {
+        "id": "ddminus1.80_dsplus1.00",
+        "delta": {
+          "dof": -1.8,
+          "slope": 1.0
+        },
+        "end": null,
+        "panel_path": "panel_ddminus1.80_dsplus1.00.jpg"
+      },
+      {
+        "id": "ddminus1.80_dsplus1.20",
+        "delta": {
+          "dof": -1.8,
+          "slope": 1.2
+        },
+        "end": null,
+        "panel_path": "panel_ddminus1.80_dsplus1.20.jpg"
+      },
+      {
+        "id": "ddminus1.80_dsplus1.40",
+        "delta": {
+          "dof": -1.8,
+          "slope": 1.4
+        },
+        "end": null,
+        "panel_path": "panel_ddminus1.80_dsplus1.40.jpg"
+      },
+      {
+        "id": "ddminus1.80_dsplus1.60",
+        "delta": {
+          "dof": -1.8,
+          "slope": 1.6
+        },
+        "end": null,
+        "panel_path": "panel_ddminus1.80_dsplus1.60.jpg"
+      },
+      {
+        "id": "ddminus1.60_dsminus1.20",
+        "delta": {
+          "dof": -1.6,
+          "slope": -1.2
+        },
+        "end": null,
+        "panel_path": "panel_ddminus1.60_dsminus1.20.jpg"
+      },
+      {
+        "id": "ddminus1.60_dsminus1.00",
+        "delta": {
+          "dof": -1.6,
+          "slope": -1.0
+        },
+        "end": null,
+        "panel_path": "panel_ddminus1.60_dsminus1.00.jpg"
+      },
+      {
+        "id": "ddminus1.60_dsminus0.80",
+        "delta": {
+          "dof": -1.6,
+          "slope": -0.8
+        },
+        "end": null,
+        "panel_path": "panel_ddminus1.60_dsminus0.80.jpg"
+      },
+      {
+        "id": "ddminus1.60_dsminus0.60",
+        "delta": {
+          "dof": -1.6,
+          "slope": -0.6
+        },
+        "end": null,
+        "panel_path": "panel_ddminus1.60_dsminus0.60.jpg"
+      },
+      {
+        "id": "ddminus1.60_dsminus0.40",
+        "delta": {
+          "dof": -1.6,
+          "slope": -0.4
+        },
+        "end": null,
+        "panel_path": "panel_ddminus1.60_dsminus0.40.jpg"
+      },
+      {
+        "id": "ddminus1.60_dsminus0.20",
+        "delta": {
+          "dof": -1.6,
+          "slope": -0.2
+        },
+        "end": null,
+        "panel_path": "panel_ddminus1.60_dsminus0.20.jpg"
+      },
+      {
+        "id": "ddminus1.60_dsplus0.00",
+        "delta": {
+          "dof": -1.6,
+          "slope": 0.0
+        },
+        "end": null,
+        "panel_path": "panel_ddminus1.60_dsplus0.00.jpg"
+      },
+      {
+        "id": "ddminus1.60_dsplus0.20",
+        "delta": {
+          "dof": -1.6,
+          "slope": 0.2
+        },
+        "end": null,
+        "panel_path": "panel_ddminus1.60_dsplus0.20.jpg"
+      },
+      {
+        "id": "ddminus1.60_dsplus0.40",
+        "delta": {
+          "dof": -1.6,
+          "slope": 0.4
+        },
+        "end": null,
+        "panel_path": "panel_ddminus1.60_dsplus0.40.jpg"
+      },
+      {
+        "id": "ddminus1.60_dsplus0.60",
+        "delta": {
+          "dof": -1.6,
+          "slope": 0.6
+        },
+        "end": null,
+        "panel_path": "panel_ddminus1.60_dsplus0.60.jpg"
+      },
+      {
+        "id": "ddminus1.60_dsplus0.80",
+        "delta": {
+          "dof": -1.6,
+          "slope": 0.8
+        },
+        "end": null,
+        "panel_path": "panel_ddminus1.60_dsplus0.80.jpg"
+      },
+      {
+        "id": "ddminus1.60_dsplus1.00",
+        "delta": {
+          "dof": -1.6,
+          "slope": 1.0
+        },
+        "end": null,
+        "panel_path": "panel_ddminus1.60_dsplus1.00.jpg"
+      },
+      {
+        "id": "ddminus1.60_dsplus1.20",
+        "delta": {
+          "dof": -1.6,
+          "slope": 1.2
+        },
+        "end": null,
+        "panel_path": "panel_ddminus1.60_dsplus1.20.jpg"
+      },
+      {
+        "id": "ddminus1.60_dsplus1.40",
+        "delta": {
+          "dof": -1.6,
+          "slope": 1.4
+        },
+        "end": null,
+        "panel_path": "panel_ddminus1.60_dsplus1.40.jpg"
+      },
+      {
+        "id": "ddminus1.60_dsplus1.60",
+        "delta": {
+          "dof": -1.6,
+          "slope": 1.6
+        },
+        "end": null,
+        "panel_path": "panel_ddminus1.60_dsplus1.60.jpg"
+      },
+      {
+        "id": "ddminus1.40_dsminus1.20",
+        "delta": {
+          "dof": -1.4,
+          "slope": -1.2
+        },
+        "end": null,
+        "panel_path": "panel_ddminus1.40_dsminus1.20.jpg"
+      },
+      {
+        "id": "ddminus1.40_dsminus1.00",
+        "delta": {
+          "dof": -1.4,
+          "slope": -1.0
+        },
+        "end": null,
+        "panel_path": "panel_ddminus1.40_dsminus1.00.jpg"
+      },
+      {
+        "id": "ddminus1.40_dsminus0.80",
+        "delta": {
+          "dof": -1.4,
+          "slope": -0.8
+        },
+        "end": null,
+        "panel_path": "panel_ddminus1.40_dsminus0.80.jpg"
+      },
+      {
+        "id": "ddminus1.40_dsminus0.60",
+        "delta": {
+          "dof": -1.4,
+          "slope": -0.6
+        },
+        "end": null,
+        "panel_path": "panel_ddminus1.40_dsminus0.60.jpg"
+      },
+      {
+        "id": "ddminus1.40_dsminus0.40",
+        "delta": {
+          "dof": -1.4,
+          "slope": -0.4
+        },
+        "end": null,
+        "panel_path": "panel_ddminus1.40_dsminus0.40.jpg"
+      },
+      {
+        "id": "ddminus1.40_dsminus0.20",
+        "delta": {
+          "dof": -1.4,
+          "slope": -0.2
+        },
+        "end": null,
+        "panel_path": "panel_ddminus1.40_dsminus0.20.jpg"
+      },
+      {
+        "id": "ddminus1.40_dsplus0.00",
+        "delta": {
+          "dof": -1.4,
+          "slope": 0.0
+        },
+        "end": null,
+        "panel_path": "panel_ddminus1.40_dsplus0.00.jpg"
+      },
+      {
+        "id": "ddminus1.40_dsplus0.20",
+        "delta": {
+          "dof": -1.4,
+          "slope": 0.2
+        },
+        "end": null,
+        "panel_path": "panel_ddminus1.40_dsplus0.20.jpg"
+      },
+      {
+        "id": "ddminus1.40_dsplus0.40",
+        "delta": {
+          "dof": -1.4,
+          "slope": 0.4
+        },
+        "end": null,
+        "panel_path": "panel_ddminus1.40_dsplus0.40.jpg"
+      },
+      {
+        "id": "ddminus1.40_dsplus0.60",
+        "delta": {
+          "dof": -1.4,
+          "slope": 0.6
+        },
+        "end": null,
+        "panel_path": "panel_ddminus1.40_dsplus0.60.jpg"
+      },
+      {
+        "id": "ddminus1.40_dsplus0.80",
+        "delta": {
+          "dof": -1.4,
+          "slope": 0.8
+        },
+        "end": null,
+        "panel_path": "panel_ddminus1.40_dsplus0.80.jpg"
+      },
+      {
+        "id": "ddminus1.40_dsplus1.00",
+        "delta": {
+          "dof": -1.4,
+          "slope": 1.0
+        },
+        "end": null,
+        "panel_path": "panel_ddminus1.40_dsplus1.00.jpg"
+      },
+      {
+        "id": "ddminus1.40_dsplus1.20",
+        "delta": {
+          "dof": -1.4,
+          "slope": 1.2
+        },
+        "end": null,
+        "panel_path": "panel_ddminus1.40_dsplus1.20.jpg"
+      },
+      {
+        "id": "ddminus1.40_dsplus1.40",
+        "delta": {
+          "dof": -1.4,
+          "slope": 1.4
+        },
+        "end": null,
+        "panel_path": "panel_ddminus1.40_dsplus1.40.jpg"
+      },
+      {
+        "id": "ddminus1.40_dsplus1.60",
+        "delta": {
+          "dof": -1.4,
+          "slope": 1.6
+        },
+        "end": null,
+        "panel_path": "panel_ddminus1.40_dsplus1.60.jpg"
+      },
+      {
+        "id": "ddminus1.20_dsminus1.20",
+        "delta": {
+          "dof": -1.2,
+          "slope": -1.2
+        },
+        "end": null,
+        "panel_path": "panel_ddminus1.20_dsminus1.20.jpg"
+      },
+      {
+        "id": "ddminus1.20_dsminus1.00",
+        "delta": {
+          "dof": -1.2,
+          "slope": -1.0
+        },
+        "end": null,
+        "panel_path": "panel_ddminus1.20_dsminus1.00.jpg"
+      },
+      {
+        "id": "ddminus1.20_dsminus0.80",
+        "delta": {
+          "dof": -1.2,
+          "slope": -0.8
+        },
+        "end": null,
+        "panel_path": "panel_ddminus1.20_dsminus0.80.jpg"
+      },
+      {
+        "id": "ddminus1.20_dsminus0.60",
+        "delta": {
+          "dof": -1.2,
+          "slope": -0.6
+        },
+        "end": null,
+        "panel_path": "panel_ddminus1.20_dsminus0.60.jpg"
+      },
+      {
+        "id": "ddminus1.20_dsminus0.40",
+        "delta": {
+          "dof": -1.2,
+          "slope": -0.4
+        },
+        "end": null,
+        "panel_path": "panel_ddminus1.20_dsminus0.40.jpg"
+      },
+      {
+        "id": "ddminus1.20_dsminus0.20",
+        "delta": {
+          "dof": -1.2,
+          "slope": -0.2
+        },
+        "end": null,
+        "panel_path": "panel_ddminus1.20_dsminus0.20.jpg"
+      },
+      {
+        "id": "ddminus1.20_dsplus0.00",
+        "delta": {
+          "dof": -1.2,
+          "slope": 0.0
+        },
+        "end": null,
+        "panel_path": "panel_ddminus1.20_dsplus0.00.jpg"
+      },
+      {
+        "id": "ddminus1.20_dsplus0.20",
+        "delta": {
+          "dof": -1.2,
+          "slope": 0.2
+        },
+        "end": null,
+        "panel_path": "panel_ddminus1.20_dsplus0.20.jpg"
+      },
+      {
+        "id": "ddminus1.20_dsplus0.40",
+        "delta": {
+          "dof": -1.2,
+          "slope": 0.4
+        },
+        "end": null,
+        "panel_path": "panel_ddminus1.20_dsplus0.40.jpg"
+      },
+      {
+        "id": "ddminus1.20_dsplus0.60",
+        "delta": {
+          "dof": -1.2,
+          "slope": 0.6
+        },
+        "end": null,
+        "panel_path": "panel_ddminus1.20_dsplus0.60.jpg"
+      },
+      {
+        "id": "ddminus1.20_dsplus0.80",
+        "delta": {
+          "dof": -1.2,
+          "slope": 0.8
+        },
+        "end": null,
+        "panel_path": "panel_ddminus1.20_dsplus0.80.jpg"
+      },
+      {
+        "id": "ddminus1.20_dsplus1.00",
+        "delta": {
+          "dof": -1.2,
+          "slope": 1.0
+        },
+        "end": null,
+        "panel_path": "panel_ddminus1.20_dsplus1.00.jpg"
+      },
+      {
+        "id": "ddminus1.20_dsplus1.20",
+        "delta": {
+          "dof": -1.2,
+          "slope": 1.2
+        },
+        "end": null,
+        "panel_path": "panel_ddminus1.20_dsplus1.20.jpg"
+      },
+      {
+        "id": "ddminus1.20_dsplus1.40",
+        "delta": {
+          "dof": -1.2,
+          "slope": 1.4
+        },
+        "end": null,
+        "panel_path": "panel_ddminus1.20_dsplus1.40.jpg"
+      },
+      {
+        "id": "ddminus1.20_dsplus1.60",
+        "delta": {
+          "dof": -1.2,
+          "slope": 1.6
+        },
+        "end": null,
+        "panel_path": "panel_ddminus1.20_dsplus1.60.jpg"
+      },
+      {
+        "id": "ddminus1.00_dsminus1.20",
+        "delta": {
+          "dof": -1.0,
+          "slope": -1.2
+        },
+        "end": null,
+        "panel_path": "panel_ddminus1.00_dsminus1.20.jpg"
+      },
+      {
+        "id": "ddminus1.00_dsminus1.00",
+        "delta": {
+          "dof": -1.0,
+          "slope": -1.0
+        },
+        "end": null,
+        "panel_path": "panel_ddminus1.00_dsminus1.00.jpg"
+      },
+      {
+        "id": "ddminus1.00_dsminus0.80",
+        "delta": {
+          "dof": -1.0,
+          "slope": -0.8
+        },
+        "end": null,
+        "panel_path": "panel_ddminus1.00_dsminus0.80.jpg"
+      },
+      {
+        "id": "ddminus1.00_dsminus0.60",
+        "delta": {
+          "dof": -1.0,
+          "slope": -0.6
+        },
+        "end": null,
+        "panel_path": "panel_ddminus1.00_dsminus0.60.jpg"
+      },
+      {
+        "id": "ddminus1.00_dsminus0.40",
+        "delta": {
+          "dof": -1.0,
+          "slope": -0.4
+        },
+        "end": null,
+        "panel_path": "panel_ddminus1.00_dsminus0.40.jpg"
+      },
+      {
+        "id": "ddminus1.00_dsminus0.20",
+        "delta": {
+          "dof": -1.0,
+          "slope": -0.2
+        },
+        "end": null,
+        "panel_path": "panel_ddminus1.00_dsminus0.20.jpg"
+      },
+      {
+        "id": "ddminus1.00_dsplus0.00",
+        "delta": {
+          "dof": -1.0,
+          "slope": 0.0
+        },
+        "end": null,
+        "panel_path": "panel_ddminus1.00_dsplus0.00.jpg"
+      },
+      {
+        "id": "ddminus1.00_dsplus0.20",
+        "delta": {
+          "dof": -1.0,
+          "slope": 0.2
+        },
+        "end": null,
+        "panel_path": "panel_ddminus1.00_dsplus0.20.jpg"
+      },
+      {
+        "id": "ddminus1.00_dsplus0.40",
+        "delta": {
+          "dof": -1.0,
+          "slope": 0.4
+        },
+        "end": null,
+        "panel_path": "panel_ddminus1.00_dsplus0.40.jpg"
+      },
+      {
+        "id": "ddminus1.00_dsplus0.60",
+        "delta": {
+          "dof": -1.0,
+          "slope": 0.6
+        },
+        "end": null,
+        "panel_path": "panel_ddminus1.00_dsplus0.60.jpg"
+      },
+      {
+        "id": "ddminus1.00_dsplus0.80",
+        "delta": {
+          "dof": -1.0,
+          "slope": 0.8
+        },
+        "end": null,
+        "panel_path": "panel_ddminus1.00_dsplus0.80.jpg"
+      },
+      {
+        "id": "ddminus1.00_dsplus1.00",
+        "delta": {
+          "dof": -1.0,
+          "slope": 1.0
+        },
+        "end": null,
+        "panel_path": "panel_ddminus1.00_dsplus1.00.jpg"
+      },
+      {
+        "id": "ddminus1.00_dsplus1.20",
+        "delta": {
+          "dof": -1.0,
+          "slope": 1.2
+        },
+        "end": null,
+        "panel_path": "panel_ddminus1.00_dsplus1.20.jpg"
+      },
+      {
+        "id": "ddminus1.00_dsplus1.40",
+        "delta": {
+          "dof": -1.0,
+          "slope": 1.4
+        },
+        "end": null,
+        "panel_path": "panel_ddminus1.00_dsplus1.40.jpg"
+      },
+      {
+        "id": "ddminus1.00_dsplus1.60",
+        "delta": {
+          "dof": -1.0,
+          "slope": 1.6
+        },
+        "end": null,
+        "panel_path": "panel_ddminus1.00_dsplus1.60.jpg"
+      },
+      {
+        "id": "ddminus0.80_dsminus1.20",
+        "delta": {
+          "dof": -0.8,
+          "slope": -1.2
+        },
+        "end": null,
+        "panel_path": "panel_ddminus0.80_dsminus1.20.jpg"
+      },
+      {
+        "id": "ddminus0.80_dsminus1.00",
+        "delta": {
+          "dof": -0.8,
+          "slope": -1.0
+        },
+        "end": null,
+        "panel_path": "panel_ddminus0.80_dsminus1.00.jpg"
+      },
+      {
+        "id": "ddminus0.80_dsminus0.80",
+        "delta": {
+          "dof": -0.8,
+          "slope": -0.8
+        },
+        "end": null,
+        "panel_path": "panel_ddminus0.80_dsminus0.80.jpg"
+      },
+      {
+        "id": "ddminus0.80_dsminus0.60",
+        "delta": {
+          "dof": -0.8,
+          "slope": -0.6
+        },
+        "end": null,
+        "panel_path": "panel_ddminus0.80_dsminus0.60.jpg"
+      },
+      {
+        "id": "ddminus0.80_dsminus0.40",
+        "delta": {
+          "dof": -0.8,
+          "slope": -0.4
+        },
+        "end": null,
+        "panel_path": "panel_ddminus0.80_dsminus0.40.jpg"
+      },
+      {
+        "id": "ddminus0.80_dsminus0.20",
+        "delta": {
+          "dof": -0.8,
+          "slope": -0.2
+        },
+        "end": null,
+        "panel_path": "panel_ddminus0.80_dsminus0.20.jpg"
+      },
+      {
+        "id": "ddminus0.80_dsplus0.00",
+        "delta": {
+          "dof": -0.8,
+          "slope": 0.0
+        },
+        "end": null,
+        "panel_path": "panel_ddminus0.80_dsplus0.00.jpg"
+      },
+      {
+        "id": "ddminus0.80_dsplus0.20",
+        "delta": {
+          "dof": -0.8,
+          "slope": 0.2
+        },
+        "end": null,
+        "panel_path": "panel_ddminus0.80_dsplus0.20.jpg"
+      },
+      {
+        "id": "ddminus0.80_dsplus0.40",
+        "delta": {
+          "dof": -0.8,
+          "slope": 0.4
+        },
+        "end": null,
+        "panel_path": "panel_ddminus0.80_dsplus0.40.jpg"
+      },
+      {
+        "id": "ddminus0.80_dsplus0.60",
+        "delta": {
+          "dof": -0.8,
+          "slope": 0.6
+        },
+        "end": null,
+        "panel_path": "panel_ddminus0.80_dsplus0.60.jpg"
+      },
+      {
+        "id": "ddminus0.80_dsplus0.80",
+        "delta": {
+          "dof": -0.8,
+          "slope": 0.8
+        },
+        "end": null,
+        "panel_path": "panel_ddminus0.80_dsplus0.80.jpg"
+      },
+      {
+        "id": "ddminus0.80_dsplus1.00",
+        "delta": {
+          "dof": -0.8,
+          "slope": 1.0
+        },
+        "end": null,
+        "panel_path": "panel_ddminus0.80_dsplus1.00.jpg"
+      },
+      {
+        "id": "ddminus0.80_dsplus1.20",
+        "delta": {
+          "dof": -0.8,
+          "slope": 1.2
+        },
+        "end": null,
+        "panel_path": "panel_ddminus0.80_dsplus1.20.jpg"
+      },
+      {
+        "id": "ddminus0.80_dsplus1.40",
+        "delta": {
+          "dof": -0.8,
+          "slope": 1.4
+        },
+        "end": null,
+        "panel_path": "panel_ddminus0.80_dsplus1.40.jpg"
+      },
+      {
+        "id": "ddminus0.80_dsplus1.60",
+        "delta": {
+          "dof": -0.8,
+          "slope": 1.6
+        },
+        "end": null,
+        "panel_path": "panel_ddminus0.80_dsplus1.60.jpg"
+      },
+      {
+        "id": "ddminus0.60_dsminus1.20",
+        "delta": {
+          "dof": -0.6,
+          "slope": -1.2
+        },
+        "end": null,
+        "panel_path": "panel_ddminus0.60_dsminus1.20.jpg"
+      },
+      {
+        "id": "ddminus0.60_dsminus1.00",
+        "delta": {
+          "dof": -0.6,
+          "slope": -1.0
+        },
+        "end": null,
+        "panel_path": "panel_ddminus0.60_dsminus1.00.jpg"
+      },
+      {
+        "id": "ddminus0.60_dsminus0.80",
+        "delta": {
+          "dof": -0.6,
+          "slope": -0.8
+        },
+        "end": null,
+        "panel_path": "panel_ddminus0.60_dsminus0.80.jpg"
+      },
+      {
+        "id": "ddminus0.60_dsminus0.60",
+        "delta": {
+          "dof": -0.6,
+          "slope": -0.6
+        },
+        "end": null,
+        "panel_path": "panel_ddminus0.60_dsminus0.60.jpg"
+      },
+      {
+        "id": "ddminus0.60_dsminus0.40",
+        "delta": {
+          "dof": -0.6,
+          "slope": -0.4
+        },
+        "end": null,
+        "panel_path": "panel_ddminus0.60_dsminus0.40.jpg"
+      },
+      {
+        "id": "ddminus0.60_dsminus0.20",
+        "delta": {
+          "dof": -0.6,
+          "slope": -0.2
+        },
+        "end": null,
+        "panel_path": "panel_ddminus0.60_dsminus0.20.jpg"
+      },
+      {
+        "id": "ddminus0.60_dsplus0.00",
+        "delta": {
+          "dof": -0.6,
+          "slope": 0.0
+        },
+        "end": null,
+        "panel_path": "panel_ddminus0.60_dsplus0.00.jpg"
+      },
+      {
+        "id": "ddminus0.60_dsplus0.20",
+        "delta": {
+          "dof": -0.6,
+          "slope": 0.2
+        },
+        "end": null,
+        "panel_path": "panel_ddminus0.60_dsplus0.20.jpg"
+      },
+      {
+        "id": "ddminus0.60_dsplus0.40",
+        "delta": {
+          "dof": -0.6,
+          "slope": 0.4
+        },
+        "end": null,
+        "panel_path": "panel_ddminus0.60_dsplus0.40.jpg"
+      },
+      {
+        "id": "ddminus0.60_dsplus0.60",
+        "delta": {
+          "dof": -0.6,
+          "slope": 0.6
+        },
+        "end": null,
+        "panel_path": "panel_ddminus0.60_dsplus0.60.jpg"
+      },
+      {
+        "id": "ddminus0.60_dsplus0.80",
+        "delta": {
+          "dof": -0.6,
+          "slope": 0.8
+        },
+        "end": null,
+        "panel_path": "panel_ddminus0.60_dsplus0.80.jpg"
+      },
+      {
+        "id": "ddminus0.60_dsplus1.00",
+        "delta": {
+          "dof": -0.6,
+          "slope": 1.0
+        },
+        "end": null,
+        "panel_path": "panel_ddminus0.60_dsplus1.00.jpg"
+      },
+      {
+        "id": "ddminus0.60_dsplus1.20",
+        "delta": {
+          "dof": -0.6,
+          "slope": 1.2
+        },
+        "end": null,
+        "panel_path": "panel_ddminus0.60_dsplus1.20.jpg"
+      },
+      {
+        "id": "ddminus0.60_dsplus1.40",
+        "delta": {
+          "dof": -0.6,
+          "slope": 1.4
+        },
+        "end": null,
+        "panel_path": "panel_ddminus0.60_dsplus1.40.jpg"
+      },
+      {
+        "id": "ddminus0.60_dsplus1.60",
+        "delta": {
+          "dof": -0.6,
+          "slope": 1.6
+        },
+        "end": null,
+        "panel_path": "panel_ddminus0.60_dsplus1.60.jpg"
+      },
+      {
+        "id": "ddminus0.40_dsminus1.20",
+        "delta": {
+          "dof": -0.4,
+          "slope": -1.2
+        },
+        "end": null,
+        "panel_path": "panel_ddminus0.40_dsminus1.20.jpg"
+      },
+      {
+        "id": "ddminus0.40_dsminus1.00",
+        "delta": {
+          "dof": -0.4,
+          "slope": -1.0
+        },
+        "end": null,
+        "panel_path": "panel_ddminus0.40_dsminus1.00.jpg"
+      },
+      {
+        "id": "ddminus0.40_dsminus0.80",
+        "delta": {
+          "dof": -0.4,
+          "slope": -0.8
+        },
+        "end": null,
+        "panel_path": "panel_ddminus0.40_dsminus0.80.jpg"
+      },
+      {
+        "id": "ddminus0.40_dsminus0.60",
+        "delta": {
+          "dof": -0.4,
+          "slope": -0.6
+        },
+        "end": null,
+        "panel_path": "panel_ddminus0.40_dsminus0.60.jpg"
+      },
+      {
+        "id": "ddminus0.40_dsminus0.40",
+        "delta": {
+          "dof": -0.4,
+          "slope": -0.4
+        },
+        "end": null,
+        "panel_path": "panel_ddminus0.40_dsminus0.40.jpg"
+      },
+      {
+        "id": "ddminus0.40_dsminus0.20",
+        "delta": {
+          "dof": -0.4,
+          "slope": -0.2
+        },
+        "end": null,
+        "panel_path": "panel_ddminus0.40_dsminus0.20.jpg"
+      },
+      {
+        "id": "ddminus0.40_dsplus0.00",
+        "delta": {
+          "dof": -0.4,
+          "slope": 0.0
+        },
+        "end": null,
+        "panel_path": "panel_ddminus0.40_dsplus0.00.jpg"
+      },
+      {
+        "id": "ddminus0.40_dsplus0.20",
+        "delta": {
+          "dof": -0.4,
+          "slope": 0.2
+        },
+        "end": null,
+        "panel_path": "panel_ddminus0.40_dsplus0.20.jpg"
+      },
+      {
+        "id": "ddminus0.40_dsplus0.40",
+        "delta": {
+          "dof": -0.4,
+          "slope": 0.4
+        },
+        "end": null,
+        "panel_path": "panel_ddminus0.40_dsplus0.40.jpg"
+      },
+      {
+        "id": "ddminus0.40_dsplus0.60",
+        "delta": {
+          "dof": -0.4,
+          "slope": 0.6
+        },
+        "end": null,
+        "panel_path": "panel_ddminus0.40_dsplus0.60.jpg"
+      },
+      {
+        "id": "ddminus0.40_dsplus0.80",
+        "delta": {
+          "dof": -0.4,
+          "slope": 0.8
+        },
+        "end": null,
+        "panel_path": "panel_ddminus0.40_dsplus0.80.jpg"
+      },
+      {
+        "id": "ddminus0.40_dsplus1.00",
+        "delta": {
+          "dof": -0.4,
+          "slope": 1.0
+        },
+        "end": null,
+        "panel_path": "panel_ddminus0.40_dsplus1.00.jpg"
+      },
+      {
+        "id": "ddminus0.40_dsplus1.20",
+        "delta": {
+          "dof": -0.4,
+          "slope": 1.2
+        },
+        "end": null,
+        "panel_path": "panel_ddminus0.40_dsplus1.20.jpg"
+      },
+      {
+        "id": "ddminus0.40_dsplus1.40",
+        "delta": {
+          "dof": -0.4,
+          "slope": 1.4
+        },
+        "end": null,
+        "panel_path": "panel_ddminus0.40_dsplus1.40.jpg"
+      },
+      {
+        "id": "ddminus0.40_dsplus1.60",
+        "delta": {
+          "dof": -0.4,
+          "slope": 1.6
+        },
+        "end": null,
+        "panel_path": "panel_ddminus0.40_dsplus1.60.jpg"
+      },
+      {
+        "id": "ddminus0.20_dsminus1.20",
+        "delta": {
+          "dof": -0.2,
+          "slope": -1.2
+        },
+        "end": null,
+        "panel_path": "panel_ddminus0.20_dsminus1.20.jpg"
+      },
+      {
+        "id": "ddminus0.20_dsminus1.00",
+        "delta": {
+          "dof": -0.2,
+          "slope": -1.0
+        },
+        "end": null,
+        "panel_path": "panel_ddminus0.20_dsminus1.00.jpg"
+      },
+      {
+        "id": "ddminus0.20_dsminus0.80",
+        "delta": {
+          "dof": -0.2,
+          "slope": -0.8
+        },
+        "end": null,
+        "panel_path": "panel_ddminus0.20_dsminus0.80.jpg"
+      },
+      {
+        "id": "ddminus0.20_dsminus0.60",
+        "delta": {
+          "dof": -0.2,
+          "slope": -0.6
+        },
+        "end": null,
+        "panel_path": "panel_ddminus0.20_dsminus0.60.jpg"
+      },
+      {
+        "id": "ddminus0.20_dsminus0.40",
+        "delta": {
+          "dof": -0.2,
+          "slope": -0.4
+        },
+        "end": null,
+        "panel_path": "panel_ddminus0.20_dsminus0.40.jpg"
+      },
+      {
+        "id": "ddminus0.20_dsminus0.20",
+        "delta": {
+          "dof": -0.2,
+          "slope": -0.2
+        },
+        "end": null,
+        "panel_path": "panel_ddminus0.20_dsminus0.20.jpg"
+      },
+      {
+        "id": "ddminus0.20_dsplus0.00",
+        "delta": {
+          "dof": -0.2,
+          "slope": 0.0
+        },
+        "end": null,
+        "panel_path": "panel_ddminus0.20_dsplus0.00.jpg"
+      },
+      {
+        "id": "ddminus0.20_dsplus0.20",
+        "delta": {
+          "dof": -0.2,
+          "slope": 0.2
+        },
+        "end": null,
+        "panel_path": "panel_ddminus0.20_dsplus0.20.jpg"
+      },
+      {
+        "id": "ddminus0.20_dsplus0.40",
+        "delta": {
+          "dof": -0.2,
+          "slope": 0.4
+        },
+        "end": null,
+        "panel_path": "panel_ddminus0.20_dsplus0.40.jpg"
+      },
+      {
+        "id": "ddminus0.20_dsplus0.60",
+        "delta": {
+          "dof": -0.2,
+          "slope": 0.6
+        },
+        "end": null,
+        "panel_path": "panel_ddminus0.20_dsplus0.60.jpg"
+      },
+      {
+        "id": "ddminus0.20_dsplus0.80",
+        "delta": {
+          "dof": -0.2,
+          "slope": 0.8
+        },
+        "end": null,
+        "panel_path": "panel_ddminus0.20_dsplus0.80.jpg"
+      },
+      {
+        "id": "ddminus0.20_dsplus1.00",
+        "delta": {
+          "dof": -0.2,
+          "slope": 1.0
+        },
+        "end": null,
+        "panel_path": "panel_ddminus0.20_dsplus1.00.jpg"
+      },
+      {
+        "id": "ddminus0.20_dsplus1.20",
+        "delta": {
+          "dof": -0.2,
+          "slope": 1.2
+        },
+        "end": null,
+        "panel_path": "panel_ddminus0.20_dsplus1.20.jpg"
+      },
+      {
+        "id": "ddminus0.20_dsplus1.40",
+        "delta": {
+          "dof": -0.2,
+          "slope": 1.4
+        },
+        "end": null,
+        "panel_path": "panel_ddminus0.20_dsplus1.40.jpg"
+      },
+      {
+        "id": "ddminus0.20_dsplus1.60",
+        "delta": {
+          "dof": -0.2,
+          "slope": 1.6
+        },
+        "end": null,
+        "panel_path": "panel_ddminus0.20_dsplus1.60.jpg"
+      },
+      {
+        "id": "ddplus0.00_dsminus1.20",
+        "delta": {
+          "dof": 0.0,
+          "slope": -1.2
+        },
+        "end": null,
+        "panel_path": "panel_ddplus0.00_dsminus1.20.jpg"
+      },
+      {
+        "id": "ddplus0.00_dsminus1.00",
+        "delta": {
+          "dof": 0.0,
+          "slope": -1.0
+        },
+        "end": null,
+        "panel_path": "panel_ddplus0.00_dsminus1.00.jpg"
+      },
+      {
+        "id": "ddplus0.00_dsminus0.80",
+        "delta": {
+          "dof": 0.0,
+          "slope": -0.8
+        },
+        "end": null,
+        "panel_path": "panel_ddplus0.00_dsminus0.80.jpg"
+      },
+      {
+        "id": "ddplus0.00_dsminus0.60",
+        "delta": {
+          "dof": 0.0,
+          "slope": -0.6
+        },
+        "end": null,
+        "panel_path": "panel_ddplus0.00_dsminus0.60.jpg"
+      },
+      {
+        "id": "ddplus0.00_dsminus0.40",
+        "delta": {
+          "dof": 0.0,
+          "slope": -0.4
+        },
+        "end": null,
+        "panel_path": "panel_ddplus0.00_dsminus0.40.jpg"
+      },
+      {
+        "id": "ddplus0.00_dsminus0.20",
+        "delta": {
+          "dof": 0.0,
+          "slope": -0.2
+        },
+        "end": null,
+        "panel_path": "panel_ddplus0.00_dsminus0.20.jpg"
+      },
+      {
+        "id": "ddplus0.00_dsplus0.20",
+        "delta": {
+          "dof": 0.0,
+          "slope": 0.2
+        },
+        "end": null,
+        "panel_path": "panel_ddplus0.00_dsplus0.20.jpg"
+      },
+      {
+        "id": "ddplus0.00_dsplus0.40",
+        "delta": {
+          "dof": 0.0,
+          "slope": 0.4
+        },
+        "end": null,
+        "panel_path": "panel_ddplus0.00_dsplus0.40.jpg"
+      },
+      {
+        "id": "ddplus0.00_dsplus0.60",
+        "delta": {
+          "dof": 0.0,
+          "slope": 0.6
+        },
+        "end": null,
+        "panel_path": "panel_ddplus0.00_dsplus0.60.jpg"
+      },
+      {
+        "id": "ddplus0.00_dsplus0.80",
+        "delta": {
+          "dof": 0.0,
+          "slope": 0.8
+        },
+        "end": null,
+        "panel_path": "panel_ddplus0.00_dsplus0.80.jpg"
+      },
+      {
+        "id": "ddplus0.00_dsplus1.00",
+        "delta": {
+          "dof": 0.0,
+          "slope": 1.0
+        },
+        "end": null,
+        "panel_path": "panel_ddplus0.00_dsplus1.00.jpg"
+      },
+      {
+        "id": "ddplus0.00_dsplus1.20",
+        "delta": {
+          "dof": 0.0,
+          "slope": 1.2
+        },
+        "end": null,
+        "panel_path": "panel_ddplus0.00_dsplus1.20.jpg"
+      },
+      {
+        "id": "ddplus0.00_dsplus1.40",
+        "delta": {
+          "dof": 0.0,
+          "slope": 1.4
+        },
+        "end": null,
+        "panel_path": "panel_ddplus0.00_dsplus1.40.jpg"
+      },
+      {
+        "id": "ddplus0.00_dsplus1.60",
+        "delta": {
+          "dof": 0.0,
+          "slope": 1.6
+        },
+        "end": null,
+        "panel_path": "panel_ddplus0.00_dsplus1.60.jpg"
+      },
+      {
+        "id": "ddplus0.20_dsminus1.20",
+        "delta": {
+          "dof": 0.2,
+          "slope": -1.2
+        },
+        "end": null,
+        "panel_path": "panel_ddplus0.20_dsminus1.20.jpg"
+      },
+      {
+        "id": "ddplus0.20_dsminus1.00",
+        "delta": {
+          "dof": 0.2,
+          "slope": -1.0
+        },
+        "end": null,
+        "panel_path": "panel_ddplus0.20_dsminus1.00.jpg"
+      },
+      {
+        "id": "ddplus0.20_dsminus0.80",
+        "delta": {
+          "dof": 0.2,
+          "slope": -0.8
+        },
+        "end": null,
+        "panel_path": "panel_ddplus0.20_dsminus0.80.jpg"
+      },
+      {
+        "id": "ddplus0.20_dsminus0.60",
+        "delta": {
+          "dof": 0.2,
+          "slope": -0.6
+        },
+        "end": null,
+        "panel_path": "panel_ddplus0.20_dsminus0.60.jpg"
+      },
+      {
+        "id": "ddplus0.20_dsminus0.40",
+        "delta": {
+          "dof": 0.2,
+          "slope": -0.4
+        },
+        "end": null,
+        "panel_path": "panel_ddplus0.20_dsminus0.40.jpg"
+      },
+      {
+        "id": "ddplus0.20_dsminus0.20",
+        "delta": {
+          "dof": 0.2,
+          "slope": -0.2
+        },
+        "end": null,
+        "panel_path": "panel_ddplus0.20_dsminus0.20.jpg"
+      },
+      {
+        "id": "ddplus0.20_dsplus0.00",
+        "delta": {
+          "dof": 0.2,
+          "slope": 0.0
+        },
+        "end": null,
+        "panel_path": "panel_ddplus0.20_dsplus0.00.jpg"
+      },
+      {
+        "id": "ddplus0.20_dsplus0.20",
+        "delta": {
+          "dof": 0.2,
+          "slope": 0.2
+        },
+        "end": null,
+        "panel_path": "panel_ddplus0.20_dsplus0.20.jpg"
+      },
+      {
+        "id": "ddplus0.20_dsplus0.40",
+        "delta": {
+          "dof": 0.2,
+          "slope": 0.4
+        },
+        "end": null,
+        "panel_path": "panel_ddplus0.20_dsplus0.40.jpg"
+      },
+      {
+        "id": "ddplus0.20_dsplus0.60",
+        "delta": {
+          "dof": 0.2,
+          "slope": 0.6
+        },
+        "end": null,
+        "panel_path": "panel_ddplus0.20_dsplus0.60.jpg"
+      },
+      {
+        "id": "ddplus0.20_dsplus0.80",
+        "delta": {
+          "dof": 0.2,
+          "slope": 0.8
+        },
+        "end": null,
+        "panel_path": "panel_ddplus0.20_dsplus0.80.jpg"
+      },
+      {
+        "id": "ddplus0.20_dsplus1.00",
+        "delta": {
+          "dof": 0.2,
+          "slope": 1.0
+        },
+        "end": null,
+        "panel_path": "panel_ddplus0.20_dsplus1.00.jpg"
+      },
+      {
+        "id": "ddplus0.20_dsplus1.20",
+        "delta": {
+          "dof": 0.2,
+          "slope": 1.2
+        },
+        "end": null,
+        "panel_path": "panel_ddplus0.20_dsplus1.20.jpg"
+      },
+      {
+        "id": "ddplus0.20_dsplus1.40",
+        "delta": {
+          "dof": 0.2,
+          "slope": 1.4
+        },
+        "end": null,
+        "panel_path": "panel_ddplus0.20_dsplus1.40.jpg"
+      },
+      {
+        "id": "ddplus0.20_dsplus1.60",
+        "delta": {
+          "dof": 0.2,
+          "slope": 1.6
+        },
+        "end": null,
+        "panel_path": "panel_ddplus0.20_dsplus1.60.jpg"
+      },
+      {
+        "id": "ddplus0.40_dsminus1.20",
+        "delta": {
+          "dof": 0.4,
+          "slope": -1.2
+        },
+        "end": null,
+        "panel_path": "panel_ddplus0.40_dsminus1.20.jpg"
+      },
+      {
+        "id": "ddplus0.40_dsminus1.00",
+        "delta": {
+          "dof": 0.4,
+          "slope": -1.0
+        },
+        "end": null,
+        "panel_path": "panel_ddplus0.40_dsminus1.00.jpg"
+      },
+      {
+        "id": "ddplus0.40_dsminus0.80",
+        "delta": {
+          "dof": 0.4,
+          "slope": -0.8
+        },
+        "end": null,
+        "panel_path": "panel_ddplus0.40_dsminus0.80.jpg"
+      },
+      {
+        "id": "ddplus0.40_dsminus0.60",
+        "delta": {
+          "dof": 0.4,
+          "slope": -0.6
+        },
+        "end": null,
+        "panel_path": "panel_ddplus0.40_dsminus0.60.jpg"
+      },
+      {
+        "id": "ddplus0.40_dsminus0.40",
+        "delta": {
+          "dof": 0.4,
+          "slope": -0.4
+        },
+        "end": null,
+        "panel_path": "panel_ddplus0.40_dsminus0.40.jpg"
+      },
+      {
+        "id": "ddplus0.40_dsminus0.20",
+        "delta": {
+          "dof": 0.4,
+          "slope": -0.2
+        },
+        "end": null,
+        "panel_path": "panel_ddplus0.40_dsminus0.20.jpg"
+      },
+      {
+        "id": "ddplus0.40_dsplus0.00",
+        "delta": {
+          "dof": 0.4,
+          "slope": 0.0
+        },
+        "end": null,
+        "panel_path": "panel_ddplus0.40_dsplus0.00.jpg"
+      },
+      {
+        "id": "ddplus0.40_dsplus0.20",
+        "delta": {
+          "dof": 0.4,
+          "slope": 0.2
+        },
+        "end": null,
+        "panel_path": "panel_ddplus0.40_dsplus0.20.jpg"
+      },
+      {
+        "id": "ddplus0.40_dsplus0.40",
+        "delta": {
+          "dof": 0.4,
+          "slope": 0.4
+        },
+        "end": null,
+        "panel_path": "panel_ddplus0.40_dsplus0.40.jpg"
+      },
+      {
+        "id": "ddplus0.40_dsplus0.60",
+        "delta": {
+          "dof": 0.4,
+          "slope": 0.6
+        },
+        "end": null,
+        "panel_path": "panel_ddplus0.40_dsplus0.60.jpg"
+      },
+      {
+        "id": "ddplus0.40_dsplus0.80",
+        "delta": {
+          "dof": 0.4,
+          "slope": 0.8
+        },
+        "end": null,
+        "panel_path": "panel_ddplus0.40_dsplus0.80.jpg"
+      },
+      {
+        "id": "ddplus0.40_dsplus1.00",
+        "delta": {
+          "dof": 0.4,
+          "slope": 1.0
+        },
+        "end": null,
+        "panel_path": "panel_ddplus0.40_dsplus1.00.jpg"
+      },
+      {
+        "id": "ddplus0.40_dsplus1.20",
+        "delta": {
+          "dof": 0.4,
+          "slope": 1.2
+        },
+        "end": null,
+        "panel_path": "panel_ddplus0.40_dsplus1.20.jpg"
+      },
+      {
+        "id": "ddplus0.40_dsplus1.40",
+        "delta": {
+          "dof": 0.4,
+          "slope": 1.4
+        },
+        "end": null,
+        "panel_path": "panel_ddplus0.40_dsplus1.40.jpg"
+      },
+      {
+        "id": "ddplus0.40_dsplus1.60",
+        "delta": {
+          "dof": 0.4,
+          "slope": 1.6
+        },
+        "end": null,
+        "panel_path": "panel_ddplus0.40_dsplus1.60.jpg"
+      },
+      {
+        "id": "ddplus0.60_dsminus1.20",
+        "delta": {
+          "dof": 0.6,
+          "slope": -1.2
+        },
+        "end": null,
+        "panel_path": "panel_ddplus0.60_dsminus1.20.jpg"
+      },
+      {
+        "id": "ddplus0.60_dsminus1.00",
+        "delta": {
+          "dof": 0.6,
+          "slope": -1.0
+        },
+        "end": null,
+        "panel_path": "panel_ddplus0.60_dsminus1.00.jpg"
+      },
+      {
+        "id": "ddplus0.60_dsminus0.80",
+        "delta": {
+          "dof": 0.6,
+          "slope": -0.8
+        },
+        "end": null,
+        "panel_path": "panel_ddplus0.60_dsminus0.80.jpg"
+      },
+      {
+        "id": "ddplus0.60_dsminus0.60",
+        "delta": {
+          "dof": 0.6,
+          "slope": -0.6
+        },
+        "end": null,
+        "panel_path": "panel_ddplus0.60_dsminus0.60.jpg"
+      },
+      {
+        "id": "ddplus0.60_dsminus0.40",
+        "delta": {
+          "dof": 0.6,
+          "slope": -0.4
+        },
+        "end": null,
+        "panel_path": "panel_ddplus0.60_dsminus0.40.jpg"
+      },
+      {
+        "id": "ddplus0.60_dsminus0.20",
+        "delta": {
+          "dof": 0.6,
+          "slope": -0.2
+        },
+        "end": null,
+        "panel_path": "panel_ddplus0.60_dsminus0.20.jpg"
+      },
+      {
+        "id": "ddplus0.60_dsplus0.00",
+        "delta": {
+          "dof": 0.6,
+          "slope": 0.0
+        },
+        "end": null,
+        "panel_path": "panel_ddplus0.60_dsplus0.00.jpg"
+      },
+      {
+        "id": "ddplus0.60_dsplus0.20",
+        "delta": {
+          "dof": 0.6,
+          "slope": 0.2
+        },
+        "end": null,
+        "panel_path": "panel_ddplus0.60_dsplus0.20.jpg"
+      },
+      {
+        "id": "ddplus0.60_dsplus0.40",
+        "delta": {
+          "dof": 0.6,
+          "slope": 0.4
+        },
+        "end": null,
+        "panel_path": "panel_ddplus0.60_dsplus0.40.jpg"
+      },
+      {
+        "id": "ddplus0.60_dsplus0.60",
+        "delta": {
+          "dof": 0.6,
+          "slope": 0.6
+        },
+        "end": null,
+        "panel_path": "panel_ddplus0.60_dsplus0.60.jpg"
+      },
+      {
+        "id": "ddplus0.60_dsplus0.80",
+        "delta": {
+          "dof": 0.6,
+          "slope": 0.8
+        },
+        "end": null,
+        "panel_path": "panel_ddplus0.60_dsplus0.80.jpg"
+      },
+      {
+        "id": "ddplus0.60_dsplus1.00",
+        "delta": {
+          "dof": 0.6,
+          "slope": 1.0
+        },
+        "end": null,
+        "panel_path": "panel_ddplus0.60_dsplus1.00.jpg"
+      },
+      {
+        "id": "ddplus0.60_dsplus1.20",
+        "delta": {
+          "dof": 0.6,
+          "slope": 1.2
+        },
+        "end": null,
+        "panel_path": "panel_ddplus0.60_dsplus1.20.jpg"
+      },
+      {
+        "id": "ddplus0.60_dsplus1.40",
+        "delta": {
+          "dof": 0.6,
+          "slope": 1.4
+        },
+        "end": null,
+        "panel_path": "panel_ddplus0.60_dsplus1.40.jpg"
+      },
+      {
+        "id": "ddplus0.60_dsplus1.60",
+        "delta": {
+          "dof": 0.6,
+          "slope": 1.6
+        },
+        "end": null,
+        "panel_path": "panel_ddplus0.60_dsplus1.60.jpg"
+      },
+      {
+        "id": "ddplus0.80_dsminus1.20",
+        "delta": {
+          "dof": 0.8,
+          "slope": -1.2
+        },
+        "end": null,
+        "panel_path": "panel_ddplus0.80_dsminus1.20.jpg"
+      },
+      {
+        "id": "ddplus0.80_dsminus1.00",
+        "delta": {
+          "dof": 0.8,
+          "slope": -1.0
+        },
+        "end": null,
+        "panel_path": "panel_ddplus0.80_dsminus1.00.jpg"
+      },
+      {
+        "id": "ddplus0.80_dsminus0.80",
+        "delta": {
+          "dof": 0.8,
+          "slope": -0.8
+        },
+        "end": null,
+        "panel_path": "panel_ddplus0.80_dsminus0.80.jpg"
+      },
+      {
+        "id": "ddplus0.80_dsminus0.60",
+        "delta": {
+          "dof": 0.8,
+          "slope": -0.6
+        },
+        "end": null,
+        "panel_path": "panel_ddplus0.80_dsminus0.60.jpg"
+      },
+      {
+        "id": "ddplus0.80_dsminus0.40",
+        "delta": {
+          "dof": 0.8,
+          "slope": -0.4
+        },
+        "end": null,
+        "panel_path": "panel_ddplus0.80_dsminus0.40.jpg"
+      },
+      {
+        "id": "ddplus0.80_dsminus0.20",
+        "delta": {
+          "dof": 0.8,
+          "slope": -0.2
+        },
+        "end": null,
+        "panel_path": "panel_ddplus0.80_dsminus0.20.jpg"
+      },
+      {
+        "id": "ddplus0.80_dsplus0.00",
+        "delta": {
+          "dof": 0.8,
+          "slope": 0.0
+        },
+        "end": null,
+        "panel_path": "panel_ddplus0.80_dsplus0.00.jpg"
+      },
+      {
+        "id": "ddplus0.80_dsplus0.20",
+        "delta": {
+          "dof": 0.8,
+          "slope": 0.2
+        },
+        "end": null,
+        "panel_path": "panel_ddplus0.80_dsplus0.20.jpg"
+      },
+      {
+        "id": "ddplus0.80_dsplus0.40",
+        "delta": {
+          "dof": 0.8,
+          "slope": 0.4
+        },
+        "end": null,
+        "panel_path": "panel_ddplus0.80_dsplus0.40.jpg"
+      },
+      {
+        "id": "ddplus0.80_dsplus0.60",
+        "delta": {
+          "dof": 0.8,
+          "slope": 0.6
+        },
+        "end": null,
+        "panel_path": "panel_ddplus0.80_dsplus0.60.jpg"
+      },
+      {
+        "id": "ddplus0.80_dsplus0.80",
+        "delta": {
+          "dof": 0.8,
+          "slope": 0.8
+        },
+        "end": null,
+        "panel_path": "panel_ddplus0.80_dsplus0.80.jpg"
+      },
+      {
+        "id": "ddplus0.80_dsplus1.00",
+        "delta": {
+          "dof": 0.8,
+          "slope": 1.0
+        },
+        "end": null,
+        "panel_path": "panel_ddplus0.80_dsplus1.00.jpg"
+      },
+      {
+        "id": "ddplus0.80_dsplus1.20",
+        "delta": {
+          "dof": 0.8,
+          "slope": 1.2
+        },
+        "end": null,
+        "panel_path": "panel_ddplus0.80_dsplus1.20.jpg"
+      },
+      {
+        "id": "ddplus0.80_dsplus1.40",
+        "delta": {
+          "dof": 0.8,
+          "slope": 1.4
+        },
+        "end": null,
+        "panel_path": "panel_ddplus0.80_dsplus1.40.jpg"
+      },
+      {
+        "id": "ddplus0.80_dsplus1.60",
+        "delta": {
+          "dof": 0.8,
+          "slope": 1.6
+        },
+        "end": null,
+        "panel_path": "panel_ddplus0.80_dsplus1.60.jpg"
+      },
+      {
+        "id": "ddplus1.00_dsminus1.20",
+        "delta": {
+          "dof": 1.0,
+          "slope": -1.2
+        },
+        "end": null,
+        "panel_path": "panel_ddplus1.00_dsminus1.20.jpg"
+      },
+      {
+        "id": "ddplus1.00_dsminus1.00",
+        "delta": {
+          "dof": 1.0,
+          "slope": -1.0
+        },
+        "end": null,
+        "panel_path": "panel_ddplus1.00_dsminus1.00.jpg"
+      },
+      {
+        "id": "ddplus1.00_dsminus0.80",
+        "delta": {
+          "dof": 1.0,
+          "slope": -0.8
+        },
+        "end": null,
+        "panel_path": "panel_ddplus1.00_dsminus0.80.jpg"
+      },
+      {
+        "id": "ddplus1.00_dsminus0.60",
+        "delta": {
+          "dof": 1.0,
+          "slope": -0.6
+        },
+        "end": null,
+        "panel_path": "panel_ddplus1.00_dsminus0.60.jpg"
+      },
+      {
+        "id": "ddplus1.00_dsminus0.40",
+        "delta": {
+          "dof": 1.0,
+          "slope": -0.4
+        },
+        "end": null,
+        "panel_path": "panel_ddplus1.00_dsminus0.40.jpg"
+      },
+      {
+        "id": "ddplus1.00_dsminus0.20",
+        "delta": {
+          "dof": 1.0,
+          "slope": -0.2
+        },
+        "end": null,
+        "panel_path": "panel_ddplus1.00_dsminus0.20.jpg"
+      },
+      {
+        "id": "ddplus1.00_dsplus0.00",
+        "delta": {
+          "dof": 1.0,
+          "slope": 0.0
+        },
+        "end": null,
+        "panel_path": "panel_ddplus1.00_dsplus0.00.jpg"
+      },
+      {
+        "id": "ddplus1.00_dsplus0.20",
+        "delta": {
+          "dof": 1.0,
+          "slope": 0.2
+        },
+        "end": null,
+        "panel_path": "panel_ddplus1.00_dsplus0.20.jpg"
+      },
+      {
+        "id": "ddplus1.00_dsplus0.40",
+        "delta": {
+          "dof": 1.0,
+          "slope": 0.4
+        },
+        "end": null,
+        "panel_path": "panel_ddplus1.00_dsplus0.40.jpg"
+      },
+      {
+        "id": "ddplus1.00_dsplus0.60",
+        "delta": {
+          "dof": 1.0,
+          "slope": 0.6
+        },
+        "end": null,
+        "panel_path": "panel_ddplus1.00_dsplus0.60.jpg"
+      },
+      {
+        "id": "ddplus1.00_dsplus0.80",
+        "delta": {
+          "dof": 1.0,
+          "slope": 0.8
+        },
+        "end": null,
+        "panel_path": "panel_ddplus1.00_dsplus0.80.jpg"
+      },
+      {
+        "id": "ddplus1.00_dsplus1.00",
+        "delta": {
+          "dof": 1.0,
+          "slope": 1.0
+        },
+        "end": null,
+        "panel_path": "panel_ddplus1.00_dsplus1.00.jpg"
+      },
+      {
+        "id": "ddplus1.00_dsplus1.20",
+        "delta": {
+          "dof": 1.0,
+          "slope": 1.2
+        },
+        "end": null,
+        "panel_path": "panel_ddplus1.00_dsplus1.20.jpg"
+      },
+      {
+        "id": "ddplus1.00_dsplus1.40",
+        "delta": {
+          "dof": 1.0,
+          "slope": 1.4
+        },
+        "end": null,
+        "panel_path": "panel_ddplus1.00_dsplus1.40.jpg"
+      },
+      {
+        "id": "ddplus1.00_dsplus1.60",
+        "delta": {
+          "dof": 1.0,
+          "slope": 1.6
+        },
+        "end": null,
+        "panel_path": "panel_ddplus1.00_dsplus1.60.jpg"
+      },
+      {
+        "id": "ddplus1.20_dsminus1.20",
+        "delta": {
+          "dof": 1.2,
+          "slope": -1.2
+        },
+        "end": null,
+        "panel_path": "panel_ddplus1.20_dsminus1.20.jpg"
+      },
+      {
+        "id": "ddplus1.20_dsminus1.00",
+        "delta": {
+          "dof": 1.2,
+          "slope": -1.0
+        },
+        "end": null,
+        "panel_path": "panel_ddplus1.20_dsminus1.00.jpg"
+      },
+      {
+        "id": "ddplus1.20_dsminus0.80",
+        "delta": {
+          "dof": 1.2,
+          "slope": -0.8
+        },
+        "end": null,
+        "panel_path": "panel_ddplus1.20_dsminus0.80.jpg"
+      },
+      {
+        "id": "ddplus1.20_dsminus0.60",
+        "delta": {
+          "dof": 1.2,
+          "slope": -0.6
+        },
+        "end": null,
+        "panel_path": "panel_ddplus1.20_dsminus0.60.jpg"
+      },
+      {
+        "id": "ddplus1.20_dsminus0.40",
+        "delta": {
+          "dof": 1.2,
+          "slope": -0.4
+        },
+        "end": null,
+        "panel_path": "panel_ddplus1.20_dsminus0.40.jpg"
+      },
+      {
+        "id": "ddplus1.20_dsminus0.20",
+        "delta": {
+          "dof": 1.2,
+          "slope": -0.2
+        },
+        "end": null,
+        "panel_path": "panel_ddplus1.20_dsminus0.20.jpg"
+      },
+      {
+        "id": "ddplus1.20_dsplus0.00",
+        "delta": {
+          "dof": 1.2,
+          "slope": 0.0
+        },
+        "end": null,
+        "panel_path": "panel_ddplus1.20_dsplus0.00.jpg"
+      },
+      {
+        "id": "ddplus1.20_dsplus0.20",
+        "delta": {
+          "dof": 1.2,
+          "slope": 0.2
+        },
+        "end": null,
+        "panel_path": "panel_ddplus1.20_dsplus0.20.jpg"
+      },
+      {
+        "id": "ddplus1.20_dsplus0.40",
+        "delta": {
+          "dof": 1.2,
+          "slope": 0.4
+        },
+        "end": null,
+        "panel_path": "panel_ddplus1.20_dsplus0.40.jpg"
+      },
+      {
+        "id": "ddplus1.20_dsplus0.60",
+        "delta": {
+          "dof": 1.2,
+          "slope": 0.6
+        },
+        "end": null,
+        "panel_path": "panel_ddplus1.20_dsplus0.60.jpg"
+      },
+      {
+        "id": "ddplus1.20_dsplus0.80",
+        "delta": {
+          "dof": 1.2,
+          "slope": 0.8
+        },
+        "end": null,
+        "panel_path": "panel_ddplus1.20_dsplus0.80.jpg"
+      },
+      {
+        "id": "ddplus1.20_dsplus1.00",
+        "delta": {
+          "dof": 1.2,
+          "slope": 1.0
+        },
+        "end": null,
+        "panel_path": "panel_ddplus1.20_dsplus1.00.jpg"
+      },
+      {
+        "id": "ddplus1.20_dsplus1.20",
+        "delta": {
+          "dof": 1.2,
+          "slope": 1.2
+        },
+        "end": null,
+        "panel_path": "panel_ddplus1.20_dsplus1.20.jpg"
+      },
+      {
+        "id": "ddplus1.20_dsplus1.40",
+        "delta": {
+          "dof": 1.2,
+          "slope": 1.4
+        },
+        "end": null,
+        "panel_path": "panel_ddplus1.20_dsplus1.40.jpg"
+      },
+      {
+        "id": "ddplus1.20_dsplus1.60",
+        "delta": {
+          "dof": 1.2,
+          "slope": 1.6
+        },
+        "end": null,
+        "panel_path": "panel_ddplus1.20_dsplus1.60.jpg"
+      },
+      {
+        "id": "ddplus1.40_dsminus1.20",
+        "delta": {
+          "dof": 1.4,
+          "slope": -1.2
+        },
+        "end": null,
+        "panel_path": "panel_ddplus1.40_dsminus1.20.jpg"
+      },
+      {
+        "id": "ddplus1.40_dsminus1.00",
+        "delta": {
+          "dof": 1.4,
+          "slope": -1.0
+        },
+        "end": null,
+        "panel_path": "panel_ddplus1.40_dsminus1.00.jpg"
+      },
+      {
+        "id": "ddplus1.40_dsminus0.80",
+        "delta": {
+          "dof": 1.4,
+          "slope": -0.8
+        },
+        "end": null,
+        "panel_path": "panel_ddplus1.40_dsminus0.80.jpg"
+      },
+      {
+        "id": "ddplus1.40_dsminus0.60",
+        "delta": {
+          "dof": 1.4,
+          "slope": -0.6
+        },
+        "end": null,
+        "panel_path": "panel_ddplus1.40_dsminus0.60.jpg"
+      },
+      {
+        "id": "ddplus1.40_dsminus0.40",
+        "delta": {
+          "dof": 1.4,
+          "slope": -0.4
+        },
+        "end": null,
+        "panel_path": "panel_ddplus1.40_dsminus0.40.jpg"
+      },
+      {
+        "id": "ddplus1.40_dsminus0.20",
+        "delta": {
+          "dof": 1.4,
+          "slope": -0.2
+        },
+        "end": null,
+        "panel_path": "panel_ddplus1.40_dsminus0.20.jpg"
+      },
+      {
+        "id": "ddplus1.40_dsplus0.00",
+        "delta": {
+          "dof": 1.4,
+          "slope": 0.0
+        },
+        "end": null,
+        "panel_path": "panel_ddplus1.40_dsplus0.00.jpg"
+      },
+      {
+        "id": "ddplus1.40_dsplus0.20",
+        "delta": {
+          "dof": 1.4,
+          "slope": 0.2
+        },
+        "end": null,
+        "panel_path": "panel_ddplus1.40_dsplus0.20.jpg"
+      },
+      {
+        "id": "ddplus1.40_dsplus0.40",
+        "delta": {
+          "dof": 1.4,
+          "slope": 0.4
+        },
+        "end": null,
+        "panel_path": "panel_ddplus1.40_dsplus0.40.jpg"
+      },
+      {
+        "id": "ddplus1.40_dsplus0.60",
+        "delta": {
+          "dof": 1.4,
+          "slope": 0.6
+        },
+        "end": null,
+        "panel_path": "panel_ddplus1.40_dsplus0.60.jpg"
+      },
+      {
+        "id": "ddplus1.40_dsplus0.80",
+        "delta": {
+          "dof": 1.4,
+          "slope": 0.8
+        },
+        "end": null,
+        "panel_path": "panel_ddplus1.40_dsplus0.80.jpg"
+      },
+      {
+        "id": "ddplus1.40_dsplus1.00",
+        "delta": {
+          "dof": 1.4,
+          "slope": 1.0
+        },
+        "end": null,
+        "panel_path": "panel_ddplus1.40_dsplus1.00.jpg"
+      },
+      {
+        "id": "ddplus1.40_dsplus1.20",
+        "delta": {
+          "dof": 1.4,
+          "slope": 1.2
+        },
+        "end": null,
+        "panel_path": "panel_ddplus1.40_dsplus1.20.jpg"
+      },
+      {
+        "id": "ddplus1.40_dsplus1.40",
+        "delta": {
+          "dof": 1.4,
+          "slope": 1.4
+        },
+        "end": null,
+        "panel_path": "panel_ddplus1.40_dsplus1.40.jpg"
+      },
+      {
+        "id": "ddplus1.40_dsplus1.60",
+        "delta": {
+          "dof": 1.4,
+          "slope": 1.6
+        },
+        "end": null,
+        "panel_path": "panel_ddplus1.40_dsplus1.60.jpg"
+      }
     ]
   },
 
   scene2: {
     basePath: "./static/Our_Res_Playground/Case_02_Sparse/images",
     records: [
-    {
-      "id": "ddminus0.80_dsminus1.80",
-      "delta": {
-        "dof": -0.8,
-        "slope": -1.8
-      },
-      "end": null,
-      "panel_path": "panel_ddminus0.80_dsminus1.80.jpg"
-    },
-    {
-      "id": "ddminus0.80_dsminus1.60",
-      "delta": {
-        "dof": -0.8,
-        "slope": -1.6
-      },
-      "end": null,
-      "panel_path": "panel_ddminus0.80_dsminus1.60.jpg"
-    },
-    {
-      "id": "ddminus0.80_dsminus1.40",
-      "delta": {
-        "dof": -0.8,
-        "slope": -1.4
-      },
-      "end": null,
-      "panel_path": "panel_ddminus0.80_dsminus1.40.jpg"
-    },
-    {
-      "id": "ddminus0.80_dsminus1.20",
-      "delta": {
-        "dof": -0.8,
-        "slope": -1.2
-      },
-      "end": null,
-      "panel_path": "panel_ddminus0.80_dsminus1.20.jpg"
-    },
-    {
-      "id": "ddminus0.80_dsminus1.00",
-      "delta": {
-        "dof": -0.8,
-        "slope": -1.0
-      },
-      "end": null,
-      "panel_path": "panel_ddminus0.80_dsminus1.00.jpg"
-    },
-    {
-      "id": "ddminus0.80_dsminus0.80",
-      "delta": {
-        "dof": -0.8,
-        "slope": -0.8
-      },
-      "end": null,
-      "panel_path": "panel_ddminus0.80_dsminus0.80.jpg"
-    },
-    {
-      "id": "ddminus0.80_dsminus0.60",
-      "delta": {
-        "dof": -0.8,
-        "slope": -0.6
-      },
-      "end": null,
-      "panel_path": "panel_ddminus0.80_dsminus0.60.jpg"
-    },
-    {
-      "id": "ddminus0.80_dsminus0.40",
-      "delta": {
-        "dof": -0.8,
-        "slope": -0.4
-      },
-      "end": null,
-      "panel_path": "panel_ddminus0.80_dsminus0.40.jpg"
-    },
-    {
-      "id": "ddminus0.80_dsminus0.20",
-      "delta": {
-        "dof": -0.8,
-        "slope": -0.2
-      },
-      "end": null,
-      "panel_path": "panel_ddminus0.80_dsminus0.20.jpg"
-    },
-    {
-      "id": "ddminus0.80_dsplus0.00",
-      "delta": {
-        "dof": -0.8,
-        "slope": 0.0
-      },
-      "end": null,
-      "panel_path": "panel_ddminus0.80_dsplus0.00.jpg"
-    },
-    {
-      "id": "ddminus0.80_dsplus0.20",
-      "delta": {
-        "dof": -0.8,
-        "slope": 0.2
-      },
-      "end": null,
-      "panel_path": "panel_ddminus0.80_dsplus0.20.jpg"
-    },
-    {
-      "id": "ddminus0.80_dsplus0.40",
-      "delta": {
-        "dof": -0.8,
-        "slope": 0.4
-      },
-      "end": null,
-      "panel_path": "panel_ddminus0.80_dsplus0.40.jpg"
-    },
-    {
-      "id": "ddminus0.80_dsplus0.60",
-      "delta": {
-        "dof": -0.8,
-        "slope": 0.6
-      },
-      "end": null,
-      "panel_path": "panel_ddminus0.80_dsplus0.60.jpg"
-    },
-    {
-      "id": "ddminus0.80_dsplus0.80",
-      "delta": {
-        "dof": -0.8,
-        "slope": 0.8
-      },
-      "end": null,
-      "panel_path": "panel_ddminus0.80_dsplus0.80.jpg"
-    },
-    {
-      "id": "ddminus0.60_dsminus1.80",
-      "delta": {
-        "dof": -0.6,
-        "slope": -1.8
-      },
-      "end": null,
-      "panel_path": "panel_ddminus0.60_dsminus1.80.jpg"
-    },
-    {
-      "id": "ddminus0.60_dsminus1.60",
-      "delta": {
-        "dof": -0.6,
-        "slope": -1.6
-      },
-      "end": null,
-      "panel_path": "panel_ddminus0.60_dsminus1.60.jpg"
-    },
-    {
-      "id": "ddminus0.60_dsminus1.40",
-      "delta": {
-        "dof": -0.6,
-        "slope": -1.4
-      },
-      "end": null,
-      "panel_path": "panel_ddminus0.60_dsminus1.40.jpg"
-    },
-    {
-      "id": "ddminus0.60_dsminus1.20",
-      "delta": {
-        "dof": -0.6,
-        "slope": -1.2
-      },
-      "end": null,
-      "panel_path": "panel_ddminus0.60_dsminus1.20.jpg"
-    },
-    {
-      "id": "ddminus0.60_dsminus1.00",
-      "delta": {
-        "dof": -0.6,
-        "slope": -1.0
-      },
-      "end": null,
-      "panel_path": "panel_ddminus0.60_dsminus1.00.jpg"
-    },
-    {
-      "id": "ddminus0.60_dsminus0.80",
-      "delta": {
-        "dof": -0.6,
-        "slope": -0.8
-      },
-      "end": null,
-      "panel_path": "panel_ddminus0.60_dsminus0.80.jpg"
-    },
-    {
-      "id": "ddminus0.60_dsminus0.60",
-      "delta": {
-        "dof": -0.6,
-        "slope": -0.6
-      },
-      "end": null,
-      "panel_path": "panel_ddminus0.60_dsminus0.60.jpg"
-    },
-    {
-      "id": "ddminus0.60_dsminus0.40",
-      "delta": {
-        "dof": -0.6,
-        "slope": -0.4
-      },
-      "end": null,
-      "panel_path": "panel_ddminus0.60_dsminus0.40.jpg"
-    },
-    {
-      "id": "ddminus0.60_dsminus0.20",
-      "delta": {
-        "dof": -0.6,
-        "slope": -0.2
-      },
-      "end": null,
-      "panel_path": "panel_ddminus0.60_dsminus0.20.jpg"
-    },
-    {
-      "id": "ddminus0.60_dsplus0.00",
-      "delta": {
-        "dof": -0.6,
-        "slope": 0.0
-      },
-      "end": null,
-      "panel_path": "panel_ddminus0.60_dsplus0.00.jpg"
-    },
-    {
-      "id": "ddminus0.60_dsplus0.20",
-      "delta": {
-        "dof": -0.6,
-        "slope": 0.2
-      },
-      "end": null,
-      "panel_path": "panel_ddminus0.60_dsplus0.20.jpg"
-    },
-    {
-      "id": "ddminus0.60_dsplus0.40",
-      "delta": {
-        "dof": -0.6,
-        "slope": 0.4
-      },
-      "end": null,
-      "panel_path": "panel_ddminus0.60_dsplus0.40.jpg"
-    },
-    {
-      "id": "ddminus0.60_dsplus0.60",
-      "delta": {
-        "dof": -0.6,
-        "slope": 0.6
-      },
-      "end": null,
-      "panel_path": "panel_ddminus0.60_dsplus0.60.jpg"
-    },
-    {
-      "id": "ddminus0.60_dsplus0.80",
-      "delta": {
-        "dof": -0.6,
-        "slope": 0.8
-      },
-      "end": null,
-      "panel_path": "panel_ddminus0.60_dsplus0.80.jpg"
-    },
-    {
-      "id": "ddminus0.40_dsminus1.80",
-      "delta": {
-        "dof": -0.4,
-        "slope": -1.8
-      },
-      "end": null,
-      "panel_path": "panel_ddminus0.40_dsminus1.80.jpg"
-    },
-    {
-      "id": "ddminus0.40_dsminus1.60",
-      "delta": {
-        "dof": -0.4,
-        "slope": -1.6
-      },
-      "end": null,
-      "panel_path": "panel_ddminus0.40_dsminus1.60.jpg"
-    },
-    {
-      "id": "ddminus0.40_dsminus1.40",
-      "delta": {
-        "dof": -0.4,
-        "slope": -1.4
-      },
-      "end": null,
-      "panel_path": "panel_ddminus0.40_dsminus1.40.jpg"
-    },
-    {
-      "id": "ddminus0.40_dsminus1.20",
-      "delta": {
-        "dof": -0.4,
-        "slope": -1.2
-      },
-      "end": null,
-      "panel_path": "panel_ddminus0.40_dsminus1.20.jpg"
-    },
-    {
-      "id": "ddminus0.40_dsminus1.00",
-      "delta": {
-        "dof": -0.4,
-        "slope": -1.0
-      },
-      "end": null,
-      "panel_path": "panel_ddminus0.40_dsminus1.00.jpg"
-    },
-    {
-      "id": "ddminus0.40_dsminus0.80",
-      "delta": {
-        "dof": -0.4,
-        "slope": -0.8
-      },
-      "end": null,
-      "panel_path": "panel_ddminus0.40_dsminus0.80.jpg"
-    },
-    {
-      "id": "ddminus0.40_dsminus0.60",
-      "delta": {
-        "dof": -0.4,
-        "slope": -0.6
-      },
-      "end": null,
-      "panel_path": "panel_ddminus0.40_dsminus0.60.jpg"
-    },
-    {
-      "id": "ddminus0.40_dsminus0.40",
-      "delta": {
-        "dof": -0.4,
-        "slope": -0.4
-      },
-      "end": null,
-      "panel_path": "panel_ddminus0.40_dsminus0.40.jpg"
-    },
-    {
-      "id": "ddminus0.40_dsminus0.20",
-      "delta": {
-        "dof": -0.4,
-        "slope": -0.2
-      },
-      "end": null,
-      "panel_path": "panel_ddminus0.40_dsminus0.20.jpg"
-    },
-    {
-      "id": "ddminus0.40_dsplus0.00",
-      "delta": {
-        "dof": -0.4,
-        "slope": 0.0
-      },
-      "end": null,
-      "panel_path": "panel_ddminus0.40_dsplus0.00.jpg"
-    },
-    {
-      "id": "ddminus0.40_dsplus0.20",
-      "delta": {
-        "dof": -0.4,
-        "slope": 0.2
-      },
-      "end": null,
-      "panel_path": "panel_ddminus0.40_dsplus0.20.jpg"
-    },
-    {
-      "id": "ddminus0.40_dsplus0.40",
-      "delta": {
-        "dof": -0.4,
-        "slope": 0.4
-      },
-      "end": null,
-      "panel_path": "panel_ddminus0.40_dsplus0.40.jpg"
-    },
-    {
-      "id": "ddminus0.40_dsplus0.60",
-      "delta": {
-        "dof": -0.4,
-        "slope": 0.6
-      },
-      "end": null,
-      "panel_path": "panel_ddminus0.40_dsplus0.60.jpg"
-    },
-    {
-      "id": "ddminus0.40_dsplus0.80",
-      "delta": {
-        "dof": -0.4,
-        "slope": 0.8
-      },
-      "end": null,
-      "panel_path": "panel_ddminus0.40_dsplus0.80.jpg"
-    },
-    {
-      "id": "ddminus0.20_dsminus1.80",
-      "delta": {
-        "dof": -0.2,
-        "slope": -1.8
-      },
-      "end": null,
-      "panel_path": "panel_ddminus0.20_dsminus1.80.jpg"
-    },
-    {
-      "id": "ddminus0.20_dsminus1.60",
-      "delta": {
-        "dof": -0.2,
-        "slope": -1.6
-      },
-      "end": null,
-      "panel_path": "panel_ddminus0.20_dsminus1.60.jpg"
-    },
-    {
-      "id": "ddminus0.20_dsminus1.40",
-      "delta": {
-        "dof": -0.2,
-        "slope": -1.4
-      },
-      "end": null,
-      "panel_path": "panel_ddminus0.20_dsminus1.40.jpg"
-    },
-    {
-      "id": "ddminus0.20_dsminus1.20",
-      "delta": {
-        "dof": -0.2,
-        "slope": -1.2
-      },
-      "end": null,
-      "panel_path": "panel_ddminus0.20_dsminus1.20.jpg"
-    },
-    {
-      "id": "ddminus0.20_dsminus1.00",
-      "delta": {
-        "dof": -0.2,
-        "slope": -1.0
-      },
-      "end": null,
-      "panel_path": "panel_ddminus0.20_dsminus1.00.jpg"
-    },
-    {
-      "id": "ddminus0.20_dsminus0.80",
-      "delta": {
-        "dof": -0.2,
-        "slope": -0.8
-      },
-      "end": null,
-      "panel_path": "panel_ddminus0.20_dsminus0.80.jpg"
-    },
-    {
-      "id": "ddminus0.20_dsminus0.60",
-      "delta": {
-        "dof": -0.2,
-        "slope": -0.6
-      },
-      "end": null,
-      "panel_path": "panel_ddminus0.20_dsminus0.60.jpg"
-    },
-    {
-      "id": "ddminus0.20_dsminus0.40",
-      "delta": {
-        "dof": -0.2,
-        "slope": -0.4
-      },
-      "end": null,
-      "panel_path": "panel_ddminus0.20_dsminus0.40.jpg"
-    },
-    {
-      "id": "ddminus0.20_dsminus0.20",
-      "delta": {
-        "dof": -0.2,
-        "slope": -0.2
-      },
-      "end": null,
-      "panel_path": "panel_ddminus0.20_dsminus0.20.jpg"
-    },
-    {
-      "id": "ddminus0.20_dsplus0.00",
-      "delta": {
-        "dof": -0.2,
-        "slope": 0.0
-      },
-      "end": null,
-      "panel_path": "panel_ddminus0.20_dsplus0.00.jpg"
-    },
-    {
-      "id": "ddminus0.20_dsplus0.20",
-      "delta": {
-        "dof": -0.2,
-        "slope": 0.2
-      },
-      "end": null,
-      "panel_path": "panel_ddminus0.20_dsplus0.20.jpg"
-    },
-    {
-      "id": "ddminus0.20_dsplus0.40",
-      "delta": {
-        "dof": -0.2,
-        "slope": 0.4
-      },
-      "end": null,
-      "panel_path": "panel_ddminus0.20_dsplus0.40.jpg"
-    },
-    {
-      "id": "ddminus0.20_dsplus0.60",
-      "delta": {
-        "dof": -0.2,
-        "slope": 0.6
-      },
-      "end": null,
-      "panel_path": "panel_ddminus0.20_dsplus0.60.jpg"
-    },
-    {
-      "id": "ddminus0.20_dsplus0.80",
-      "delta": {
-        "dof": -0.2,
-        "slope": 0.8
-      },
-      "end": null,
-      "panel_path": "panel_ddminus0.20_dsplus0.80.jpg"
-    },
-    {
-      "id": "ddplus0.00_dsminus1.80",
-      "delta": {
-        "dof": 0.0,
-        "slope": -1.8
-      },
-      "end": null,
-      "panel_path": "panel_ddplus0.00_dsminus1.80.jpg"
-    },
-    {
-      "id": "ddplus0.00_dsminus1.60",
-      "delta": {
-        "dof": 0.0,
-        "slope": -1.6
-      },
-      "end": null,
-      "panel_path": "panel_ddplus0.00_dsminus1.60.jpg"
-    },
-    {
-      "id": "ddplus0.00_dsminus1.40",
-      "delta": {
-        "dof": 0.0,
-        "slope": -1.4
-      },
-      "end": null,
-      "panel_path": "panel_ddplus0.00_dsminus1.40.jpg"
-    },
-    {
-      "id": "ddplus0.00_dsminus1.20",
-      "delta": {
-        "dof": 0.0,
-        "slope": -1.2
-      },
-      "end": null,
-      "panel_path": "panel_ddplus0.00_dsminus1.20.jpg"
-    },
-    {
-      "id": "ddplus0.00_dsminus1.00",
-      "delta": {
-        "dof": 0.0,
-        "slope": -1.0
-      },
-      "end": null,
-      "panel_path": "panel_ddplus0.00_dsminus1.00.jpg"
-    },
-    {
-      "id": "ddplus0.00_dsminus0.80",
-      "delta": {
-        "dof": 0.0,
-        "slope": -0.8
-      },
-      "end": null,
-      "panel_path": "panel_ddplus0.00_dsminus0.80.jpg"
-    },
-    {
-      "id": "ddplus0.00_dsminus0.60",
-      "delta": {
-        "dof": 0.0,
-        "slope": -0.6
-      },
-      "end": null,
-      "panel_path": "panel_ddplus0.00_dsminus0.60.jpg"
-    },
-    {
-      "id": "ddplus0.00_dsminus0.40",
-      "delta": {
-        "dof": 0.0,
-        "slope": -0.4
-      },
-      "end": null,
-      "panel_path": "panel_ddplus0.00_dsminus0.40.jpg"
-    },
-    {
-      "id": "ddplus0.00_dsminus0.20",
-      "delta": {
-        "dof": 0.0,
-        "slope": -0.2
-      },
-      "end": null,
-      "panel_path": "panel_ddplus0.00_dsminus0.20.jpg"
-    },
-    {
-      "id": "ddplus0.00_dsplus0.20",
-      "delta": {
-        "dof": 0.0,
-        "slope": 0.2
-      },
-      "end": null,
-      "panel_path": "panel_ddplus0.00_dsplus0.20.jpg"
-    },
-    {
-      "id": "ddplus0.00_dsplus0.40",
-      "delta": {
-        "dof": 0.0,
-        "slope": 0.4
-      },
-      "end": null,
-      "panel_path": "panel_ddplus0.00_dsplus0.40.jpg"
-    },
-    {
-      "id": "ddplus0.00_dsplus0.60",
-      "delta": {
-        "dof": 0.0,
-        "slope": 0.6
-      },
-      "end": null,
-      "panel_path": "panel_ddplus0.00_dsplus0.60.jpg"
-    },
-    {
-      "id": "ddplus0.00_dsplus0.80",
-      "delta": {
-        "dof": 0.0,
-        "slope": 0.8
-      },
-      "end": null,
-      "panel_path": "panel_ddplus0.00_dsplus0.80.jpg"
-    },
-    {
-      "id": "ddplus0.20_dsminus1.80",
-      "delta": {
-        "dof": 0.2,
-        "slope": -1.8
-      },
-      "end": null,
-      "panel_path": "panel_ddplus0.20_dsminus1.80.jpg"
-    },
-    {
-      "id": "ddplus0.20_dsminus1.60",
-      "delta": {
-        "dof": 0.2,
-        "slope": -1.6
-      },
-      "end": null,
-      "panel_path": "panel_ddplus0.20_dsminus1.60.jpg"
-    },
-    {
-      "id": "ddplus0.20_dsminus1.40",
-      "delta": {
-        "dof": 0.2,
-        "slope": -1.4
-      },
-      "end": null,
-      "panel_path": "panel_ddplus0.20_dsminus1.40.jpg"
-    },
-    {
-      "id": "ddplus0.20_dsminus1.20",
-      "delta": {
-        "dof": 0.2,
-        "slope": -1.2
-      },
-      "end": null,
-      "panel_path": "panel_ddplus0.20_dsminus1.20.jpg"
-    },
-    {
-      "id": "ddplus0.20_dsminus1.00",
-      "delta": {
-        "dof": 0.2,
-        "slope": -1.0
-      },
-      "end": null,
-      "panel_path": "panel_ddplus0.20_dsminus1.00.jpg"
-    },
-    {
-      "id": "ddplus0.20_dsminus0.80",
-      "delta": {
-        "dof": 0.2,
-        "slope": -0.8
-      },
-      "end": null,
-      "panel_path": "panel_ddplus0.20_dsminus0.80.jpg"
-    },
-    {
-      "id": "ddplus0.20_dsminus0.60",
-      "delta": {
-        "dof": 0.2,
-        "slope": -0.6
-      },
-      "end": null,
-      "panel_path": "panel_ddplus0.20_dsminus0.60.jpg"
-    },
-    {
-      "id": "ddplus0.20_dsminus0.40",
-      "delta": {
-        "dof": 0.2,
-        "slope": -0.4
-      },
-      "end": null,
-      "panel_path": "panel_ddplus0.20_dsminus0.40.jpg"
-    },
-    {
-      "id": "ddplus0.20_dsminus0.20",
-      "delta": {
-        "dof": 0.2,
-        "slope": -0.2
-      },
-      "end": null,
-      "panel_path": "panel_ddplus0.20_dsminus0.20.jpg"
-    },
-    {
-      "id": "ddplus0.20_dsplus0.00",
-      "delta": {
-        "dof": 0.2,
-        "slope": 0.0
-      },
-      "end": null,
-      "panel_path": "panel_ddplus0.20_dsplus0.00.jpg"
-    },
-    {
-      "id": "ddplus0.20_dsplus0.20",
-      "delta": {
-        "dof": 0.2,
-        "slope": 0.2
-      },
-      "end": null,
-      "panel_path": "panel_ddplus0.20_dsplus0.20.jpg"
-    },
-    {
-      "id": "ddplus0.20_dsplus0.40",
-      "delta": {
-        "dof": 0.2,
-        "slope": 0.4
-      },
-      "end": null,
-      "panel_path": "panel_ddplus0.20_dsplus0.40.jpg"
-    },
-    {
-      "id": "ddplus0.20_dsplus0.60",
-      "delta": {
-        "dof": 0.2,
-        "slope": 0.6
-      },
-      "end": null,
-      "panel_path": "panel_ddplus0.20_dsplus0.60.jpg"
-    },
-    {
-      "id": "ddplus0.20_dsplus0.80",
-      "delta": {
-        "dof": 0.2,
-        "slope": 0.8
-      },
-      "end": null,
-      "panel_path": "panel_ddplus0.20_dsplus0.80.jpg"
-    },
-    {
-      "id": "ddplus0.40_dsminus1.80",
-      "delta": {
-        "dof": 0.4,
-        "slope": -1.8
-      },
-      "end": null,
-      "panel_path": "panel_ddplus0.40_dsminus1.80.jpg"
-    },
-    {
-      "id": "ddplus0.40_dsminus1.60",
-      "delta": {
-        "dof": 0.4,
-        "slope": -1.6
-      },
-      "end": null,
-      "panel_path": "panel_ddplus0.40_dsminus1.60.jpg"
-    },
-    {
-      "id": "ddplus0.40_dsminus1.40",
-      "delta": {
-        "dof": 0.4,
-        "slope": -1.4
-      },
-      "end": null,
-      "panel_path": "panel_ddplus0.40_dsminus1.40.jpg"
-    },
-    {
-      "id": "ddplus0.40_dsminus1.20",
-      "delta": {
-        "dof": 0.4,
-        "slope": -1.2
-      },
-      "end": null,
-      "panel_path": "panel_ddplus0.40_dsminus1.20.jpg"
-    },
-    {
-      "id": "ddplus0.40_dsminus1.00",
-      "delta": {
-        "dof": 0.4,
-        "slope": -1.0
-      },
-      "end": null,
-      "panel_path": "panel_ddplus0.40_dsminus1.00.jpg"
-    },
-    {
-      "id": "ddplus0.40_dsminus0.80",
-      "delta": {
-        "dof": 0.4,
-        "slope": -0.8
-      },
-      "end": null,
-      "panel_path": "panel_ddplus0.40_dsminus0.80.jpg"
-    },
-    {
-      "id": "ddplus0.40_dsminus0.60",
-      "delta": {
-        "dof": 0.4,
-        "slope": -0.6
-      },
-      "end": null,
-      "panel_path": "panel_ddplus0.40_dsminus0.60.jpg"
-    },
-    {
-      "id": "ddplus0.40_dsminus0.40",
-      "delta": {
-        "dof": 0.4,
-        "slope": -0.4
-      },
-      "end": null,
-      "panel_path": "panel_ddplus0.40_dsminus0.40.jpg"
-    },
-    {
-      "id": "ddplus0.40_dsminus0.20",
-      "delta": {
-        "dof": 0.4,
-        "slope": -0.2
-      },
-      "end": null,
-      "panel_path": "panel_ddplus0.40_dsminus0.20.jpg"
-    },
-    {
-      "id": "ddplus0.40_dsplus0.00",
-      "delta": {
-        "dof": 0.4,
-        "slope": 0.0
-      },
-      "end": null,
-      "panel_path": "panel_ddplus0.40_dsplus0.00.jpg"
-    },
-    {
-      "id": "ddplus0.40_dsplus0.20",
-      "delta": {
-        "dof": 0.4,
-        "slope": 0.2
-      },
-      "end": null,
-      "panel_path": "panel_ddplus0.40_dsplus0.20.jpg"
-    },
-    {
-      "id": "ddplus0.40_dsplus0.40",
-      "delta": {
-        "dof": 0.4,
-        "slope": 0.4
-      },
-      "end": null,
-      "panel_path": "panel_ddplus0.40_dsplus0.40.jpg"
-    },
-    {
-      "id": "ddplus0.40_dsplus0.60",
-      "delta": {
-        "dof": 0.4,
-        "slope": 0.6
-      },
-      "end": null,
-      "panel_path": "panel_ddplus0.40_dsplus0.60.jpg"
-    },
-    {
-      "id": "ddplus0.40_dsplus0.80",
-      "delta": {
-        "dof": 0.4,
-        "slope": 0.8
-      },
-      "end": null,
-      "panel_path": "panel_ddplus0.40_dsplus0.80.jpg"
-    },
-    {
-      "id": "ddplus0.60_dsminus1.80",
-      "delta": {
-        "dof": 0.6,
-        "slope": -1.8
-      },
-      "end": null,
-      "panel_path": "panel_ddplus0.60_dsminus1.80.jpg"
-    },
-    {
-      "id": "ddplus0.60_dsminus1.60",
-      "delta": {
-        "dof": 0.6,
-        "slope": -1.6
-      },
-      "end": null,
-      "panel_path": "panel_ddplus0.60_dsminus1.60.jpg"
-    },
-    {
-      "id": "ddplus0.60_dsminus1.40",
-      "delta": {
-        "dof": 0.6,
-        "slope": -1.4
-      },
-      "end": null,
-      "panel_path": "panel_ddplus0.60_dsminus1.40.jpg"
-    },
-    {
-      "id": "ddplus0.60_dsminus1.20",
-      "delta": {
-        "dof": 0.6,
-        "slope": -1.2
-      },
-      "end": null,
-      "panel_path": "panel_ddplus0.60_dsminus1.20.jpg"
-    },
-    {
-      "id": "ddplus0.60_dsminus1.00",
-      "delta": {
-        "dof": 0.6,
-        "slope": -1.0
-      },
-      "end": null,
-      "panel_path": "panel_ddplus0.60_dsminus1.00.jpg"
-    },
-    {
-      "id": "ddplus0.60_dsminus0.80",
-      "delta": {
-        "dof": 0.6,
-        "slope": -0.8
-      },
-      "end": null,
-      "panel_path": "panel_ddplus0.60_dsminus0.80.jpg"
-    },
-    {
-      "id": "ddplus0.60_dsminus0.60",
-      "delta": {
-        "dof": 0.6,
-        "slope": -0.6
-      },
-      "end": null,
-      "panel_path": "panel_ddplus0.60_dsminus0.60.jpg"
-    },
-    {
-      "id": "ddplus0.60_dsminus0.40",
-      "delta": {
-        "dof": 0.6,
-        "slope": -0.4
-      },
-      "end": null,
-      "panel_path": "panel_ddplus0.60_dsminus0.40.jpg"
-    },
-    {
-      "id": "ddplus0.60_dsminus0.20",
-      "delta": {
-        "dof": 0.6,
-        "slope": -0.2
-      },
-      "end": null,
-      "panel_path": "panel_ddplus0.60_dsminus0.20.jpg"
-    },
-    {
-      "id": "ddplus0.60_dsplus0.00",
-      "delta": {
-        "dof": 0.6,
-        "slope": 0.0
-      },
-      "end": null,
-      "panel_path": "panel_ddplus0.60_dsplus0.00.jpg"
-    },
-    {
-      "id": "ddplus0.60_dsplus0.20",
-      "delta": {
-        "dof": 0.6,
-        "slope": 0.2
-      },
-      "end": null,
-      "panel_path": "panel_ddplus0.60_dsplus0.20.jpg"
-    },
-    {
-      "id": "ddplus0.60_dsplus0.40",
-      "delta": {
-        "dof": 0.6,
-        "slope": 0.4
-      },
-      "end": null,
-      "panel_path": "panel_ddplus0.60_dsplus0.40.jpg"
-    },
-    {
-      "id": "ddplus0.60_dsplus0.60",
-      "delta": {
-        "dof": 0.6,
-        "slope": 0.6
-      },
-      "end": null,
-      "panel_path": "panel_ddplus0.60_dsplus0.60.jpg"
-    },
-    {
-      "id": "ddplus0.60_dsplus0.80",
-      "delta": {
-        "dof": 0.6,
-        "slope": 0.8
-      },
-      "end": null,
-      "panel_path": "panel_ddplus0.60_dsplus0.80.jpg"
-    },
-    {
-      "id": "ddplus0.80_dsminus1.80",
-      "delta": {
-        "dof": 0.8,
-        "slope": -1.8
-      },
-      "end": null,
-      "panel_path": "panel_ddplus0.80_dsminus1.80.jpg"
-    },
-    {
-      "id": "ddplus0.80_dsminus1.60",
-      "delta": {
-        "dof": 0.8,
-        "slope": -1.6
-      },
-      "end": null,
-      "panel_path": "panel_ddplus0.80_dsminus1.60.jpg"
-    },
-    {
-      "id": "ddplus0.80_dsminus1.40",
-      "delta": {
-        "dof": 0.8,
-        "slope": -1.4
-      },
-      "end": null,
-      "panel_path": "panel_ddplus0.80_dsminus1.40.jpg"
-    },
-    {
-      "id": "ddplus0.80_dsminus1.20",
-      "delta": {
-        "dof": 0.8,
-        "slope": -1.2
-      },
-      "end": null,
-      "panel_path": "panel_ddplus0.80_dsminus1.20.jpg"
-    },
-    {
-      "id": "ddplus0.80_dsminus1.00",
-      "delta": {
-        "dof": 0.8,
-        "slope": -1.0
-      },
-      "end": null,
-      "panel_path": "panel_ddplus0.80_dsminus1.00.jpg"
-    },
-    {
-      "id": "ddplus0.80_dsminus0.80",
-      "delta": {
-        "dof": 0.8,
-        "slope": -0.8
-      },
-      "end": null,
-      "panel_path": "panel_ddplus0.80_dsminus0.80.jpg"
-    },
-    {
-      "id": "ddplus0.80_dsminus0.60",
-      "delta": {
-        "dof": 0.8,
-        "slope": -0.6
-      },
-      "end": null,
-      "panel_path": "panel_ddplus0.80_dsminus0.60.jpg"
-    },
-    {
-      "id": "ddplus0.80_dsminus0.40",
-      "delta": {
-        "dof": 0.8,
-        "slope": -0.4
-      },
-      "end": null,
-      "panel_path": "panel_ddplus0.80_dsminus0.40.jpg"
-    },
-    {
-      "id": "ddplus0.80_dsminus0.20",
-      "delta": {
-        "dof": 0.8,
-        "slope": -0.2
-      },
-      "end": null,
-      "panel_path": "panel_ddplus0.80_dsminus0.20.jpg"
-    },
-    {
-      "id": "ddplus0.80_dsplus0.00",
-      "delta": {
-        "dof": 0.8,
-        "slope": 0.0
-      },
-      "end": null,
-      "panel_path": "panel_ddplus0.80_dsplus0.00.jpg"
-    },
-    {
-      "id": "ddplus0.80_dsplus0.20",
-      "delta": {
-        "dof": 0.8,
-        "slope": 0.2
-      },
-      "end": null,
-      "panel_path": "panel_ddplus0.80_dsplus0.20.jpg"
-    },
-    {
-      "id": "ddplus0.80_dsplus0.40",
-      "delta": {
-        "dof": 0.8,
-        "slope": 0.4
-      },
-      "end": null,
-      "panel_path": "panel_ddplus0.80_dsplus0.40.jpg"
-    },
-    {
-      "id": "ddplus0.80_dsplus0.60",
-      "delta": {
-        "dof": 0.8,
-        "slope": 0.6
-      },
-      "end": null,
-      "panel_path": "panel_ddplus0.80_dsplus0.60.jpg"
-    },
-    {
-      "id": "ddplus0.80_dsplus0.80",
-      "delta": {
-        "dof": 0.8,
-        "slope": 0.8
-      },
-      "end": null,
-      "panel_path": "panel_ddplus0.80_dsplus0.80.jpg"
-    },
-    {
-      "id": "ddplus1.00_dsminus1.80",
-      "delta": {
-        "dof": 1.0,
-        "slope": -1.8
-      },
-      "end": null,
-      "panel_path": "panel_ddplus1.00_dsminus1.80.jpg"
-    },
-    {
-      "id": "ddplus1.00_dsminus1.60",
-      "delta": {
-        "dof": 1.0,
-        "slope": -1.6
-      },
-      "end": null,
-      "panel_path": "panel_ddplus1.00_dsminus1.60.jpg"
-    },
-    {
-      "id": "ddplus1.00_dsminus1.40",
-      "delta": {
-        "dof": 1.0,
-        "slope": -1.4
-      },
-      "end": null,
-      "panel_path": "panel_ddplus1.00_dsminus1.40.jpg"
-    },
-    {
-      "id": "ddplus1.00_dsminus1.20",
-      "delta": {
-        "dof": 1.0,
-        "slope": -1.2
-      },
-      "end": null,
-      "panel_path": "panel_ddplus1.00_dsminus1.20.jpg"
-    },
-    {
-      "id": "ddplus1.00_dsminus1.00",
-      "delta": {
-        "dof": 1.0,
-        "slope": -1.0
-      },
-      "end": null,
-      "panel_path": "panel_ddplus1.00_dsminus1.00.jpg"
-    },
-    {
-      "id": "ddplus1.00_dsminus0.80",
-      "delta": {
-        "dof": 1.0,
-        "slope": -0.8
-      },
-      "end": null,
-      "panel_path": "panel_ddplus1.00_dsminus0.80.jpg"
-    },
-    {
-      "id": "ddplus1.00_dsminus0.60",
-      "delta": {
-        "dof": 1.0,
-        "slope": -0.6
-      },
-      "end": null,
-      "panel_path": "panel_ddplus1.00_dsminus0.60.jpg"
-    },
-    {
-      "id": "ddplus1.00_dsminus0.40",
-      "delta": {
-        "dof": 1.0,
-        "slope": -0.4
-      },
-      "end": null,
-      "panel_path": "panel_ddplus1.00_dsminus0.40.jpg"
-    },
-    {
-      "id": "ddplus1.00_dsminus0.20",
-      "delta": {
-        "dof": 1.0,
-        "slope": -0.2
-      },
-      "end": null,
-      "panel_path": "panel_ddplus1.00_dsminus0.20.jpg"
-    },
-    {
-      "id": "ddplus1.00_dsplus0.00",
-      "delta": {
-        "dof": 1.0,
-        "slope": 0.0
-      },
-      "end": null,
-      "panel_path": "panel_ddplus1.00_dsplus0.00.jpg"
-    },
-    {
-      "id": "ddplus1.00_dsplus0.20",
-      "delta": {
-        "dof": 1.0,
-        "slope": 0.2
-      },
-      "end": null,
-      "panel_path": "panel_ddplus1.00_dsplus0.20.jpg"
-    },
-    {
-      "id": "ddplus1.00_dsplus0.40",
-      "delta": {
-        "dof": 1.0,
-        "slope": 0.4
-      },
-      "end": null,
-      "panel_path": "panel_ddplus1.00_dsplus0.40.jpg"
-    },
-    {
-      "id": "ddplus1.00_dsplus0.60",
-      "delta": {
-        "dof": 1.0,
-        "slope": 0.6
-      },
-      "end": null,
-      "panel_path": "panel_ddplus1.00_dsplus0.60.jpg"
-    },
-    {
-      "id": "ddplus1.00_dsplus0.80",
-      "delta": {
-        "dof": 1.0,
-        "slope": 0.8
-      },
-      "end": null,
-      "panel_path": "panel_ddplus1.00_dsplus0.80.jpg"
-    },
-    {
-      "id": "ddplus1.20_dsminus1.80",
-      "delta": {
-        "dof": 1.2,
-        "slope": -1.8
-      },
-      "end": null,
-      "panel_path": "panel_ddplus1.20_dsminus1.80.jpg"
-    },
-    {
-      "id": "ddplus1.20_dsminus1.60",
-      "delta": {
-        "dof": 1.2,
-        "slope": -1.6
-      },
-      "end": null,
-      "panel_path": "panel_ddplus1.20_dsminus1.60.jpg"
-    },
-    {
-      "id": "ddplus1.20_dsminus1.40",
-      "delta": {
-        "dof": 1.2,
-        "slope": -1.4
-      },
-      "end": null,
-      "panel_path": "panel_ddplus1.20_dsminus1.40.jpg"
-    },
-    {
-      "id": "ddplus1.20_dsminus1.20",
-      "delta": {
-        "dof": 1.2,
-        "slope": -1.2
-      },
-      "end": null,
-      "panel_path": "panel_ddplus1.20_dsminus1.20.jpg"
-    },
-    {
-      "id": "ddplus1.20_dsminus1.00",
-      "delta": {
-        "dof": 1.2,
-        "slope": -1.0
-      },
-      "end": null,
-      "panel_path": "panel_ddplus1.20_dsminus1.00.jpg"
-    },
-    {
-      "id": "ddplus1.20_dsminus0.80",
-      "delta": {
-        "dof": 1.2,
-        "slope": -0.8
-      },
-      "end": null,
-      "panel_path": "panel_ddplus1.20_dsminus0.80.jpg"
-    },
-    {
-      "id": "ddplus1.20_dsminus0.60",
-      "delta": {
-        "dof": 1.2,
-        "slope": -0.6
-      },
-      "end": null,
-      "panel_path": "panel_ddplus1.20_dsminus0.60.jpg"
-    },
-    {
-      "id": "ddplus1.20_dsminus0.40",
-      "delta": {
-        "dof": 1.2,
-        "slope": -0.4
-      },
-      "end": null,
-      "panel_path": "panel_ddplus1.20_dsminus0.40.jpg"
-    },
-    {
-      "id": "ddplus1.20_dsminus0.20",
-      "delta": {
-        "dof": 1.2,
-        "slope": -0.2
-      },
-      "end": null,
-      "panel_path": "panel_ddplus1.20_dsminus0.20.jpg"
-    },
-    {
-      "id": "ddplus1.20_dsplus0.00",
-      "delta": {
-        "dof": 1.2,
-        "slope": 0.0
-      },
-      "end": null,
-      "panel_path": "panel_ddplus1.20_dsplus0.00.jpg"
-    },
-    {
-      "id": "ddplus1.20_dsplus0.20",
-      "delta": {
-        "dof": 1.2,
-        "slope": 0.2
-      },
-      "end": null,
-      "panel_path": "panel_ddplus1.20_dsplus0.20.jpg"
-    },
-    {
-      "id": "ddplus1.20_dsplus0.40",
-      "delta": {
-        "dof": 1.2,
-        "slope": 0.4
-      },
-      "end": null,
-      "panel_path": "panel_ddplus1.20_dsplus0.40.jpg"
-    },
-    {
-      "id": "ddplus1.20_dsplus0.60",
-      "delta": {
-        "dof": 1.2,
-        "slope": 0.6
-      },
-      "end": null,
-      "panel_path": "panel_ddplus1.20_dsplus0.60.jpg"
-    },
-    {
-      "id": "ddplus1.20_dsplus0.80",
-      "delta": {
-        "dof": 1.2,
-        "slope": 0.8
-      },
-      "end": null,
-      "panel_path": "panel_ddplus1.20_dsplus0.80.jpg"
-    },
-    {
-      "id": "ddplus1.40_dsminus1.80",
-      "delta": {
-        "dof": 1.4,
-        "slope": -1.8
-      },
-      "end": null,
-      "panel_path": "panel_ddplus1.40_dsminus1.80.jpg"
-    },
-    {
-      "id": "ddplus1.40_dsminus1.60",
-      "delta": {
-        "dof": 1.4,
-        "slope": -1.6
-      },
-      "end": null,
-      "panel_path": "panel_ddplus1.40_dsminus1.60.jpg"
-    },
-    {
-      "id": "ddplus1.40_dsminus1.40",
-      "delta": {
-        "dof": 1.4,
-        "slope": -1.4
-      },
-      "end": null,
-      "panel_path": "panel_ddplus1.40_dsminus1.40.jpg"
-    },
-    {
-      "id": "ddplus1.40_dsminus1.20",
-      "delta": {
-        "dof": 1.4,
-        "slope": -1.2
-      },
-      "end": null,
-      "panel_path": "panel_ddplus1.40_dsminus1.20.jpg"
-    },
-    {
-      "id": "ddplus1.40_dsminus1.00",
-      "delta": {
-        "dof": 1.4,
-        "slope": -1.0
-      },
-      "end": null,
-      "panel_path": "panel_ddplus1.40_dsminus1.00.jpg"
-    },
-    {
-      "id": "ddplus1.40_dsminus0.80",
-      "delta": {
-        "dof": 1.4,
-        "slope": -0.8
-      },
-      "end": null,
-      "panel_path": "panel_ddplus1.40_dsminus0.80.jpg"
-    },
-    {
-      "id": "ddplus1.40_dsminus0.60",
-      "delta": {
-        "dof": 1.4,
-        "slope": -0.6
-      },
-      "end": null,
-      "panel_path": "panel_ddplus1.40_dsminus0.60.jpg"
-    },
-    {
-      "id": "ddplus1.40_dsminus0.40",
-      "delta": {
-        "dof": 1.4,
-        "slope": -0.4
-      },
-      "end": null,
-      "panel_path": "panel_ddplus1.40_dsminus0.40.jpg"
-    },
-    {
-      "id": "ddplus1.40_dsminus0.20",
-      "delta": {
-        "dof": 1.4,
-        "slope": -0.2
-      },
-      "end": null,
-      "panel_path": "panel_ddplus1.40_dsminus0.20.jpg"
-    },
-    {
-      "id": "ddplus1.40_dsplus0.00",
-      "delta": {
-        "dof": 1.4,
-        "slope": 0.0
-      },
-      "end": null,
-      "panel_path": "panel_ddplus1.40_dsplus0.00.jpg"
-    },
-    {
-      "id": "ddplus1.40_dsplus0.20",
-      "delta": {
-        "dof": 1.4,
-        "slope": 0.2
-      },
-      "end": null,
-      "panel_path": "panel_ddplus1.40_dsplus0.20.jpg"
-    },
-    {
-      "id": "ddplus1.40_dsplus0.40",
-      "delta": {
-        "dof": 1.4,
-        "slope": 0.4
-      },
-      "end": null,
-      "panel_path": "panel_ddplus1.40_dsplus0.40.jpg"
-    },
-    {
-      "id": "ddplus1.40_dsplus0.60",
-      "delta": {
-        "dof": 1.4,
-        "slope": 0.6
-      },
-      "end": null,
-      "panel_path": "panel_ddplus1.40_dsplus0.60.jpg"
-    },
-    {
-      "id": "ddplus1.40_dsplus0.80",
-      "delta": {
-        "dof": 1.4,
-        "slope": 0.8
-      },
-      "end": null,
-      "panel_path": "panel_ddplus1.40_dsplus0.80.jpg"
-    },
-    {
-      "id": "ddplus1.60_dsminus1.80",
-      "delta": {
-        "dof": 1.6,
-        "slope": -1.8
-      },
-      "end": null,
-      "panel_path": "panel_ddplus1.60_dsminus1.80.jpg"
-    },
-    {
-      "id": "ddplus1.60_dsminus1.60",
-      "delta": {
-        "dof": 1.6,
-        "slope": -1.6
-      },
-      "end": null,
-      "panel_path": "panel_ddplus1.60_dsminus1.60.jpg"
-    },
-    {
-      "id": "ddplus1.60_dsminus1.40",
-      "delta": {
-        "dof": 1.6,
-        "slope": -1.4
-      },
-      "end": null,
-      "panel_path": "panel_ddplus1.60_dsminus1.40.jpg"
-    },
-    {
-      "id": "ddplus1.60_dsminus1.20",
-      "delta": {
-        "dof": 1.6,
-        "slope": -1.2
-      },
-      "end": null,
-      "panel_path": "panel_ddplus1.60_dsminus1.20.jpg"
-    },
-    {
-      "id": "ddplus1.60_dsminus1.00",
-      "delta": {
-        "dof": 1.6,
-        "slope": -1.0
-      },
-      "end": null,
-      "panel_path": "panel_ddplus1.60_dsminus1.00.jpg"
-    },
-    {
-      "id": "ddplus1.60_dsminus0.80",
-      "delta": {
-        "dof": 1.6,
-        "slope": -0.8
-      },
-      "end": null,
-      "panel_path": "panel_ddplus1.60_dsminus0.80.jpg"
-    },
-    {
-      "id": "ddplus1.60_dsminus0.60",
-      "delta": {
-        "dof": 1.6,
-        "slope": -0.6
-      },
-      "end": null,
-      "panel_path": "panel_ddplus1.60_dsminus0.60.jpg"
-    },
-    {
-      "id": "ddplus1.60_dsminus0.40",
-      "delta": {
-        "dof": 1.6,
-        "slope": -0.4
-      },
-      "end": null,
-      "panel_path": "panel_ddplus1.60_dsminus0.40.jpg"
-    },
-    {
-      "id": "ddplus1.60_dsminus0.20",
-      "delta": {
-        "dof": 1.6,
-        "slope": -0.2
-      },
-      "end": null,
-      "panel_path": "panel_ddplus1.60_dsminus0.20.jpg"
-    },
-    {
-      "id": "ddplus1.60_dsplus0.00",
-      "delta": {
-        "dof": 1.6,
-        "slope": 0.0
-      },
-      "end": null,
-      "panel_path": "panel_ddplus1.60_dsplus0.00.jpg"
-    },
-    {
-      "id": "ddplus1.60_dsplus0.20",
-      "delta": {
-        "dof": 1.6,
-        "slope": 0.2
-      },
-      "end": null,
-      "panel_path": "panel_ddplus1.60_dsplus0.20.jpg"
-    },
-    {
-      "id": "ddplus1.60_dsplus0.40",
-      "delta": {
-        "dof": 1.6,
-        "slope": 0.4
-      },
-      "end": null,
-      "panel_path": "panel_ddplus1.60_dsplus0.40.jpg"
-    },
-    {
-      "id": "ddplus1.60_dsplus0.60",
-      "delta": {
-        "dof": 1.6,
-        "slope": 0.6
-      },
-      "end": null,
-      "panel_path": "panel_ddplus1.60_dsplus0.60.jpg"
-    },
-    {
-      "id": "ddplus1.60_dsplus0.80",
-      "delta": {
-        "dof": 1.6,
-        "slope": 0.8
-      },
-      "end": null,
-      "panel_path": "panel_ddplus1.60_dsplus0.80.jpg"
-    }
+      {
+        "id": "ddminus0.80_dsminus1.80",
+        "delta": {
+          "dof": -0.8,
+          "slope": -1.8
+        },
+        "end": null,
+        "panel_path": "panel_ddminus0.80_dsminus1.80.jpg"
+      },
+      {
+        "id": "ddminus0.80_dsminus1.60",
+        "delta": {
+          "dof": -0.8,
+          "slope": -1.6
+        },
+        "end": null,
+        "panel_path": "panel_ddminus0.80_dsminus1.60.jpg"
+      },
+      {
+        "id": "ddminus0.80_dsminus1.40",
+        "delta": {
+          "dof": -0.8,
+          "slope": -1.4
+        },
+        "end": null,
+        "panel_path": "panel_ddminus0.80_dsminus1.40.jpg"
+      },
+      {
+        "id": "ddminus0.80_dsminus1.20",
+        "delta": {
+          "dof": -0.8,
+          "slope": -1.2
+        },
+        "end": null,
+        "panel_path": "panel_ddminus0.80_dsminus1.20.jpg"
+      },
+      {
+        "id": "ddminus0.80_dsminus1.00",
+        "delta": {
+          "dof": -0.8,
+          "slope": -1.0
+        },
+        "end": null,
+        "panel_path": "panel_ddminus0.80_dsminus1.00.jpg"
+      },
+      {
+        "id": "ddminus0.80_dsminus0.80",
+        "delta": {
+          "dof": -0.8,
+          "slope": -0.8
+        },
+        "end": null,
+        "panel_path": "panel_ddminus0.80_dsminus0.80.jpg"
+      },
+      {
+        "id": "ddminus0.80_dsminus0.60",
+        "delta": {
+          "dof": -0.8,
+          "slope": -0.6
+        },
+        "end": null,
+        "panel_path": "panel_ddminus0.80_dsminus0.60.jpg"
+      },
+      {
+        "id": "ddminus0.80_dsminus0.40",
+        "delta": {
+          "dof": -0.8,
+          "slope": -0.4
+        },
+        "end": null,
+        "panel_path": "panel_ddminus0.80_dsminus0.40.jpg"
+      },
+      {
+        "id": "ddminus0.80_dsminus0.20",
+        "delta": {
+          "dof": -0.8,
+          "slope": -0.2
+        },
+        "end": null,
+        "panel_path": "panel_ddminus0.80_dsminus0.20.jpg"
+      },
+      {
+        "id": "ddminus0.80_dsplus0.00",
+        "delta": {
+          "dof": -0.8,
+          "slope": 0.0
+        },
+        "end": null,
+        "panel_path": "panel_ddminus0.80_dsplus0.00.jpg"
+      },
+      {
+        "id": "ddminus0.80_dsplus0.20",
+        "delta": {
+          "dof": -0.8,
+          "slope": 0.2
+        },
+        "end": null,
+        "panel_path": "panel_ddminus0.80_dsplus0.20.jpg"
+      },
+      {
+        "id": "ddminus0.80_dsplus0.40",
+        "delta": {
+          "dof": -0.8,
+          "slope": 0.4
+        },
+        "end": null,
+        "panel_path": "panel_ddminus0.80_dsplus0.40.jpg"
+      },
+      {
+        "id": "ddminus0.80_dsplus0.60",
+        "delta": {
+          "dof": -0.8,
+          "slope": 0.6
+        },
+        "end": null,
+        "panel_path": "panel_ddminus0.80_dsplus0.60.jpg"
+      },
+      {
+        "id": "ddminus0.80_dsplus0.80",
+        "delta": {
+          "dof": -0.8,
+          "slope": 0.8
+        },
+        "end": null,
+        "panel_path": "panel_ddminus0.80_dsplus0.80.jpg"
+      },
+      {
+        "id": "ddminus0.60_dsminus1.80",
+        "delta": {
+          "dof": -0.6,
+          "slope": -1.8
+        },
+        "end": null,
+        "panel_path": "panel_ddminus0.60_dsminus1.80.jpg"
+      },
+      {
+        "id": "ddminus0.60_dsminus1.60",
+        "delta": {
+          "dof": -0.6,
+          "slope": -1.6
+        },
+        "end": null,
+        "panel_path": "panel_ddminus0.60_dsminus1.60.jpg"
+      },
+      {
+        "id": "ddminus0.60_dsminus1.40",
+        "delta": {
+          "dof": -0.6,
+          "slope": -1.4
+        },
+        "end": null,
+        "panel_path": "panel_ddminus0.60_dsminus1.40.jpg"
+      },
+      {
+        "id": "ddminus0.60_dsminus1.20",
+        "delta": {
+          "dof": -0.6,
+          "slope": -1.2
+        },
+        "end": null,
+        "panel_path": "panel_ddminus0.60_dsminus1.20.jpg"
+      },
+      {
+        "id": "ddminus0.60_dsminus1.00",
+        "delta": {
+          "dof": -0.6,
+          "slope": -1.0
+        },
+        "end": null,
+        "panel_path": "panel_ddminus0.60_dsminus1.00.jpg"
+      },
+      {
+        "id": "ddminus0.60_dsminus0.80",
+        "delta": {
+          "dof": -0.6,
+          "slope": -0.8
+        },
+        "end": null,
+        "panel_path": "panel_ddminus0.60_dsminus0.80.jpg"
+      },
+      {
+        "id": "ddminus0.60_dsminus0.60",
+        "delta": {
+          "dof": -0.6,
+          "slope": -0.6
+        },
+        "end": null,
+        "panel_path": "panel_ddminus0.60_dsminus0.60.jpg"
+      },
+      {
+        "id": "ddminus0.60_dsminus0.40",
+        "delta": {
+          "dof": -0.6,
+          "slope": -0.4
+        },
+        "end": null,
+        "panel_path": "panel_ddminus0.60_dsminus0.40.jpg"
+      },
+      {
+        "id": "ddminus0.60_dsminus0.20",
+        "delta": {
+          "dof": -0.6,
+          "slope": -0.2
+        },
+        "end": null,
+        "panel_path": "panel_ddminus0.60_dsminus0.20.jpg"
+      },
+      {
+        "id": "ddminus0.60_dsplus0.00",
+        "delta": {
+          "dof": -0.6,
+          "slope": 0.0
+        },
+        "end": null,
+        "panel_path": "panel_ddminus0.60_dsplus0.00.jpg"
+      },
+      {
+        "id": "ddminus0.60_dsplus0.20",
+        "delta": {
+          "dof": -0.6,
+          "slope": 0.2
+        },
+        "end": null,
+        "panel_path": "panel_ddminus0.60_dsplus0.20.jpg"
+      },
+      {
+        "id": "ddminus0.60_dsplus0.40",
+        "delta": {
+          "dof": -0.6,
+          "slope": 0.4
+        },
+        "end": null,
+        "panel_path": "panel_ddminus0.60_dsplus0.40.jpg"
+      },
+      {
+        "id": "ddminus0.60_dsplus0.60",
+        "delta": {
+          "dof": -0.6,
+          "slope": 0.6
+        },
+        "end": null,
+        "panel_path": "panel_ddminus0.60_dsplus0.60.jpg"
+      },
+      {
+        "id": "ddminus0.60_dsplus0.80",
+        "delta": {
+          "dof": -0.6,
+          "slope": 0.8
+        },
+        "end": null,
+        "panel_path": "panel_ddminus0.60_dsplus0.80.jpg"
+      },
+      {
+        "id": "ddminus0.40_dsminus1.80",
+        "delta": {
+          "dof": -0.4,
+          "slope": -1.8
+        },
+        "end": null,
+        "panel_path": "panel_ddminus0.40_dsminus1.80.jpg"
+      },
+      {
+        "id": "ddminus0.40_dsminus1.60",
+        "delta": {
+          "dof": -0.4,
+          "slope": -1.6
+        },
+        "end": null,
+        "panel_path": "panel_ddminus0.40_dsminus1.60.jpg"
+      },
+      {
+        "id": "ddminus0.40_dsminus1.40",
+        "delta": {
+          "dof": -0.4,
+          "slope": -1.4
+        },
+        "end": null,
+        "panel_path": "panel_ddminus0.40_dsminus1.40.jpg"
+      },
+      {
+        "id": "ddminus0.40_dsminus1.20",
+        "delta": {
+          "dof": -0.4,
+          "slope": -1.2
+        },
+        "end": null,
+        "panel_path": "panel_ddminus0.40_dsminus1.20.jpg"
+      },
+      {
+        "id": "ddminus0.40_dsminus1.00",
+        "delta": {
+          "dof": -0.4,
+          "slope": -1.0
+        },
+        "end": null,
+        "panel_path": "panel_ddminus0.40_dsminus1.00.jpg"
+      },
+      {
+        "id": "ddminus0.40_dsminus0.80",
+        "delta": {
+          "dof": -0.4,
+          "slope": -0.8
+        },
+        "end": null,
+        "panel_path": "panel_ddminus0.40_dsminus0.80.jpg"
+      },
+      {
+        "id": "ddminus0.40_dsminus0.60",
+        "delta": {
+          "dof": -0.4,
+          "slope": -0.6
+        },
+        "end": null,
+        "panel_path": "panel_ddminus0.40_dsminus0.60.jpg"
+      },
+      {
+        "id": "ddminus0.40_dsminus0.40",
+        "delta": {
+          "dof": -0.4,
+          "slope": -0.4
+        },
+        "end": null,
+        "panel_path": "panel_ddminus0.40_dsminus0.40.jpg"
+      },
+      {
+        "id": "ddminus0.40_dsminus0.20",
+        "delta": {
+          "dof": -0.4,
+          "slope": -0.2
+        },
+        "end": null,
+        "panel_path": "panel_ddminus0.40_dsminus0.20.jpg"
+      },
+      {
+        "id": "ddminus0.40_dsplus0.00",
+        "delta": {
+          "dof": -0.4,
+          "slope": 0.0
+        },
+        "end": null,
+        "panel_path": "panel_ddminus0.40_dsplus0.00.jpg"
+      },
+      {
+        "id": "ddminus0.40_dsplus0.20",
+        "delta": {
+          "dof": -0.4,
+          "slope": 0.2
+        },
+        "end": null,
+        "panel_path": "panel_ddminus0.40_dsplus0.20.jpg"
+      },
+      {
+        "id": "ddminus0.40_dsplus0.40",
+        "delta": {
+          "dof": -0.4,
+          "slope": 0.4
+        },
+        "end": null,
+        "panel_path": "panel_ddminus0.40_dsplus0.40.jpg"
+      },
+      {
+        "id": "ddminus0.40_dsplus0.60",
+        "delta": {
+          "dof": -0.4,
+          "slope": 0.6
+        },
+        "end": null,
+        "panel_path": "panel_ddminus0.40_dsplus0.60.jpg"
+      },
+      {
+        "id": "ddminus0.40_dsplus0.80",
+        "delta": {
+          "dof": -0.4,
+          "slope": 0.8
+        },
+        "end": null,
+        "panel_path": "panel_ddminus0.40_dsplus0.80.jpg"
+      },
+      {
+        "id": "ddminus0.20_dsminus1.80",
+        "delta": {
+          "dof": -0.2,
+          "slope": -1.8
+        },
+        "end": null,
+        "panel_path": "panel_ddminus0.20_dsminus1.80.jpg"
+      },
+      {
+        "id": "ddminus0.20_dsminus1.60",
+        "delta": {
+          "dof": -0.2,
+          "slope": -1.6
+        },
+        "end": null,
+        "panel_path": "panel_ddminus0.20_dsminus1.60.jpg"
+      },
+      {
+        "id": "ddminus0.20_dsminus1.40",
+        "delta": {
+          "dof": -0.2,
+          "slope": -1.4
+        },
+        "end": null,
+        "panel_path": "panel_ddminus0.20_dsminus1.40.jpg"
+      },
+      {
+        "id": "ddminus0.20_dsminus1.20",
+        "delta": {
+          "dof": -0.2,
+          "slope": -1.2
+        },
+        "end": null,
+        "panel_path": "panel_ddminus0.20_dsminus1.20.jpg"
+      },
+      {
+        "id": "ddminus0.20_dsminus1.00",
+        "delta": {
+          "dof": -0.2,
+          "slope": -1.0
+        },
+        "end": null,
+        "panel_path": "panel_ddminus0.20_dsminus1.00.jpg"
+      },
+      {
+        "id": "ddminus0.20_dsminus0.80",
+        "delta": {
+          "dof": -0.2,
+          "slope": -0.8
+        },
+        "end": null,
+        "panel_path": "panel_ddminus0.20_dsminus0.80.jpg"
+      },
+      {
+        "id": "ddminus0.20_dsminus0.60",
+        "delta": {
+          "dof": -0.2,
+          "slope": -0.6
+        },
+        "end": null,
+        "panel_path": "panel_ddminus0.20_dsminus0.60.jpg"
+      },
+      {
+        "id": "ddminus0.20_dsminus0.40",
+        "delta": {
+          "dof": -0.2,
+          "slope": -0.4
+        },
+        "end": null,
+        "panel_path": "panel_ddminus0.20_dsminus0.40.jpg"
+      },
+      {
+        "id": "ddminus0.20_dsminus0.20",
+        "delta": {
+          "dof": -0.2,
+          "slope": -0.2
+        },
+        "end": null,
+        "panel_path": "panel_ddminus0.20_dsminus0.20.jpg"
+      },
+      {
+        "id": "ddminus0.20_dsplus0.00",
+        "delta": {
+          "dof": -0.2,
+          "slope": 0.0
+        },
+        "end": null,
+        "panel_path": "panel_ddminus0.20_dsplus0.00.jpg"
+      },
+      {
+        "id": "ddminus0.20_dsplus0.20",
+        "delta": {
+          "dof": -0.2,
+          "slope": 0.2
+        },
+        "end": null,
+        "panel_path": "panel_ddminus0.20_dsplus0.20.jpg"
+      },
+      {
+        "id": "ddminus0.20_dsplus0.40",
+        "delta": {
+          "dof": -0.2,
+          "slope": 0.4
+        },
+        "end": null,
+        "panel_path": "panel_ddminus0.20_dsplus0.40.jpg"
+      },
+      {
+        "id": "ddminus0.20_dsplus0.60",
+        "delta": {
+          "dof": -0.2,
+          "slope": 0.6
+        },
+        "end": null,
+        "panel_path": "panel_ddminus0.20_dsplus0.60.jpg"
+      },
+      {
+        "id": "ddminus0.20_dsplus0.80",
+        "delta": {
+          "dof": -0.2,
+          "slope": 0.8
+        },
+        "end": null,
+        "panel_path": "panel_ddminus0.20_dsplus0.80.jpg"
+      },
+      {
+        "id": "ddplus0.00_dsminus1.80",
+        "delta": {
+          "dof": 0.0,
+          "slope": -1.8
+        },
+        "end": null,
+        "panel_path": "panel_ddplus0.00_dsminus1.80.jpg"
+      },
+      {
+        "id": "ddplus0.00_dsminus1.60",
+        "delta": {
+          "dof": 0.0,
+          "slope": -1.6
+        },
+        "end": null,
+        "panel_path": "panel_ddplus0.00_dsminus1.60.jpg"
+      },
+      {
+        "id": "ddplus0.00_dsminus1.40",
+        "delta": {
+          "dof": 0.0,
+          "slope": -1.4
+        },
+        "end": null,
+        "panel_path": "panel_ddplus0.00_dsminus1.40.jpg"
+      },
+      {
+        "id": "ddplus0.00_dsminus1.20",
+        "delta": {
+          "dof": 0.0,
+          "slope": -1.2
+        },
+        "end": null,
+        "panel_path": "panel_ddplus0.00_dsminus1.20.jpg"
+      },
+      {
+        "id": "ddplus0.00_dsminus1.00",
+        "delta": {
+          "dof": 0.0,
+          "slope": -1.0
+        },
+        "end": null,
+        "panel_path": "panel_ddplus0.00_dsminus1.00.jpg"
+      },
+      {
+        "id": "ddplus0.00_dsminus0.80",
+        "delta": {
+          "dof": 0.0,
+          "slope": -0.8
+        },
+        "end": null,
+        "panel_path": "panel_ddplus0.00_dsminus0.80.jpg"
+      },
+      {
+        "id": "ddplus0.00_dsminus0.60",
+        "delta": {
+          "dof": 0.0,
+          "slope": -0.6
+        },
+        "end": null,
+        "panel_path": "panel_ddplus0.00_dsminus0.60.jpg"
+      },
+      {
+        "id": "ddplus0.00_dsminus0.40",
+        "delta": {
+          "dof": 0.0,
+          "slope": -0.4
+        },
+        "end": null,
+        "panel_path": "panel_ddplus0.00_dsminus0.40.jpg"
+      },
+      {
+        "id": "ddplus0.00_dsminus0.20",
+        "delta": {
+          "dof": 0.0,
+          "slope": -0.2
+        },
+        "end": null,
+        "panel_path": "panel_ddplus0.00_dsminus0.20.jpg"
+      },
+      {
+        "id": "ddplus0.00_dsplus0.20",
+        "delta": {
+          "dof": 0.0,
+          "slope": 0.2
+        },
+        "end": null,
+        "panel_path": "panel_ddplus0.00_dsplus0.20.jpg"
+      },
+      {
+        "id": "ddplus0.00_dsplus0.40",
+        "delta": {
+          "dof": 0.0,
+          "slope": 0.4
+        },
+        "end": null,
+        "panel_path": "panel_ddplus0.00_dsplus0.40.jpg"
+      },
+      {
+        "id": "ddplus0.00_dsplus0.60",
+        "delta": {
+          "dof": 0.0,
+          "slope": 0.6
+        },
+        "end": null,
+        "panel_path": "panel_ddplus0.00_dsplus0.60.jpg"
+      },
+      {
+        "id": "ddplus0.00_dsplus0.80",
+        "delta": {
+          "dof": 0.0,
+          "slope": 0.8
+        },
+        "end": null,
+        "panel_path": "panel_ddplus0.00_dsplus0.80.jpg"
+      },
+      {
+        "id": "ddplus0.20_dsminus1.80",
+        "delta": {
+          "dof": 0.2,
+          "slope": -1.8
+        },
+        "end": null,
+        "panel_path": "panel_ddplus0.20_dsminus1.80.jpg"
+      },
+      {
+        "id": "ddplus0.20_dsminus1.60",
+        "delta": {
+          "dof": 0.2,
+          "slope": -1.6
+        },
+        "end": null,
+        "panel_path": "panel_ddplus0.20_dsminus1.60.jpg"
+      },
+      {
+        "id": "ddplus0.20_dsminus1.40",
+        "delta": {
+          "dof": 0.2,
+          "slope": -1.4
+        },
+        "end": null,
+        "panel_path": "panel_ddplus0.20_dsminus1.40.jpg"
+      },
+      {
+        "id": "ddplus0.20_dsminus1.20",
+        "delta": {
+          "dof": 0.2,
+          "slope": -1.2
+        },
+        "end": null,
+        "panel_path": "panel_ddplus0.20_dsminus1.20.jpg"
+      },
+      {
+        "id": "ddplus0.20_dsminus1.00",
+        "delta": {
+          "dof": 0.2,
+          "slope": -1.0
+        },
+        "end": null,
+        "panel_path": "panel_ddplus0.20_dsminus1.00.jpg"
+      },
+      {
+        "id": "ddplus0.20_dsminus0.80",
+        "delta": {
+          "dof": 0.2,
+          "slope": -0.8
+        },
+        "end": null,
+        "panel_path": "panel_ddplus0.20_dsminus0.80.jpg"
+      },
+      {
+        "id": "ddplus0.20_dsminus0.60",
+        "delta": {
+          "dof": 0.2,
+          "slope": -0.6
+        },
+        "end": null,
+        "panel_path": "panel_ddplus0.20_dsminus0.60.jpg"
+      },
+      {
+        "id": "ddplus0.20_dsminus0.40",
+        "delta": {
+          "dof": 0.2,
+          "slope": -0.4
+        },
+        "end": null,
+        "panel_path": "panel_ddplus0.20_dsminus0.40.jpg"
+      },
+      {
+        "id": "ddplus0.20_dsminus0.20",
+        "delta": {
+          "dof": 0.2,
+          "slope": -0.2
+        },
+        "end": null,
+        "panel_path": "panel_ddplus0.20_dsminus0.20.jpg"
+      },
+      {
+        "id": "ddplus0.20_dsplus0.00",
+        "delta": {
+          "dof": 0.2,
+          "slope": 0.0
+        },
+        "end": null,
+        "panel_path": "panel_ddplus0.20_dsplus0.00.jpg"
+      },
+      {
+        "id": "ddplus0.20_dsplus0.20",
+        "delta": {
+          "dof": 0.2,
+          "slope": 0.2
+        },
+        "end": null,
+        "panel_path": "panel_ddplus0.20_dsplus0.20.jpg"
+      },
+      {
+        "id": "ddplus0.20_dsplus0.40",
+        "delta": {
+          "dof": 0.2,
+          "slope": 0.4
+        },
+        "end": null,
+        "panel_path": "panel_ddplus0.20_dsplus0.40.jpg"
+      },
+      {
+        "id": "ddplus0.20_dsplus0.60",
+        "delta": {
+          "dof": 0.2,
+          "slope": 0.6
+        },
+        "end": null,
+        "panel_path": "panel_ddplus0.20_dsplus0.60.jpg"
+      },
+      {
+        "id": "ddplus0.20_dsplus0.80",
+        "delta": {
+          "dof": 0.2,
+          "slope": 0.8
+        },
+        "end": null,
+        "panel_path": "panel_ddplus0.20_dsplus0.80.jpg"
+      },
+      {
+        "id": "ddplus0.40_dsminus1.80",
+        "delta": {
+          "dof": 0.4,
+          "slope": -1.8
+        },
+        "end": null,
+        "panel_path": "panel_ddplus0.40_dsminus1.80.jpg"
+      },
+      {
+        "id": "ddplus0.40_dsminus1.60",
+        "delta": {
+          "dof": 0.4,
+          "slope": -1.6
+        },
+        "end": null,
+        "panel_path": "panel_ddplus0.40_dsminus1.60.jpg"
+      },
+      {
+        "id": "ddplus0.40_dsminus1.40",
+        "delta": {
+          "dof": 0.4,
+          "slope": -1.4
+        },
+        "end": null,
+        "panel_path": "panel_ddplus0.40_dsminus1.40.jpg"
+      },
+      {
+        "id": "ddplus0.40_dsminus1.20",
+        "delta": {
+          "dof": 0.4,
+          "slope": -1.2
+        },
+        "end": null,
+        "panel_path": "panel_ddplus0.40_dsminus1.20.jpg"
+      },
+      {
+        "id": "ddplus0.40_dsminus1.00",
+        "delta": {
+          "dof": 0.4,
+          "slope": -1.0
+        },
+        "end": null,
+        "panel_path": "panel_ddplus0.40_dsminus1.00.jpg"
+      },
+      {
+        "id": "ddplus0.40_dsminus0.80",
+        "delta": {
+          "dof": 0.4,
+          "slope": -0.8
+        },
+        "end": null,
+        "panel_path": "panel_ddplus0.40_dsminus0.80.jpg"
+      },
+      {
+        "id": "ddplus0.40_dsminus0.60",
+        "delta": {
+          "dof": 0.4,
+          "slope": -0.6
+        },
+        "end": null,
+        "panel_path": "panel_ddplus0.40_dsminus0.60.jpg"
+      },
+      {
+        "id": "ddplus0.40_dsminus0.40",
+        "delta": {
+          "dof": 0.4,
+          "slope": -0.4
+        },
+        "end": null,
+        "panel_path": "panel_ddplus0.40_dsminus0.40.jpg"
+      },
+      {
+        "id": "ddplus0.40_dsminus0.20",
+        "delta": {
+          "dof": 0.4,
+          "slope": -0.2
+        },
+        "end": null,
+        "panel_path": "panel_ddplus0.40_dsminus0.20.jpg"
+      },
+      {
+        "id": "ddplus0.40_dsplus0.00",
+        "delta": {
+          "dof": 0.4,
+          "slope": 0.0
+        },
+        "end": null,
+        "panel_path": "panel_ddplus0.40_dsplus0.00.jpg"
+      },
+      {
+        "id": "ddplus0.40_dsplus0.20",
+        "delta": {
+          "dof": 0.4,
+          "slope": 0.2
+        },
+        "end": null,
+        "panel_path": "panel_ddplus0.40_dsplus0.20.jpg"
+      },
+      {
+        "id": "ddplus0.40_dsplus0.40",
+        "delta": {
+          "dof": 0.4,
+          "slope": 0.4
+        },
+        "end": null,
+        "panel_path": "panel_ddplus0.40_dsplus0.40.jpg"
+      },
+      {
+        "id": "ddplus0.40_dsplus0.60",
+        "delta": {
+          "dof": 0.4,
+          "slope": 0.6
+        },
+        "end": null,
+        "panel_path": "panel_ddplus0.40_dsplus0.60.jpg"
+      },
+      {
+        "id": "ddplus0.40_dsplus0.80",
+        "delta": {
+          "dof": 0.4,
+          "slope": 0.8
+        },
+        "end": null,
+        "panel_path": "panel_ddplus0.40_dsplus0.80.jpg"
+      },
+      {
+        "id": "ddplus0.60_dsminus1.80",
+        "delta": {
+          "dof": 0.6,
+          "slope": -1.8
+        },
+        "end": null,
+        "panel_path": "panel_ddplus0.60_dsminus1.80.jpg"
+      },
+      {
+        "id": "ddplus0.60_dsminus1.60",
+        "delta": {
+          "dof": 0.6,
+          "slope": -1.6
+        },
+        "end": null,
+        "panel_path": "panel_ddplus0.60_dsminus1.60.jpg"
+      },
+      {
+        "id": "ddplus0.60_dsminus1.40",
+        "delta": {
+          "dof": 0.6,
+          "slope": -1.4
+        },
+        "end": null,
+        "panel_path": "panel_ddplus0.60_dsminus1.40.jpg"
+      },
+      {
+        "id": "ddplus0.60_dsminus1.20",
+        "delta": {
+          "dof": 0.6,
+          "slope": -1.2
+        },
+        "end": null,
+        "panel_path": "panel_ddplus0.60_dsminus1.20.jpg"
+      },
+      {
+        "id": "ddplus0.60_dsminus1.00",
+        "delta": {
+          "dof": 0.6,
+          "slope": -1.0
+        },
+        "end": null,
+        "panel_path": "panel_ddplus0.60_dsminus1.00.jpg"
+      },
+      {
+        "id": "ddplus0.60_dsminus0.80",
+        "delta": {
+          "dof": 0.6,
+          "slope": -0.8
+        },
+        "end": null,
+        "panel_path": "panel_ddplus0.60_dsminus0.80.jpg"
+      },
+      {
+        "id": "ddplus0.60_dsminus0.60",
+        "delta": {
+          "dof": 0.6,
+          "slope": -0.6
+        },
+        "end": null,
+        "panel_path": "panel_ddplus0.60_dsminus0.60.jpg"
+      },
+      {
+        "id": "ddplus0.60_dsminus0.40",
+        "delta": {
+          "dof": 0.6,
+          "slope": -0.4
+        },
+        "end": null,
+        "panel_path": "panel_ddplus0.60_dsminus0.40.jpg"
+      },
+      {
+        "id": "ddplus0.60_dsminus0.20",
+        "delta": {
+          "dof": 0.6,
+          "slope": -0.2
+        },
+        "end": null,
+        "panel_path": "panel_ddplus0.60_dsminus0.20.jpg"
+      },
+      {
+        "id": "ddplus0.60_dsplus0.00",
+        "delta": {
+          "dof": 0.6,
+          "slope": 0.0
+        },
+        "end": null,
+        "panel_path": "panel_ddplus0.60_dsplus0.00.jpg"
+      },
+      {
+        "id": "ddplus0.60_dsplus0.20",
+        "delta": {
+          "dof": 0.6,
+          "slope": 0.2
+        },
+        "end": null,
+        "panel_path": "panel_ddplus0.60_dsplus0.20.jpg"
+      },
+      {
+        "id": "ddplus0.60_dsplus0.40",
+        "delta": {
+          "dof": 0.6,
+          "slope": 0.4
+        },
+        "end": null,
+        "panel_path": "panel_ddplus0.60_dsplus0.40.jpg"
+      },
+      {
+        "id": "ddplus0.60_dsplus0.60",
+        "delta": {
+          "dof": 0.6,
+          "slope": 0.6
+        },
+        "end": null,
+        "panel_path": "panel_ddplus0.60_dsplus0.60.jpg"
+      },
+      {
+        "id": "ddplus0.60_dsplus0.80",
+        "delta": {
+          "dof": 0.6,
+          "slope": 0.8
+        },
+        "end": null,
+        "panel_path": "panel_ddplus0.60_dsplus0.80.jpg"
+      },
+      {
+        "id": "ddplus0.80_dsminus1.80",
+        "delta": {
+          "dof": 0.8,
+          "slope": -1.8
+        },
+        "end": null,
+        "panel_path": "panel_ddplus0.80_dsminus1.80.jpg"
+      },
+      {
+        "id": "ddplus0.80_dsminus1.60",
+        "delta": {
+          "dof": 0.8,
+          "slope": -1.6
+        },
+        "end": null,
+        "panel_path": "panel_ddplus0.80_dsminus1.60.jpg"
+      },
+      {
+        "id": "ddplus0.80_dsminus1.40",
+        "delta": {
+          "dof": 0.8,
+          "slope": -1.4
+        },
+        "end": null,
+        "panel_path": "panel_ddplus0.80_dsminus1.40.jpg"
+      },
+      {
+        "id": "ddplus0.80_dsminus1.20",
+        "delta": {
+          "dof": 0.8,
+          "slope": -1.2
+        },
+        "end": null,
+        "panel_path": "panel_ddplus0.80_dsminus1.20.jpg"
+      },
+      {
+        "id": "ddplus0.80_dsminus1.00",
+        "delta": {
+          "dof": 0.8,
+          "slope": -1.0
+        },
+        "end": null,
+        "panel_path": "panel_ddplus0.80_dsminus1.00.jpg"
+      },
+      {
+        "id": "ddplus0.80_dsminus0.80",
+        "delta": {
+          "dof": 0.8,
+          "slope": -0.8
+        },
+        "end": null,
+        "panel_path": "panel_ddplus0.80_dsminus0.80.jpg"
+      },
+      {
+        "id": "ddplus0.80_dsminus0.60",
+        "delta": {
+          "dof": 0.8,
+          "slope": -0.6
+        },
+        "end": null,
+        "panel_path": "panel_ddplus0.80_dsminus0.60.jpg"
+      },
+      {
+        "id": "ddplus0.80_dsminus0.40",
+        "delta": {
+          "dof": 0.8,
+          "slope": -0.4
+        },
+        "end": null,
+        "panel_path": "panel_ddplus0.80_dsminus0.40.jpg"
+      },
+      {
+        "id": "ddplus0.80_dsminus0.20",
+        "delta": {
+          "dof": 0.8,
+          "slope": -0.2
+        },
+        "end": null,
+        "panel_path": "panel_ddplus0.80_dsminus0.20.jpg"
+      },
+      {
+        "id": "ddplus0.80_dsplus0.00",
+        "delta": {
+          "dof": 0.8,
+          "slope": 0.0
+        },
+        "end": null,
+        "panel_path": "panel_ddplus0.80_dsplus0.00.jpg"
+      },
+      {
+        "id": "ddplus0.80_dsplus0.20",
+        "delta": {
+          "dof": 0.8,
+          "slope": 0.2
+        },
+        "end": null,
+        "panel_path": "panel_ddplus0.80_dsplus0.20.jpg"
+      },
+      {
+        "id": "ddplus0.80_dsplus0.40",
+        "delta": {
+          "dof": 0.8,
+          "slope": 0.4
+        },
+        "end": null,
+        "panel_path": "panel_ddplus0.80_dsplus0.40.jpg"
+      },
+      {
+        "id": "ddplus0.80_dsplus0.60",
+        "delta": {
+          "dof": 0.8,
+          "slope": 0.6
+        },
+        "end": null,
+        "panel_path": "panel_ddplus0.80_dsplus0.60.jpg"
+      },
+      {
+        "id": "ddplus0.80_dsplus0.80",
+        "delta": {
+          "dof": 0.8,
+          "slope": 0.8
+        },
+        "end": null,
+        "panel_path": "panel_ddplus0.80_dsplus0.80.jpg"
+      },
+      {
+        "id": "ddplus1.00_dsminus1.80",
+        "delta": {
+          "dof": 1.0,
+          "slope": -1.8
+        },
+        "end": null,
+        "panel_path": "panel_ddplus1.00_dsminus1.80.jpg"
+      },
+      {
+        "id": "ddplus1.00_dsminus1.60",
+        "delta": {
+          "dof": 1.0,
+          "slope": -1.6
+        },
+        "end": null,
+        "panel_path": "panel_ddplus1.00_dsminus1.60.jpg"
+      },
+      {
+        "id": "ddplus1.00_dsminus1.40",
+        "delta": {
+          "dof": 1.0,
+          "slope": -1.4
+        },
+        "end": null,
+        "panel_path": "panel_ddplus1.00_dsminus1.40.jpg"
+      },
+      {
+        "id": "ddplus1.00_dsminus1.20",
+        "delta": {
+          "dof": 1.0,
+          "slope": -1.2
+        },
+        "end": null,
+        "panel_path": "panel_ddplus1.00_dsminus1.20.jpg"
+      },
+      {
+        "id": "ddplus1.00_dsminus1.00",
+        "delta": {
+          "dof": 1.0,
+          "slope": -1.0
+        },
+        "end": null,
+        "panel_path": "panel_ddplus1.00_dsminus1.00.jpg"
+      },
+      {
+        "id": "ddplus1.00_dsminus0.80",
+        "delta": {
+          "dof": 1.0,
+          "slope": -0.8
+        },
+        "end": null,
+        "panel_path": "panel_ddplus1.00_dsminus0.80.jpg"
+      },
+      {
+        "id": "ddplus1.00_dsminus0.60",
+        "delta": {
+          "dof": 1.0,
+          "slope": -0.6
+        },
+        "end": null,
+        "panel_path": "panel_ddplus1.00_dsminus0.60.jpg"
+      },
+      {
+        "id": "ddplus1.00_dsminus0.40",
+        "delta": {
+          "dof": 1.0,
+          "slope": -0.4
+        },
+        "end": null,
+        "panel_path": "panel_ddplus1.00_dsminus0.40.jpg"
+      },
+      {
+        "id": "ddplus1.00_dsminus0.20",
+        "delta": {
+          "dof": 1.0,
+          "slope": -0.2
+        },
+        "end": null,
+        "panel_path": "panel_ddplus1.00_dsminus0.20.jpg"
+      },
+      {
+        "id": "ddplus1.00_dsplus0.00",
+        "delta": {
+          "dof": 1.0,
+          "slope": 0.0
+        },
+        "end": null,
+        "panel_path": "panel_ddplus1.00_dsplus0.00.jpg"
+      },
+      {
+        "id": "ddplus1.00_dsplus0.20",
+        "delta": {
+          "dof": 1.0,
+          "slope": 0.2
+        },
+        "end": null,
+        "panel_path": "panel_ddplus1.00_dsplus0.20.jpg"
+      },
+      {
+        "id": "ddplus1.00_dsplus0.40",
+        "delta": {
+          "dof": 1.0,
+          "slope": 0.4
+        },
+        "end": null,
+        "panel_path": "panel_ddplus1.00_dsplus0.40.jpg"
+      },
+      {
+        "id": "ddplus1.00_dsplus0.60",
+        "delta": {
+          "dof": 1.0,
+          "slope": 0.6
+        },
+        "end": null,
+        "panel_path": "panel_ddplus1.00_dsplus0.60.jpg"
+      },
+      {
+        "id": "ddplus1.00_dsplus0.80",
+        "delta": {
+          "dof": 1.0,
+          "slope": 0.8
+        },
+        "end": null,
+        "panel_path": "panel_ddplus1.00_dsplus0.80.jpg"
+      },
+      {
+        "id": "ddplus1.20_dsminus1.80",
+        "delta": {
+          "dof": 1.2,
+          "slope": -1.8
+        },
+        "end": null,
+        "panel_path": "panel_ddplus1.20_dsminus1.80.jpg"
+      },
+      {
+        "id": "ddplus1.20_dsminus1.60",
+        "delta": {
+          "dof": 1.2,
+          "slope": -1.6
+        },
+        "end": null,
+        "panel_path": "panel_ddplus1.20_dsminus1.60.jpg"
+      },
+      {
+        "id": "ddplus1.20_dsminus1.40",
+        "delta": {
+          "dof": 1.2,
+          "slope": -1.4
+        },
+        "end": null,
+        "panel_path": "panel_ddplus1.20_dsminus1.40.jpg"
+      },
+      {
+        "id": "ddplus1.20_dsminus1.20",
+        "delta": {
+          "dof": 1.2,
+          "slope": -1.2
+        },
+        "end": null,
+        "panel_path": "panel_ddplus1.20_dsminus1.20.jpg"
+      },
+      {
+        "id": "ddplus1.20_dsminus1.00",
+        "delta": {
+          "dof": 1.2,
+          "slope": -1.0
+        },
+        "end": null,
+        "panel_path": "panel_ddplus1.20_dsminus1.00.jpg"
+      },
+      {
+        "id": "ddplus1.20_dsminus0.80",
+        "delta": {
+          "dof": 1.2,
+          "slope": -0.8
+        },
+        "end": null,
+        "panel_path": "panel_ddplus1.20_dsminus0.80.jpg"
+      },
+      {
+        "id": "ddplus1.20_dsminus0.60",
+        "delta": {
+          "dof": 1.2,
+          "slope": -0.6
+        },
+        "end": null,
+        "panel_path": "panel_ddplus1.20_dsminus0.60.jpg"
+      },
+      {
+        "id": "ddplus1.20_dsminus0.40",
+        "delta": {
+          "dof": 1.2,
+          "slope": -0.4
+        },
+        "end": null,
+        "panel_path": "panel_ddplus1.20_dsminus0.40.jpg"
+      },
+      {
+        "id": "ddplus1.20_dsminus0.20",
+        "delta": {
+          "dof": 1.2,
+          "slope": -0.2
+        },
+        "end": null,
+        "panel_path": "panel_ddplus1.20_dsminus0.20.jpg"
+      },
+      {
+        "id": "ddplus1.20_dsplus0.00",
+        "delta": {
+          "dof": 1.2,
+          "slope": 0.0
+        },
+        "end": null,
+        "panel_path": "panel_ddplus1.20_dsplus0.00.jpg"
+      },
+      {
+        "id": "ddplus1.20_dsplus0.20",
+        "delta": {
+          "dof": 1.2,
+          "slope": 0.2
+        },
+        "end": null,
+        "panel_path": "panel_ddplus1.20_dsplus0.20.jpg"
+      },
+      {
+        "id": "ddplus1.20_dsplus0.40",
+        "delta": {
+          "dof": 1.2,
+          "slope": 0.4
+        },
+        "end": null,
+        "panel_path": "panel_ddplus1.20_dsplus0.40.jpg"
+      },
+      {
+        "id": "ddplus1.20_dsplus0.60",
+        "delta": {
+          "dof": 1.2,
+          "slope": 0.6
+        },
+        "end": null,
+        "panel_path": "panel_ddplus1.20_dsplus0.60.jpg"
+      },
+      {
+        "id": "ddplus1.20_dsplus0.80",
+        "delta": {
+          "dof": 1.2,
+          "slope": 0.8
+        },
+        "end": null,
+        "panel_path": "panel_ddplus1.20_dsplus0.80.jpg"
+      },
+      {
+        "id": "ddplus1.40_dsminus1.80",
+        "delta": {
+          "dof": 1.4,
+          "slope": -1.8
+        },
+        "end": null,
+        "panel_path": "panel_ddplus1.40_dsminus1.80.jpg"
+      },
+      {
+        "id": "ddplus1.40_dsminus1.60",
+        "delta": {
+          "dof": 1.4,
+          "slope": -1.6
+        },
+        "end": null,
+        "panel_path": "panel_ddplus1.40_dsminus1.60.jpg"
+      },
+      {
+        "id": "ddplus1.40_dsminus1.40",
+        "delta": {
+          "dof": 1.4,
+          "slope": -1.4
+        },
+        "end": null,
+        "panel_path": "panel_ddplus1.40_dsminus1.40.jpg"
+      },
+      {
+        "id": "ddplus1.40_dsminus1.20",
+        "delta": {
+          "dof": 1.4,
+          "slope": -1.2
+        },
+        "end": null,
+        "panel_path": "panel_ddplus1.40_dsminus1.20.jpg"
+      },
+      {
+        "id": "ddplus1.40_dsminus1.00",
+        "delta": {
+          "dof": 1.4,
+          "slope": -1.0
+        },
+        "end": null,
+        "panel_path": "panel_ddplus1.40_dsminus1.00.jpg"
+      },
+      {
+        "id": "ddplus1.40_dsminus0.80",
+        "delta": {
+          "dof": 1.4,
+          "slope": -0.8
+        },
+        "end": null,
+        "panel_path": "panel_ddplus1.40_dsminus0.80.jpg"
+      },
+      {
+        "id": "ddplus1.40_dsminus0.60",
+        "delta": {
+          "dof": 1.4,
+          "slope": -0.6
+        },
+        "end": null,
+        "panel_path": "panel_ddplus1.40_dsminus0.60.jpg"
+      },
+      {
+        "id": "ddplus1.40_dsminus0.40",
+        "delta": {
+          "dof": 1.4,
+          "slope": -0.4
+        },
+        "end": null,
+        "panel_path": "panel_ddplus1.40_dsminus0.40.jpg"
+      },
+      {
+        "id": "ddplus1.40_dsminus0.20",
+        "delta": {
+          "dof": 1.4,
+          "slope": -0.2
+        },
+        "end": null,
+        "panel_path": "panel_ddplus1.40_dsminus0.20.jpg"
+      },
+      {
+        "id": "ddplus1.40_dsplus0.00",
+        "delta": {
+          "dof": 1.4,
+          "slope": 0.0
+        },
+        "end": null,
+        "panel_path": "panel_ddplus1.40_dsplus0.00.jpg"
+      },
+      {
+        "id": "ddplus1.40_dsplus0.20",
+        "delta": {
+          "dof": 1.4,
+          "slope": 0.2
+        },
+        "end": null,
+        "panel_path": "panel_ddplus1.40_dsplus0.20.jpg"
+      },
+      {
+        "id": "ddplus1.40_dsplus0.40",
+        "delta": {
+          "dof": 1.4,
+          "slope": 0.4
+        },
+        "end": null,
+        "panel_path": "panel_ddplus1.40_dsplus0.40.jpg"
+      },
+      {
+        "id": "ddplus1.40_dsplus0.60",
+        "delta": {
+          "dof": 1.4,
+          "slope": 0.6
+        },
+        "end": null,
+        "panel_path": "panel_ddplus1.40_dsplus0.60.jpg"
+      },
+      {
+        "id": "ddplus1.40_dsplus0.80",
+        "delta": {
+          "dof": 1.4,
+          "slope": 0.8
+        },
+        "end": null,
+        "panel_path": "panel_ddplus1.40_dsplus0.80.jpg"
+      },
+      {
+        "id": "ddplus1.60_dsminus1.80",
+        "delta": {
+          "dof": 1.6,
+          "slope": -1.8
+        },
+        "end": null,
+        "panel_path": "panel_ddplus1.60_dsminus1.80.jpg"
+      },
+      {
+        "id": "ddplus1.60_dsminus1.60",
+        "delta": {
+          "dof": 1.6,
+          "slope": -1.6
+        },
+        "end": null,
+        "panel_path": "panel_ddplus1.60_dsminus1.60.jpg"
+      },
+      {
+        "id": "ddplus1.60_dsminus1.40",
+        "delta": {
+          "dof": 1.6,
+          "slope": -1.4
+        },
+        "end": null,
+        "panel_path": "panel_ddplus1.60_dsminus1.40.jpg"
+      },
+      {
+        "id": "ddplus1.60_dsminus1.20",
+        "delta": {
+          "dof": 1.6,
+          "slope": -1.2
+        },
+        "end": null,
+        "panel_path": "panel_ddplus1.60_dsminus1.20.jpg"
+      },
+      {
+        "id": "ddplus1.60_dsminus1.00",
+        "delta": {
+          "dof": 1.6,
+          "slope": -1.0
+        },
+        "end": null,
+        "panel_path": "panel_ddplus1.60_dsminus1.00.jpg"
+      },
+      {
+        "id": "ddplus1.60_dsminus0.80",
+        "delta": {
+          "dof": 1.6,
+          "slope": -0.8
+        },
+        "end": null,
+        "panel_path": "panel_ddplus1.60_dsminus0.80.jpg"
+      },
+      {
+        "id": "ddplus1.60_dsminus0.60",
+        "delta": {
+          "dof": 1.6,
+          "slope": -0.6
+        },
+        "end": null,
+        "panel_path": "panel_ddplus1.60_dsminus0.60.jpg"
+      },
+      {
+        "id": "ddplus1.60_dsminus0.40",
+        "delta": {
+          "dof": 1.6,
+          "slope": -0.4
+        },
+        "end": null,
+        "panel_path": "panel_ddplus1.60_dsminus0.40.jpg"
+      },
+      {
+        "id": "ddplus1.60_dsminus0.20",
+        "delta": {
+          "dof": 1.6,
+          "slope": -0.2
+        },
+        "end": null,
+        "panel_path": "panel_ddplus1.60_dsminus0.20.jpg"
+      },
+      {
+        "id": "ddplus1.60_dsplus0.00",
+        "delta": {
+          "dof": 1.6,
+          "slope": 0.0
+        },
+        "end": null,
+        "panel_path": "panel_ddplus1.60_dsplus0.00.jpg"
+      },
+      {
+        "id": "ddplus1.60_dsplus0.20",
+        "delta": {
+          "dof": 1.6,
+          "slope": 0.2
+        },
+        "end": null,
+        "panel_path": "panel_ddplus1.60_dsplus0.20.jpg"
+      },
+      {
+        "id": "ddplus1.60_dsplus0.40",
+        "delta": {
+          "dof": 1.6,
+          "slope": 0.4
+        },
+        "end": null,
+        "panel_path": "panel_ddplus1.60_dsplus0.40.jpg"
+      },
+      {
+        "id": "ddplus1.60_dsplus0.60",
+        "delta": {
+          "dof": 1.6,
+          "slope": 0.6
+        },
+        "end": null,
+        "panel_path": "panel_ddplus1.60_dsplus0.60.jpg"
+      },
+      {
+        "id": "ddplus1.60_dsplus0.80",
+        "delta": {
+          "dof": 1.6,
+          "slope": 0.8
+        },
+        "end": null,
+        "panel_path": "panel_ddplus1.60_dsplus0.80.jpg"
+      }
     ]
   },
 
@@ -3957,1186 +3957,969 @@ const OURMETHOD_MANIFESTS = {
   scene3: {
     basePath: "./static/Our_Res_Playground/Case_03_Sparse/images",
     records: [
-    {
-      "id": "ddminus1.00_dsminus1.20",
-      "delta": {
-        "dof": -1.0,
-        "slope": -1.2
-      },
-      "end": null,
-      "panel_path": "panel_ddminus1.00_dsminus1.20.jpg"
-    },
-    {
-      "id": "ddminus1.00_dsminus1.00",
-      "delta": {
-        "dof": -1.0,
-        "slope": -1.0
-      },
-      "end": null,
-      "panel_path": "panel_ddminus1.00_dsminus1.00.jpg"
-    },
-    {
-      "id": "ddminus1.00_dsminus0.80",
-      "delta": {
-        "dof": -1.0,
-        "slope": -0.8
-      },
-      "end": null,
-      "panel_path": "panel_ddminus1.00_dsminus0.80.jpg"
-    },
-    {
-      "id": "ddminus1.00_dsminus0.60",
-      "delta": {
-        "dof": -1.0,
-        "slope": -0.6
-      },
-      "end": null,
-      "panel_path": "panel_ddminus1.00_dsminus0.60.jpg"
-    },
-    {
-      "id": "ddminus1.00_dsminus0.40",
-      "delta": {
-        "dof": -1.0,
-        "slope": -0.4
-      },
-      "end": null,
-      "panel_path": "panel_ddminus1.00_dsminus0.40.jpg"
-    },
-    {
-      "id": "ddminus1.00_dsminus0.20",
-      "delta": {
-        "dof": -1.0,
-        "slope": -0.2
-      },
-      "end": null,
-      "panel_path": "panel_ddminus1.00_dsminus0.20.jpg"
-    },
-    {
-      "id": "ddminus1.00_dsplus0.00",
-      "delta": {
-        "dof": -1.0,
-        "slope": 0.0
-      },
-      "end": null,
-      "panel_path": "panel_ddminus1.00_dsplus0.00.jpg"
-    },
-    {
-      "id": "ddminus1.00_dsplus0.20",
-      "delta": {
-        "dof": -1.0,
-        "slope": 0.2
-      },
-      "end": null,
-      "panel_path": "panel_ddminus1.00_dsplus0.20.jpg"
-    },
-    {
-      "id": "ddminus1.00_dsplus0.40",
-      "delta": {
-        "dof": -1.0,
-        "slope": 0.4
-      },
-      "end": null,
-      "panel_path": "panel_ddminus1.00_dsplus0.40.jpg"
-    },
-    {
-      "id": "ddminus1.00_dsplus0.60",
-      "delta": {
-        "dof": -1.0,
-        "slope": 0.6
-      },
-      "end": null,
-      "panel_path": "panel_ddminus1.00_dsplus0.60.jpg"
-    },
-    {
-      "id": "ddminus1.00_dsplus0.80",
-      "delta": {
-        "dof": -1.0,
-        "slope": 0.8
-      },
-      "end": null,
-      "panel_path": "panel_ddminus1.00_dsplus0.80.jpg"
-    },
-    {
-      "id": "ddminus0.80_dsminus1.20",
-      "delta": {
-        "dof": -0.8,
-        "slope": -1.2
-      },
-      "end": null,
-      "panel_path": "panel_ddminus0.80_dsminus1.20.jpg"
-    },
-    {
-      "id": "ddminus0.80_dsminus1.00",
-      "delta": {
-        "dof": -0.8,
-        "slope": -1.0
-      },
-      "end": null,
-      "panel_path": "panel_ddminus0.80_dsminus1.00.jpg"
-    },
-    {
-      "id": "ddminus0.80_dsminus0.80",
-      "delta": {
-        "dof": -0.8,
-        "slope": -0.8
-      },
-      "end": null,
-      "panel_path": "panel_ddminus0.80_dsminus0.80.jpg"
-    },
-    {
-      "id": "ddminus0.80_dsminus0.60",
-      "delta": {
-        "dof": -0.8,
-        "slope": -0.6
-      },
-      "end": null,
-      "panel_path": "panel_ddminus0.80_dsminus0.60.jpg"
-    },
-    {
-      "id": "ddminus0.80_dsminus0.40",
-      "delta": {
-        "dof": -0.8,
-        "slope": -0.4
-      },
-      "end": null,
-      "panel_path": "panel_ddminus0.80_dsminus0.40.jpg"
-    },
-    {
-      "id": "ddminus0.80_dsminus0.20",
-      "delta": {
-        "dof": -0.8,
-        "slope": -0.2
-      },
-      "end": null,
-      "panel_path": "panel_ddminus0.80_dsminus0.20.jpg"
-    },
-    {
-      "id": "ddminus0.80_dsplus0.00",
-      "delta": {
-        "dof": -0.8,
-        "slope": 0.0
-      },
-      "end": null,
-      "panel_path": "panel_ddminus0.80_dsplus0.00.jpg"
-    },
-    {
-      "id": "ddminus0.80_dsplus0.20",
-      "delta": {
-        "dof": -0.8,
-        "slope": 0.2
-      },
-      "end": null,
-      "panel_path": "panel_ddminus0.80_dsplus0.20.jpg"
-    },
-    {
-      "id": "ddminus0.80_dsplus0.40",
-      "delta": {
-        "dof": -0.8,
-        "slope": 0.4
-      },
-      "end": null,
-      "panel_path": "panel_ddminus0.80_dsplus0.40.jpg"
-    },
-    {
-      "id": "ddminus0.80_dsplus0.60",
-      "delta": {
-        "dof": -0.8,
-        "slope": 0.6
-      },
-      "end": null,
-      "panel_path": "panel_ddminus0.80_dsplus0.60.jpg"
-    },
-    {
-      "id": "ddminus0.80_dsplus0.80",
-      "delta": {
-        "dof": -0.8,
-        "slope": 0.8
-      },
-      "end": null,
-      "panel_path": "panel_ddminus0.80_dsplus0.80.jpg"
-    },
-    {
-      "id": "ddminus0.60_dsminus1.20",
-      "delta": {
-        "dof": -0.6,
-        "slope": -1.2
-      },
-      "end": null,
-      "panel_path": "panel_ddminus0.60_dsminus1.20.jpg"
-    },
-    {
-      "id": "ddminus0.60_dsminus1.00",
-      "delta": {
-        "dof": -0.6,
-        "slope": -1.0
-      },
-      "end": null,
-      "panel_path": "panel_ddminus0.60_dsminus1.00.jpg"
-    },
-    {
-      "id": "ddminus0.60_dsminus0.80",
-      "delta": {
-        "dof": -0.6,
-        "slope": -0.8
-      },
-      "end": null,
-      "panel_path": "panel_ddminus0.60_dsminus0.80.jpg"
-    },
-    {
-      "id": "ddminus0.60_dsminus0.60",
-      "delta": {
-        "dof": -0.6,
-        "slope": -0.6
-      },
-      "end": null,
-      "panel_path": "panel_ddminus0.60_dsminus0.60.jpg"
-    },
-    {
-      "id": "ddminus0.60_dsminus0.40",
-      "delta": {
-        "dof": -0.6,
-        "slope": -0.4
-      },
-      "end": null,
-      "panel_path": "panel_ddminus0.60_dsminus0.40.jpg"
-    },
-    {
-      "id": "ddminus0.60_dsminus0.20",
-      "delta": {
-        "dof": -0.6,
-        "slope": -0.2
-      },
-      "end": null,
-      "panel_path": "panel_ddminus0.60_dsminus0.20.jpg"
-    },
-    {
-      "id": "ddminus0.60_dsplus0.00",
-      "delta": {
-        "dof": -0.6,
-        "slope": 0.0
-      },
-      "end": null,
-      "panel_path": "panel_ddminus0.60_dsplus0.00.jpg"
-    },
-    {
-      "id": "ddminus0.60_dsplus0.20",
-      "delta": {
-        "dof": -0.6,
-        "slope": 0.2
-      },
-      "end": null,
-      "panel_path": "panel_ddminus0.60_dsplus0.20.jpg"
-    },
-    {
-      "id": "ddminus0.60_dsplus0.40",
-      "delta": {
-        "dof": -0.6,
-        "slope": 0.4
-      },
-      "end": null,
-      "panel_path": "panel_ddminus0.60_dsplus0.40.jpg"
-    },
-    {
-      "id": "ddminus0.60_dsplus0.60",
-      "delta": {
-        "dof": -0.6,
-        "slope": 0.6
-      },
-      "end": null,
-      "panel_path": "panel_ddminus0.60_dsplus0.60.jpg"
-    },
-    {
-      "id": "ddminus0.60_dsplus0.80",
-      "delta": {
-        "dof": -0.6,
-        "slope": 0.8
-      },
-      "end": null,
-      "panel_path": "panel_ddminus0.60_dsplus0.80.jpg"
-    },
-    {
-      "id": "ddminus0.40_dsminus1.20",
-      "delta": {
-        "dof": -0.4,
-        "slope": -1.2
-      },
-      "end": null,
-      "panel_path": "panel_ddminus0.40_dsminus1.20.jpg"
-    },
-    {
-      "id": "ddminus0.40_dsminus1.00",
-      "delta": {
-        "dof": -0.4,
-        "slope": -1.0
-      },
-      "end": null,
-      "panel_path": "panel_ddminus0.40_dsminus1.00.jpg"
-    },
-    {
-      "id": "ddminus0.40_dsminus0.80",
-      "delta": {
-        "dof": -0.4,
-        "slope": -0.8
-      },
-      "end": null,
-      "panel_path": "panel_ddminus0.40_dsminus0.80.jpg"
-    },
-    {
-      "id": "ddminus0.40_dsminus0.60",
-      "delta": {
-        "dof": -0.4,
-        "slope": -0.6
-      },
-      "end": null,
-      "panel_path": "panel_ddminus0.40_dsminus0.60.jpg"
-    },
-    {
-      "id": "ddminus0.40_dsminus0.40",
-      "delta": {
-        "dof": -0.4,
-        "slope": -0.4
-      },
-      "end": null,
-      "panel_path": "panel_ddminus0.40_dsminus0.40.jpg"
-    },
-    {
-      "id": "ddminus0.40_dsminus0.20",
-      "delta": {
-        "dof": -0.4,
-        "slope": -0.2
-      },
-      "end": null,
-      "panel_path": "panel_ddminus0.40_dsminus0.20.jpg"
-    },
-    {
-      "id": "ddminus0.40_dsplus0.00",
-      "delta": {
-        "dof": -0.4,
-        "slope": 0.0
-      },
-      "end": null,
-      "panel_path": "panel_ddminus0.40_dsplus0.00.jpg"
-    },
-    {
-      "id": "ddminus0.40_dsplus0.20",
-      "delta": {
-        "dof": -0.4,
-        "slope": 0.2
-      },
-      "end": null,
-      "panel_path": "panel_ddminus0.40_dsplus0.20.jpg"
-    },
-    {
-      "id": "ddminus0.40_dsplus0.40",
-      "delta": {
-        "dof": -0.4,
-        "slope": 0.4
-      },
-      "end": null,
-      "panel_path": "panel_ddminus0.40_dsplus0.40.jpg"
-    },
-    {
-      "id": "ddminus0.40_dsplus0.60",
-      "delta": {
-        "dof": -0.4,
-        "slope": 0.6
-      },
-      "end": null,
-      "panel_path": "panel_ddminus0.40_dsplus0.60.jpg"
-    },
-    {
-      "id": "ddminus0.40_dsplus0.80",
-      "delta": {
-        "dof": -0.4,
-        "slope": 0.8
-      },
-      "end": null,
-      "panel_path": "panel_ddminus0.40_dsplus0.80.jpg"
-    },
-    {
-      "id": "ddminus0.20_dsminus1.20",
-      "delta": {
-        "dof": -0.2,
-        "slope": -1.2
-      },
-      "end": null,
-      "panel_path": "panel_ddminus0.20_dsminus1.20.jpg"
-    },
-    {
-      "id": "ddminus0.20_dsminus1.00",
-      "delta": {
-        "dof": -0.2,
-        "slope": -1.0
-      },
-      "end": null,
-      "panel_path": "panel_ddminus0.20_dsminus1.00.jpg"
-    },
-    {
-      "id": "ddminus0.20_dsminus0.80",
-      "delta": {
-        "dof": -0.2,
-        "slope": -0.8
-      },
-      "end": null,
-      "panel_path": "panel_ddminus0.20_dsminus0.80.jpg"
-    },
-    {
-      "id": "ddminus0.20_dsminus0.60",
-      "delta": {
-        "dof": -0.2,
-        "slope": -0.6
-      },
-      "end": null,
-      "panel_path": "panel_ddminus0.20_dsminus0.60.jpg"
-    },
-    {
-      "id": "ddminus0.20_dsminus0.40",
-      "delta": {
-        "dof": -0.2,
-        "slope": -0.4
-      },
-      "end": null,
-      "panel_path": "panel_ddminus0.20_dsminus0.40.jpg"
-    },
-    {
-      "id": "ddminus0.20_dsminus0.20",
-      "delta": {
-        "dof": -0.2,
-        "slope": -0.2
-      },
-      "end": null,
-      "panel_path": "panel_ddminus0.20_dsminus0.20.jpg"
-    },
-    {
-      "id": "ddminus0.20_dsplus0.00",
-      "delta": {
-        "dof": -0.2,
-        "slope": 0.0
-      },
-      "end": null,
-      "panel_path": "panel_ddminus0.20_dsplus0.00.jpg"
-    },
-    {
-      "id": "ddminus0.20_dsplus0.20",
-      "delta": {
-        "dof": -0.2,
-        "slope": 0.2
-      },
-      "end": null,
-      "panel_path": "panel_ddminus0.20_dsplus0.20.jpg"
-    },
-    {
-      "id": "ddminus0.20_dsplus0.40",
-      "delta": {
-        "dof": -0.2,
-        "slope": 0.4
-      },
-      "end": null,
-      "panel_path": "panel_ddminus0.20_dsplus0.40.jpg"
-    },
-    {
-      "id": "ddminus0.20_dsplus0.60",
-      "delta": {
-        "dof": -0.2,
-        "slope": 0.6
-      },
-      "end": null,
-      "panel_path": "panel_ddminus0.20_dsplus0.60.jpg"
-    },
-    {
-      "id": "ddminus0.20_dsplus0.80",
-      "delta": {
-        "dof": -0.2,
-        "slope": 0.8
-      },
-      "end": null,
-      "panel_path": "panel_ddminus0.20_dsplus0.80.jpg"
-    },
-    {
-      "id": "ddplus0.00_dsminus1.20",
-      "delta": {
-        "dof": 0.0,
-        "slope": -1.2
-      },
-      "end": null,
-      "panel_path": "panel_ddplus0.00_dsminus1.20.jpg"
-    },
-    {
-      "id": "ddplus0.00_dsminus1.00",
-      "delta": {
-        "dof": 0.0,
-        "slope": -1.0
-      },
-      "end": null,
-      "panel_path": "panel_ddplus0.00_dsminus1.00.jpg"
-    },
-    {
-      "id": "ddplus0.00_dsminus0.80",
-      "delta": {
-        "dof": 0.0,
-        "slope": -0.8
-      },
-      "end": null,
-      "panel_path": "panel_ddplus0.00_dsminus0.80.jpg"
-    },
-    {
-      "id": "ddplus0.00_dsminus0.60",
-      "delta": {
-        "dof": 0.0,
-        "slope": -0.6
-      },
-      "end": null,
-      "panel_path": "panel_ddplus0.00_dsminus0.60.jpg"
-    },
-    {
-      "id": "ddplus0.00_dsminus0.40",
-      "delta": {
-        "dof": 0.0,
-        "slope": -0.4
-      },
-      "end": null,
-      "panel_path": "panel_ddplus0.00_dsminus0.40.jpg"
-    },
-    {
-      "id": "ddplus0.00_dsminus0.20",
-      "delta": {
-        "dof": 0.0,
-        "slope": -0.2
-      },
-      "end": null,
-      "panel_path": "panel_ddplus0.00_dsminus0.20.jpg"
-    },
-    {
-      "id": "ddplus0.00_dsplus0.20",
-      "delta": {
-        "dof": 0.0,
-        "slope": 0.2
-      },
-      "end": null,
-      "panel_path": "panel_ddplus0.00_dsplus0.20.jpg"
-    },
-    {
-      "id": "ddplus0.00_dsplus0.40",
-      "delta": {
-        "dof": 0.0,
-        "slope": 0.4
-      },
-      "end": null,
-      "panel_path": "panel_ddplus0.00_dsplus0.40.jpg"
-    },
-    {
-      "id": "ddplus0.00_dsplus0.60",
-      "delta": {
-        "dof": 0.0,
-        "slope": 0.6
-      },
-      "end": null,
-      "panel_path": "panel_ddplus0.00_dsplus0.60.jpg"
-    },
-    {
-      "id": "ddplus0.00_dsplus0.80",
-      "delta": {
-        "dof": 0.0,
-        "slope": 0.8
-      },
-      "end": null,
-      "panel_path": "panel_ddplus0.00_dsplus0.80.jpg"
-    },
-    {
-      "id": "ddplus0.20_dsminus1.20",
-      "delta": {
-        "dof": 0.2,
-        "slope": -1.2
-      },
-      "end": null,
-      "panel_path": "panel_ddplus0.20_dsminus1.20.jpg"
-    },
-    {
-      "id": "ddplus0.20_dsminus1.00",
-      "delta": {
-        "dof": 0.2,
-        "slope": -1.0
-      },
-      "end": null,
-      "panel_path": "panel_ddplus0.20_dsminus1.00.jpg"
-    },
-    {
-      "id": "ddplus0.20_dsminus0.80",
-      "delta": {
-        "dof": 0.2,
-        "slope": -0.8
-      },
-      "end": null,
-      "panel_path": "panel_ddplus0.20_dsminus0.80.jpg"
-    },
-    {
-      "id": "ddplus0.20_dsminus0.60",
-      "delta": {
-        "dof": 0.2,
-        "slope": -0.6
-      },
-      "end": null,
-      "panel_path": "panel_ddplus0.20_dsminus0.60.jpg"
-    },
-    {
-      "id": "ddplus0.20_dsminus0.40",
-      "delta": {
-        "dof": 0.2,
-        "slope": -0.4
-      },
-      "end": null,
-      "panel_path": "panel_ddplus0.20_dsminus0.40.jpg"
-    },
-    {
-      "id": "ddplus0.20_dsminus0.20",
-      "delta": {
-        "dof": 0.2,
-        "slope": -0.2
-      },
-      "end": null,
-      "panel_path": "panel_ddplus0.20_dsminus0.20.jpg"
-    },
-    {
-      "id": "ddplus0.20_dsplus0.00",
-      "delta": {
-        "dof": 0.2,
-        "slope": 0.0
-      },
-      "end": null,
-      "panel_path": "panel_ddplus0.20_dsplus0.00.jpg"
-    },
-    {
-      "id": "ddplus0.20_dsplus0.20",
-      "delta": {
-        "dof": 0.2,
-        "slope": 0.2
-      },
-      "end": null,
-      "panel_path": "panel_ddplus0.20_dsplus0.20.jpg"
-    },
-    {
-      "id": "ddplus0.20_dsplus0.40",
-      "delta": {
-        "dof": 0.2,
-        "slope": 0.4
-      },
-      "end": null,
-      "panel_path": "panel_ddplus0.20_dsplus0.40.jpg"
-    },
-    {
-      "id": "ddplus0.20_dsplus0.60",
-      "delta": {
-        "dof": 0.2,
-        "slope": 0.6
-      },
-      "end": null,
-      "panel_path": "panel_ddplus0.20_dsplus0.60.jpg"
-    },
-    {
-      "id": "ddplus0.20_dsplus0.80",
-      "delta": {
-        "dof": 0.2,
-        "slope": 0.8
-      },
-      "end": null,
-      "panel_path": "panel_ddplus0.20_dsplus0.80.jpg"
-    },
-    {
-      "id": "ddplus0.40_dsminus1.20",
-      "delta": {
-        "dof": 0.4,
-        "slope": -1.2
-      },
-      "end": null,
-      "panel_path": "panel_ddplus0.40_dsminus1.20.jpg"
-    },
-    {
-      "id": "ddplus0.40_dsminus1.00",
-      "delta": {
-        "dof": 0.4,
-        "slope": -1.0
-      },
-      "end": null,
-      "panel_path": "panel_ddplus0.40_dsminus1.00.jpg"
-    },
-    {
-      "id": "ddplus0.40_dsminus0.80",
-      "delta": {
-        "dof": 0.4,
-        "slope": -0.8
-      },
-      "end": null,
-      "panel_path": "panel_ddplus0.40_dsminus0.80.jpg"
-    },
-    {
-      "id": "ddplus0.40_dsminus0.60",
-      "delta": {
-        "dof": 0.4,
-        "slope": -0.6
-      },
-      "end": null,
-      "panel_path": "panel_ddplus0.40_dsminus0.60.jpg"
-    },
-    {
-      "id": "ddplus0.40_dsminus0.40",
-      "delta": {
-        "dof": 0.4,
-        "slope": -0.4
-      },
-      "end": null,
-      "panel_path": "panel_ddplus0.40_dsminus0.40.jpg"
-    },
-    {
-      "id": "ddplus0.40_dsminus0.20",
-      "delta": {
-        "dof": 0.4,
-        "slope": -0.2
-      },
-      "end": null,
-      "panel_path": "panel_ddplus0.40_dsminus0.20.jpg"
-    },
-    {
-      "id": "ddplus0.40_dsplus0.00",
-      "delta": {
-        "dof": 0.4,
-        "slope": 0.0
-      },
-      "end": null,
-      "panel_path": "panel_ddplus0.40_dsplus0.00.jpg"
-    },
-    {
-      "id": "ddplus0.40_dsplus0.20",
-      "delta": {
-        "dof": 0.4,
-        "slope": 0.2
-      },
-      "end": null,
-      "panel_path": "panel_ddplus0.40_dsplus0.20.jpg"
-    },
-    {
-      "id": "ddplus0.40_dsplus0.40",
-      "delta": {
-        "dof": 0.4,
-        "slope": 0.4
-      },
-      "end": null,
-      "panel_path": "panel_ddplus0.40_dsplus0.40.jpg"
-    },
-    {
-      "id": "ddplus0.40_dsplus0.60",
-      "delta": {
-        "dof": 0.4,
-        "slope": 0.6
-      },
-      "end": null,
-      "panel_path": "panel_ddplus0.40_dsplus0.60.jpg"
-    },
-    {
-      "id": "ddplus0.40_dsplus0.80",
-      "delta": {
-        "dof": 0.4,
-        "slope": 0.8
-      },
-      "end": null,
-      "panel_path": "panel_ddplus0.40_dsplus0.80.jpg"
-    },
-    {
-      "id": "ddplus0.60_dsminus1.20",
-      "delta": {
-        "dof": 0.6,
-        "slope": -1.2
-      },
-      "end": null,
-      "panel_path": "panel_ddplus0.60_dsminus1.20.jpg"
-    },
-    {
-      "id": "ddplus0.60_dsminus1.00",
-      "delta": {
-        "dof": 0.6,
-        "slope": -1.0
-      },
-      "end": null,
-      "panel_path": "panel_ddplus0.60_dsminus1.00.jpg"
-    },
-    {
-      "id": "ddplus0.60_dsminus0.80",
-      "delta": {
-        "dof": 0.6,
-        "slope": -0.8
-      },
-      "end": null,
-      "panel_path": "panel_ddplus0.60_dsminus0.80.jpg"
-    },
-    {
-      "id": "ddplus0.60_dsminus0.60",
-      "delta": {
-        "dof": 0.6,
-        "slope": -0.6
-      },
-      "end": null,
-      "panel_path": "panel_ddplus0.60_dsminus0.60.jpg"
-    },
-    {
-      "id": "ddplus0.60_dsminus0.40",
-      "delta": {
-        "dof": 0.6,
-        "slope": -0.4
-      },
-      "end": null,
-      "panel_path": "panel_ddplus0.60_dsminus0.40.jpg"
-    },
-    {
-      "id": "ddplus0.60_dsminus0.20",
-      "delta": {
-        "dof": 0.6,
-        "slope": -0.2
-      },
-      "end": null,
-      "panel_path": "panel_ddplus0.60_dsminus0.20.jpg"
-    },
-    {
-      "id": "ddplus0.60_dsplus0.00",
-      "delta": {
-        "dof": 0.6,
-        "slope": 0.0
-      },
-      "end": null,
-      "panel_path": "panel_ddplus0.60_dsplus0.00.jpg"
-    },
-    {
-      "id": "ddplus0.60_dsplus0.20",
-      "delta": {
-        "dof": 0.6,
-        "slope": 0.2
-      },
-      "end": null,
-      "panel_path": "panel_ddplus0.60_dsplus0.20.jpg"
-    },
-    {
-      "id": "ddplus0.60_dsplus0.40",
-      "delta": {
-        "dof": 0.6,
-        "slope": 0.4
-      },
-      "end": null,
-      "panel_path": "panel_ddplus0.60_dsplus0.40.jpg"
-    },
-    {
-      "id": "ddplus0.60_dsplus0.60",
-      "delta": {
-        "dof": 0.6,
-        "slope": 0.6
-      },
-      "end": null,
-      "panel_path": "panel_ddplus0.60_dsplus0.60.jpg"
-    },
-    {
-      "id": "ddplus0.60_dsplus0.80",
-      "delta": {
-        "dof": 0.6,
-        "slope": 0.8
-      },
-      "end": null,
-      "panel_path": "panel_ddplus0.60_dsplus0.80.jpg"
-    },
-    {
-      "id": "ddplus0.80_dsminus1.20",
-      "delta": {
-        "dof": 0.8,
-        "slope": -1.2
-      },
-      "end": null,
-      "panel_path": "panel_ddplus0.80_dsminus1.20.jpg"
-    },
-    {
-      "id": "ddplus0.80_dsminus1.00",
-      "delta": {
-        "dof": 0.8,
-        "slope": -1.0
-      },
-      "end": null,
-      "panel_path": "panel_ddplus0.80_dsminus1.00.jpg"
-    },
-    {
-      "id": "ddplus0.80_dsminus0.80",
-      "delta": {
-        "dof": 0.8,
-        "slope": -0.8
-      },
-      "end": null,
-      "panel_path": "panel_ddplus0.80_dsminus0.80.jpg"
-    },
-    {
-      "id": "ddplus0.80_dsminus0.60",
-      "delta": {
-        "dof": 0.8,
-        "slope": -0.6
-      },
-      "end": null,
-      "panel_path": "panel_ddplus0.80_dsminus0.60.jpg"
-    },
-    {
-      "id": "ddplus0.80_dsminus0.40",
-      "delta": {
-        "dof": 0.8,
-        "slope": -0.4
-      },
-      "end": null,
-      "panel_path": "panel_ddplus0.80_dsminus0.40.jpg"
-    },
-    {
-      "id": "ddplus0.80_dsminus0.20",
-      "delta": {
-        "dof": 0.8,
-        "slope": -0.2
-      },
-      "end": null,
-      "panel_path": "panel_ddplus0.80_dsminus0.20.jpg"
-    },
-    {
-      "id": "ddplus0.80_dsplus0.00",
-      "delta": {
-        "dof": 0.8,
-        "slope": 0.0
-      },
-      "end": null,
-      "panel_path": "panel_ddplus0.80_dsplus0.00.jpg"
-    },
-    {
-      "id": "ddplus0.80_dsplus0.20",
-      "delta": {
-        "dof": 0.8,
-        "slope": 0.2
-      },
-      "end": null,
-      "panel_path": "panel_ddplus0.80_dsplus0.20.jpg"
-    },
-    {
-      "id": "ddplus0.80_dsplus0.40",
-      "delta": {
-        "dof": 0.8,
-        "slope": 0.4
-      },
-      "end": null,
-      "panel_path": "panel_ddplus0.80_dsplus0.40.jpg"
-    },
-    {
-      "id": "ddplus0.80_dsplus0.60",
-      "delta": {
-        "dof": 0.8,
-        "slope": 0.6
-      },
-      "end": null,
-      "panel_path": "panel_ddplus0.80_dsplus0.60.jpg"
-    },
-    {
-      "id": "ddplus0.80_dsplus0.80",
-      "delta": {
-        "dof": 0.8,
-        "slope": 0.8
-      },
-      "end": null,
-      "panel_path": "panel_ddplus0.80_dsplus0.80.jpg"
-    },
-    {
-      "id": "ddplus1.00_dsminus1.20",
-      "delta": {
-        "dof": 1.0,
-        "slope": -1.2
-      },
-      "end": null,
-      "panel_path": "panel_ddplus1.00_dsminus1.20.jpg"
-    },
-    {
-      "id": "ddplus1.00_dsminus1.00",
-      "delta": {
-        "dof": 1.0,
-        "slope": -1.0
-      },
-      "end": null,
-      "panel_path": "panel_ddplus1.00_dsminus1.00.jpg"
-    },
-    {
-      "id": "ddplus1.00_dsminus0.80",
-      "delta": {
-        "dof": 1.0,
-        "slope": -0.8
-      },
-      "end": null,
-      "panel_path": "panel_ddplus1.00_dsminus0.80.jpg"
-    },
-    {
-      "id": "ddplus1.00_dsminus0.60",
-      "delta": {
-        "dof": 1.0,
-        "slope": -0.6
-      },
-      "end": null,
-      "panel_path": "panel_ddplus1.00_dsminus0.60.jpg"
-    },
-    {
-      "id": "ddplus1.00_dsminus0.40",
-      "delta": {
-        "dof": 1.0,
-        "slope": -0.4
-      },
-      "end": null,
-      "panel_path": "panel_ddplus1.00_dsminus0.40.jpg"
-    },
-    {
-      "id": "ddplus1.00_dsminus0.20",
-      "delta": {
-        "dof": 1.0,
-        "slope": -0.2
-      },
-      "end": null,
-      "panel_path": "panel_ddplus1.00_dsminus0.20.jpg"
-    },
-    {
-      "id": "ddplus1.00_dsplus0.00",
-      "delta": {
-        "dof": 1.0,
-        "slope": 0.0
-      },
-      "end": null,
-      "panel_path": "panel_ddplus1.00_dsplus0.00.jpg"
-    },
-    {
-      "id": "ddplus1.00_dsplus0.20",
-      "delta": {
-        "dof": 1.0,
-        "slope": 0.2
-      },
-      "end": null,
-      "panel_path": "panel_ddplus1.00_dsplus0.20.jpg"
-    },
-    {
-      "id": "ddplus1.00_dsplus0.40",
-      "delta": {
-        "dof": 1.0,
-        "slope": 0.4
-      },
-      "end": null,
-      "panel_path": "panel_ddplus1.00_dsplus0.40.jpg"
-    },
-    {
-      "id": "ddplus1.00_dsplus0.60",
-      "delta": {
-        "dof": 1.0,
-        "slope": 0.6
-      },
-      "end": null,
-      "panel_path": "panel_ddplus1.00_dsplus0.60.jpg"
-    },
-    {
-      "id": "ddplus1.00_dsplus0.80",
-      "delta": {
-        "dof": 1.0,
-        "slope": 0.8
-      },
-      "end": null,
-      "panel_path": "panel_ddplus1.00_dsplus0.80.jpg"
-    },
-    {
-      "id": "ddplus1.20_dsminus1.20",
-      "delta": {
-        "dof": 1.2,
-        "slope": -1.2
-      },
-      "end": null,
-      "panel_path": "panel_ddplus1.20_dsminus1.20.jpg"
-    },
-    {
-      "id": "ddplus1.20_dsminus1.00",
-      "delta": {
-        "dof": 1.2,
-        "slope": -1.0
-      },
-      "end": null,
-      "panel_path": "panel_ddplus1.20_dsminus1.00.jpg"
-    },
-    {
-      "id": "ddplus1.20_dsminus0.80",
-      "delta": {
-        "dof": 1.2,
-        "slope": -0.8
-      },
-      "end": null,
-      "panel_path": "panel_ddplus1.20_dsminus0.80.jpg"
-    },
-    {
-      "id": "ddplus1.20_dsminus0.60",
-      "delta": {
-        "dof": 1.2,
-        "slope": -0.6
-      },
-      "end": null,
-      "panel_path": "panel_ddplus1.20_dsminus0.60.jpg"
-    },
-    {
-      "id": "ddplus1.20_dsminus0.40",
-      "delta": {
-        "dof": 1.2,
-        "slope": -0.4
-      },
-      "end": null,
-      "panel_path": "panel_ddplus1.20_dsminus0.40.jpg"
-    },
-    {
-      "id": "ddplus1.20_dsminus0.20",
-      "delta": {
-        "dof": 1.2,
-        "slope": -0.2
-      },
-      "end": null,
-      "panel_path": "panel_ddplus1.20_dsminus0.20.jpg"
-    },
-    {
-      "id": "ddplus1.20_dsplus0.00",
-      "delta": {
-        "dof": 1.2,
-        "slope": 0.0
-      },
-      "end": null,
-      "panel_path": "panel_ddplus1.20_dsplus0.00.jpg"
-    },
-    {
-      "id": "ddplus1.20_dsplus0.20",
-      "delta": {
-        "dof": 1.2,
-        "slope": 0.2
-      },
-      "end": null,
-      "panel_path": "panel_ddplus1.20_dsplus0.20.jpg"
-    },
-    {
-      "id": "ddplus1.20_dsplus0.40",
-      "delta": {
-        "dof": 1.2,
-        "slope": 0.4
-      },
-      "end": null,
-      "panel_path": "panel_ddplus1.20_dsplus0.40.jpg"
-    },
-    {
-      "id": "ddplus1.20_dsplus0.60",
-      "delta": {
-        "dof": 1.2,
-        "slope": 0.6
-      },
-      "end": null,
-      "panel_path": "panel_ddplus1.20_dsplus0.60.jpg"
-    },
-    {
-      "id": "ddplus1.20_dsplus0.80",
-      "delta": {
-        "dof": 1.2,
-        "slope": 0.8
-      },
-      "end": null,
-      "panel_path": "panel_ddplus1.20_dsplus0.80.jpg"
-    }
-
+      {
+        "id": "ddminus0.20_dsminus0.20",
+        "delta": {
+          "dof": -0.2,
+          "slope": -0.2
+        },
+        "end": null,
+        "panel_path": "panel_ddminus0.20_dsminus0.20.jpg"
+      },
+      {
+        "id": "ddminus0.20_dsminus0.40",
+        "delta": {
+          "dof": -0.2,
+          "slope": -0.4
+        },
+        "end": null,
+        "panel_path": "panel_ddminus0.20_dsminus0.40.jpg"
+      },
+      {
+        "id": "ddminus0.20_dsminus0.60",
+        "delta": {
+          "dof": -0.2,
+          "slope": -0.6
+        },
+        "end": null,
+        "panel_path": "panel_ddminus0.20_dsminus0.60.jpg"
+      },
+      {
+        "id": "ddminus0.20_dsminus0.80",
+        "delta": {
+          "dof": -0.2,
+          "slope": -0.8
+        },
+        "end": null,
+        "panel_path": "panel_ddminus0.20_dsminus0.80.jpg"
+      },
+      {
+        "id": "ddminus0.20_dsminus1.00",
+        "delta": {
+          "dof": -0.2,
+          "slope": -1.0
+        },
+        "end": null,
+        "panel_path": "panel_ddminus0.20_dsminus1.00.jpg"
+      },
+      {
+        "id": "ddminus0.20_dsminus1.20",
+        "delta": {
+          "dof": -0.2,
+          "slope": -1.2
+        },
+        "end": null,
+        "panel_path": "panel_ddminus0.20_dsminus1.20.jpg"
+      },
+      {
+        "id": "ddminus0.20_dsplus0.00",
+        "delta": {
+          "dof": -0.2,
+          "slope": 0.0
+        },
+        "end": null,
+        "panel_path": "panel_ddminus0.20_dsplus0.00.jpg"
+      },
+      {
+        "id": "ddminus0.20_dsplus0.20",
+        "delta": {
+          "dof": -0.2,
+          "slope": 0.2
+        },
+        "end": null,
+        "panel_path": "panel_ddminus0.20_dsplus0.20.jpg"
+      },
+      {
+        "id": "ddminus0.20_dsplus0.40",
+        "delta": {
+          "dof": -0.2,
+          "slope": 0.4
+        },
+        "end": null,
+        "panel_path": "panel_ddminus0.20_dsplus0.40.jpg"
+      },
+      {
+        "id": "ddminus0.40_dsminus0.20",
+        "delta": {
+          "dof": -0.4,
+          "slope": -0.2
+        },
+        "end": null,
+        "panel_path": "panel_ddminus0.40_dsminus0.20.jpg"
+      },
+      {
+        "id": "ddminus0.40_dsminus0.40",
+        "delta": {
+          "dof": -0.4,
+          "slope": -0.4
+        },
+        "end": null,
+        "panel_path": "panel_ddminus0.40_dsminus0.40.jpg"
+      },
+      {
+        "id": "ddminus0.40_dsminus0.60",
+        "delta": {
+          "dof": -0.4,
+          "slope": -0.6
+        },
+        "end": null,
+        "panel_path": "panel_ddminus0.40_dsminus0.60.jpg"
+      },
+      {
+        "id": "ddminus0.40_dsminus0.80",
+        "delta": {
+          "dof": -0.4,
+          "slope": -0.8
+        },
+        "end": null,
+        "panel_path": "panel_ddminus0.40_dsminus0.80.jpg"
+      },
+      {
+        "id": "ddminus0.40_dsminus1.00",
+        "delta": {
+          "dof": -0.4,
+          "slope": -1.0
+        },
+        "end": null,
+        "panel_path": "panel_ddminus0.40_dsminus1.00.jpg"
+      },
+      {
+        "id": "ddminus0.40_dsminus1.20",
+        "delta": {
+          "dof": -0.4,
+          "slope": -1.2
+        },
+        "end": null,
+        "panel_path": "panel_ddminus0.40_dsminus1.20.jpg"
+      },
+      {
+        "id": "ddminus0.40_dsplus0.00",
+        "delta": {
+          "dof": -0.4,
+          "slope": 0.0
+        },
+        "end": null,
+        "panel_path": "panel_ddminus0.40_dsplus0.00.jpg"
+      },
+      {
+        "id": "ddminus0.40_dsplus0.20",
+        "delta": {
+          "dof": -0.4,
+          "slope": 0.2
+        },
+        "end": null,
+        "panel_path": "panel_ddminus0.40_dsplus0.20.jpg"
+      },
+      {
+        "id": "ddminus0.40_dsplus0.40",
+        "delta": {
+          "dof": -0.4,
+          "slope": 0.4
+        },
+        "end": null,
+        "panel_path": "panel_ddminus0.40_dsplus0.40.jpg"
+      },
+      {
+        "id": "ddminus0.60_dsminus0.20",
+        "delta": {
+          "dof": -0.6,
+          "slope": -0.2
+        },
+        "end": null,
+        "panel_path": "panel_ddminus0.60_dsminus0.20.jpg"
+      },
+      {
+        "id": "ddminus0.60_dsminus0.40",
+        "delta": {
+          "dof": -0.6,
+          "slope": -0.4
+        },
+        "end": null,
+        "panel_path": "panel_ddminus0.60_dsminus0.40.jpg"
+      },
+      {
+        "id": "ddminus0.60_dsminus0.60",
+        "delta": {
+          "dof": -0.6,
+          "slope": -0.6
+        },
+        "end": null,
+        "panel_path": "panel_ddminus0.60_dsminus0.60.jpg"
+      },
+      {
+        "id": "ddminus0.60_dsminus0.80",
+        "delta": {
+          "dof": -0.6,
+          "slope": -0.8
+        },
+        "end": null,
+        "panel_path": "panel_ddminus0.60_dsminus0.80.jpg"
+      },
+      {
+        "id": "ddminus0.60_dsminus1.00",
+        "delta": {
+          "dof": -0.6,
+          "slope": -1.0
+        },
+        "end": null,
+        "panel_path": "panel_ddminus0.60_dsminus1.00.jpg"
+      },
+      {
+        "id": "ddminus0.60_dsminus1.20",
+        "delta": {
+          "dof": -0.6,
+          "slope": -1.2
+        },
+        "end": null,
+        "panel_path": "panel_ddminus0.60_dsminus1.20.jpg"
+      },
+      {
+        "id": "ddminus0.60_dsplus0.00",
+        "delta": {
+          "dof": -0.6,
+          "slope": 0.0
+        },
+        "end": null,
+        "panel_path": "panel_ddminus0.60_dsplus0.00.jpg"
+      },
+      {
+        "id": "ddminus0.60_dsplus0.20",
+        "delta": {
+          "dof": -0.6,
+          "slope": 0.2
+        },
+        "end": null,
+        "panel_path": "panel_ddminus0.60_dsplus0.20.jpg"
+      },
+      {
+        "id": "ddminus0.60_dsplus0.40",
+        "delta": {
+          "dof": -0.6,
+          "slope": 0.4
+        },
+        "end": null,
+        "panel_path": "panel_ddminus0.60_dsplus0.40.jpg"
+      },
+      {
+        "id": "ddminus0.80_dsminus0.20",
+        "delta": {
+          "dof": -0.8,
+          "slope": -0.2
+        },
+        "end": null,
+        "panel_path": "panel_ddminus0.80_dsminus0.20.jpg"
+      },
+      {
+        "id": "ddminus0.80_dsminus0.40",
+        "delta": {
+          "dof": -0.8,
+          "slope": -0.4
+        },
+        "end": null,
+        "panel_path": "panel_ddminus0.80_dsminus0.40.jpg"
+      },
+      {
+        "id": "ddminus0.80_dsminus0.60",
+        "delta": {
+          "dof": -0.8,
+          "slope": -0.6
+        },
+        "end": null,
+        "panel_path": "panel_ddminus0.80_dsminus0.60.jpg"
+      },
+      {
+        "id": "ddminus0.80_dsminus0.80",
+        "delta": {
+          "dof": -0.8,
+          "slope": -0.8
+        },
+        "end": null,
+        "panel_path": "panel_ddminus0.80_dsminus0.80.jpg"
+      },
+      {
+        "id": "ddminus0.80_dsminus1.00",
+        "delta": {
+          "dof": -0.8,
+          "slope": -1.0
+        },
+        "end": null,
+        "panel_path": "panel_ddminus0.80_dsminus1.00.jpg"
+      },
+      {
+        "id": "ddminus0.80_dsminus1.20",
+        "delta": {
+          "dof": -0.8,
+          "slope": -1.2
+        },
+        "end": null,
+        "panel_path": "panel_ddminus0.80_dsminus1.20.jpg"
+      },
+      {
+        "id": "ddminus0.80_dsplus0.00",
+        "delta": {
+          "dof": -0.8,
+          "slope": 0.0
+        },
+        "end": null,
+        "panel_path": "panel_ddminus0.80_dsplus0.00.jpg"
+      },
+      {
+        "id": "ddminus0.80_dsplus0.20",
+        "delta": {
+          "dof": -0.8,
+          "slope": 0.2
+        },
+        "end": null,
+        "panel_path": "panel_ddminus0.80_dsplus0.20.jpg"
+      },
+      {
+        "id": "ddminus0.80_dsplus0.40",
+        "delta": {
+          "dof": -0.8,
+          "slope": 0.4
+        },
+        "end": null,
+        "panel_path": "panel_ddminus0.80_dsplus0.40.jpg"
+      },
+      {
+        "id": "ddminus1.00_dsminus0.20",
+        "delta": {
+          "dof": -1.0,
+          "slope": -0.2
+        },
+        "end": null,
+        "panel_path": "panel_ddminus1.00_dsminus0.20.jpg"
+      },
+      {
+        "id": "ddminus1.00_dsminus0.40",
+        "delta": {
+          "dof": -1.0,
+          "slope": -0.4
+        },
+        "end": null,
+        "panel_path": "panel_ddminus1.00_dsminus0.40.jpg"
+      },
+      {
+        "id": "ddminus1.00_dsminus0.60",
+        "delta": {
+          "dof": -1.0,
+          "slope": -0.6
+        },
+        "end": null,
+        "panel_path": "panel_ddminus1.00_dsminus0.60.jpg"
+      },
+      {
+        "id": "ddminus1.00_dsminus0.80",
+        "delta": {
+          "dof": -1.0,
+          "slope": -0.8
+        },
+        "end": null,
+        "panel_path": "panel_ddminus1.00_dsminus0.80.jpg"
+      },
+      {
+        "id": "ddminus1.00_dsminus1.00",
+        "delta": {
+          "dof": -1.0,
+          "slope": -1.0
+        },
+        "end": null,
+        "panel_path": "panel_ddminus1.00_dsminus1.00.jpg"
+      },
+      {
+        "id": "ddminus1.00_dsminus1.20",
+        "delta": {
+          "dof": -1.0,
+          "slope": -1.2
+        },
+        "end": null,
+        "panel_path": "panel_ddminus1.00_dsminus1.20.jpg"
+      },
+      {
+        "id": "ddminus1.00_dsplus0.00",
+        "delta": {
+          "dof": -1.0,
+          "slope": 0.0
+        },
+        "end": null,
+        "panel_path": "panel_ddminus1.00_dsplus0.00.jpg"
+      },
+      {
+        "id": "ddminus1.00_dsplus0.20",
+        "delta": {
+          "dof": -1.0,
+          "slope": 0.2
+        },
+        "end": null,
+        "panel_path": "panel_ddminus1.00_dsplus0.20.jpg"
+      },
+      {
+        "id": "ddminus1.00_dsplus0.40",
+        "delta": {
+          "dof": -1.0,
+          "slope": 0.4
+        },
+        "end": null,
+        "panel_path": "panel_ddminus1.00_dsplus0.40.jpg"
+      },
+      {
+        "id": "ddplus0.00_dsminus0.20",
+        "delta": {
+          "dof": 0.0,
+          "slope": -0.2
+        },
+        "end": null,
+        "panel_path": "panel_ddplus0.00_dsminus0.20.jpg"
+      },
+      {
+        "id": "ddplus0.00_dsminus0.40",
+        "delta": {
+          "dof": 0.0,
+          "slope": -0.4
+        },
+        "end": null,
+        "panel_path": "panel_ddplus0.00_dsminus0.40.jpg"
+      },
+      {
+        "id": "ddplus0.00_dsminus0.60",
+        "delta": {
+          "dof": 0.0,
+          "slope": -0.6
+        },
+        "end": null,
+        "panel_path": "panel_ddplus0.00_dsminus0.60.jpg"
+      },
+      {
+        "id": "ddplus0.00_dsminus0.80",
+        "delta": {
+          "dof": 0.0,
+          "slope": -0.8
+        },
+        "end": null,
+        "panel_path": "panel_ddplus0.00_dsminus0.80.jpg"
+      },
+      {
+        "id": "ddplus0.00_dsminus1.00",
+        "delta": {
+          "dof": 0.0,
+          "slope": -1.0
+        },
+        "end": null,
+        "panel_path": "panel_ddplus0.00_dsminus1.00.jpg"
+      },
+      {
+        "id": "ddplus0.00_dsminus1.20",
+        "delta": {
+          "dof": 0.0,
+          "slope": -1.2
+        },
+        "end": null,
+        "panel_path": "panel_ddplus0.00_dsminus1.20.jpg"
+      },
+      {
+        "id": "ddplus0.00_dsplus0.20",
+        "delta": {
+          "dof": 0.0,
+          "slope": 0.2
+        },
+        "end": null,
+        "panel_path": "panel_ddplus0.00_dsplus0.20.jpg"
+      },
+      {
+        "id": "ddplus0.00_dsplus0.40",
+        "delta": {
+          "dof": 0.0,
+          "slope": 0.4
+        },
+        "end": null,
+        "panel_path": "panel_ddplus0.00_dsplus0.40.jpg"
+      },
+      {
+        "id": "ddplus0.20_dsminus0.20",
+        "delta": {
+          "dof": 0.2,
+          "slope": -0.2
+        },
+        "end": null,
+        "panel_path": "panel_ddplus0.20_dsminus0.20.jpg"
+      },
+      {
+        "id": "ddplus0.20_dsminus0.40",
+        "delta": {
+          "dof": 0.2,
+          "slope": -0.4
+        },
+        "end": null,
+        "panel_path": "panel_ddplus0.20_dsminus0.40.jpg"
+      },
+      {
+        "id": "ddplus0.20_dsminus0.60",
+        "delta": {
+          "dof": 0.2,
+          "slope": -0.6
+        },
+        "end": null,
+        "panel_path": "panel_ddplus0.20_dsminus0.60.jpg"
+      },
+      {
+        "id": "ddplus0.20_dsminus0.80",
+        "delta": {
+          "dof": 0.2,
+          "slope": -0.8
+        },
+        "end": null,
+        "panel_path": "panel_ddplus0.20_dsminus0.80.jpg"
+      },
+      {
+        "id": "ddplus0.20_dsminus1.00",
+        "delta": {
+          "dof": 0.2,
+          "slope": -1.0
+        },
+        "end": null,
+        "panel_path": "panel_ddplus0.20_dsminus1.00.jpg"
+      },
+      {
+        "id": "ddplus0.20_dsminus1.20",
+        "delta": {
+          "dof": 0.2,
+          "slope": -1.2
+        },
+        "end": null,
+        "panel_path": "panel_ddplus0.20_dsminus1.20.jpg"
+      },
+      {
+        "id": "ddplus0.20_dsplus0.00",
+        "delta": {
+          "dof": 0.2,
+          "slope": 0.0
+        },
+        "end": null,
+        "panel_path": "panel_ddplus0.20_dsplus0.00.jpg"
+      },
+      {
+        "id": "ddplus0.20_dsplus0.20",
+        "delta": {
+          "dof": 0.2,
+          "slope": 0.2
+        },
+        "end": null,
+        "panel_path": "panel_ddplus0.20_dsplus0.20.jpg"
+      },
+      {
+        "id": "ddplus0.20_dsplus0.40",
+        "delta": {
+          "dof": 0.2,
+          "slope": 0.4
+        },
+        "end": null,
+        "panel_path": "panel_ddplus0.20_dsplus0.40.jpg"
+      },
+      {
+        "id": "ddplus0.40_dsminus0.20",
+        "delta": {
+          "dof": 0.4,
+          "slope": -0.2
+        },
+        "end": null,
+        "panel_path": "panel_ddplus0.40_dsminus0.20.jpg"
+      },
+      {
+        "id": "ddplus0.40_dsminus0.40",
+        "delta": {
+          "dof": 0.4,
+          "slope": -0.4
+        },
+        "end": null,
+        "panel_path": "panel_ddplus0.40_dsminus0.40.jpg"
+      },
+      {
+        "id": "ddplus0.40_dsminus0.60",
+        "delta": {
+          "dof": 0.4,
+          "slope": -0.6
+        },
+        "end": null,
+        "panel_path": "panel_ddplus0.40_dsminus0.60.jpg"
+      },
+      {
+        "id": "ddplus0.40_dsminus0.80",
+        "delta": {
+          "dof": 0.4,
+          "slope": -0.8
+        },
+        "end": null,
+        "panel_path": "panel_ddplus0.40_dsminus0.80.jpg"
+      },
+      {
+        "id": "ddplus0.40_dsminus1.00",
+        "delta": {
+          "dof": 0.4,
+          "slope": -1.0
+        },
+        "end": null,
+        "panel_path": "panel_ddplus0.40_dsminus1.00.jpg"
+      },
+      {
+        "id": "ddplus0.40_dsminus1.20",
+        "delta": {
+          "dof": 0.4,
+          "slope": -1.2
+        },
+        "end": null,
+        "panel_path": "panel_ddplus0.40_dsminus1.20.jpg"
+      },
+      {
+        "id": "ddplus0.40_dsplus0.00",
+        "delta": {
+          "dof": 0.4,
+          "slope": 0.0
+        },
+        "end": null,
+        "panel_path": "panel_ddplus0.40_dsplus0.00.jpg"
+      },
+      {
+        "id": "ddplus0.40_dsplus0.20",
+        "delta": {
+          "dof": 0.4,
+          "slope": 0.2
+        },
+        "end": null,
+        "panel_path": "panel_ddplus0.40_dsplus0.20.jpg"
+      },
+      {
+        "id": "ddplus0.40_dsplus0.40",
+        "delta": {
+          "dof": 0.4,
+          "slope": 0.4
+        },
+        "end": null,
+        "panel_path": "panel_ddplus0.40_dsplus0.40.jpg"
+      },
+      {
+        "id": "ddplus0.60_dsminus0.20",
+        "delta": {
+          "dof": 0.6,
+          "slope": -0.2
+        },
+        "end": null,
+        "panel_path": "panel_ddplus0.60_dsminus0.20.jpg"
+      },
+      {
+        "id": "ddplus0.60_dsminus0.40",
+        "delta": {
+          "dof": 0.6,
+          "slope": -0.4
+        },
+        "end": null,
+        "panel_path": "panel_ddplus0.60_dsminus0.40.jpg"
+      },
+      {
+        "id": "ddplus0.60_dsminus0.60",
+        "delta": {
+          "dof": 0.6,
+          "slope": -0.6
+        },
+        "end": null,
+        "panel_path": "panel_ddplus0.60_dsminus0.60.jpg"
+      },
+      {
+        "id": "ddplus0.60_dsminus0.80",
+        "delta": {
+          "dof": 0.6,
+          "slope": -0.8
+        },
+        "end": null,
+        "panel_path": "panel_ddplus0.60_dsminus0.80.jpg"
+      },
+      {
+        "id": "ddplus0.60_dsminus1.00",
+        "delta": {
+          "dof": 0.6,
+          "slope": -1.0
+        },
+        "end": null,
+        "panel_path": "panel_ddplus0.60_dsminus1.00.jpg"
+      },
+      {
+        "id": "ddplus0.60_dsminus1.20",
+        "delta": {
+          "dof": 0.6,
+          "slope": -1.2
+        },
+        "end": null,
+        "panel_path": "panel_ddplus0.60_dsminus1.20.jpg"
+      },
+      {
+        "id": "ddplus0.60_dsplus0.00",
+        "delta": {
+          "dof": 0.6,
+          "slope": 0.0
+        },
+        "end": null,
+        "panel_path": "panel_ddplus0.60_dsplus0.00.jpg"
+      },
+      {
+        "id": "ddplus0.60_dsplus0.20",
+        "delta": {
+          "dof": 0.6,
+          "slope": 0.2
+        },
+        "end": null,
+        "panel_path": "panel_ddplus0.60_dsplus0.20.jpg"
+      },
+      {
+        "id": "ddplus0.60_dsplus0.40",
+        "delta": {
+          "dof": 0.6,
+          "slope": 0.4
+        },
+        "end": null,
+        "panel_path": "panel_ddplus0.60_dsplus0.40.jpg"
+      },
+      {
+        "id": "ddplus0.80_dsminus0.20",
+        "delta": {
+          "dof": 0.8,
+          "slope": -0.2
+        },
+        "end": null,
+        "panel_path": "panel_ddplus0.80_dsminus0.20.jpg"
+      },
+      {
+        "id": "ddplus0.80_dsminus0.40",
+        "delta": {
+          "dof": 0.8,
+          "slope": -0.4
+        },
+        "end": null,
+        "panel_path": "panel_ddplus0.80_dsminus0.40.jpg"
+      },
+      {
+        "id": "ddplus0.80_dsminus0.60",
+        "delta": {
+          "dof": 0.8,
+          "slope": -0.6
+        },
+        "end": null,
+        "panel_path": "panel_ddplus0.80_dsminus0.60.jpg"
+      },
+      {
+        "id": "ddplus0.80_dsminus0.80",
+        "delta": {
+          "dof": 0.8,
+          "slope": -0.8
+        },
+        "end": null,
+        "panel_path": "panel_ddplus0.80_dsminus0.80.jpg"
+      },
+      {
+        "id": "ddplus0.80_dsminus1.00",
+        "delta": {
+          "dof": 0.8,
+          "slope": -1.0
+        },
+        "end": null,
+        "panel_path": "panel_ddplus0.80_dsminus1.00.jpg"
+      },
+      {
+        "id": "ddplus0.80_dsminus1.20",
+        "delta": {
+          "dof": 0.8,
+          "slope": -1.2
+        },
+        "end": null,
+        "panel_path": "panel_ddplus0.80_dsminus1.20.jpg"
+      },
+      {
+        "id": "ddplus0.80_dsplus0.00",
+        "delta": {
+          "dof": 0.8,
+          "slope": 0.0
+        },
+        "end": null,
+        "panel_path": "panel_ddplus0.80_dsplus0.00.jpg"
+      },
+      {
+        "id": "ddplus0.80_dsplus0.20",
+        "delta": {
+          "dof": 0.8,
+          "slope": 0.2
+        },
+        "end": null,
+        "panel_path": "panel_ddplus0.80_dsplus0.20.jpg"
+      },
+      {
+        "id": "ddplus0.80_dsplus0.40",
+        "delta": {
+          "dof": 0.8,
+          "slope": 0.4
+        },
+        "end": null,
+        "panel_path": "panel_ddplus0.80_dsplus0.40.jpg"
+      },
+      {
+        "id": "ddplus1.00_dsminus0.20",
+        "delta": {
+          "dof": 1.0,
+          "slope": -0.2
+        },
+        "end": null,
+        "panel_path": "panel_ddplus1.00_dsminus0.20.jpg"
+      },
+      {
+        "id": "ddplus1.00_dsminus0.40",
+        "delta": {
+          "dof": 1.0,
+          "slope": -0.4
+        },
+        "end": null,
+        "panel_path": "panel_ddplus1.00_dsminus0.40.jpg"
+      },
+      {
+        "id": "ddplus1.00_dsminus0.60",
+        "delta": {
+          "dof": 1.0,
+          "slope": -0.6
+        },
+        "end": null,
+        "panel_path": "panel_ddplus1.00_dsminus0.60.jpg"
+      },
+      {
+        "id": "ddplus1.00_dsminus0.80",
+        "delta": {
+          "dof": 1.0,
+          "slope": -0.8
+        },
+        "end": null,
+        "panel_path": "panel_ddplus1.00_dsminus0.80.jpg"
+      },
+      {
+        "id": "ddplus1.00_dsminus1.00",
+        "delta": {
+          "dof": 1.0,
+          "slope": -1.0
+        },
+        "end": null,
+        "panel_path": "panel_ddplus1.00_dsminus1.00.jpg"
+      },
+      {
+        "id": "ddplus1.00_dsminus1.20",
+        "delta": {
+          "dof": 1.0,
+          "slope": -1.2
+        },
+        "end": null,
+        "panel_path": "panel_ddplus1.00_dsminus1.20.jpg"
+      },
+      {
+        "id": "ddplus1.00_dsplus0.00",
+        "delta": {
+          "dof": 1.0,
+          "slope": 0.0
+        },
+        "end": null,
+        "panel_path": "panel_ddplus1.00_dsplus0.00.jpg"
+      },
+      {
+        "id": "ddplus1.00_dsplus0.20",
+        "delta": {
+          "dof": 1.0,
+          "slope": 0.2
+        },
+        "end": null,
+        "panel_path": "panel_ddplus1.00_dsplus0.20.jpg"
+      },
+      {
+        "id": "ddplus1.00_dsplus0.40",
+        "delta": {
+          "dof": 1.0,
+          "slope": 0.4
+        },
+        "end": null,
+        "panel_path": "panel_ddplus1.00_dsplus0.40.jpg"
+      },
+      {
+        "id": "ddplus1.20_dsminus0.20",
+        "delta": {
+          "dof": 1.2,
+          "slope": -0.2
+        },
+        "end": null,
+        "panel_path": "panel_ddplus1.20_dsminus0.20.jpg"
+      },
+      {
+        "id": "ddplus1.20_dsminus0.40",
+        "delta": {
+          "dof": 1.2,
+          "slope": -0.4
+        },
+        "end": null,
+        "panel_path": "panel_ddplus1.20_dsminus0.40.jpg"
+      },
+      {
+        "id": "ddplus1.20_dsminus0.60",
+        "delta": {
+          "dof": 1.2,
+          "slope": -0.6
+        },
+        "end": null,
+        "panel_path": "panel_ddplus1.20_dsminus0.60.jpg"
+      },
+      {
+        "id": "ddplus1.20_dsminus0.80",
+        "delta": {
+          "dof": 1.2,
+          "slope": -0.8
+        },
+        "end": null,
+        "panel_path": "panel_ddplus1.20_dsminus0.80.jpg"
+      },
+      {
+        "id": "ddplus1.20_dsminus1.00",
+        "delta": {
+          "dof": 1.2,
+          "slope": -1.0
+        },
+        "end": null,
+        "panel_path": "panel_ddplus1.20_dsminus1.00.jpg"
+      },
+      {
+        "id": "ddplus1.20_dsminus1.20",
+        "delta": {
+          "dof": 1.2,
+          "slope": -1.2
+        },
+        "end": null,
+        "panel_path": "panel_ddplus1.20_dsminus1.20.jpg"
+      },
+      {
+        "id": "ddplus1.20_dsplus0.00",
+        "delta": {
+          "dof": 1.2,
+          "slope": 0.0
+        },
+        "end": null,
+        "panel_path": "panel_ddplus1.20_dsplus0.00.jpg"
+      },
+      {
+        "id": "ddplus1.20_dsplus0.20",
+        "delta": {
+          "dof": 1.2,
+          "slope": 0.2
+        },
+        "end": null,
+        "panel_path": "panel_ddplus1.20_dsplus0.20.jpg"
+      },
+      {
+        "id": "ddplus1.20_dsplus0.40",
+        "delta": {
+          "dof": 1.2,
+          "slope": 0.4
+        },
+        "end": null,
+        "panel_path": "panel_ddplus1.20_dsplus0.40.jpg"
+      }
     ]
   },
 
@@ -5164,7 +4947,7 @@ document.addEventListener("DOMContentLoaded", function () {
     scene5: { label: "Case 05" }
   };
 
-  const DEFAULT_SCENE_ID = "scene1";
+  const DEFAULT_SCENE_ID = "scene2";
 
   // ---- 状态 & 缓存 ----
   let currentSceneId = DEFAULT_SCENE_ID;
@@ -5180,13 +4963,13 @@ document.addEventListener("DOMContentLoaded", function () {
   const sceneDataCache = {};
 
   // ---- DOM 绑定 ----
-  const imageWrapper   = document.getElementById("ourmethod-viewer");
-  const focalSlider    = document.getElementById("ourmethod-focal-slider");
+  const imageWrapper = document.getElementById("ourmethod-viewer");
+  const focalSlider = document.getElementById("ourmethod-focal-slider");
   const apertureSlider = document.getElementById("ourmethod-aperture-slider");
-  const sceneButtons   = document.querySelectorAll(".ourmethod-scene-button");
+  const sceneButtons = document.querySelectorAll(".ourmethod-scene-button");
 
   const imgOutput = document.getElementById("ourmethod-output-img");  // 右边输出图
-  const imgInput  = document.getElementById("ourmethod-input-img");   // 左边输入图
+  const imgInput = document.getElementById("ourmethod-input-img");   // 左边输入图
 
   if (!imageWrapper || !focalSlider || !apertureSlider || !imgOutput || !imgInput) {
     console.warn("[OurMethod] Missing DOM elements, please check IDs.");
@@ -5195,8 +4978,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
   // 给输出图设置下样式（可选）
   imgOutput.style.maxWidth = "100%";
-  imgOutput.style.height   = "auto";
-  imgOutput.alt            = "Our method sample preview";
+  imgOutput.style.height = "auto";
+  imgOutput.alt = "Our method sample preview";
 
   imgOutput.addEventListener("error", function () {
     console.error("[OurMethod] image load error:", imgOutput.src);
@@ -5206,18 +4989,18 @@ document.addEventListener("DOMContentLoaded", function () {
   // 工具函数
   // =====================================================
 
-function findClosestIndex(list, target) {
-  let bestIdx = 0;
-  let bestDist = Infinity;
-  list.forEach((v, i) => {
-    const dist = Math.abs(v - target);
-    if (dist < bestDist) {
-      bestDist = dist;
-      bestIdx = i;
-    }
-  });
-  return bestIdx;
-}
+  function findClosestIndex(list, target) {
+    let bestIdx = 0;
+    let bestDist = Infinity;
+    list.forEach((v, i) => {
+      const dist = Math.abs(v - target);
+      if (dist < bestDist) {
+        bestDist = dist;
+        bestIdx = i;
+      }
+    });
+    return bestIdx;
+  }
 
   function clamp(v, lo, hi) {
     return Math.min(hi, Math.max(lo, v));
@@ -5367,8 +5150,8 @@ function findClosestIndex(list, target) {
 
     imgOutput.src = src;
     imgOutput.dataset.apertureIdx = String(apIdx);
-    imgOutput.dataset.focalIdx    = String(fpIdx);
-    imgOutput.dataset.sceneId     = currentSceneId;
+    imgOutput.dataset.focalIdx = String(fpIdx);
+    imgOutput.dataset.sceneId = currentSceneId;
   }
 
 
@@ -5392,44 +5175,44 @@ function findClosestIndex(list, target) {
     updateImageFromState();
   });
 
-    sceneButtons.forEach(function (btn) {
+  sceneButtons.forEach(function (btn) {
     btn.addEventListener("click", function () {
-        const sceneId = btn.getAttribute("data-scene");
-        if (!sceneId || !SCENES_CONFIG[sceneId]) {
+      const sceneId = btn.getAttribute("data-scene");
+      if (!sceneId || !SCENES_CONFIG[sceneId]) {
         console.warn("[OurMethod] Unknown scene id:", sceneId);
         return;
-        }
+      }
 
-        currentSceneId = sceneId;
+      currentSceneId = sceneId;
 
-        // ⭐ 场景切换时，控制左边的 input 图
-        if (INPUT_PATHS[sceneId]) {
-            imgInput.src = INPUT_PATHS[sceneId];
-            imgInput.style.display = "block";
-        } else {
-            imgInput.style.display = "none";
-        }
+      // ⭐ 场景切换时，控制左边的 input 图
+      if (INPUT_PATHS[sceneId]) {
+        imgInput.src = INPUT_PATHS[sceneId];
+        imgInput.style.display = "block";
+      } else {
+        imgInput.style.display = "none";
+      }
 
-        // 按钮高亮切换
-        sceneButtons.forEach(function (b) {
+      // 按钮高亮切换
+      sceneButtons.forEach(function (b) {
         b.classList.remove("is-active", "is-info");
         b.classList.add("is-light");
-        });
-        btn.classList.add("is-active", "is-info");
-        btn.classList.remove("is-light");
+      });
+      btn.classList.add("is-active", "is-info");
+      btn.classList.remove("is-light");
 
-        // 根据当前场景，重新计算 slider 对应的 index
-        const sceneData = ensureSceneDataLoaded(currentSceneId);
-        const ddList = sceneData.ddList || [];
-        const dsList = sceneData.dsList || [];
+      // 根据当前场景，重新计算 slider 对应的 index
+      const sceneData = ensureSceneDataLoaded(currentSceneId);
+      const ddList = sceneData.ddList || [];
+      const dsList = sceneData.dsList || [];
 
-        currentFocalIdx = sliderToIndex(focalSlider.value, dsList.length);
-        currentApertureIdx = sliderToIndex(apertureSlider.value, ddList.length);
+      currentFocalIdx = sliderToIndex(focalSlider.value, dsList.length);
+      currentApertureIdx = sliderToIndex(apertureSlider.value, ddList.length);
 
-        // 用新的 scene + index 刷新右边的 output 图
-        updateImageFromState();
+      // 用新的 scene + index 刷新右边的 output 图
+      updateImageFromState();
     });
-    });
+  });
 
 
   // =====================================================
@@ -5444,16 +5227,16 @@ function findClosestIndex(list, target) {
       const ddList = sceneData.ddList || [];
       const dsList = sceneData.dsList || [];
 
-    //   currentApertureIdx = ddList.length > 0 ? Math.floor(ddList.length / 2) : 0;
-    //   currentFocalIdx = dsList.length > 0 ? Math.floor(dsList.length / 2) : 0;
+      //   currentApertureIdx = ddList.length > 0 ? Math.floor(ddList.length / 2) : 0;
+      //   currentFocalIdx = dsList.length > 0 ? Math.floor(dsList.length / 2) : 0;
       currentApertureIdx = 12;
       currentFocalIdx = 1;
 
       apertureSlider.value = String(indexToSlider(currentApertureIdx, ddList.length));
       focalSlider.value = String(indexToSlider(currentFocalIdx, dsList.length));
 
-      // 初始就是 scene1：显示左边的 input 图
-      imgInput.src = "./static/Our_Res_Playground/Case_01_Sparse/images/input.jpg";
+      // 初始就是 scene2：显示左边的 input 图
+      imgInput.src = "./static/Our_Res_Playground/Case_02_Sparse/images/input.jpg";
       imgInput.style.display = "block";
 
 
@@ -5487,3 +5270,233 @@ function findClosestIndex(list, target) {
 
 
 
+
+
+// =====================================================
+// Compare subsection — Ours (scene3), right panel
+// =====================================================
+
+document.addEventListener("DOMContentLoaded", function () {
+
+  var manifest = OURMETHOD_MANIFESTS["scene3"];
+  if (!manifest) { console.warn("[OurMethodCompare] No manifest for scene3."); return; }
+
+  var imgOutput = document.getElementById("ourmethod-compare-output-img");
+  var focalSlider = document.getElementById("ourmethod-compare-focal-slider");
+  var apertureSlider = document.getElementById("ourmethod-compare-aperture-slider");
+  var apLabel = document.getElementById("cmp-ours-ap-label");
+  var fpLabel = document.getElementById("cmp-ours-focal-label");
+
+  if (!imgOutput || !focalSlider || !apertureSlider) {
+    console.warn("[OurMethodCompare] Missing DOM elements."); return;
+  }
+
+  function _uniq(numbers) {
+    var arr = Array.from(new Set(numbers.map(function (v) { return +Number(v).toFixed(4); })));
+    arr.sort(function (a, b) { return a - b; });
+    return arr;
+  }
+  function _clamp(v, lo, hi) { return Math.min(hi, Math.max(lo, v)); }
+  function _sliderToIdx(val, n) {
+    if (!n || n <= 1) return 0;
+    return _clamp(Math.round((parseFloat(val) / 100) * (n - 1)), 0, n - 1);
+  }
+  function _idxToSlider(idx, n) {
+    if (!n || n <= 1) return 0;
+    return _clamp((idx / (n - 1)) * 100, 0, 100);
+  }
+  function _fmt(v) { return (v >= 0 ? "+" : "") + v.toFixed(2); }
+
+  var basePath = manifest.basePath;
+  var records = Array.isArray(manifest.records) ? manifest.records : [];
+  var ddVals = [], dsVals = [];
+  records.forEach(function (rec) {
+    var d = rec.delta || {}, dof = Number(d.dof), slope = Number(d.slope);
+    if (!isFinite(dof) || !isFinite(slope)) return;
+    ddVals.push(dof); dsVals.push(slope);
+  });
+  var ddList = _uniq(ddVals), dsList = _uniq(dsVals);
+  var ddMap = {}, dsMap = {};
+  ddList.forEach(function (v, i) { ddMap[v.toFixed(4)] = i; });
+  dsList.forEach(function (v, i) { dsMap[v.toFixed(4)] = i; });
+  var combos = {};
+  records.forEach(function (rec) {
+    var d = rec.delta || {}, dof = Number(d.dof), slope = Number(d.slope);
+    if (!isFinite(dof) || !isFinite(slope) || !rec.id) return;
+    var di = ddMap[dof.toFixed(4)], si = dsMap[slope.toFixed(4)];
+    if (di == null || si == null) return;
+    combos[di + "_" + si] = rec.id;
+  });
+
+  var curAp = 0, curFp = 0;
+
+  function update() {
+    var ai = _clamp(curAp, 0, ddList.length - 1);
+    var fi = _clamp(curFp, 0, dsList.length - 1);
+    var id = combos[ai + "_" + fi];
+    if (!id) { console.warn("[OurMethodCompare] No combo:", ai, fi); return; }
+    imgOutput.src = basePath.replace(/\/$/, "") + "/output_" + id + ".jpg";
+    if (apLabel) apLabel.textContent = _fmt(ddList[ai]);
+    if (fpLabel) fpLabel.textContent = _fmt(dsList[fi]);
+  }
+
+  focalSlider.addEventListener("input", function (e) {
+    curFp = _sliderToIdx(e.target.value, dsList.length); update();
+  });
+  apertureSlider.addEventListener("input", function (e) {
+    curAp = _sliderToIdx(e.target.value, ddList.length); update();
+  });
+
+  curAp = 12; curFp = 1;
+  apertureSlider.value = String(_idxToSlider(curAp, ddList.length));
+  focalSlider.value = String(_idxToSlider(curFp, dsList.length));
+  update();
+  console.log("[OurMethodCompare] scene3 Ours initialized.", { ddCount: ddList.length, dsCount: dsList.length });
+});
+
+
+// =====================================================
+// Compare subsection — BokehDiff (depth-based), left panel
+// =====================================================
+
+document.addEventListener("DOMContentLoaded", function () {
+
+  var BD_BASE = "./static/Our_Res_Playground/Case_03_Sparse_BokehDiff/";
+
+  var BD_FILES = [
+    "cristiano-canullo-LOLBJQBn7fI-unsplash___BokehDiff___10.0_-0.10.jpg",
+    "cristiano-canullo-LOLBJQBn7fI-unsplash___BokehDiff___10.0_-0.19.jpg",
+    "cristiano-canullo-LOLBJQBn7fI-unsplash___BokehDiff___10.0_-0.38.jpg",
+    "cristiano-canullo-LOLBJQBn7fI-unsplash___BokehDiff___10.0_-0.57.jpg",
+    "cristiano-canullo-LOLBJQBn7fI-unsplash___BokehDiff___10.0_-0.76.jpg",
+    "cristiano-canullo-LOLBJQBn7fI-unsplash___BokehDiff___10.0_-0.96.jpg",
+    "cristiano-canullo-LOLBJQBn7fI-unsplash___BokehDiff___10.0_0.00.jpg",
+    "cristiano-canullo-LOLBJQBn7fI-unsplash___BokehDiff___10.0_0.01.jpg",
+    "cristiano-canullo-LOLBJQBn7fI-unsplash___BokehDiff___10.0_0.02.jpg",
+    "cristiano-canullo-LOLBJQBn7fI-unsplash___BokehDiff___10.0_0.03.jpg",
+    "cristiano-canullo-LOLBJQBn7fI-unsplash___BokehDiff___10.0_0.04.jpg",
+    "cristiano-canullo-LOLBJQBn7fI-unsplash___BokehDiff___11.0_-0.10.jpg",
+    "cristiano-canullo-LOLBJQBn7fI-unsplash___BokehDiff___11.0_-0.19.jpg",
+    "cristiano-canullo-LOLBJQBn7fI-unsplash___BokehDiff___11.0_-0.38.jpg",
+    "cristiano-canullo-LOLBJQBn7fI-unsplash___BokehDiff___11.0_-0.57.jpg",
+    "cristiano-canullo-LOLBJQBn7fI-unsplash___BokehDiff___11.0_-0.76.jpg",
+    "cristiano-canullo-LOLBJQBn7fI-unsplash___BokehDiff___11.0_-0.96.jpg",
+    "cristiano-canullo-LOLBJQBn7fI-unsplash___BokehDiff___11.0_0.00.jpg",
+    "cristiano-canullo-LOLBJQBn7fI-unsplash___BokehDiff___11.0_0.01.jpg",
+    "cristiano-canullo-LOLBJQBn7fI-unsplash___BokehDiff___11.0_0.02.jpg",
+    "cristiano-canullo-LOLBJQBn7fI-unsplash___BokehDiff___11.0_0.03.jpg",
+    "cristiano-canullo-LOLBJQBn7fI-unsplash___BokehDiff___11.0_0.04.jpg",
+    "cristiano-canullo-LOLBJQBn7fI-unsplash___BokehDiff___12.0_-0.10.jpg",
+    "cristiano-canullo-LOLBJQBn7fI-unsplash___BokehDiff___12.0_-0.19.jpg",
+    "cristiano-canullo-LOLBJQBn7fI-unsplash___BokehDiff___12.0_-0.38.jpg",
+    "cristiano-canullo-LOLBJQBn7fI-unsplash___BokehDiff___12.0_-0.57.jpg",
+    "cristiano-canullo-LOLBJQBn7fI-unsplash___BokehDiff___12.0_-0.76.jpg",
+    "cristiano-canullo-LOLBJQBn7fI-unsplash___BokehDiff___12.0_-0.96.jpg",
+    "cristiano-canullo-LOLBJQBn7fI-unsplash___BokehDiff___12.0_0.00.jpg",
+    "cristiano-canullo-LOLBJQBn7fI-unsplash___BokehDiff___12.0_0.01.jpg",
+    "cristiano-canullo-LOLBJQBn7fI-unsplash___BokehDiff___12.0_0.02.jpg",
+    "cristiano-canullo-LOLBJQBn7fI-unsplash___BokehDiff___12.0_0.03.jpg",
+    "cristiano-canullo-LOLBJQBn7fI-unsplash___BokehDiff___12.0_0.04.jpg",
+    "cristiano-canullo-LOLBJQBn7fI-unsplash___BokehDiff___13.0_-0.10.jpg",
+    "cristiano-canullo-LOLBJQBn7fI-unsplash___BokehDiff___13.0_-0.19.jpg",
+    "cristiano-canullo-LOLBJQBn7fI-unsplash___BokehDiff___13.0_-0.38.jpg",
+    "cristiano-canullo-LOLBJQBn7fI-unsplash___BokehDiff___13.0_-0.57.jpg",
+    "cristiano-canullo-LOLBJQBn7fI-unsplash___BokehDiff___13.0_-0.76.jpg",
+    "cristiano-canullo-LOLBJQBn7fI-unsplash___BokehDiff___13.0_-0.96.jpg",
+    "cristiano-canullo-LOLBJQBn7fI-unsplash___BokehDiff___13.0_0.00.jpg",
+    "cristiano-canullo-LOLBJQBn7fI-unsplash___BokehDiff___13.0_0.01.jpg",
+    "cristiano-canullo-LOLBJQBn7fI-unsplash___BokehDiff___13.0_0.02.jpg",
+    "cristiano-canullo-LOLBJQBn7fI-unsplash___BokehDiff___13.0_0.03.jpg",
+    "cristiano-canullo-LOLBJQBn7fI-unsplash___BokehDiff___13.0_0.04.jpg",
+    "cristiano-canullo-LOLBJQBn7fI-unsplash___BokehDiff___8.0_-0.10.jpg",
+    "cristiano-canullo-LOLBJQBn7fI-unsplash___BokehDiff___8.0_-0.19.jpg",
+    "cristiano-canullo-LOLBJQBn7fI-unsplash___BokehDiff___8.0_-0.38.jpg",
+    "cristiano-canullo-LOLBJQBn7fI-unsplash___BokehDiff___8.0_-0.57.jpg",
+    "cristiano-canullo-LOLBJQBn7fI-unsplash___BokehDiff___8.0_-0.76.jpg",
+    "cristiano-canullo-LOLBJQBn7fI-unsplash___BokehDiff___8.0_-0.96.jpg",
+    "cristiano-canullo-LOLBJQBn7fI-unsplash___BokehDiff___8.0_0.00.jpg",
+    "cristiano-canullo-LOLBJQBn7fI-unsplash___BokehDiff___8.0_0.01.jpg",
+    "cristiano-canullo-LOLBJQBn7fI-unsplash___BokehDiff___8.0_0.02.jpg",
+    "cristiano-canullo-LOLBJQBn7fI-unsplash___BokehDiff___8.0_0.03.jpg",
+    "cristiano-canullo-LOLBJQBn7fI-unsplash___BokehDiff___8.0_0.04.jpg",
+    "cristiano-canullo-LOLBJQBn7fI-unsplash___BokehDiff___9.0_-0.10.jpg",
+    "cristiano-canullo-LOLBJQBn7fI-unsplash___BokehDiff___9.0_-0.19.jpg",
+    "cristiano-canullo-LOLBJQBn7fI-unsplash___BokehDiff___9.0_-0.38.jpg",
+    "cristiano-canullo-LOLBJQBn7fI-unsplash___BokehDiff___9.0_-0.57.jpg",
+    "cristiano-canullo-LOLBJQBn7fI-unsplash___BokehDiff___9.0_-0.76.jpg",
+    "cristiano-canullo-LOLBJQBn7fI-unsplash___BokehDiff___9.0_-0.96.jpg",
+    "cristiano-canullo-LOLBJQBn7fI-unsplash___BokehDiff___9.0_0.00.jpg",
+    "cristiano-canullo-LOLBJQBn7fI-unsplash___BokehDiff___9.0_0.01.jpg",
+    "cristiano-canullo-LOLBJQBn7fI-unsplash___BokehDiff___9.0_0.02.jpg",
+    "cristiano-canullo-LOLBJQBn7fI-unsplash___BokehDiff___9.0_0.03.jpg",
+    "cristiano-canullo-LOLBJQBn7fI-unsplash___BokehDiff___9.0_0.04.jpg"
+  ];
+
+  var imgBd = document.getElementById("cmp-bd-img");
+  var apSlider = document.getElementById("cmp-bd-ap-slider");
+  var fpSlider = document.getElementById("cmp-bd-focal-slider");
+  var apLabel = document.getElementById("cmp-bd-ap-label");
+  var fpLabel = document.getElementById("cmp-bd-focal-label");
+
+  if (!imgBd || !apSlider || !fpSlider) {
+    console.warn("[OurMethodBokehDiff] Missing DOM elements."); return;
+  }
+
+  // Parse: name___BokehDiff___K_var.jpg
+  var RE = /___BokehDiff___([\d.]+)_(-?[\d.]+)\.jpg$/;
+  var kSet = {}, varSet = {}, table = {};
+
+  BD_FILES.forEach(function (fname) {
+    var m = fname.match(RE);
+    if (!m) { console.warn("[OurMethodBokehDiff] no match:", fname); return; }
+    var k = parseFloat(m[1]);
+    var v = parseFloat(m[2]);
+    var kk = k.toFixed(4), kv = v.toFixed(4);
+    kSet[kk] = k; varSet[kv] = v;
+    if (!table[kk]) table[kk] = {};
+    table[kk][kv] = fname;
+  });
+
+  function sortedKeys(map) {
+    return Object.keys(map).sort(function (a, b) { return map[a] - map[b]; });
+  }
+  var kKeys = sortedKeys(kSet);
+  var varKeys = sortedKeys(varSet);
+
+  function _clamp(v, lo, hi) { return Math.min(hi, Math.max(lo, v)); }
+  function _sliderToIdx(val, n) {
+    if (!n || n <= 1) return 0;
+    return _clamp(Math.round((parseFloat(val) / 100) * (n - 1)), 0, n - 1);
+  }
+  function _idxToSlider(idx, n) {
+    if (!n || n <= 1) return 0;
+    return _clamp((idx / (n - 1)) * 100, 0, 100);
+  }
+
+  var curK = 0, curV = 0;
+
+  function update() {
+    var ki = _clamp(curK, 0, kKeys.length - 1);
+    var vi = _clamp(curV, 0, varKeys.length - 1);
+    var fname = table[kKeys[ki]] && table[kKeys[ki]][varKeys[vi]];
+    if (!fname) { console.warn("[OurMethodBokehDiff] No file:", kKeys[ki], varKeys[vi]); return; }
+    imgBd.src = BD_BASE + fname;
+    if (apLabel) apLabel.textContent = kSet[kKeys[ki]].toFixed(1);
+    if (fpLabel) fpLabel.textContent = varSet[varKeys[vi]].toFixed(2);
+  }
+
+  apSlider.addEventListener("input", function (e) {
+    curK = _sliderToIdx(e.target.value, kKeys.length); update();
+  });
+  fpSlider.addEventListener("input", function (e) {
+    curV = _sliderToIdx(e.target.value, varKeys.length); update();
+  });
+
+  // Init: smallest K, middle focal
+  curK = kKeys.length - 1;   // 最大 K
+  curV = 0;                  // 最小 var（最左）
+  apSlider.value = String(_idxToSlider(curK, kKeys.length));
+  fpSlider.value = String(_idxToSlider(curV, varKeys.length));
+  update();
+  console.log("[OurMethodBokehDiff] initialized.", { kCount: kKeys.length, varCount: varKeys.length });
+});

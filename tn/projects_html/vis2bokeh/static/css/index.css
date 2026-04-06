@@ -4,13 +4,13 @@ body {
 
 
 .footer .icon-link {
-    font-size: 25px;
-    color: #000;
+  font-size: 25px;
+  color: #000;
 }
 
 .link-block a {
-    margin-top: 5px;
-    margin-bottom: 5px;
+  margin-top: 5px;
+  margin-bottom: 5px;
 }
 
 .dnerf {
@@ -28,8 +28,7 @@ body {
 }
 
 
-.publication-title {
-}
+.publication-title {}
 
 .publication-banner {
   max-height: parent;
@@ -44,71 +43,67 @@ body {
   object-fit: fit;
 }
 
-.publication-header .hero-body {
-}
+.publication-header .hero-body {}
 
 .publication-title {
-    font-family: 'Google Sans', sans-serif;
+  font-family: 'Google Sans', sans-serif;
 }
 
 .publication-authors {
-    font-family: 'Google Sans', sans-serif;
+  font-family: 'Google Sans', sans-serif;
 }
 
 .publication-venue {
-    color: #555;
-    width: fit-content;
-    font-weight: bold;
+  color: #555;
+  width: fit-content;
+  font-weight: bold;
 }
 
 .publication-awards {
-    color: #ff3860;
-    width: fit-content;
-    font-weight: bolder;
+  color: #ff3860;
+  width: fit-content;
+  font-weight: bolder;
 }
 
-.publication-authors {
-}
+.publication-authors {}
 
 .publication-authors a {
-   color: hsl(204, 86%, 53%) !important;
+  color: hsl(204, 86%, 53%) !important;
 }
 
 .publication-authors a:hover {
-    text-decoration: underline;
+  text-decoration: underline;
 }
 
 .author-block {
   display: inline-block;
 }
 
-.publication-banner img {
-}
+.publication-banner img {}
 
 .publication-authors {
   /*color: #4286f4;*/
 }
 
 .publication-video {
-    position: relative;
-    width: 100%;
-    height: 0;
-    padding-bottom: 56.25%;
+  position: relative;
+  width: 100%;
+  height: 0;
+  padding-bottom: 56.25%;
 
-    overflow: hidden;
-    border-radius: 10px !important;
+  overflow: hidden;
+  border-radius: 10px !important;
 }
 
 .publication-video iframe {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
 }
 
-.publication-body img {
-}
+.publication-body img {}
 
 .results-carousel {
   overflow: hidden;
@@ -138,8 +133,7 @@ body {
   border-radius: 5px;
 }
 
-.interpolation-video-column {
-}
+.interpolation-video-column {}
 
 .interpolation-panel .slider {
   margin: 0 !important;
@@ -152,6 +146,7 @@ body {
 #interpolation-image-wrapper {
   width: 100%;
 }
+
 #interpolation-image-wrapper img {
   border-radius: 5px;
 }
@@ -172,11 +167,14 @@ body {
 /* 控制图片大小 */
 #ourmethod-viewer img {
   /* 你想要的最大宽度 / 高度 */
-  max-width: 600px;   /* 或 100% 看你想占多少 */
+  max-width: 600px;
+  /* 或 100% 看你想占多少 */
   max-height: 600px;
 
-  width: 100%;        /* 保持响应式缩放 */
-  height: auto;       /* 维持纵横比 */
+  width: 100%;
+  /* 保持响应式缩放 */
+  height: auto;
+  /* 维持纵横比 */
   object-fit: contain;
 }
 
@@ -188,15 +186,19 @@ body {
 
 /* 整个卡片的总宽度（图片 + 两个 slider 一起缩放） */
 #OurMethodDemo .ourmethod-card {
-  max-width: 900px;    /* ⭐ 想更窄就改成 720 / 700 / 640 等 */
-  margin: 0 auto;      /* 居中 */
+  max-width: 900px;
+  /* ⭐ 想更窄就改成 720 / 700 / 640 等 */
+  margin: 0 auto;
+  /* 居中 */
   padding: 16px 20px 20px;
 }
+
 
 /* 图片最大宽度（再往下调就会一起变小） */
 #OurMethodDemo #ourmethod-viewer img {
   width: 45%;
-  max-width: 700px;    /* ⭐ 控制图像宽度，和 slider 对齐 */
+  max-width: 700px;
+  /* ⭐ 控制图像宽度，和 slider 对齐 */
   height: auto;
   border-radius: 8px;
   object-fit: contain;
@@ -211,7 +213,7 @@ body {
 
 
 /* slider 外面那行内容稍微居中一点（可选） */
-#OurMethodDemo .content > div {
+#OurMethodDemo .content>div {
   justify-content: center;
 }
 
@@ -284,7 +286,8 @@ body {
 .ourmethod-origin-tag {
   position: absolute;
   left: 50%;
-  top: -1.3rem;          /* 上移一点，觉得太高/太低可以微调这个值 */
+  top: -1.3rem;
+  /* 上移一点，觉得太高/太低可以微调这个值 */
   transform: translateX(-50%);
   font-size: 0.85rem;
   color: #777;
@@ -303,10 +306,15 @@ body {
 }
 /* 灰色那块 carousel 下面多留一点空白 */
 .hero.is-light.is-small {
-  padding-bottom: 3rem;   /* 增大灰块内部的下边距 */
-  margin-bottom: 2rem;    /* 灰块和下一块之间再多一点外边距 */
+  padding-bottom: 3rem;
+  /* 增大灰块内部的下边距 */
+  margin-bottom: 2rem;
+  /* 灰块和下一块之间再多一点外边距 */
 }
+
 /* Our Method Playground 顶部再留一点空间（可选） */
 #OurMethodDemo {
   margin-top: 10rem;
-} */
+}
+
+*/

@@ -7,38 +7,15 @@ document.addEventListener("DOMContentLoaded", function () {
   // ---------- 配置区：这里填你的数据规格 ----------
 
   const SCENES_CONFIG = {
-    scene2: {
-      label: "Chair Scene",
-      basePath: "./static/DataGen_Bokeh/chair_compress",
-
-      // TODO: 按你的实际数据改这两个数字
-      numAperture: 14,   // 比如 7 个 aperture 档位
-      numFocal: 9,     // 比如 18 个 focal plane
-
-      indexOffset: 0,   // 如果从 img_000 开始就是 0；从 img_107 开始就是 107
-      indexDigits: 3    // img_XXX.png → 3 位数
-    },
     scene1: {
       label: "City Hall Scene",
       basePath: "./static/DataGen_Bokeh/CityHall_compress",
-
-      // TODO: 按你的实际数据改这两个数字
-      numAperture: 14,   // 比如 7 个 aperture 档位
-      numFocal: 9,     // 比如 18 个 focal plane
-
-      indexOffset: 0,   // 如果从 img_000 开始就是 0；从 img_107 开始就是 107
-      indexDigits: 3    // img_XXX.png → 3 位数
-    },
-    scene3: null,
-    scene4: null,
-    scene5: null
+      numAperture: 14,
+      numFocal: 9,
+      indexOffset: 0,
+      indexDigits: 3
+    }
   };
-
-  // 让 scene2~scene5 暂时 alias 到 scene1
-  SCENES_CONFIG.scene2 = SCENES_CONFIG.scene2;
-  SCENES_CONFIG.scene3 = SCENES_CONFIG.scene1;
-  SCENES_CONFIG.scene4 = SCENES_CONFIG.scene1;
-  SCENES_CONFIG.scene5 = SCENES_CONFIG.scene1;
 
   const DEFAULT_SCENE_ID = "scene1";
 
@@ -53,8 +30,6 @@ document.addEventListener("DOMContentLoaded", function () {
   const imageWrapper = document.getElementById("bokehdata-viewer");
   const focalSlider = document.getElementById("bokehdata-focal-slider");
   const apertureSlider = document.getElementById("bokehdata-aperture-slider");
-  const sceneButtons = document.querySelectorAll(".bokehdata-scene-button");
-  const videoPairs = document.querySelectorAll(".bokehdata-video-pair");
 
   if (!imageWrapper || !focalSlider || !apertureSlider) {
     console.warn("[BokehData] Missing DOM elements, please check IDs.");
@@ -72,25 +47,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
   function clamp(v, lo, hi) {
     return Math.min(hi, Math.max(lo, v));
-  }
-
-  // 根据当前 scene 显示对应那一组 video pair
-  function updateVideoPairs(sceneId) {
-    if (!videoPairs || videoPairs.length === 0) return;
-
-    // 全部先隐藏
-    videoPairs.forEach(function (div) {
-      div.style.display = "none";
-    });
-
-    // 只显示当前 scene 对应的这一组
-    const targetId = "bokehdata-video-" + sceneId;   // 对应 bokehdata-video-scene1 这种 id
-    const target = document.getElementById(targetId);
-    if (target) {
-      target.style.display = "block";
-    } else {
-      console.warn("[BokehData] No video pair found for:", targetId);
-    }
   }
 
   function sliderToIndex(sliderValue, numSteps) {
@@ -159,32 +115,6 @@ document.addEventListener("DOMContentLoaded", function () {
     updateImageFromState();
   });
 
-  sceneButtons.forEach(function (btn) {
-    btn.addEventListener("click", function () {
-      const sceneId = btn.getAttribute("data-scene");
-      if (!sceneId || !SCENES_CONFIG[sceneId]) {
-        console.warn("[BokehData] Unknown scene id:", sceneId);
-        return;
-      }
-
-      currentSceneId = sceneId;
-
-      sceneButtons.forEach(function (b) {
-        b.classList.remove("is-active", "is-info");
-        b.classList.add("is-light");
-      });
-      btn.classList.add("is-active", "is-info");
-      btn.classList.remove("is-light");
-
-      const cfg = getCurrentConfig();
-      currentFocalIdx = sliderToIndex(focalSlider.value, cfg.numFocal);
-      currentApertureIdx = sliderToIndex(apertureSlider.value, cfg.numAperture);
-
-      updateVideoPairs(currentSceneId);
-      updateImageFromState();
-    });
-  });
-
   // ---------- 初始状态 ----------
 
   focalSlider.value = "5";
@@ -192,12 +122,11 @@ document.addEventListener("DOMContentLoaded", function () {
   currentSceneId = DEFAULT_SCENE_ID;
 
   // index 初始在中间
-    {
+  {
     const cfg = getCurrentConfig();
-    currentFocalIdx    = sliderToIndex(focalSlider.value,    cfg.numFocal);
+    currentFocalIdx = sliderToIndex(focalSlider.value, cfg.numFocal);
     currentApertureIdx = sliderToIndex(apertureSlider.value, cfg.numAperture);
-    }
+  }
 
-  updateVideoPairs(currentSceneId);
   updateImageFromState();
 });
