@@ -339,26 +339,28 @@
       top: 0;
       left: 0;
       opacity: 0;
-      animation: videoFadeMulti var(--animation-duration, 2s) infinite;
+      animation: videoFadeMulti var(--animation-duration, 1.5s) infinite;
+      animation-timing-function: ease-in-out;
     }
     .publication-video-slider video:first-child {
       position: relative;
     }
     /* 视频切换动画 - keyframes基础模板，具体百分比由JavaScript动态设置 */
+    /* 2 张时的兜底：F=0.25、H=0.5、T=n(F+H)=1.5s（首尾与中间同为交叉淡化） */
     @keyframes videoFadeMulti {
       0% {
         opacity: 0;
       }
-      0.01% {
-        opacity: 1;
-      }
-      49.99% {
+      16.6667% {
         opacity: 1;
       }
       50% {
+        opacity: 1;
+      }
+      66.6667% {
         opacity: 0;
       }
-      50.01%, 100% {
+      66.7167%, 100% {
         opacity: 0;
       }
     }
@@ -376,7 +378,8 @@
       top: 0;
       left: 0;
       opacity: 0;
-      animation: imageFadeMulti var(--animation-duration, 2s) infinite;
+      animation: imageFadeMulti var(--animation-duration, 1.5s) infinite;
+      animation-timing-function: ease-in-out;
     }
     .publication-image-slider img:first-child {
       position: relative;
@@ -387,16 +390,16 @@
       0% {
         opacity: 0;
       }
-      0.01% {
-        opacity: 1;
-      }
-      49.99% {
+      16.6667% {
         opacity: 1;
       }
       50% {
+        opacity: 1;
+      }
+      66.6667% {
         opacity: 0;
       }
-      50.01%, 100% {
+      66.7167%, 100% {
         opacity: 0;
       }
     }
@@ -517,6 +520,11 @@
                 <div class="bio-item">
                   <span class="bio-label">Resume:</span>
                   <span class="bio-content"><a href="https://drive.google.com/file/d/1lSlcUyXzUHVKN6HmlXnkrPeDrgZrjwX9/view?usp=sharing">PDF [March 2026]</a></span>
+                </div>
+
+                <div class="bio-item">
+                  <span class="bio-label">Google Scholar:</span>
+                  <span class="bio-content"><a href="https://scholar.google.com/citations?hl=en&tzom=240&user=Jzs37TkAAAAJ">Link</a></span>
                 </div>
 
               </div>
@@ -1093,40 +1101,39 @@
           const imageCount = images.length;
           
           if (imageCount > 1) {
-            // 每张图片显示0.7秒，总时长 = 图片数量 × 0.7秒（加快循环速度）
-            const totalDuration = (imageCount * 0.7) + 's';
+            // 交叉淡化：淡入 F → 峰值 H → 淡出 F；下一张在 (F+H) 秒后开始淡入，与上一张淡出重叠；T=n(F+H) 使首尾与中间同为 soft 衔接
+            const F = 0.25;
+            const H = 0.5;
+            const totalSec = imageCount * (F + H);
+            const totalDuration = totalSec + 's';
+            const fadeInEndPct = (F / totalSec) * 100;
+            const holdEndPct = ((F + H) / totalSec) * 100;
+            const slotEndPct = ((2 * F + H) / totalSec) * 100;
+            const staggerSec = F + H;
             
-            
-            // 计算每张图片应该显示的百分比（1/n，其中n是图片数量）
-            // 例如：2张图 = 50%，4张图 = 25%，5张图 = 20%
-            const showPercentage = 100 / imageCount;
-            const showEnd = showPercentage - 0.01;
-            
-            // 为这个slider创建唯一的keyframes
             const keyframeName = 'imageFadeMulti_' + sliderIndex;
             const style = document.createElement('style');
             style.textContent = `
               @keyframes ${keyframeName} {
                 0% { opacity: 0; }
-                0.01% { opacity: 1; }
-                ${showEnd}% { opacity: 1; }
-                ${showPercentage}% { opacity: 0; }
-                ${showPercentage + 0.01}%, 100% { opacity: 0; }
+                ${fadeInEndPct.toFixed(4)}% { opacity: 1; }
+                ${holdEndPct.toFixed(4)}% { opacity: 1; }
+                ${slotEndPct.toFixed(4)}% { opacity: 0; }
+                ${Math.min(slotEndPct + 0.05, 100).toFixed(4)}%, 100% { opacity: 0; }
               }
             `;
             document.head.appendChild(style);
             
-            // 设置容器的CSS变量
             slider.style.setProperty('--animation-duration', totalDuration);
             
-            // 为每张图片设置延迟时间和动画名称
             images.forEach(function(img, index) {
-              const delay = (index * 0.7) + 's';
+              const delay = (index * staggerSec) + 's';
               img.style.setProperty('animation-delay', delay);
               img.style.setProperty('animation-name', keyframeName);
               img.style.setProperty('animation-duration', totalDuration);
               img.style.setProperty('animation-iteration-count', 'infinite');
               img.style.setProperty('animation-fill-mode', 'both');
+              img.style.setProperty('animation-timing-function', 'ease-in-out');
             });
           }
         });
@@ -1139,38 +1146,39 @@
           const videoCount = videos.length;
           
           if (videoCount > 1) {
-            // 每个视频显示2.1秒（3秒 × 0.7），总时长 = 视频数量 × 2.1秒（加快循环速度）
-            const totalDuration = (videoCount * 2.1) + 's';
+            const F = 0.25;
+            const H = 0.5;
+            // T=n(F+H)，首尾与中间同为交叉淡化
+            const totalSec = videoCount * (F + H);
+            const totalDuration = totalSec + 's';
+            const fadeInEndPct = (F / totalSec) * 100;
+            const holdEndPct = ((F + H) / totalSec) * 100;
+            const slotEndPct = ((2 * F + H) / totalSec) * 100;
+            const staggerSec = F + H;
             
-            // 计算每个视频应该显示的百分比（1/n，其中n是视频数量）
-            const showPercentage = 100 / videoCount;
-            const showEnd = showPercentage - 0.01;
-            
-            // 为这个slider创建唯一的keyframes
             const keyframeName = 'videoFadeMulti_' + sliderIndex;
             const style = document.createElement('style');
             style.textContent = `
               @keyframes ${keyframeName} {
                 0% { opacity: 0; }
-                0.01% { opacity: 1; }
-                ${showEnd}% { opacity: 1; }
-                ${showPercentage}% { opacity: 0; }
-                ${showPercentage + 0.01}%, 100% { opacity: 0; }
+                ${fadeInEndPct.toFixed(4)}% { opacity: 1; }
+                ${holdEndPct.toFixed(4)}% { opacity: 1; }
+                ${slotEndPct.toFixed(4)}% { opacity: 0; }
+                ${Math.min(slotEndPct + 0.05, 100).toFixed(4)}%, 100% { opacity: 0; }
               }
             `;
             document.head.appendChild(style);
             
-            // 设置容器的CSS变量
             slider.style.setProperty('--animation-duration', totalDuration);
             
-            // 为每个视频设置延迟时间和动画名称，并确保视频同步播放
             videos.forEach(function(video, index) {
-              const delay = (index * 2.1) + 's';
+              const delay = (index * staggerSec) + 's';
               video.style.setProperty('animation-delay', delay);
               video.style.setProperty('animation-name', keyframeName);
               video.style.setProperty('animation-duration', totalDuration);
               video.style.setProperty('animation-iteration-count', 'infinite');
               video.style.setProperty('animation-fill-mode', 'both');
+              video.style.setProperty('animation-timing-function', 'ease-in-out');
               
               // 确保视频在切换时同步播放
               video.addEventListener('loadedmetadata', function() {
