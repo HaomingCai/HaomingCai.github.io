@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "Vid2Bokeh: Synthesizing Large-Scale Light Field Datasets from Videos Enables Joint Focus and Depth-of-Field Image Editing"
+title:  "Large-Scale Light Field Synthesis from Videos Enables Geometrically Consistent Bokeh Editing"
 date:   2025-11-01 22:21:59 +00:00
 image: /images/vid2bokeh_image1.jpg
 image2: /images/vid2bokeh_image2.jpg
