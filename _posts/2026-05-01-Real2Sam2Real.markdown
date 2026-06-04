@@ -7,4 +7,4 @@ categories: GenAI
 authors: "<strong>Haoming Cai*</strong>, Jiayi Wu*, Cornelia Fermuller, Christopher Metzler, Yiannis Aloimonos"
 venue: "<strongvenue>Under Review</strongvenue>"
 ---
-Generative 3D caches as complementary context for controllable video diffusion models
+Strong camera and object controllability for video generation
