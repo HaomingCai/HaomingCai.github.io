@@ -6,7 +6,7 @@
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-E00L9PT3V9"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
+    function gtag() { dataLayer.push(arguments); }
     gtag('js', new Date());
 
     gtag('config', 'G-E00L9PT3V9');
@@ -20,12 +20,15 @@
 
   <link rel="stylesheet" type="text/css" href="{{ site.baseurl }}/style.css" />
   <link rel="canonical" href="{{ page.url | replace:'index.html','' | prepend: site.baseurl | prepend: site.url }}">
-  <link href="https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic" rel="stylesheet" type="text/css">
-  
+  <link href="https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic" rel="stylesheet"
+    type="text/css">
+
   <style>
     body {
-      background-color: #000000; /* New background color */
+      background-color: #000000;
+      /* New background color */
     }
+
     /* Unified Color Scheme - Structured Design */
     /* Section Titles: #ffffff (white) - All section names use same color */
     /* Text Content: #ffffff (white) - All body text is white */
@@ -33,13 +36,16 @@
     /* Accent Yellow: #f8bb03 - Dates only (restrained highlight) */
     /* Links: #3f99f3 - Standard link color */
     /* Hover: #f09228 - Link hover state */
-    
+
     /* Section Titles - Unified styling */
     .news-section {
       margin-top: 20px;
       margin-bottom: 15px;
     }
-    .news-title, .note-title, .publication-title {
+
+    .news-title,
+    .note-title,
+    .publication-title {
       font-size: 20px;
       font-weight: 700;
       color: #ffffff;
@@ -48,13 +54,15 @@
       border-bottom: 2px solid #4a9eff;
       letter-spacing: 0.5px;
     }
+
     .publication-title a {
       transition: color 0.2s;
     }
+
     .publication-title a:hover {
       color: #f09228;
     }
-    
+
     /* News Section */
     .news-item {
       margin-bottom: 8px;
@@ -64,33 +72,39 @@
       padding-left: 15px;
       transition: all 0.3s ease;
     }
+
     .news-item:hover {
       border-left-color: #4a9eff;
       padding-left: 18px;
     }
+
     .news-date {
       color: #f8bb03;
       font-weight: 600;
       margin-right: 8px;
     }
+
     .news-content {
       color: #ffffff;
       line-height: 1.6;
       font-size: 14px;
     }
+
     .news-content a {
       color: #3f99f3;
       transition: color 0.2s;
     }
+
     .news-content a:hover {
       color: #f09228;
     }
-    
+
     /* Note Section */
     .note-section {
       margin-top: 20px;
       margin-bottom: 15px;
     }
+
     .note-content {
       background-color: rgba(74, 158, 255, 0.06);
       border-left: 3px solid #4a9eff;
@@ -98,35 +112,42 @@
       border-radius: 4px;
       line-height: 1.7;
     }
+
     .note-text {
       color: #ffffff;
       line-height: 1.7;
       font-size: 14px;
     }
+
     .note-list {
       margin: 8px 0;
       padding-left: 20px;
     }
+
     .note-list-item {
       margin: 6px 0;
       color: #ffffff;
     }
+
     .note-list-item strong {
       color: #ffffff;
       font-weight: 600;
     }
+
     .note-text p {
       color: #ffffff;
     }
+
     .note-text p[style*="color: #b0d5ff"] {
       color: #ffffff !important;
     }
-    
+
     /* Fun Zone Section - Compact links area */
     .funzone-section {
       margin-top: 20px;
       margin-bottom: 0;
     }
+
     .funzone-title {
       font-size: 14px;
       font-weight: 600;
@@ -135,6 +156,7 @@
       letter-spacing: 0.5px;
       text-transform: uppercase;
     }
+
     .funzone-content {
       display: flex;
       flex-direction: row;
@@ -142,6 +164,7 @@
       gap: 6px;
       margin-top: 0;
     }
+
     .funzone-item {
       background-color: rgba(74, 158, 255, 0.08);
       border: 1px solid rgba(74, 158, 255, 0.2);
@@ -155,6 +178,7 @@
       white-space: nowrap;
       flex: 0 1 auto;
     }
+
     .funzone-item::before {
       content: '';
       position: absolute;
@@ -165,15 +189,18 @@
       background: linear-gradient(90deg, transparent, rgba(74, 158, 255, 0.1), transparent);
       transition: left 0.5s ease;
     }
+
     .funzone-item:hover {
       transform: translateY(-2px);
       background-color: rgba(74, 158, 255, 0.12);
       border-color: rgba(74, 158, 255, 0.4);
       box-shadow: 0 2px 6px rgba(74, 158, 255, 0.15);
     }
+
     .funzone-item:hover::before {
       left: 100%;
     }
+
     .funzone-item a {
       color: #ffffff;
       text-decoration: none;
@@ -182,15 +209,17 @@
       z-index: 1;
       display: block;
     }
+
     .funzone-item a:hover {
       color: #4a9eff;
     }
-    
+
     /* Chief Vibe Officer Section */
     .cvo-section {
       margin-top: 20px;
       margin-bottom: 15px;
     }
+
     .cvo-title {
       font-size: 20px;
       font-weight: 700;
@@ -200,12 +229,14 @@
       border-bottom: 2px solid #4a9eff;
       letter-spacing: 0.5px;
     }
+
     .cvo-gallery {
       display: grid;
       grid-template-columns: repeat(4, 1fr);
       gap: 10px;
       margin-top: 12px;
     }
+
     .cvo-gallery-item {
       position: relative;
       overflow: hidden;
@@ -215,27 +246,31 @@
       border: 1px solid rgba(74, 158, 255, 0.2);
       transition: transform 0.3s ease, box-shadow 0.3s ease;
     }
+
     .cvo-gallery-item:hover {
       transform: translateY(-5px);
       box-shadow: 0 8px 20px rgba(74, 158, 255, 0.3);
       border-color: #4a9eff;
     }
+
     .cvo-gallery-item img {
       width: 100%;
       height: 100%;
       object-fit: cover;
       display: block;
     }
-    
+
     /* Bio Section */
     .bio-section {
       margin: 15px 0;
     }
+
     .bio-item {
       margin: 12px 0;
       padding-left: 20px;
       position: relative;
     }
+
     .bio-item::before {
       content: "▸";
       position: absolute;
@@ -243,21 +278,26 @@
       color: #4a9eff;
       font-size: 14px;
     }
+
     .bio-label {
       color: #ffffff;
       font-weight: 600;
       margin-right: 8px;
     }
+
     .bio-content {
       color: #ffffff;
     }
+
     .bio-content a {
       color: #3f99f3;
       transition: color 0.2s;
     }
+
     .bio-content a:hover {
       color: #f09228;
     }
+
     .bio-tags {
       display: inline-block;
       margin: 4px 4px 4px 0;
@@ -268,24 +308,28 @@
       font-size: 13px;
       color: #ffffff;
     }
+
     .bio-links {
       margin: 8px 0;
     }
+
     .bio-links a {
       margin-right: 12px;
       color: #3f99f3;
       text-decoration: none;
       transition: color 0.2s;
     }
+
     .bio-links a:hover {
       color: #f09228;
     }
-    
+
     /* Publication Section */
     .publication-section {
       margin-top: 20px;
       margin-bottom: 15px;
     }
+
     .publication-subtitle {
       font-size: 15px;
       font-weight: 600;
@@ -295,6 +339,7 @@
       border-bottom: 1px solid rgba(74, 158, 255, 0.3);
       letter-spacing: 0.3px;
     }
+
     .publication-item {
       display: flex;
       margin-bottom: 25px;
@@ -305,15 +350,18 @@
       margin-left: -10px;
       margin-right: -10px;
     }
+
     .publication-item:hover {
       transform: translateY(-5px);
       box-shadow: 0 8px 20px rgba(74, 158, 255, 0.15);
     }
+
     .publication-image {
       flex: 0 0 150px;
       min-width: 150px;
       max-width: 150px;
     }
+
     .publication-image img,
     .publication-image video {
       width: 100%;
@@ -321,16 +369,19 @@
       max-width: 100%;
       display: block;
     }
+
     .publication-image video {
       background-color: #000000;
       object-fit: contain;
     }
+
     /* 视频自动切换容器 - 支持多个视频 */
     .publication-video-slider {
       position: relative;
       width: 100%;
       overflow: hidden;
     }
+
     .publication-video-slider video {
       width: 100%;
       height: auto;
@@ -342,34 +393,43 @@
       animation: videoFadeMulti var(--animation-duration, 1.5s) infinite;
       animation-timing-function: ease-in-out;
     }
+
     .publication-video-slider video:first-child {
       position: relative;
     }
+
     /* 视频切换动画 - keyframes基础模板，具体百分比由JavaScript动态设置 */
     /* 2 张时的兜底：F=0.25、H=0.5、T=n(F+H)=1.5s（首尾与中间同为交叉淡化） */
     @keyframes videoFadeMulti {
       0% {
         opacity: 0;
       }
+
       16.6667% {
         opacity: 1;
       }
+
       50% {
         opacity: 1;
       }
+
       66.6667% {
         opacity: 0;
       }
-      66.7167%, 100% {
+
+      66.7167%,
+      100% {
         opacity: 0;
       }
     }
+
     /* 图片自动切换容器 - 支持多张图片 */
     .publication-image-slider {
       position: relative;
       width: 100%;
       overflow: hidden;
     }
+
     .publication-image-slider img {
       width: 100%;
       height: auto;
@@ -381,31 +441,40 @@
       animation: imageFadeMulti var(--animation-duration, 1.5s) infinite;
       animation-timing-function: ease-in-out;
     }
+
     .publication-image-slider img:first-child {
       position: relative;
     }
+
     /* 延迟时间将通过JavaScript动态设置 */
     /* 多图片直接切换动画 - keyframes基础模板，具体百分比由JavaScript动态设置 */
     @keyframes imageFadeMulti {
       0% {
         opacity: 0;
       }
+
       16.6667% {
         opacity: 1;
       }
+
       50% {
         opacity: 1;
       }
+
       66.6667% {
         opacity: 0;
       }
-      66.7167%, 100% {
+
+      66.7167%,
+      100% {
         opacity: 0;
       }
     }
+
     .publication-details {
       flex: 1;
     }
+
     .publication-title-link {
       color: #ffffff;
       text-decoration: none;
@@ -413,15 +482,18 @@
       font-size: 14px;
       transition: color 0.2s;
     }
+
     .publication-title-link:hover {
       color: #f09228;
     }
+
     .publication-authors {
       margin: 6px 0;
       color: #ffffff;
       font-size: 14px;
       line-height: 1.5;
     }
+
     /* 作者链接hover动画效果 */
     .publication-authors .author-with-link {
       display: inline-block;
@@ -430,45 +502,53 @@
       position: relative;
       border-bottom: 1px solid transparent;
     }
+
     .publication-authors .author-with-link:hover {
       transform: translateY(-2px);
       border-bottom: 1px solid #ffffff;
     }
+
     .publication-venue {
       margin: 6px 0;
       color: #ffffff;
       font-style: italic;
       font-size: 14px;
     }
+
     .publication-links {
       margin: 8px 0;
       font-size: 14px;
     }
+
     .publication-links a {
       color: #3f99f3;
       text-decoration: none;
       margin-right: 8px;
       transition: color 0.2s;
     }
+
     .publication-links a:hover {
       color: #f09228;
     }
+
     .publication-links small {
       font-size: 10px;
     }
+
     .publication-excerpt {
       margin-top: 8px;
       color: #ffffff;
       font-size: 14px;
       line-height: 1.6;
     }
-    
+
     /* Responsive Design */
     @media (max-width: 768px) {
       .publication-item {
         flex-direction: column;
         gap: 12px;
       }
+
       .publication-image {
         flex: 0 0 auto;
         width: 200px;
@@ -482,26 +562,35 @@
 </head>
 
 <body>
-  <table style="width:100%;max-width:800px;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;">
+  <table
+    style="width:100%;max-width:800px;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;">
     <tr style="padding:0px">
       <td style="padding:0px">
-        <table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;">
+        <table
+          style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;">
           <tr style="padding:0px">
             <td style="padding:2.5%;width:60%;vertical-align:middle">
               <h1>
-                Haoming Cai 
+                Haoming Cai
                 <h11>/haʊˈmɪŋ tsaɪ/</h11>
               </h1>
-              
+
               <div class="bio-section">
                 <div class="bio-item">
                   <span class="bio-label">Current:</span>
-                  <span class="bio-content">4th-year CS PhD student @ <a href="https://www.cs.umd.edu/">CS Department</a> of University of Maryland, College Park, advised by Professor <a href="https://www.cs.umd.edu/people/metzler">Christopher Metzler</a>.</span>
+                  <span class="bio-content">4th-year CS PhD student @ <a href="https://www.cs.umd.edu/">CS
+                      Department</a> of University of Maryland, College Park, advised by Professor <a
+                      href="https://www.cs.umd.edu/people/metzler">Christopher Metzler</a>.</span>
                 </div>
-                
+
                 <div class="bio-item">
                   <span class="bio-label">Previously:</span>
-                  <span class="bio-content">Had a wonderful journey (2020-2022) in <a href="https://xpixel.group/index.html">X-Pixel</a> with my supervisor Prof. <a href="https://scholar.google.com/citations?user=OSDCB0UAAAAJ&hl=en&oi=ao">Dong Chao</a> (Shanghai AI Lab) and mentor Dr. <a href="https://www.jasongt.com/">Gu Jinjin</a> (now Professor at INSAIT). Received my bachelor's degree from <a href="https://www.cuhk.edu.cn/en/about-us">Chinese University of Hong Kong (Shenzhen)</a>.</span>
+                  <span class="bio-content">Had a wonderful journey (2020-2022) in <a
+                      href="https://xpixel.group/index.html">X-Pixel</a> with my supervisor Prof. <a
+                      href="https://scholar.google.com/citations?user=OSDCB0UAAAAJ&hl=en&oi=ao">Dong Chao</a> (Shanghai
+                    AI Lab) and mentor Dr. <a href="https://www.jasongt.com/">Gu Jinjin</a> (now Professor at INSAIT).
+                    Received my bachelor's degree from <a href="https://www.cuhk.edu.cn/en/about-us">Chinese University
+                      of Hong Kong (Shenzhen)</a>.</span>
                 </div>
 
                 <div class="bio-item">
@@ -514,17 +603,21 @@
 
                 <div class="bio-item">
                   <span class="bio-label">Contact:</span>
-                  <span class="bio-content">hmcai@umd.edu / <del style="color: #666;">haomingcai@link.cuhk.edu.cn</del></span>
+                  <span class="bio-content">hmcai@umd.edu / <del
+                      style="color: #666;">haomingcai@link.cuhk.edu.cn</del></span>
                 </div>
 
                 <div class="bio-item">
                   <span class="bio-label">Resume:</span>
-                  <span class="bio-content"><a href="https://drive.google.com/file/d/1lSlcUyXzUHVKN6HmlXnkrPeDrgZrjwX9/view?usp=sharing">PDF [March 2026]</a></span>
+                  <span class="bio-content"><a
+                      href="https://drive.google.com/file/d/1AUxWWbtL47wj5pvMAHbSXVYJ1dPawSle/view?usp=sharing">PDF [Feb
+                      2026]</a></span>
                 </div>
 
                 <div class="bio-item">
                   <span class="bio-label">Google Scholar:</span>
-                  <span class="bio-content"><a href="https://scholar.google.com/citations?hl=en&tzom=240&user=Jzs37TkAAAAJ">Link</a></span>
+                  <span class="bio-content"><a
+                      href="https://scholar.google.com/citations?hl=en&tzom=240&user=Jzs37TkAAAAJ">Link</a></span>
                 </div>
 
               </div>
@@ -532,7 +625,7 @@
             </td>
             <td style="padding:2.5%;width:40%;max-width:40%">
               <img style="width:100%;max-width:65%" alt="profile photo" src="images/profile.png">
-              
+
               <div class="funzone-section">
                 <div class="funzone-title">The Fun Zone</div>
                 <div class="funzone-content">
@@ -551,14 +644,16 @@
         <div class="note-section">
           <!-- Note Title -->
           <div class="note-title">Let's Chat!</div>
-          
+
           <!-- Note Content -->
           <div class="note-content">
             <div class="note-text">
               <p style="margin: 0 0 8px 0;">Feel free to email me to schedule a meeting. I'm happy to chat about:</p>
               <ul class="note-list" style="margin-top: 8px; margin-bottom: 0;">
-                <li class="note-list-item"><strong>Research & Collaboration</strong> — discussing ideas and potential collaborations</li>
-                <li class="note-list-item"><strong>Early career planning</strong> — sharing experiences or chill chat with undergraduate and master students</li>
+                <li class="note-list-item"><strong>Research & Collaboration</strong> — discussing ideas and potential
+                  collaborations</li>
+                <li class="note-list-item"><strong>Early career planning</strong> — sharing experiences or chill chat
+                  with undergraduate and master students</li>
               </ul>
             </div>
           </div>
@@ -567,29 +662,36 @@
         <div class="news-section">
           <!-- News Title -->
           <div class="news-title">News</div>
-          
+
           <!-- News Items -->
           <div class="news-item">
             <span class="news-date">2025.06</span>
-            <span class="news-content"><a href="/tn/projects_html/ShadowDirector/">Parametric Shadow Control</a> accepted to ICCV'25, demonstrating parametric and intuitive shadow control for T2I.</span>
+            <span class="news-content"><a href="/tn/projects_html/ShadowDirector/">Parametric Shadow Control</a>
+              accepted to ICCV'25, demonstrating parametric and intuitive shadow control for T2I.</span>
           </div>
-          
+
           <div class="news-item">
             <span class="news-date">2025.06</span>
-            <span class="news-content">Named <a href="https://cvpr.thecvf.com/Conferences/2025/ProgramCommittee">Outstanding Reviewer</a> for CVPR 2025.</span>
+            <span class="news-content">Named <a
+                href="https://cvpr.thecvf.com/Conferences/2025/ProgramCommittee">Outstanding Reviewer</a> for CVPR
+              2025.</span>
           </div>
-          
+
           <div class="news-item">
             <span class="news-date">2025.05</span>
-            <span class="news-content">Joined <a href="https://research.adobe.com/articles/indigo/indigo.html">Adobe NextCam team</a> (led by <a href="https://graphics.stanford.edu/~levoy/">Marc Levoy</a>) as summer intern. Mentored by <a href="https://shumianxin.github.io/">Shumian</a> and <a href="https://ztzhang.info/">Zhoutong</a>.</span>
+            <span class="news-content">Joined <a href="https://research.adobe.com/articles/indigo/indigo.html">Adobe
+                NextCam team</a> (led by <a href="https://graphics.stanford.edu/~levoy/">Marc Levoy</a>) as summer
+              intern. Mentored by <a href="https://shumianxin.github.io/">Shumian</a> and <a
+                href="https://ztzhang.info/">Zhoutong</a>.</span>
           </div>
-          
+
           <div class="news-item">
             <span class="news-date">2025.02</span>
-            <span class="news-content">Two papers accepted to CVPR 2025. Congratulations to Tianfu, Mingyang, and Jingxi.</span>
+            <span class="news-content">Two papers accepted to CVPR 2025. Congratulations to Tianfu, Mingyang, and
+              Jingxi.</span>
           </div>
         </div>
-        
+
 
 
 
@@ -604,7 +706,10 @@
 
 
         <div class="publication-section">
-          <div class="publication-title">Publications (* Indicates Equal Contribution) <a href="https://scholar.google.com/citations?hl=en&tzom=240&user=Jzs37TkAAAAJ" style="font-size: 20px; font-weight: 400; color: #3f99f3; text-decoration: none; margin-left: 8px;">[Google Scholar]</a></div>
+          <div class="publication-title">Publications (* Indicates Equal Contribution) <a
+              href="https://scholar.google.com/citations?hl=en&tzom=240&user=Jzs37TkAAAAJ"
+              style="font-size: 20px; font-weight: 400; color: #3f99f3; text-decoration: none; margin-left: 8px;">[Google
+              Scholar]</a></div>
 
           <div class="publication-subtitle">Bridging GenAI and Computational Imaging & Photography (2024-Now)</div>
           {% for post in site.posts %}
@@ -613,43 +718,46 @@
           <div class="publication-item">
             <div class="publication-image">
               {% if post.image contains '.mp4' %}
-                {% if post.image2 and post.image2 contains '.mp4' %}
-                  <div class="publication-video-slider">
-                    <video autoplay muted loop playsinline preload="metadata" style="width: 100%; height: auto; display: block; background-color: #000000;">
-                      <source src="/tn{{ post.image }}" type="video/mp4">
-                      Your browser does not support the video tag.
-                    </video>
-                    <video autoplay muted loop playsinline preload="metadata" style="width: 100%; height: auto; display: block; background-color: #000000;">
-                      <source src="/tn{{ post.image2 }}" type="video/mp4">
-                      Your browser does not support the video tag.
-                    </video>
-                  </div>
-                {% else %}
-                  <video autoplay muted loop playsinline preload="metadata" style="width: 100%; height: auto; display: block; background-color: #000000;">
-                    <source src="/tn{{ post.image }}" type="video/mp4">
-                    Your browser does not support the video tag.
-                  </video>
-                {% endif %}
-              {% elsif post.image2 %}
-                <div class="publication-image-slider">
-                  <img src="/tn{{post.image}}" alt="project image" />
-                  <img src="/tn{{post.image2}}" alt="project image 2" />
-                  {% if post.image3 %}<img src="/tn{{post.image3}}" alt="project image 3" />{% endif %}
-                  {% if post.image4 %}<img src="/tn{{post.image4}}" alt="project image 4" />{% endif %}
-                  {% if post.image5 %}<img src="/tn{{post.image5}}" alt="project image 5" />{% endif %}
-                  {% if post.image6 %}<img src="/tn{{post.image6}}" alt="project image 6" />{% endif %}
-                  {% if post.image7 %}<img src="/tn{{post.image7}}" alt="project image 7" />{% endif %}
-                  {% if post.image8 %}<img src="/tn{{post.image8}}" alt="project image 8" />{% endif %}
-                </div>
+              {% if post.image2 and post.image2 contains '.mp4' %}
+              <div class="publication-video-slider">
+                <video autoplay muted loop playsinline preload="metadata"
+                  style="width: 100%; height: auto; display: block; background-color: #000000;">
+                  <source src="/tn{{ post.image }}" type="video/mp4">
+                  Your browser does not support the video tag.
+                </video>
+                <video autoplay muted loop playsinline preload="metadata"
+                  style="width: 100%; height: auto; display: block; background-color: #000000;">
+                  <source src="/tn{{ post.image2 }}" type="video/mp4">
+                  Your browser does not support the video tag.
+                </video>
+              </div>
               {% else %}
+              <video autoplay muted loop playsinline preload="metadata"
+                style="width: 100%; height: auto; display: block; background-color: #000000;">
+                <source src="/tn{{ post.image }}" type="video/mp4">
+                Your browser does not support the video tag.
+              </video>
+              {% endif %}
+              {% elsif post.image2 %}
+              <div class="publication-image-slider">
                 <img src="/tn{{post.image}}" alt="project image" />
+                <img src="/tn{{post.image2}}" alt="project image 2" />
+                {% if post.image3 %}<img src="/tn{{post.image3}}" alt="project image 3" />{% endif %}
+                {% if post.image4 %}<img src="/tn{{post.image4}}" alt="project image 4" />{% endif %}
+                {% if post.image5 %}<img src="/tn{{post.image5}}" alt="project image 5" />{% endif %}
+                {% if post.image6 %}<img src="/tn{{post.image6}}" alt="project image 6" />{% endif %}
+                {% if post.image7 %}<img src="/tn{{post.image7}}" alt="project image 7" />{% endif %}
+                {% if post.image8 %}<img src="/tn{{post.image8}}" alt="project image 8" />{% endif %}
+              </div>
+              {% else %}
+              <img src="/tn{{post.image}}" alt="project image" />
               {% endif %}
             </div>
             <div class="publication-details">
               {% if post.website %}
-                <a href="{{post.website}}" class="publication-title-link">{{post.title}}</a>
+              <a href="{{post.website}}" class="publication-title-link">{{post.title}}</a>
               {% else %}
-                <span class="publication-title-link" style="cursor: default;">{{post.title}}</span>
+              <span class="publication-title-link" style="cursor: default;">{{post.title}}</span>
               {% endif %}
               <div class="publication-authors">{{post.authors | add_author_links}}</div>
               <div class="publication-venue">{{post.venue}}</div>
@@ -685,50 +793,54 @@
           {% endfor %}
           {% endfor %}
 
-          <div class="publication-subtitle">Seeing & Tracking & Reconstruction Under Challenging Imaging Condition (2023-Now)</div>
+          <div class="publication-subtitle">Seeing & Tracking & Reconstruction Under Challenging Imaging Condition
+            (2023-Now)</div>
           {% for post in site.posts %}
           {% for cat in post.categories %}
           {% if cat == 'AdverseWeather' %}
           <div class="publication-item">
             <div class="publication-image">
               {% if post.image contains '.mp4' %}
-                {% if post.image2 and post.image2 contains '.mp4' %}
-                  <div class="publication-video-slider">
-                    <video autoplay muted loop playsinline preload="metadata" style="width: 100%; height: auto; display: block; background-color: #000000;">
-                      <source src="/tn{{ post.image }}" type="video/mp4">
-                      Your browser does not support the video tag.
-                    </video>
-                    <video autoplay muted loop playsinline preload="metadata" style="width: 100%; height: auto; display: block; background-color: #000000;">
-                      <source src="/tn{{ post.image2 }}" type="video/mp4">
-                      Your browser does not support the video tag.
-                    </video>
-                  </div>
-                {% else %}
-                  <video autoplay muted loop playsinline preload="metadata" style="width: 100%; height: auto; display: block; background-color: #000000;">
-                    <source src="/tn{{ post.image }}" type="video/mp4">
-                    Your browser does not support the video tag.
-                  </video>
-                {% endif %}
-              {% elsif post.image2 %}
-                <div class="publication-image-slider">
-                  <img src="/tn{{post.image}}" alt="project image" />
-                  <img src="/tn{{post.image2}}" alt="project image 2" />
-                  {% if post.image3 %}<img src="/tn{{post.image3}}" alt="project image 3" />{% endif %}
-                  {% if post.image4 %}<img src="/tn{{post.image4}}" alt="project image 4" />{% endif %}
-                  {% if post.image5 %}<img src="/tn{{post.image5}}" alt="project image 5" />{% endif %}
-                  {% if post.image6 %}<img src="/tn{{post.image6}}" alt="project image 6" />{% endif %}
-                  {% if post.image7 %}<img src="/tn{{post.image7}}" alt="project image 7" />{% endif %}
-                  {% if post.image8 %}<img src="/tn{{post.image8}}" alt="project image 8" />{% endif %}
-                </div>
+              {% if post.image2 and post.image2 contains '.mp4' %}
+              <div class="publication-video-slider">
+                <video autoplay muted loop playsinline preload="metadata"
+                  style="width: 100%; height: auto; display: block; background-color: #000000;">
+                  <source src="/tn{{ post.image }}" type="video/mp4">
+                  Your browser does not support the video tag.
+                </video>
+                <video autoplay muted loop playsinline preload="metadata"
+                  style="width: 100%; height: auto; display: block; background-color: #000000;">
+                  <source src="/tn{{ post.image2 }}" type="video/mp4">
+                  Your browser does not support the video tag.
+                </video>
+              </div>
               {% else %}
+              <video autoplay muted loop playsinline preload="metadata"
+                style="width: 100%; height: auto; display: block; background-color: #000000;">
+                <source src="/tn{{ post.image }}" type="video/mp4">
+                Your browser does not support the video tag.
+              </video>
+              {% endif %}
+              {% elsif post.image2 %}
+              <div class="publication-image-slider">
                 <img src="/tn{{post.image}}" alt="project image" />
+                <img src="/tn{{post.image2}}" alt="project image 2" />
+                {% if post.image3 %}<img src="/tn{{post.image3}}" alt="project image 3" />{% endif %}
+                {% if post.image4 %}<img src="/tn{{post.image4}}" alt="project image 4" />{% endif %}
+                {% if post.image5 %}<img src="/tn{{post.image5}}" alt="project image 5" />{% endif %}
+                {% if post.image6 %}<img src="/tn{{post.image6}}" alt="project image 6" />{% endif %}
+                {% if post.image7 %}<img src="/tn{{post.image7}}" alt="project image 7" />{% endif %}
+                {% if post.image8 %}<img src="/tn{{post.image8}}" alt="project image 8" />{% endif %}
+              </div>
+              {% else %}
+              <img src="/tn{{post.image}}" alt="project image" />
               {% endif %}
             </div>
             <div class="publication-details">
               {% if post.website %}
-                <a href="{{post.website}}" class="publication-title-link">{{post.title}}</a>
+              <a href="{{post.website}}" class="publication-title-link">{{post.title}}</a>
               {% else %}
-                <span class="publication-title-link" style="cursor: default;">{{post.title}}</span>
+              <span class="publication-title-link" style="cursor: default;">{{post.title}}</span>
               {% endif %}
               <div class="publication-authors">{{post.authors | add_author_links}}</div>
               <div class="publication-venue">{{post.venue}}</div>
@@ -771,43 +883,46 @@
           <div class="publication-item">
             <div class="publication-image">
               {% if post.image contains '.mp4' %}
-                {% if post.image2 and post.image2 contains '.mp4' %}
-                  <div class="publication-video-slider">
-                    <video autoplay muted loop playsinline preload="metadata" style="width: 100%; height: auto; display: block; background-color: #000000;">
-                      <source src="/tn{{ post.image }}" type="video/mp4">
-                      Your browser does not support the video tag.
-                    </video>
-                    <video autoplay muted loop playsinline preload="metadata" style="width: 100%; height: auto; display: block; background-color: #000000;">
-                      <source src="/tn{{ post.image2 }}" type="video/mp4">
-                      Your browser does not support the video tag.
-                    </video>
-                  </div>
-                {% else %}
-                  <video autoplay muted loop playsinline preload="metadata" style="width: 100%; height: auto; display: block; background-color: #000000;">
-                    <source src="/tn{{ post.image }}" type="video/mp4">
-                    Your browser does not support the video tag.
-                  </video>
-                {% endif %}
-              {% elsif post.image2 %}
-                <div class="publication-image-slider">
-                  <img src="/tn{{post.image}}" alt="project image" />
-                  <img src="/tn{{post.image2}}" alt="project image 2" />
-                  {% if post.image3 %}<img src="/tn{{post.image3}}" alt="project image 3" />{% endif %}
-                  {% if post.image4 %}<img src="/tn{{post.image4}}" alt="project image 4" />{% endif %}
-                  {% if post.image5 %}<img src="/tn{{post.image5}}" alt="project image 5" />{% endif %}
-                  {% if post.image6 %}<img src="/tn{{post.image6}}" alt="project image 6" />{% endif %}
-                  {% if post.image7 %}<img src="/tn{{post.image7}}" alt="project image 7" />{% endif %}
-                  {% if post.image8 %}<img src="/tn{{post.image8}}" alt="project image 8" />{% endif %}
-                </div>
+              {% if post.image2 and post.image2 contains '.mp4' %}
+              <div class="publication-video-slider">
+                <video autoplay muted loop playsinline preload="metadata"
+                  style="width: 100%; height: auto; display: block; background-color: #000000;">
+                  <source src="/tn{{ post.image }}" type="video/mp4">
+                  Your browser does not support the video tag.
+                </video>
+                <video autoplay muted loop playsinline preload="metadata"
+                  style="width: 100%; height: auto; display: block; background-color: #000000;">
+                  <source src="/tn{{ post.image2 }}" type="video/mp4">
+                  Your browser does not support the video tag.
+                </video>
+              </div>
               {% else %}
+              <video autoplay muted loop playsinline preload="metadata"
+                style="width: 100%; height: auto; display: block; background-color: #000000;">
+                <source src="/tn{{ post.image }}" type="video/mp4">
+                Your browser does not support the video tag.
+              </video>
+              {% endif %}
+              {% elsif post.image2 %}
+              <div class="publication-image-slider">
                 <img src="/tn{{post.image}}" alt="project image" />
+                <img src="/tn{{post.image2}}" alt="project image 2" />
+                {% if post.image3 %}<img src="/tn{{post.image3}}" alt="project image 3" />{% endif %}
+                {% if post.image4 %}<img src="/tn{{post.image4}}" alt="project image 4" />{% endif %}
+                {% if post.image5 %}<img src="/tn{{post.image5}}" alt="project image 5" />{% endif %}
+                {% if post.image6 %}<img src="/tn{{post.image6}}" alt="project image 6" />{% endif %}
+                {% if post.image7 %}<img src="/tn{{post.image7}}" alt="project image 7" />{% endif %}
+                {% if post.image8 %}<img src="/tn{{post.image8}}" alt="project image 8" />{% endif %}
+              </div>
+              {% else %}
+              <img src="/tn{{post.image}}" alt="project image" />
               {% endif %}
             </div>
             <div class="publication-details">
               {% if post.website %}
-                <a href="{{post.website}}" class="publication-title-link">{{post.title}}</a>
+              <a href="{{post.website}}" class="publication-title-link">{{post.title}}</a>
               {% else %}
-                <span class="publication-title-link" style="cursor: default;">{{post.title}}</span>
+              <span class="publication-title-link" style="cursor: default;">{{post.title}}</span>
               {% endif %}
               <div class="publication-authors">{{post.authors | add_author_links}}</div>
               <div class="publication-venue">{{post.venue}}</div>
@@ -850,43 +965,46 @@
           <div class="publication-item">
             <div class="publication-image">
               {% if post.image contains '.mp4' %}
-                {% if post.image2 and post.image2 contains '.mp4' %}
-                  <div class="publication-video-slider">
-                    <video autoplay muted loop playsinline preload="metadata" style="width: 100%; height: auto; display: block; background-color: #000000;">
-                      <source src="/tn{{ post.image }}" type="video/mp4">
-                      Your browser does not support the video tag.
-                    </video>
-                    <video autoplay muted loop playsinline preload="metadata" style="width: 100%; height: auto; display: block; background-color: #000000;">
-                      <source src="/tn{{ post.image2 }}" type="video/mp4">
-                      Your browser does not support the video tag.
-                    </video>
-                  </div>
-                {% else %}
-                  <video autoplay muted loop playsinline preload="metadata" style="width: 100%; height: auto; display: block; background-color: #000000;">
-                    <source src="/tn{{ post.image }}" type="video/mp4">
-                    Your browser does not support the video tag.
-                  </video>
-                {% endif %}
-              {% elsif post.image2 %}
-                <div class="publication-image-slider">
-                  <img src="/tn{{post.image}}" alt="project image" />
-                  <img src="/tn{{post.image2}}" alt="project image 2" />
-                  {% if post.image3 %}<img src="/tn{{post.image3}}" alt="project image 3" />{% endif %}
-                  {% if post.image4 %}<img src="/tn{{post.image4}}" alt="project image 4" />{% endif %}
-                  {% if post.image5 %}<img src="/tn{{post.image5}}" alt="project image 5" />{% endif %}
-                  {% if post.image6 %}<img src="/tn{{post.image6}}" alt="project image 6" />{% endif %}
-                  {% if post.image7 %}<img src="/tn{{post.image7}}" alt="project image 7" />{% endif %}
-                  {% if post.image8 %}<img src="/tn{{post.image8}}" alt="project image 8" />{% endif %}
-                </div>
+              {% if post.image2 and post.image2 contains '.mp4' %}
+              <div class="publication-video-slider">
+                <video autoplay muted loop playsinline preload="metadata"
+                  style="width: 100%; height: auto; display: block; background-color: #000000;">
+                  <source src="/tn{{ post.image }}" type="video/mp4">
+                  Your browser does not support the video tag.
+                </video>
+                <video autoplay muted loop playsinline preload="metadata"
+                  style="width: 100%; height: auto; display: block; background-color: #000000;">
+                  <source src="/tn{{ post.image2 }}" type="video/mp4">
+                  Your browser does not support the video tag.
+                </video>
+              </div>
               {% else %}
+              <video autoplay muted loop playsinline preload="metadata"
+                style="width: 100%; height: auto; display: block; background-color: #000000;">
+                <source src="/tn{{ post.image }}" type="video/mp4">
+                Your browser does not support the video tag.
+              </video>
+              {% endif %}
+              {% elsif post.image2 %}
+              <div class="publication-image-slider">
                 <img src="/tn{{post.image}}" alt="project image" />
+                <img src="/tn{{post.image2}}" alt="project image 2" />
+                {% if post.image3 %}<img src="/tn{{post.image3}}" alt="project image 3" />{% endif %}
+                {% if post.image4 %}<img src="/tn{{post.image4}}" alt="project image 4" />{% endif %}
+                {% if post.image5 %}<img src="/tn{{post.image5}}" alt="project image 5" />{% endif %}
+                {% if post.image6 %}<img src="/tn{{post.image6}}" alt="project image 6" />{% endif %}
+                {% if post.image7 %}<img src="/tn{{post.image7}}" alt="project image 7" />{% endif %}
+                {% if post.image8 %}<img src="/tn{{post.image8}}" alt="project image 8" />{% endif %}
+              </div>
+              {% else %}
+              <img src="/tn{{post.image}}" alt="project image" />
               {% endif %}
             </div>
             <div class="publication-details">
               {% if post.website %}
-                <a href="{{post.website}}" class="publication-title-link">{{post.title}}</a>
+              <a href="{{post.website}}" class="publication-title-link">{{post.title}}</a>
               {% else %}
-                <span class="publication-title-link" style="cursor: default;">{{post.title}}</span>
+              <span class="publication-title-link" style="cursor: default;">{{post.title}}</span>
               {% endif %}
               <div class="publication-authors">{{post.authors | add_author_links}}</div>
               <div class="publication-venue">{{post.venue}}</div>
@@ -969,12 +1087,14 @@
 
 
 
-        <table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;">
+        <table
+          style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;">
           <tr>
             <td style="padding:0px">
               <br>
               <p style="text-align:center;font-size:small;">
-                Design and source code from <a style="font-size:small;" href="https://jonbarron.info">Jon Barron's website</a>
+                Design and source code from <a style="font-size:small;" href="https://jonbarron.info">Jon Barron's
+                  website</a>
               </p>
             </td>
           </tr>
@@ -984,181 +1104,137 @@
   </table>
 
 
-  <script type='text/javascript' id='clustrmaps' src='//cdn.clustrmaps.com/map_v2.js?cl=0e1633&w=100&t=tt&d=QROiebfOxQKem7OOPCmt05uBYxlc-Sm4CCGIwz8gsCk&co=0b4975&cmo=3acc3a&cmn=ff5353&ct=cdd4d9'></script>
+  <script type='text/javascript' id='clustrmaps'
+    src='//cdn.clustrmaps.com/map_v2.js?cl=0e1633&w=100&t=tt&d=QROiebfOxQKem7OOPCmt05uBYxlc-Sm4CCGIwz8gsCk&co=0b4975&cmo=3acc3a&cmn=ff5353&ct=cdd4d9'></script>
 
   <script>
-      // 作者链接处理函数
-      function addAuthorLinks() {
-        const authorsData = {
+    // 作者链接处理函数
+    function addAuthorLinks() {
+      const authorsData = {
           {% for author in site.data.authors %}
-          "{{ author[0] }}": {% if author[1] and author[1] != "" %}"{{ author[1] }}"{% else %}null{% endif %}{% unless forloop.last %},{% endunless %}
-          {% endfor %}
-        };
-        
-        // 处理所有作者文本
-        const authorElements = document.querySelectorAll('.publication-authors');
-        authorElements.forEach(function(element) {
-          let html = element.innerHTML;
-          
-          // 按名字长度降序排序
-          const sortedAuthors = Object.entries(authorsData).sort((a, b) => b[0].length - a[0].length);
-          
-          // 遍历所有作者
-          for (const [name, url] of sortedAuthors) {
-            if (!url) continue;
-            
-            // 确保URL有协议
-            let fullUrl = url.trim();
-            if (!fullUrl.match(/^(https?|mailto):\/\//) && !fullUrl.startsWith('/')) {
-              fullUrl = 'https://' + fullUrl;
-            }
-            
-            // 转义特殊字符用于正则表达式
-            const escapedName = name.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
-            
-            // 模式1: 处理 <strong>名字</strong> 或 <strong>名字*</strong>
-            const strongPattern = new RegExp(`<strong>\\s*(${escapedName})\\s*(\\*?)\\s*<\\/strong>`, 'gi');
-            html = html.replace(strongPattern, function(match, namePart, star) {
-              if (match.includes('<a href')) return match; // 已经有链接，跳过
-              return `<strong><a href="${fullUrl}" class="author-with-link" style="color: inherit; text-decoration: none;">${namePart}${star || ''}</a></strong>`;
-            });
-            
-            // 模式2: 处理普通名字（不在标签内）
-            // 使用简单直接的方法：直接查找并替换名字
-            // 但要确保不在HTML标签内
-            const nameWithStar = escapedName + '(\\*?)';
-            const normalPattern = new RegExp(nameWithStar, 'gi');
-            
-            // 先找到所有匹配位置
-            const matches = [];
-            let match;
-            while ((match = normalPattern.exec(html)) !== null) {
-              matches.push({
-                index: match.index,
-                length: match[0].length,
-                name: match[0],
-                star: match[1] || ''
-              });
-            }
-            
-            // 从后往前替换，避免位置偏移
-            for (let i = matches.length - 1; i >= 0; i--) {
-              const m = matches[i];
-              const start = m.index;
-              const end = start + m.length;
-              
-              // 检查是否在HTML标签内
-              const textBefore = html.substring(0, start);
-              const textAfter = html.substring(end);
-              
-              // 检查是否已经在链接内
-              const openLinks = (textBefore.match(/<a\s+[^>]*>/gi) || []).length;
-              const closeLinks = (textBefore.match(/<\/a>/gi) || []).length;
-              if (openLinks > closeLinks) continue;
-              
-              // 检查是否在HTML标签内
-              const lastOpenTag = textBefore.lastIndexOf('<');
-              const lastCloseTag = textBefore.lastIndexOf('>');
-              if (lastOpenTag > lastCloseTag) {
-                // 在未闭合的标签内，检查是否是<strong>
-                const tagText = textBefore.substring(lastOpenTag);
-                if (tagText.includes('<strong>')) {
-                  continue; // <strong>标签已经处理过了
-                }
-                continue; // 在其他标签内，跳过
-              }
-              
-              // 检查名字前后是否是单词边界（不是字母，可以是空格、逗号等）
-              const charBefore = start > 0 ? html[start - 1] : ' ';
-              const charAfter = end < html.length ? html[end] : ' ';
-              // 允许空格、逗号、句号等，但不允许字母（避免部分匹配）
-              if (charBefore.match(/[a-zA-Z]/) || (charAfter.match(/[a-zA-Z]/) && !charAfter.match(/[\s,.]/))) {
-                continue; // 不是单词边界，跳过
-              }
-              
-              // 可以替换（m.name已经包含了star，所以直接使用）
-              const replacement = `<a href="${fullUrl}" class="author-with-link" style="color: inherit; text-decoration: none;">${m.name}</a>`;
-              html = html.substring(0, start) + replacement + html.substring(end);
-            }
-          }
-          
-          element.innerHTML = html;
-        });
-      }
-      
-      // 动态调整图片切换动画 - 根据每个项目的图片数量自动设置
-      document.addEventListener('DOMContentLoaded', function() {
-        // 先处理作者链接
-        try {
-          addAuthorLinks();
-        } catch (e) {
-          console.error('Error adding author links:', e);
+      "{{ author[0] }}": {% if author[1] and author[1] != "" %} "{{ author[1] }}"{% else %} null{% endif %} {% unless forloop.last %}, {% endunless %}
+      {% endfor %}
+    };
+
+    // 处理所有作者文本
+    const authorElements = document.querySelectorAll('.publication-authors');
+    authorElements.forEach(function (element) {
+      let html = element.innerHTML;
+
+      // 按名字长度降序排序
+      const sortedAuthors = Object.entries(authorsData).sort((a, b) => b[0].length - a[0].length);
+
+      // 遍历所有作者
+      for (const [name, url] of sortedAuthors) {
+        if (!url) continue;
+
+        // 确保URL有协议
+        let fullUrl = url.trim();
+        if (!fullUrl.match(/^(https?|mailto):\/\//) && !fullUrl.startsWith('/')) {
+          fullUrl = 'https://' + fullUrl;
         }
-        const sliders = document.querySelectorAll('.publication-image-slider');
-        
-        sliders.forEach(function(slider, sliderIndex) {
-          const images = slider.querySelectorAll('img');
-          const imageCount = images.length;
-          
-          if (imageCount > 1) {
-            // 交叉淡化：淡入 F → 峰值 H → 淡出 F；下一张在 (F+H) 秒后开始淡入，与上一张淡出重叠；T=n(F+H) 使首尾与中间同为 soft 衔接
-            const F = 0.25;
-            const H = 0.5;
-            const totalSec = imageCount * (F + H);
-            const totalDuration = totalSec + 's';
-            const fadeInEndPct = (F / totalSec) * 100;
-            const holdEndPct = ((F + H) / totalSec) * 100;
-            const slotEndPct = ((2 * F + H) / totalSec) * 100;
-            const staggerSec = F + H;
-            
-            const keyframeName = 'imageFadeMulti_' + sliderIndex;
-            const style = document.createElement('style');
-            style.textContent = `
-              @keyframes ${keyframeName} {
-                0% { opacity: 0; }
-                ${fadeInEndPct.toFixed(4)}% { opacity: 1; }
-                ${holdEndPct.toFixed(4)}% { opacity: 1; }
-                ${slotEndPct.toFixed(4)}% { opacity: 0; }
-                ${Math.min(slotEndPct + 0.05, 100).toFixed(4)}%, 100% { opacity: 0; }
-              }
-            `;
-            document.head.appendChild(style);
-            
-            slider.style.setProperty('--animation-duration', totalDuration);
-            
-            images.forEach(function(img, index) {
-              const delay = (index * staggerSec) + 's';
-              img.style.setProperty('animation-delay', delay);
-              img.style.setProperty('animation-name', keyframeName);
-              img.style.setProperty('animation-duration', totalDuration);
-              img.style.setProperty('animation-iteration-count', 'infinite');
-              img.style.setProperty('animation-fill-mode', 'both');
-              img.style.setProperty('animation-timing-function', 'ease-in-out');
-            });
-          }
+
+        // 转义特殊字符用于正则表达式
+        const escapedName = name.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+
+        // 模式1: 处理 <strong>名字</strong> 或 <strong>名字*</strong>
+        const strongPattern = new RegExp(`<strong>\\s*(${escapedName})\\s*(\\*?)\\s*<\\/strong>`, 'gi');
+        html = html.replace(strongPattern, function (match, namePart, star) {
+          if (match.includes('<a href')) return match; // 已经有链接，跳过
+          return `<strong><a href="${fullUrl}" class="author-with-link" style="color: inherit; text-decoration: none;">${namePart}${star || ''}</a></strong>`;
         });
-        
-        // 动态调整视频切换动画 - 根据每个项目的视频数量自动设置
-        const videoSliders = document.querySelectorAll('.publication-video-slider');
-        
-        videoSliders.forEach(function(slider, sliderIndex) {
-          const videos = slider.querySelectorAll('video');
-          const videoCount = videos.length;
-          
-          if (videoCount > 1) {
-            const F = 0.25;
-            const H = 0.5;
-            // T=n(F+H)，首尾与中间同为交叉淡化
-            const totalSec = videoCount * (F + H);
-            const totalDuration = totalSec + 's';
-            const fadeInEndPct = (F / totalSec) * 100;
-            const holdEndPct = ((F + H) / totalSec) * 100;
-            const slotEndPct = ((2 * F + H) / totalSec) * 100;
-            const staggerSec = F + H;
-            
-            const keyframeName = 'videoFadeMulti_' + sliderIndex;
-            const style = document.createElement('style');
-            style.textContent = `
+
+        // 模式2: 处理普通名字（不在标签内）
+        // 使用简单直接的方法：直接查找并替换名字
+        // 但要确保不在HTML标签内
+        const nameWithStar = escapedName + '(\\*?)';
+        const normalPattern = new RegExp(nameWithStar, 'gi');
+
+        // 先找到所有匹配位置
+        const matches = [];
+        let match;
+        while ((match = normalPattern.exec(html)) !== null) {
+          matches.push({
+            index: match.index,
+            length: match[0].length,
+            name: match[0],
+            star: match[1] || ''
+          });
+        }
+
+        // 从后往前替换，避免位置偏移
+        for (let i = matches.length - 1; i >= 0; i--) {
+          const m = matches[i];
+          const start = m.index;
+          const end = start + m.length;
+
+          // 检查是否在HTML标签内
+          const textBefore = html.substring(0, start);
+          const textAfter = html.substring(end);
+
+          // 检查是否已经在链接内
+          const openLinks = (textBefore.match(/<a\s+[^>]*>/gi) || []).length;
+          const closeLinks = (textBefore.match(/<\/a>/gi) || []).length;
+          if (openLinks > closeLinks) continue;
+
+          // 检查是否在HTML标签内
+          const lastOpenTag = textBefore.lastIndexOf('<');
+          const lastCloseTag = textBefore.lastIndexOf('>');
+          if (lastOpenTag > lastCloseTag) {
+            // 在未闭合的标签内，检查是否是<strong>
+            const tagText = textBefore.substring(lastOpenTag);
+            if (tagText.includes('<strong>')) {
+              continue; // <strong>标签已经处理过了
+            }
+            continue; // 在其他标签内，跳过
+          }
+
+          // 检查名字前后是否是单词边界（不是字母，可以是空格、逗号等）
+          const charBefore = start > 0 ? html[start - 1] : ' ';
+          const charAfter = end < html.length ? html[end] : ' ';
+          // 允许空格、逗号、句号等，但不允许字母（避免部分匹配）
+          if (charBefore.match(/[a-zA-Z]/) || (charAfter.match(/[a-zA-Z]/) && !charAfter.match(/[\s,.]/))) {
+            continue; // 不是单词边界，跳过
+          }
+
+          // 可以替换（m.name已经包含了star，所以直接使用）
+          const replacement = `<a href="${fullUrl}" class="author-with-link" style="color: inherit; text-decoration: none;">${m.name}</a>`;
+          html = html.substring(0, start) + replacement + html.substring(end);
+        }
+      }
+
+      element.innerHTML = html;
+    });
+      }
+
+    // 动态调整图片切换动画 - 根据每个项目的图片数量自动设置
+    document.addEventListener('DOMContentLoaded', function () {
+      // 先处理作者链接
+      try {
+        addAuthorLinks();
+      } catch (e) {
+        console.error('Error adding author links:', e);
+      }
+      const sliders = document.querySelectorAll('.publication-image-slider');
+
+      sliders.forEach(function (slider, sliderIndex) {
+        const images = slider.querySelectorAll('img');
+        const imageCount = images.length;
+
+        if (imageCount > 1) {
+          // 交叉淡化：淡入 F → 峰值 H → 淡出 F；下一张在 (F+H) 秒后开始淡入，与上一张淡出重叠；T=n(F+H) 使首尾与中间同为 soft 衔接
+          const F = 0.25;
+          const H = 0.5;
+          const totalSec = imageCount * (F + H);
+          const totalDuration = totalSec + 's';
+          const fadeInEndPct = (F / totalSec) * 100;
+          const holdEndPct = ((F + H) / totalSec) * 100;
+          const slotEndPct = ((2 * F + H) / totalSec) * 100;
+          const staggerSec = F + H;
+
+          const keyframeName = 'imageFadeMulti_' + sliderIndex;
+          const style = document.createElement('style');
+          style.textContent = `
               @keyframes ${keyframeName} {
                 0% { opacity: 0; }
                 ${fadeInEndPct.toFixed(4)}% { opacity: 1; }
@@ -1167,46 +1243,91 @@
                 ${Math.min(slotEndPct + 0.05, 100).toFixed(4)}%, 100% { opacity: 0; }
               }
             `;
-            document.head.appendChild(style);
-            
-            slider.style.setProperty('--animation-duration', totalDuration);
-            
-            videos.forEach(function(video, index) {
-              const delay = (index * staggerSec) + 's';
-              video.style.setProperty('animation-delay', delay);
-              video.style.setProperty('animation-name', keyframeName);
-              video.style.setProperty('animation-duration', totalDuration);
-              video.style.setProperty('animation-iteration-count', 'infinite');
-              video.style.setProperty('animation-fill-mode', 'both');
-              video.style.setProperty('animation-timing-function', 'ease-in-out');
-              
-              // 确保视频在切换时同步播放
-              video.addEventListener('loadedmetadata', function() {
-                // 当视频元数据加载完成后，设置当前时间以同步播放
-                if (index > 0) {
-                  video.currentTime = 0;
-                }
-              });
-              
-              // 监听视频播放，确保循环
-              video.addEventListener('ended', function() {
+          document.head.appendChild(style);
+
+          slider.style.setProperty('--animation-duration', totalDuration);
+
+          images.forEach(function (img, index) {
+            const delay = (index * staggerSec) + 's';
+            img.style.setProperty('animation-delay', delay);
+            img.style.setProperty('animation-name', keyframeName);
+            img.style.setProperty('animation-duration', totalDuration);
+            img.style.setProperty('animation-iteration-count', 'infinite');
+            img.style.setProperty('animation-fill-mode', 'both');
+            img.style.setProperty('animation-timing-function', 'ease-in-out');
+          });
+        }
+      });
+
+      // 动态调整视频切换动画 - 根据每个项目的视频数量自动设置
+      const videoSliders = document.querySelectorAll('.publication-video-slider');
+
+      videoSliders.forEach(function (slider, sliderIndex) {
+        const videos = slider.querySelectorAll('video');
+        const videoCount = videos.length;
+
+        if (videoCount > 1) {
+          const F = 0.25;
+          const H = 0.5;
+          // T=n(F+H)，首尾与中间同为交叉淡化
+          const totalSec = videoCount * (F + H);
+          const totalDuration = totalSec + 's';
+          const fadeInEndPct = (F / totalSec) * 100;
+          const holdEndPct = ((F + H) / totalSec) * 100;
+          const slotEndPct = ((2 * F + H) / totalSec) * 100;
+          const staggerSec = F + H;
+
+          const keyframeName = 'videoFadeMulti_' + sliderIndex;
+          const style = document.createElement('style');
+          style.textContent = `
+              @keyframes ${keyframeName} {
+                0% { opacity: 0; }
+                ${fadeInEndPct.toFixed(4)}% { opacity: 1; }
+                ${holdEndPct.toFixed(4)}% { opacity: 1; }
+                ${slotEndPct.toFixed(4)}% { opacity: 0; }
+                ${Math.min(slotEndPct + 0.05, 100).toFixed(4)}%, 100% { opacity: 0; }
+              }
+            `;
+          document.head.appendChild(style);
+
+          slider.style.setProperty('--animation-duration', totalDuration);
+
+          videos.forEach(function (video, index) {
+            const delay = (index * staggerSec) + 's';
+            video.style.setProperty('animation-delay', delay);
+            video.style.setProperty('animation-name', keyframeName);
+            video.style.setProperty('animation-duration', totalDuration);
+            video.style.setProperty('animation-iteration-count', 'infinite');
+            video.style.setProperty('animation-fill-mode', 'both');
+            video.style.setProperty('animation-timing-function', 'ease-in-out');
+
+            // 确保视频在切换时同步播放
+            video.addEventListener('loadedmetadata', function () {
+              // 当视频元数据加载完成后，设置当前时间以同步播放
+              if (index > 0) {
                 video.currentTime = 0;
-                video.play();
-              });
+              }
             });
-          }
-        });
-      
+
+            // 监听视频播放，确保循环
+            video.addEventListener('ended', function () {
+              video.currentTime = 0;
+              video.play();
+            });
+          });
+        }
+      });
+
       // 视频错误处理和调试
       const videos = document.querySelectorAll('.publication-image video');
-      videos.forEach(function(video) {
+      videos.forEach(function (video) {
         console.log('Found video element, source:', video.querySelector('source')?.src || video.src);
-        
-        video.addEventListener('loadstart', function() {
+
+        video.addEventListener('loadstart', function () {
           console.log('Video load started:', video.querySelector('source')?.src || video.src);
         });
-        
-        video.addEventListener('error', function(e) {
+
+        video.addEventListener('error', function (e) {
           console.error('Video loading error:', {
             src: video.querySelector('source')?.src || video.src,
             error: video.error,
@@ -1214,8 +1335,8 @@
             message: video.error?.message
           });
         });
-        
-        video.addEventListener('loadedmetadata', function() {
+
+        video.addEventListener('loadedmetadata', function () {
           console.log('Video metadata loaded:', {
             src: video.querySelector('source')?.src || video.src,
             duration: video.duration,
@@ -1223,70 +1344,70 @@
             videoHeight: video.videoHeight
           });
         });
-        
-        video.addEventListener('loadeddata', function() {
+
+        video.addEventListener('loadeddata', function () {
           console.log('Video data loaded:', video.querySelector('source')?.src || video.src);
         });
-        
-        video.addEventListener('canplay', function() {
+
+        video.addEventListener('canplay', function () {
           console.log('Video can play:', video.querySelector('source')?.src || video.src);
           // 尝试播放
-          video.play().catch(function(error) {
+          video.play().catch(function (error) {
             console.error('Video play error:', error);
           });
         });
-        
-        video.addEventListener('playing', function() {
+
+        video.addEventListener('playing', function () {
           console.log('Video is playing:', video.querySelector('source')?.src || video.src);
         });
-        
+
         // 循环播放保护：确保视频在结束后重新播放
-        video.addEventListener('ended', function() {
+        video.addEventListener('ended', function () {
           console.log('Video ended, restarting loop:', video.querySelector('source')?.src || video.src);
           this.currentTime = 0;
-          this.play().catch(function(error) {
+          this.play().catch(function (error) {
             console.error('Video loop restart error:', error);
             // 如果播放失败，尝试重新加载视频
             video.load();
-            setTimeout(function() {
-              video.play().catch(function(err) {
+            setTimeout(function () {
+              video.play().catch(function (err) {
                 console.error('Video reload play error:', err);
               });
             }, 100);
           });
         });
-        
+
         // 定期检查视频状态，确保持续播放（防止循环失效）
         let lastCheckTime = Date.now();
-        const checkInterval = setInterval(function() {
+        const checkInterval = setInterval(function () {
           const now = Date.now();
           // 每2秒检查一次
           if (now - lastCheckTime >= 2000) {
             lastCheckTime = now;
-            
+
             // 如果视频应该播放但处于暂停状态（且不是用户手动暂停）
             if (video.paused && !video.ended && document.visibilityState === 'visible') {
               console.log('Video paused unexpectedly, attempting to resume:', video.querySelector('source')?.src || video.src);
-              video.play().catch(function(error) {
+              video.play().catch(function (error) {
                 console.error('Video auto-resume error:', error);
               });
             }
-            
+
             // 如果视频已结束但currentTime没有重置，手动重置
             if (video.ended && video.currentTime > 0) {
               console.log('Video ended but not looping, forcing restart:', video.querySelector('source')?.src || video.src);
               video.currentTime = 0;
-              video.play().catch(function(error) {
+              video.play().catch(function (error) {
                 console.error('Video forced restart error:', error);
               });
             }
           }
         }, 2000); // 每2秒检查一次
-        
+
         // 页面可见性变化时，确保视频继续播放
-        document.addEventListener('visibilitychange', function() {
+        document.addEventListener('visibilitychange', function () {
           if (document.visibilityState === 'visible' && video.paused && !video.ended) {
-            video.play().catch(function(error) {
+            video.play().catch(function (error) {
               console.error('Video visibility resume error:', error);
             });
           }
@@ -1298,4 +1419,3 @@
 </body>
 
 </html>
-

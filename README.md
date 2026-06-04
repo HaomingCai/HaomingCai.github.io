@@ -38,26 +38,19 @@ Then `./bin/jekyll-serve` works.
 ### Manual: `bundle exec` (only if `which bundle` is Homebrew)
 
 1. **Install dependencies** (first time, or after changing `Gemfile`):
-
-   ```bash
+  ```bash
    cd /path/to/HaomingCai.github.io
    bundle install
-   ```
-
+  ```
    Gems go under `vendor/bundle/` (see `Gemfile`).
-
 2. **Build only** (output goes to `_site/`):
-
-   ```bash
+  ```bash
    bundle exec jekyll build
-   ```
-
+  ```
 3. **Serve locally** (with live reload):
-
-   ```bash
+  ```bash
    bundle exec jekyll serve
-   ```
-
+  ```
    Open **[http://127.0.0.1:4000/](http://127.0.0.1:4000/)** in your browser.
 
 ### “Could not find bundler (4.0.0)” / path shows `/System/Library/.../Ruby.framework`
@@ -65,17 +58,13 @@ Then `./bin/jekyll-serve` works.
 Your shell is using **macOS system Ruby** (`/usr/bin/bundle`), but `Gemfile.lock` was generated with **Homebrew Ruby** and **Bundler 4.x**. Fix one of:
 
 - Put Homebrew Ruby first in `PATH` (in `~/.zshrc`), then open a **new** terminal tab:
-
   ```bash
   export PATH="/opt/homebrew/opt/ruby/bin:$PATH"   # Apple Silicon
   # export PATH="/usr/local/opt/ruby/bin:$PATH"   # Intel Homebrew
   ```
-
   Check: `which ruby` should **not** be `/usr/bin/ruby`; `which bundle` should be under `/opt/homebrew` or `/usr/local/opt/ruby`.
-
 - Or always use the full path: `/opt/homebrew/opt/ruby/bin/bundle exec jekyll serve`
-
-- Or use **`./bin/jekyll-serve`** from this repo (prepends Homebrew Ruby for you).
+- Or use `**./bin/jekyll-serve`** from this repo (prepends Homebrew Ruby for you).
 
 **Note:** Always use `bundle exec` (or the scripts above) so Jekyll matches `Gemfile` / `Gemfile.lock`. Plain `jekyll serve` may use the wrong Ruby.
 
