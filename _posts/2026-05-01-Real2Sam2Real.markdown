@@ -4,7 +4,7 @@ title:  "Real2SAM2Real: Generative 3D Caches as Complementary Context for Video 
 date:   2026-05-01 22:21:59 +00:00
 image: /videos/real2sam2real_teaser.mp4
 categories: GenAI
-authors: "<strong>Haoming Cai*</strong>, Jiayi Wu*, Cornelia Fermuller, Christopher Metzler, Yiannis Aloimonos"
+authors: "Jiayi Wu*, <strong>Haoming Cai*</strong>, Cornelia Fermuller, Christopher Metzler, Yiannis Aloimonos"
 venue: "<strongvenue>Under Review</strongvenue>"
 ---
 Strong camera and object controllability for video generation
