@@ -14,4 +14,11 @@ else
   exit 1
 fi
 export PATH
-exec bundle exec jekyll serve "$@"
+
+# Allow either: ./bin/jekyll-serve --port 4002
+# or (legacy): ./bin/jekyll-serve -- --port 4002
+args=("$@")
+if [[ ${#args[@]} -gt 0 && "${args[0]}" == "--" ]]; then
+  args=("${args[@]:1}")
+fi
+exec bundle exec jekyll serve "${args[@]}"

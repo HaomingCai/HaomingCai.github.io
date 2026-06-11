@@ -28,7 +28,7 @@ From the repo root:
 First time, install gems with **Homebrew’s** `bundle` (not `/usr/bin/bundle`):
 
 ```bash
-cd /path/to/HaomingCai.github.io
+cd /Users/haomingcai/HMCai/Projects/HaomingCai.github.io/
 /opt/homebrew/opt/ruby/bin/bundle install    # Apple Silicon
 # /usr/local/opt/ruby/bin/bundle install     # Intel Homebrew
 ```
@@ -75,3 +75,13 @@ Your shell is using **macOS system Ruby** (`/usr/bin/bundle`), but `Gemfile.lock
 ### Windows
 
 Use [RubyInstaller](https://rubyinstaller.org/) (include MSYS2 dev tools), then run the same `bundle install` and `bundle exec jekyll serve` from a terminal in the repo root.
+
+
+
+
+
+cd /Users/haomingcai/HMCai/Projects/HaomingCai.github.io
+/opt/homebrew/opt/ruby/bin/bundle install
+
+cd /Users/haomingcai/HMCai/Projects/HaomingCai.github.io
+./bin/jekyll-serve --port 4002
