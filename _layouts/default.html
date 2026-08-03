@@ -1,1421 +1,717 @@
-<!DOCTYPE HTML>
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
-  <!-- Google tag (gtag.js) -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{{ site.name }}</title>
+  <meta name="author" content="{{ site.name }}">
+  <meta name="description" content="Haoming Cai — CS PhD at the University of Maryland working on generative media: image and video models taught to respect light, geometry, and the camera.">
+  <link rel="canonical" href="{{ page.url | replace:'index.html','' | prepend: site.baseurl | prepend: site.url }}">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  {%- comment -%}
+    字体表原先挡在关键路径上（Lighthouse: 阻塞渲染 940ms）。
+    改成异步加载 —— 先用系统字体把内容画出来，字体到了再换。
+  {%- endcomment -%}
+  <link rel="preload" as="style"
+        href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;700&display=swap"
+        onload="this.onload=null;this.rel='stylesheet'">
+  <noscript>
+    <link rel="stylesheet"
+          href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;700&display=swap">
+  </noscript>
+
+  {%- comment -%} LCP 元素就是这张雪碧图 —— 让它尽早开始下载 {%- endcomment -%}
+  <link rel="preload" as="image" href="{{ site.baseurl }}/tn/playground/shadow_atlas.jpg">
+  <link rel="stylesheet" href="{{ site.baseurl }}/style.css">
+
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-E00L9PT3V9"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
     function gtag() { dataLayer.push(arguments); }
     gtag('js', new Date());
-
     gtag('config', 'G-E00L9PT3V9');
   </script>
-  <title>{{ site.name }}</title>
-
-  <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-
-  <meta name="author" content="{{ site.name }}" />
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-
-  <link rel="stylesheet" type="text/css" href="{{ site.baseurl }}/style.css" />
-  <link rel="canonical" href="{{ page.url | replace:'index.html','' | prepend: site.baseurl | prepend: site.url }}">
-  <link href="https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic" rel="stylesheet"
-    type="text/css">
-
-  <style>
-    body {
-      background-color: #000000;
-      /* New background color */
-    }
-
-    /* Unified Color Scheme - Structured Design */
-    /* Section Titles: #ffffff (white) - All section names use same color */
-    /* Text Content: #ffffff (white) - All body text is white */
-    /* Accent Blue: #4a9eff - Section borders, subtle accents */
-    /* Accent Yellow: #f8bb03 - Dates only (restrained highlight) */
-    /* Links: #3f99f3 - Standard link color */
-    /* Hover: #f09228 - Link hover state */
-
-    /* Section Titles - Unified styling */
-    .news-section {
-      margin-top: 20px;
-      margin-bottom: 15px;
-    }
-
-    .news-title,
-    .note-title,
-    .publication-title {
-      font-size: 20px;
-      font-weight: 700;
-      color: #ffffff;
-      margin-bottom: 12px;
-      padding-bottom: 8px;
-      border-bottom: 2px solid #4a9eff;
-      letter-spacing: 0.5px;
-    }
-
-    .publication-title a {
-      transition: color 0.2s;
-    }
-
-    .publication-title a:hover {
-      color: #f09228;
-    }
-
-    /* News Section */
-    .news-item {
-      margin-bottom: 8px;
-      padding-left: 5px;
-      padding-bottom: 8px;
-      border-left: 2px solid rgba(74, 158, 255, 0.25);
-      padding-left: 15px;
-      transition: all 0.3s ease;
-    }
-
-    .news-item:hover {
-      border-left-color: #4a9eff;
-      padding-left: 18px;
-    }
-
-    .news-date {
-      color: #f8bb03;
-      font-weight: 600;
-      margin-right: 8px;
-    }
-
-    .news-content {
-      color: #ffffff;
-      line-height: 1.6;
-      font-size: 14px;
-    }
-
-    .news-content a {
-      color: #3f99f3;
-      transition: color 0.2s;
-    }
-
-    .news-content a:hover {
-      color: #f09228;
-    }
-
-    /* Note Section */
-    .note-section {
-      margin-top: 20px;
-      margin-bottom: 15px;
-    }
-
-    .note-content {
-      background-color: rgba(74, 158, 255, 0.06);
-      border-left: 3px solid #4a9eff;
-      padding: 15px 18px;
-      border-radius: 4px;
-      line-height: 1.7;
-    }
-
-    .note-text {
-      color: #ffffff;
-      line-height: 1.7;
-      font-size: 14px;
-    }
-
-    .note-list {
-      margin: 8px 0;
-      padding-left: 20px;
-    }
-
-    .note-list-item {
-      margin: 6px 0;
-      color: #ffffff;
-    }
-
-    .note-list-item strong {
-      color: #ffffff;
-      font-weight: 600;
-    }
-
-    .note-text p {
-      color: #ffffff;
-    }
-
-    .note-text p[style*="color: #b0d5ff"] {
-      color: #ffffff !important;
-    }
-
-    /* Fun Zone Section - Compact links area */
-    .funzone-section {
-      margin-top: 20px;
-      margin-bottom: 0;
-    }
-
-    .funzone-title {
-      font-size: 14px;
-      font-weight: 600;
-      color: rgba(255, 255, 255, 0.7);
-      margin-bottom: 10px;
-      letter-spacing: 0.5px;
-      text-transform: uppercase;
-    }
-
-    .funzone-content {
-      display: flex;
-      flex-direction: row;
-      flex-wrap: wrap;
-      gap: 6px;
-      margin-top: 0;
-    }
-
-    .funzone-item {
-      background-color: rgba(74, 158, 255, 0.08);
-      border: 1px solid rgba(74, 158, 255, 0.2);
-      padding: 6px 10px;
-      border-radius: 5px;
-      line-height: 1.3;
-      font-size: 12px;
-      transition: all 0.3s ease;
-      position: relative;
-      overflow: hidden;
-      white-space: nowrap;
-      flex: 0 1 auto;
-    }
-
-    .funzone-item::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: -100%;
-      width: 100%;
-      height: 100%;
-      background: linear-gradient(90deg, transparent, rgba(74, 158, 255, 0.1), transparent);
-      transition: left 0.5s ease;
-    }
-
-    .funzone-item:hover {
-      transform: translateY(-2px);
-      background-color: rgba(74, 158, 255, 0.12);
-      border-color: rgba(74, 158, 255, 0.4);
-      box-shadow: 0 2px 6px rgba(74, 158, 255, 0.15);
-    }
-
-    .funzone-item:hover::before {
-      left: 100%;
-    }
-
-    .funzone-item a {
-      color: #ffffff;
-      text-decoration: none;
-      transition: color 0.2s;
-      position: relative;
-      z-index: 1;
-      display: block;
-    }
-
-    .funzone-item a:hover {
-      color: #4a9eff;
-    }
-
-    /* Chief Vibe Officer Section */
-    .cvo-section {
-      margin-top: 20px;
-      margin-bottom: 15px;
-    }
-
-    .cvo-title {
-      font-size: 20px;
-      font-weight: 700;
-      color: #ffffff;
-      margin-bottom: 12px;
-      padding-bottom: 8px;
-      border-bottom: 2px solid #4a9eff;
-      letter-spacing: 0.5px;
-    }
-
-    .cvo-gallery {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 10px;
-      margin-top: 12px;
-    }
-
-    .cvo-gallery-item {
-      position: relative;
-      overflow: hidden;
-      border-radius: 4px;
-      aspect-ratio: 1;
-      background-color: rgba(74, 158, 255, 0.06);
-      border: 1px solid rgba(74, 158, 255, 0.2);
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-    }
-
-    .cvo-gallery-item:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 8px 20px rgba(74, 158, 255, 0.3);
-      border-color: #4a9eff;
-    }
-
-    .cvo-gallery-item img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      display: block;
-    }
-
-    /* Bio Section */
-    .bio-section {
-      margin: 15px 0;
-    }
-
-    .bio-item {
-      margin: 12px 0;
-      padding-left: 20px;
-      position: relative;
-    }
-
-    .bio-item::before {
-      content: "▸";
-      position: absolute;
-      left: 0;
-      color: #4a9eff;
-      font-size: 14px;
-    }
-
-    .bio-label {
-      color: #ffffff;
-      font-weight: 600;
-      margin-right: 8px;
-    }
-
-    .bio-content {
-      color: #ffffff;
-    }
-
-    .bio-content a {
-      color: #3f99f3;
-      transition: color 0.2s;
-    }
-
-    .bio-content a:hover {
-      color: #f09228;
-    }
-
-    .bio-tags {
-      display: inline-block;
-      margin: 4px 4px 4px 0;
-      padding: 3px 10px;
-      background-color: rgba(74, 158, 255, 0.1);
-      border: 1px solid rgba(74, 158, 255, 0.2);
-      border-radius: 12px;
-      font-size: 13px;
-      color: #ffffff;
-    }
-
-    .bio-links {
-      margin: 8px 0;
-    }
-
-    .bio-links a {
-      margin-right: 12px;
-      color: #3f99f3;
-      text-decoration: none;
-      transition: color 0.2s;
-    }
-
-    .bio-links a:hover {
-      color: #f09228;
-    }
-
-    /* Publication Section */
-    .publication-section {
-      margin-top: 20px;
-      margin-bottom: 15px;
-    }
-
-    .publication-subtitle {
-      font-size: 15px;
-      font-weight: 600;
-      color: #ffffff;
-      margin: 20px 0 12px 0;
-      padding-bottom: 6px;
-      border-bottom: 1px solid rgba(74, 158, 255, 0.3);
-      letter-spacing: 0.3px;
-    }
-
-    .publication-item {
-      display: flex;
-      margin-bottom: 25px;
-      gap: 20px;
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-      padding: 10px;
-      border-radius: 4px;
-      margin-left: -10px;
-      margin-right: -10px;
-    }
-
-    .publication-item:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 8px 20px rgba(74, 158, 255, 0.15);
-    }
-
-    .publication-image {
-      flex: 0 0 150px;
-      min-width: 150px;
-      max-width: 150px;
-    }
-
-    .publication-image img,
-    .publication-image video {
-      width: 100%;
-      height: auto;
-      max-width: 100%;
-      display: block;
-    }
-
-    .publication-image video {
-      background-color: #000000;
-      object-fit: contain;
-    }
-
-    /* 视频自动切换容器 - 支持多个视频 */
-    .publication-video-slider {
-      position: relative;
-      width: 100%;
-      overflow: hidden;
-    }
-
-    .publication-video-slider video {
-      width: 100%;
-      height: auto;
-      display: block;
-      position: absolute;
-      top: 0;
-      left: 0;
-      opacity: 0;
-      animation: videoFadeMulti var(--animation-duration, 1.5s) infinite;
-      animation-timing-function: ease-in-out;
-    }
-
-    .publication-video-slider video:first-child {
-      position: relative;
-    }
-
-    /* 视频切换动画 - keyframes基础模板，具体百分比由JavaScript动态设置 */
-    /* 2 张时的兜底：F=0.25、H=0.5、T=n(F+H)=1.5s（首尾与中间同为交叉淡化） */
-    @keyframes videoFadeMulti {
-      0% {
-        opacity: 0;
-      }
-
-      16.6667% {
-        opacity: 1;
-      }
-
-      50% {
-        opacity: 1;
-      }
-
-      66.6667% {
-        opacity: 0;
-      }
-
-      66.7167%,
-      100% {
-        opacity: 0;
-      }
-    }
-
-    /* 图片自动切换容器 - 支持多张图片 */
-    .publication-image-slider {
-      position: relative;
-      width: 100%;
-      overflow: hidden;
-    }
-
-    .publication-image-slider img {
-      width: 100%;
-      height: auto;
-      display: block;
-      position: absolute;
-      top: 0;
-      left: 0;
-      opacity: 0;
-      animation: imageFadeMulti var(--animation-duration, 1.5s) infinite;
-      animation-timing-function: ease-in-out;
-    }
-
-    .publication-image-slider img:first-child {
-      position: relative;
-    }
-
-    /* 延迟时间将通过JavaScript动态设置 */
-    /* 多图片直接切换动画 - keyframes基础模板，具体百分比由JavaScript动态设置 */
-    @keyframes imageFadeMulti {
-      0% {
-        opacity: 0;
-      }
-
-      16.6667% {
-        opacity: 1;
-      }
-
-      50% {
-        opacity: 1;
-      }
-
-      66.6667% {
-        opacity: 0;
-      }
-
-      66.7167%,
-      100% {
-        opacity: 0;
-      }
-    }
-
-    .publication-details {
-      flex: 1;
-    }
-
-    .publication-title-link {
-      color: #ffffff;
-      text-decoration: none;
-      font-weight: 700;
-      font-size: 14px;
-      transition: color 0.2s;
-    }
-
-    .publication-title-link:hover {
-      color: #f09228;
-    }
-
-    .publication-authors {
-      margin: 6px 0;
-      color: #ffffff;
-      font-size: 14px;
-      line-height: 1.5;
-    }
-
-    /* 作者链接hover动画效果 */
-    .publication-authors .author-with-link {
-      display: inline-block;
-      transition: transform 0.2s ease, border-bottom 0.2s ease;
-      text-decoration: none;
-      position: relative;
-      border-bottom: 1px solid transparent;
-    }
-
-    .publication-authors .author-with-link:hover {
-      transform: translateY(-2px);
-      border-bottom: 1px solid #ffffff;
-    }
-
-    .publication-venue {
-      margin: 6px 0;
-      color: #ffffff;
-      font-style: italic;
-      font-size: 14px;
-    }
-
-    .publication-links {
-      margin: 8px 0;
-      font-size: 14px;
-    }
-
-    .publication-links a {
-      color: #3f99f3;
-      text-decoration: none;
-      margin-right: 8px;
-      transition: color 0.2s;
-    }
-
-    .publication-links a:hover {
-      color: #f09228;
-    }
-
-    .publication-links small {
-      font-size: 10px;
-    }
-
-    .publication-excerpt {
-      margin-top: 8px;
-      color: #ffffff;
-      font-size: 14px;
-      line-height: 1.6;
-    }
-
-    /* Responsive Design */
-    @media (max-width: 768px) {
-      .publication-item {
-        flex-direction: column;
-        gap: 12px;
-      }
-
-      .publication-image {
-        flex: 0 0 auto;
-        width: 200px;
-        max-width: 200px;
-        min-width: 200px;
-        margin: 0 auto;
-      }
-    }
-  </style>
-
 </head>
 
 <body>
-  <table
-    style="width:100%;max-width:800px;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;">
-    <tr style="padding:0px">
-      <td style="padding:0px">
-        <table
-          style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;">
-          <tr style="padding:0px">
-            <td style="padding:2.5%;width:60%;vertical-align:middle">
-              <h1>
-                Haoming Cai
-                <h11>/haʊˈmɪŋ tsaɪ/</h11>
-              </h1>
+  {%- comment -%}
+    常驻导航。页面 5000px+，原先没有任何导航，读者滑到底后无处可去、
+    也无处可点 CV/邮箱。Sitzmann、Anthropic 都有。
+  {%- endcomment -%}
+  <nav class="nav">
+    <div class="nav__inner">
+      <a class="nav__me" href="#top">Haoming Cai</a>
+      <div class="nav__links">
+        <a href="#work">Work</a>
+        <a href="#news">News</a>
+        <a href="#publications">Publications</a>
+        <a class="nav__cv" href="https://drive.google.com/file/d/1qady-8lu348j0o9xsiIKBTJ_2dnBntV9/view?usp=sharing">CV</a>
+      </div>
+    </div>
+  </nav>
 
-              <div class="bio-section">
-                <div class="bio-item">
-                  <span class="bio-label">Current:</span>
-                  <span class="bio-content">4th-year CS PhD student @ <a href="https://www.cs.umd.edu/">CS
-                      Department</a> of University of Maryland, College Park, advised by Professor <a
-                      href="https://www.cs.umd.edu/people/metzler">Christopher Metzler</a>.</span>
-                </div>
+  <main class="page" id="top">
 
-                <div class="bio-item">
-                  <span class="bio-label">Previously:</span>
-                  <span class="bio-content">Had a wonderful journey (2020-2022) in <a
-                      href="https://xpixel.group/index.html">X-Pixel</a> with my supervisor Prof. <a
-                      href="https://scholar.google.com/citations?user=OSDCB0UAAAAJ&hl=en&oi=ao">Dong Chao</a> (Shanghai
-                    AI Lab) and mentor Dr. <a href="https://www.jasongt.com/">Gu Jinjin</a> (now Professor at INSAIT).
-                    Received my bachelor's degree from <a href="https://www.cuhk.edu.cn/en/about-us">Chinese University
-                      of Hong Kong (Shenzhen)</a>.</span>
-                </div>
+    {%- comment -%}
+      产品视角的排布：陌生人只给这一页 ~30 秒。
+      顺序 = 你是谁 → 你做什么 → 证据（作品）→ 近况 → 完整列表。
+      头像和名字并排（不再各占一行），把作品往上顶。
+    {%- endcomment -%}
 
-                <div class="bio-item">
-                  <span class="bio-label">Research:</span>
-                  <span class="bio-content">
-                    <span class="bio-tags">Physics-aware Gen AI</span>
-                    <span class="bio-tags">Computational Imaging</span>
-                  </span>
-                </div>
+    {%- comment -%}
+      不对称英雄区（抄 Anthropic）：身份在左，叙述在右，两栏错开。
+      比"居中堆叠"更有编辑感，也把作品往上顶。
+    {%- endcomment -%}
+    <header class="hero">
+      <div class="hero__id">
+        <picture>
+          <source srcset="{{ site.baseurl }}/images/profile_380.webp" type="image/webp">
+          <img class="hero__photo" src="{{ site.baseurl }}/images/profile_380.jpg"
+               width="380" height="380" alt="Haoming Cai" fetchpriority="high">
+        </picture>
+        <h1 class="hero__name">Haoming&nbsp;Cai</h1>
+        <p class="hero__phonetic">/haʊˈmɪŋ tsaɪ/ &middot; 蔡昊明</p>
+        <p class="hero__tagline">Generative Media<br>Computational Imaging</p>
+      </div>
 
-                <div class="bio-item">
-                  <span class="bio-label">Contact:</span>
-                  <span class="bio-content">hmcai@umd.edu / <del
-                      style="color: #666;">haomingcai@link.cuhk.edu.cn</del></span>
-                </div>
+      <div class="hero__lede">
+        <p>
+          Fourth-year CS PhD student at the
+          <a href="https://www.cs.umd.edu/">University of Maryland</a>, advised by
+          <a href="https://www.cs.umd.edu/people/metzler">Christopher Metzler</a>.
+          I work on generative media &mdash; image and video models &mdash;
+          teaching them to respect light, geometry, and the camera.
+        </p>
+        <p>
+          Previously at <a href="https://xpixel.group/index.html">X-Pixel</a> (2020–2022)
+          with <a href="https://scholar.google.com/citations?user=OSDCB0UAAAAJ&hl=en">Chao Dong</a>
+          and <a href="https://www.jasongt.com/">Jinjin Gu</a>; BEng from
+          <a href="https://www.cuhk.edu.cn/en/about-us">The Chinese University of Hong Kong, Shenzhen</a>.
+          Always happy to talk research or early-career questions.
+        </p>
 
-                <div class="bio-item">
-                  <span class="bio-label">Resume:</span>
-                  <span class="bio-content"><a
-                      href="https://drive.google.com/file/d/1qady-8lu348j0o9xsiIKBTJ_2dnBntV9/view?usp=sharing">PDF [Jun
-                      2026]</a></span>
-                </div>
-
-                <div class="bio-item">
-                  <span class="bio-label">Google Scholar:</span>
-                  <span class="bio-content"><a
-                      href="https://scholar.google.com/citations?hl=en&tzom=240&user=Jzs37TkAAAAJ">Link</a></span>
-                </div>
-
-              </div>
-
-            </td>
-            <td style="padding:2.5%;width:40%;max-width:40%">
-              <img style="width:100%;max-width:65%" alt="profile photo" src="images/profile.png">
-
-              <div class="funzone-section">
-                <div class="funzone-title">The Fun Zone</div>
-                <div class="funzone-content">
-                  <div class="funzone-item">
-                    <a href="https://www.flickr.com/photos/201416778@N04/">Flickr</a>
-                  </div>
-                  <div class="funzone-item">
-                    <a href="#chief-vibe-officer">Chief Vibe Officer</a>
-                  </div>
-                </div>
-              </div>
-            </td>
-          </tr>
-        </table>
-
-        <div class="note-section">
-          <!-- Note Title -->
-          <div class="note-title">Let's Chat!</div>
-
-          <!-- Note Content -->
-          <div class="note-content">
-            <div class="note-text">
-              <p style="margin: 0 0 8px 0;">Feel free to email me to schedule a meeting. I'm happy to chat about:</p>
-              <ul class="note-list" style="margin-top: 8px; margin-bottom: 0;">
-                <li class="note-list-item"><strong>Research & Collaboration</strong> — discussing ideas and potential
-                  collaborations</li>
-                <li class="note-list-item"><strong>Early career planning</strong> — sharing experiences or chill chat
-                  with undergraduate and master students</li>
-              </ul>
-            </div>
-          </div>
+        {%- comment -%} CV 是求职页面的主转化动作，给它主按钮的分量。 {%- endcomment -%}
+        <div class="cta">
+          <a class="cta__primary" href="https://drive.google.com/file/d/1qady-8lu348j0o9xsiIKBTJ_2dnBntV9/view?usp=sharing">Curriculum Vitae</a>
+          <a class="cta__link" href="mailto:hmcai@umd.edu">hmcai@umd.edu</a>
+          <a class="cta__link" href="https://scholar.google.com/citations?hl=en&user=Jzs37TkAAAAJ">Google Scholar</a>
         </div>
+      </div>
+    </header>
 
-        <div class="news-section">
-          <!-- News Title -->
-          <div class="news-title">News</div>
 
-          <!-- News Items -->
-          <div class="news-item">
-            <span class="news-date">2025.06</span>
-            <span class="news-content"><a href="/tn/projects_html/ShadowDirector/">Parametric Shadow Control</a>
-              accepted to ICCV'25, demonstrating parametric and intuitive shadow control for T2I.</span>
+    {%- comment -%}
+      代表作。改这一行就能换 —— 匹配 _posts 里 title 的片段。
+    {%- endcomment -%}
+    {%- assign featured = "Parametric Shadow Control,Large-Scale Light Field Synthesis" | split: "," -%}
+
+    {%- comment -%}
+      Selected Work = 两个可交互的可视化，不是两张图。
+      没人碰的时候自己来回播（证明它是活的），鼠标一上去就交给访客控制。
+      素材都是这两篇论文的真实模型输出。
+    {%- endcomment -%}
+    <section class="selected band" id="work">
+      <h2 class="rule">Selected Work</h2>
+      <p class="selected__note" data-live-note>Both figures are interactive &mdash; move your cursor across them.</p>
+
+      <div class="selected__grid">
+
+        <article class="pub pub--featured">
+          <figure class="scrub scrub--pad" data-scrub
+                  data-atlas="/tn/playground/shadow_atlas"
+                  data-mode="1d" data-fade="75" data-ease
+                  data-cycle="1600" data-gap="40">
+            <div class="scrub__l"></div>
+            <div class="scrub__l"></div>
+            <div class="scrub__cue" data-cue aria-hidden="true">
+              <svg viewBox="0 0 24 24" width="11" height="11" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M9 5 4 12l5 7M15 5l5 7-5 7"/>
+              </svg>
+              <b data-cue-text>move</b>
+            </div>
+            <figcaption class="scrub__hud" data-hud>
+              <span class="scrub__end" data-end0></span>
+              <span class="scrub__track"><i class="scrub__dot" data-dot></i></span>
+              <span class="scrub__end" data-end1></span>
+            </figcaption>
+          </figure>
+          <div class="pub__body">
+            <h3 class="pub__title">
+            <a href="/tn/projects_html/ShadowDirector/">Parametric Shadow Control for Portrait Generation in Text-to-Image Diffusion Models</a>
+          </h3>
+          <p class="pub__venue">ICCV 2025</p>
+          <div class="pub__excerpt">Put a shadow knob on a text-to-image model &mdash; direction, softness and shape, with no retraining. <span data-verb>Move your cursor</span> across to walk the light around her face.</div>
+          <p class="pub__links">
+            <a href="https://arxiv.org/pdf/2503.21943">PDF</a>
+            <a href="/tn/projects_html/ShadowDirector/">Website</a>
+          </p>
           </div>
+        </article>
 
-          <div class="news-item">
-            <span class="news-date">2025.06</span>
-            <span class="news-content">Named <a
-                href="https://cvpr.thecvf.com/Conferences/2025/ProgramCommittee">Outstanding Reviewer</a> for CVPR
-              2025.</span>
+        <article class="pub pub--featured">
+          <figure class="scrub" data-scrub
+                  data-atlas="/tn/playground/bokeh_atlas"
+                  data-mode="1d" data-fade="0" data-ease
+                  data-cycle="700" data-gap="16">
+            <div class="scrub__l"></div>
+            <div class="scrub__l"></div>
+            <div class="scrub__cue" data-cue aria-hidden="true">
+              <svg viewBox="0 0 24 24" width="11" height="11" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M9 5 4 12l5 7M15 5l5 7-5 7"/>
+              </svg>
+              <b data-cue-text>move</b>
+            </div>
+            <figcaption class="scrub__hud" data-hud>
+              <span class="scrub__end" data-end0></span>
+              <span class="scrub__track"><i class="scrub__dot" data-dot></i></span>
+              <span class="scrub__end" data-end1></span>
+            </figcaption>
+          </figure>
+          <div class="pub__body">
+            <h3 class="pub__title">
+            <a href="/vid2bokeh/">Large-Scale Light Field Synthesis from Videos Enables Geometrically Consistent Bokeh Editing</a>
+          </h3>
+          <p class="pub__venue">ECCV 2026</p>
+          <div class="pub__excerpt">Render geometrically consistent bokeh on scenes that defeat other methods &mdash; here, a toy behind a transparent lid. <span data-verb>Move your cursor</span> across to pull focus through it.</div>
+          <p class="pub__links">
+            <a href="/vid2bokeh/">Website</a>
+          </p>
           </div>
+        </article>
 
-          <div class="news-item">
-            <span class="news-date">2025.05</span>
-            <span class="news-content">Joined <a href="https://research.adobe.com/articles/indigo/indigo.html">Adobe
-                NextCam team</a> (led by <a href="https://graphics.stanford.edu/~levoy/">Marc Levoy</a>) as summer
-              intern. Mentored by <a href="https://shumianxin.github.io/">Shumian</a> and <a
-                href="https://ztzhang.info/">Zhoutong</a>.</span>
-          </div>
+      </div>
+    </section>
 
-          <div class="news-item">
-            <span class="news-date">2025.02</span>
-            <span class="news-content">Two papers accepted to CVPR 2025. Congratulations to Tianfu, Mingyang, and
-              Jingxi.</span>
-          </div>
+    <section class="news" id="news">
+      <h2 class="rule">News</h2>
+      <ul class="news__list">
+        <li>
+          <time datetime="2026-07">2026.07</time>
+          <p>Our work on vision&ndash;language robustness under adverse imaging was accepted to CoLM 2026. Congratulations to <a href="https://tianfwang.github.io/">Tianfu</a> and <a href="https://mingyangx.github.io/">Mingyang</a>.</p>
+        </li>
+        <li>
+          <time datetime="2026-06">2026.06</time>
+          <p><a href="/vid2bokeh/">Large-Scale Light Field Synthesis from Videos</a> was accepted to ECCV 2026.</p>
+        </li>
+        <li>
+          <time datetime="2026-05">2026.05</time>
+          <p>Back at the <a href="https://research.adobe.com/articles/indigo/indigo.html">Adobe NextCam team</a> for a second summer internship.</p>
+        </li>
+        <li>
+          <time datetime="2025-06">2025.06</time>
+          <p><a href="/tn/projects_html/ShadowDirector/">Parametric Shadow Control</a> was accepted to ICCV 2025.</p>
+        </li>
+        <li>
+          <time datetime="2025-06">2025.06</time>
+          <p>Named an <a href="https://cvpr.thecvf.com/Conferences/2025/ProgramCommittee#:~:text=Ni%0AHaoming%20Zou-,Haoming%20Cai,-Haonan%20Qin">Outstanding Reviewer</a> for CVPR 2025.</p>
+        </li>
+        <li>
+          <time datetime="2025-05">2025.05</time>
+          <p>Joined the <a href="https://research.adobe.com/articles/indigo/indigo.html">Adobe NextCam team</a> (led by <a href="https://graphics.stanford.edu/~levoy/">Marc Levoy</a>) as a summer intern, mentored by <a href="https://shumianxin.github.io/">Shumian Xin</a> and <a href="https://ztzhang.info/">Zhoutong Zhang</a>.</p>
+        </li>
+        <li>
+          <time datetime="2025-02">2025.02</time>
+          <p>Two papers accepted to CVPR 2025. Congratulations to <a href="https://tianfwang.github.io/">Tianfu</a>, <a href="https://mingyangx.github.io/">Mingyang</a>, and <a href="https://codingrex.github.io/">Jingxi</a>.</p>
+        </li>
+      </ul>
+    </section>
+
+    <section class="pubs" id="publications">
+      <h2 class="rule">
+        All Publications
+        <a class="rule__aside" href="https://scholar.google.com/citations?hl=en&user=Jzs37TkAAAAJ">Google Scholar &rarr;</a>
+      </h2>
+      <p class="pubs__note">* denotes equal contribution.</p>
+
+      {%- assign sections = "GenAI|Generative media,AdverseWeather|Imaging under hard conditions,IQA|Perceptual image quality,SR|Efficient image restoration" | split: "," -%}
+      {%- assign years = "2024 — 2026,2023 — 2025,2020 — 2023,2020 — 2022" | split: "," -%}
+
+      {%- comment -%}
+        密度梯度：只有 SR 阶段（2020–2022，X-Pixel 时期）压成纯文字行。
+        PhD 期间的三个方向全部保留缩略图。
+      {%- endcomment -%}
+      {%- assign compact_cats = "SR" | split: "," -%}
+
+      {%- for s in sections -%}
+        {%- assign parts = s | split: "|" -%}
+        {%- assign cat = parts[0] -%}
+        {%- assign is_compact = false -%}
+        {%- if compact_cats contains cat %}{% assign is_compact = true %}{% endif -%}
+
+        <div class="pubs__group{% if is_compact %} pubs__group--compact{% endif %}">
+          <h3 class="pubs__theme">
+            <span>{{ parts[1] }}</span>
+            <em>{{ years[forloop.index0] }}</em>
+          </h3>
+          {%- for post in site.posts -%}
+            {%- if post.categories contains cat -%}
+              {% include publication.html post=post compact=is_compact %}
+            {%- endif -%}
+          {%- endfor -%}
         </div>
+      {%- endfor -%}
+    </section>
 
+    {%- comment -%}
+      猫。降级成辅助区块 —— 它之前和 "Selected Work" 同级，
+      在一个求职页面上把宠物和研究并列是品味事故。
+    {%- endcomment -%}
+    <section class="cvo band">
+      <h2 class="cvo__title">Chief Vibe Officer</h2>
+      <p class="cvo__note">Presides over the Maryland headquarters. Contributes to every paper by lying on the keyboard. Has strong feelings about not being in the acknowledgements.</p>
+      <div class="cvo__grid">
+        {%- assign cvo = "001.jpg,002.jpg,003.jpg,004.jpg,005.jpg,007.jpg" | split: "," -%}
+        {%- for img in cvo -%}
+          <img src="/tn/images/cvo/{{ img }}" alt="" loading="lazy">
+        {%- endfor -%}
+      </div>
+    </section>
 
+    {%- comment -%}
+      页脚行动入口。整页 5000px+，而 CV / 邮箱原先只在最顶部出现一次 ——
+      一个读完全部论文、已经被说服的人，滑到底后无处可点，得往回滚 4000px。
+    {%- endcomment -%}
+    <footer class="foot">
+      <p class="foot__ask">Interested in the work, or just want to talk?</p>
+      <div class="cta">
+        <a class="cta__primary" href="https://drive.google.com/file/d/1qady-8lu348j0o9xsiIKBTJ_2dnBntV9/view?usp=sharing">Curriculum Vitae</a>
+        <a class="cta__link" href="mailto:hmcai@umd.edu">hmcai@umd.edu</a>
+        <a class="cta__link" href="https://scholar.google.com/citations?hl=en&user=Jzs37TkAAAAJ">Google Scholar</a>
+      </div>
+      <p class="foot__aside">Off-hours: <a href="https://www.flickr.com/photos/201416778@N04/">photography</a>.</p>
+    </footer>
 
+  </main>
 
-
-
-
-
-
-
-
-
-
-
-        <div class="publication-section">
-          <div class="publication-title">Publications (* Indicates Equal Contribution) <a
-              href="https://scholar.google.com/citations?hl=en&tzom=240&user=Jzs37TkAAAAJ"
-              style="font-size: 20px; font-weight: 400; color: #3f99f3; text-decoration: none; margin-left: 8px;">[Google
-              Scholar]</a></div>
-
-          <div class="publication-subtitle">Bridging GenAI and Computational Imaging & Photography (2024-Now)</div>
-          {% for post in site.posts %}
-          {% for cat in post.categories %}
-          {% if cat == 'GenAI' %}
-          <div class="publication-item">
-            <div class="publication-image">
-              {% if post.image contains '.mp4' %}
-              {% if post.image2 and post.image2 contains '.mp4' %}
-              <div class="publication-video-slider">
-                <video autoplay muted loop playsinline preload="metadata"
-                  style="width: 100%; height: auto; display: block; background-color: #000000;">
-                  <source src="/tn{{ post.image }}" type="video/mp4">
-                  Your browser does not support the video tag.
-                </video>
-                <video autoplay muted loop playsinline preload="metadata"
-                  style="width: 100%; height: auto; display: block; background-color: #000000;">
-                  <source src="/tn{{ post.image2 }}" type="video/mp4">
-                  Your browser does not support the video tag.
-                </video>
-              </div>
-              {% else %}
-              <video autoplay muted loop playsinline preload="metadata"
-                style="width: 100%; height: auto; display: block; background-color: #000000;">
-                <source src="/tn{{ post.image }}" type="video/mp4">
-                Your browser does not support the video tag.
-              </video>
-              {% endif %}
-              {% elsif post.image2 %}
-              <div class="publication-image-slider">
-                <img src="/tn{{post.image}}" alt="project image" />
-                <img src="/tn{{post.image2}}" alt="project image 2" />
-                {% if post.image3 %}<img src="/tn{{post.image3}}" alt="project image 3" />{% endif %}
-                {% if post.image4 %}<img src="/tn{{post.image4}}" alt="project image 4" />{% endif %}
-                {% if post.image5 %}<img src="/tn{{post.image5}}" alt="project image 5" />{% endif %}
-                {% if post.image6 %}<img src="/tn{{post.image6}}" alt="project image 6" />{% endif %}
-                {% if post.image7 %}<img src="/tn{{post.image7}}" alt="project image 7" />{% endif %}
-                {% if post.image8 %}<img src="/tn{{post.image8}}" alt="project image 8" />{% endif %}
-              </div>
-              {% else %}
-              <img src="/tn{{post.image}}" alt="project image" />
-              {% endif %}
-            </div>
-            <div class="publication-details">
-              {% if post.website %}
-              <a href="{{post.website}}" class="publication-title-link">{{post.title}}</a>
-              {% else %}
-              <span class="publication-title-link" style="cursor: default;">{{post.title}}</span>
-              {% endif %}
-              <div class="publication-authors">{{post.authors | add_author_links}}</div>
-              <div class="publication-venue">{{post.venue}}</div>
-              <div class="publication-links">
-                {% if post.arxiv %}
-                <small><a href="{{post.arxiv}}">PDF</a></small>/
-                {% endif %}
-                {% if post.video %}
-                <a href="{{post.video}}">video</a> /
-                {% endif %}
-                {% if post.code %}
-                <a href="{{post.code}}">code</a> /
-                {% endif %}
-                {% if post.poster %}
-                <a href="{{post.poster}}">poster</a> /
-                {% endif %}
-                {% if post.slides %}
-                <a href="{{post.slides}}">slides</a> /
-                {% endif %}
-                {% if post.website %}
-                <a href="{{post.website}}">website</a> /
-                {% endif %}
-                {% if post.youtube %}
-                <a href="{{post.youtube}}">youtube</a>
-                {% endif %}
-              </div>
-              {% if post.excerpt %}
-              <div class="publication-excerpt">{{ post.excerpt }}</div>
-              {% endif %}
-            </div>
-          </div>
-          {% endif %}
-          {% endfor %}
-          {% endfor %}
-
-          <div class="publication-subtitle">Seeing & Tracking & Reconstruction Under Challenging Imaging Condition
-            (2023-Now)</div>
-          {% for post in site.posts %}
-          {% for cat in post.categories %}
-          {% if cat == 'AdverseWeather' %}
-          <div class="publication-item">
-            <div class="publication-image">
-              {% if post.image contains '.mp4' %}
-              {% if post.image2 and post.image2 contains '.mp4' %}
-              <div class="publication-video-slider">
-                <video autoplay muted loop playsinline preload="metadata"
-                  style="width: 100%; height: auto; display: block; background-color: #000000;">
-                  <source src="/tn{{ post.image }}" type="video/mp4">
-                  Your browser does not support the video tag.
-                </video>
-                <video autoplay muted loop playsinline preload="metadata"
-                  style="width: 100%; height: auto; display: block; background-color: #000000;">
-                  <source src="/tn{{ post.image2 }}" type="video/mp4">
-                  Your browser does not support the video tag.
-                </video>
-              </div>
-              {% else %}
-              <video autoplay muted loop playsinline preload="metadata"
-                style="width: 100%; height: auto; display: block; background-color: #000000;">
-                <source src="/tn{{ post.image }}" type="video/mp4">
-                Your browser does not support the video tag.
-              </video>
-              {% endif %}
-              {% elsif post.image2 %}
-              <div class="publication-image-slider">
-                <img src="/tn{{post.image}}" alt="project image" />
-                <img src="/tn{{post.image2}}" alt="project image 2" />
-                {% if post.image3 %}<img src="/tn{{post.image3}}" alt="project image 3" />{% endif %}
-                {% if post.image4 %}<img src="/tn{{post.image4}}" alt="project image 4" />{% endif %}
-                {% if post.image5 %}<img src="/tn{{post.image5}}" alt="project image 5" />{% endif %}
-                {% if post.image6 %}<img src="/tn{{post.image6}}" alt="project image 6" />{% endif %}
-                {% if post.image7 %}<img src="/tn{{post.image7}}" alt="project image 7" />{% endif %}
-                {% if post.image8 %}<img src="/tn{{post.image8}}" alt="project image 8" />{% endif %}
-              </div>
-              {% else %}
-              <img src="/tn{{post.image}}" alt="project image" />
-              {% endif %}
-            </div>
-            <div class="publication-details">
-              {% if post.website %}
-              <a href="{{post.website}}" class="publication-title-link">{{post.title}}</a>
-              {% else %}
-              <span class="publication-title-link" style="cursor: default;">{{post.title}}</span>
-              {% endif %}
-              <div class="publication-authors">{{post.authors | add_author_links}}</div>
-              <div class="publication-venue">{{post.venue}}</div>
-              <div class="publication-links">
-                {% if post.arxiv %}
-                <small><a href="{{post.arxiv}}">PDF</a></small>/
-                {% endif %}
-                {% if post.video %}
-                <a href="{{post.video}}">video</a> /
-                {% endif %}
-                {% if post.code %}
-                <a href="{{post.code}}">code</a> /
-                {% endif %}
-                {% if post.poster %}
-                <a href="{{post.poster}}">poster</a> /
-                {% endif %}
-                {% if post.slides %}
-                <a href="{{post.slides}}">slides</a> /
-                {% endif %}
-                {% if post.website %}
-                <a href="{{post.website}}">website</a> /
-                {% endif %}
-                {% if post.youtube %}
-                <a href="{{post.youtube}}">youtube</a>
-                {% endif %}
-              </div>
-              {% if post.excerpt %}
-              <div class="publication-excerpt">{{ post.excerpt }}</div>
-              {% endif %}
-            </div>
-          </div>
-          {% endif %}
-          {% endfor %}
-          {% endfor %}
-
-          <div class="publication-subtitle">Image Metric Design Inspired by Human Visual System (2020-Now)</div>
-          {% for post in site.posts %}
-          {% for cat in post.categories %}
-          {% if cat == 'IQA' %}
-          <div class="publication-item">
-            <div class="publication-image">
-              {% if post.image contains '.mp4' %}
-              {% if post.image2 and post.image2 contains '.mp4' %}
-              <div class="publication-video-slider">
-                <video autoplay muted loop playsinline preload="metadata"
-                  style="width: 100%; height: auto; display: block; background-color: #000000;">
-                  <source src="/tn{{ post.image }}" type="video/mp4">
-                  Your browser does not support the video tag.
-                </video>
-                <video autoplay muted loop playsinline preload="metadata"
-                  style="width: 100%; height: auto; display: block; background-color: #000000;">
-                  <source src="/tn{{ post.image2 }}" type="video/mp4">
-                  Your browser does not support the video tag.
-                </video>
-              </div>
-              {% else %}
-              <video autoplay muted loop playsinline preload="metadata"
-                style="width: 100%; height: auto; display: block; background-color: #000000;">
-                <source src="/tn{{ post.image }}" type="video/mp4">
-                Your browser does not support the video tag.
-              </video>
-              {% endif %}
-              {% elsif post.image2 %}
-              <div class="publication-image-slider">
-                <img src="/tn{{post.image}}" alt="project image" />
-                <img src="/tn{{post.image2}}" alt="project image 2" />
-                {% if post.image3 %}<img src="/tn{{post.image3}}" alt="project image 3" />{% endif %}
-                {% if post.image4 %}<img src="/tn{{post.image4}}" alt="project image 4" />{% endif %}
-                {% if post.image5 %}<img src="/tn{{post.image5}}" alt="project image 5" />{% endif %}
-                {% if post.image6 %}<img src="/tn{{post.image6}}" alt="project image 6" />{% endif %}
-                {% if post.image7 %}<img src="/tn{{post.image7}}" alt="project image 7" />{% endif %}
-                {% if post.image8 %}<img src="/tn{{post.image8}}" alt="project image 8" />{% endif %}
-              </div>
-              {% else %}
-              <img src="/tn{{post.image}}" alt="project image" />
-              {% endif %}
-            </div>
-            <div class="publication-details">
-              {% if post.website %}
-              <a href="{{post.website}}" class="publication-title-link">{{post.title}}</a>
-              {% else %}
-              <span class="publication-title-link" style="cursor: default;">{{post.title}}</span>
-              {% endif %}
-              <div class="publication-authors">{{post.authors | add_author_links}}</div>
-              <div class="publication-venue">{{post.venue}}</div>
-              <div class="publication-links">
-                {% if post.arxiv %}
-                <small><a href="{{post.arxiv}}">PDF</a></small>/
-                {% endif %}
-                {% if post.video %}
-                <a href="{{post.video}}">video</a> /
-                {% endif %}
-                {% if post.code %}
-                <a href="{{post.code}}">code</a> /
-                {% endif %}
-                {% if post.poster %}
-                <a href="{{post.poster}}">poster</a> /
-                {% endif %}
-                {% if post.slides %}
-                <a href="{{post.slides}}">slides</a> /
-                {% endif %}
-                {% if post.website %}
-                <a href="{{post.website}}">website</a> /
-                {% endif %}
-                {% if post.youtube %}
-                <a href="{{post.youtube}}">youtube</a>
-                {% endif %}
-              </div>
-              {% if post.excerpt %}
-              <div class="publication-excerpt">{{ post.excerpt }}</div>
-              {% endif %}
-            </div>
-          </div>
-          {% endif %}
-          {% endfor %}
-          {% endfor %}
-
-          <div class="publication-subtitle">Controllable & Efficient Image Restoration (2020 - 2022)</div>
-          {% for post in site.posts %}
-          {% for cat in post.categories %}
-          {% if cat == 'SR' %}
-          <div class="publication-item">
-            <div class="publication-image">
-              {% if post.image contains '.mp4' %}
-              {% if post.image2 and post.image2 contains '.mp4' %}
-              <div class="publication-video-slider">
-                <video autoplay muted loop playsinline preload="metadata"
-                  style="width: 100%; height: auto; display: block; background-color: #000000;">
-                  <source src="/tn{{ post.image }}" type="video/mp4">
-                  Your browser does not support the video tag.
-                </video>
-                <video autoplay muted loop playsinline preload="metadata"
-                  style="width: 100%; height: auto; display: block; background-color: #000000;">
-                  <source src="/tn{{ post.image2 }}" type="video/mp4">
-                  Your browser does not support the video tag.
-                </video>
-              </div>
-              {% else %}
-              <video autoplay muted loop playsinline preload="metadata"
-                style="width: 100%; height: auto; display: block; background-color: #000000;">
-                <source src="/tn{{ post.image }}" type="video/mp4">
-                Your browser does not support the video tag.
-              </video>
-              {% endif %}
-              {% elsif post.image2 %}
-              <div class="publication-image-slider">
-                <img src="/tn{{post.image}}" alt="project image" />
-                <img src="/tn{{post.image2}}" alt="project image 2" />
-                {% if post.image3 %}<img src="/tn{{post.image3}}" alt="project image 3" />{% endif %}
-                {% if post.image4 %}<img src="/tn{{post.image4}}" alt="project image 4" />{% endif %}
-                {% if post.image5 %}<img src="/tn{{post.image5}}" alt="project image 5" />{% endif %}
-                {% if post.image6 %}<img src="/tn{{post.image6}}" alt="project image 6" />{% endif %}
-                {% if post.image7 %}<img src="/tn{{post.image7}}" alt="project image 7" />{% endif %}
-                {% if post.image8 %}<img src="/tn{{post.image8}}" alt="project image 8" />{% endif %}
-              </div>
-              {% else %}
-              <img src="/tn{{post.image}}" alt="project image" />
-              {% endif %}
-            </div>
-            <div class="publication-details">
-              {% if post.website %}
-              <a href="{{post.website}}" class="publication-title-link">{{post.title}}</a>
-              {% else %}
-              <span class="publication-title-link" style="cursor: default;">{{post.title}}</span>
-              {% endif %}
-              <div class="publication-authors">{{post.authors | add_author_links}}</div>
-              <div class="publication-venue">{{post.venue}}</div>
-              <div class="publication-links">
-                {% if post.arxiv %}
-                <small><a href="{{post.arxiv}}">PDF</a></small>/
-                {% endif %}
-                {% if post.video %}
-                <a href="{{post.video}}">video</a> /
-                {% endif %}
-                {% if post.code %}
-                <a href="{{post.code}}">code</a> /
-                {% endif %}
-                {% if post.poster %}
-                <a href="{{post.poster}}">poster</a> /
-                {% endif %}
-                {% if post.slides %}
-                <a href="{{post.slides}}">slides</a> /
-                {% endif %}
-                {% if post.website %}
-                <a href="{{post.website}}">website</a> /
-                {% endif %}
-                {% if post.youtube %}
-                <a href="{{post.youtube}}">youtube</a>
-                {% endif %}
-              </div>
-              {% if post.excerpt %}
-              <div class="publication-excerpt">{{ post.excerpt }}</div>
-              {% endif %}
-            </div>
-          </div>
-          {% endif %}
-          {% endfor %}
-          {% endfor %}
-        </div>
-
-        <div class="cvo-section" id="chief-vibe-officer">
-          <div class="cvo-title">Meet our Chief Vibe Officer @ Maryland Headquarter</div>
-          <div class="cvo-gallery">
-            {% assign cvo_images = "001.jpg,002.jpg,003.jpg,004.jpg,005.jpg,007.jpg" | split: "," %}
-            {% for image in cvo_images %}
-            <div class="cvo-gallery-item">
-              <img src="/tn/images/cvo/{{ image }}" alt="CVO Image" />
-            </div>
-            {% endfor %}
-          </div>
-        </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        <table
-          style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;">
-          <tr>
-            <td style="padding:0px">
-              <br>
-              <p style="text-align:center;font-size:small;">
-                Design and source code from <a style="font-size:small;" href="https://jonbarron.info">Jon Barron's
-                  website</a>
-              </p>
-            </td>
-          </tr>
-        </table>
-      </td>
-    </tr>
-  </table>
-
-
-  <script type='text/javascript' id='clustrmaps'
-    src='//cdn.clustrmaps.com/map_v2.js?cl=0e1633&w=100&t=tt&d=QROiebfOxQKem7OOPCmt05uBYxlc-Sm4CCGIwz8gsCk&co=0b4975&cmo=3acc3a&cmn=ff5353&ct=cdd4d9'></script>
+  <!-- 光源层：跟随鼠标的柔和暖光。静止时页面就是一张普通的纸。 -->
+  <div class="lamp" aria-hidden="true"></div>
 
   <script>
-    // 作者链接处理函数
-    function addAuthorLinks() {
-      const authorsData = {
-          {% for author in site.data.authors %}
-      "{{ author[0] }}": {% if author[1] and author[1] != "" %} "{{ author[1] }}"{% else %} null{% endif %} {% unless forloop.last %}, {% endunless %}
-      {% endfor %}
-    };
+    // ——————————————————————————————————————————————————
+    //  光。
+    //
+    //  这一页的主人研究的是"教模型尊重光、几何和相机"。所以这一页
+    //  本身也应该尊重光：鼠标是一个光源，卡片按它的方向投影，头像
+    //  默认散景虚化、靠近才合焦（这正是 Vid2Bokeh 在做的事）。
+    //
+    //  克制是重点：静止时它看起来只是一张纸。
+    // ——————————————————————————————————————————————————
+    (function () {
+      const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+      if (reduce || matchMedia('(hover: none)').matches) return;   // 触屏 / 减少动效：直接不启用
 
-    // 处理所有作者文本
-    const authorElements = document.querySelectorAll('.publication-authors');
-    authorElements.forEach(function (element) {
-      let html = element.innerHTML;
+      const lamp = document.querySelector('.lamp');
+      const name = document.querySelector('.hero__name');
+      // 整个 bio 区都吃光，不只是名字
+      const swept = [...document.querySelectorAll(
+        '.hero__name, .hero__phonetic, .hero__tagline, .hero__lede p')];
+      const lit   = [...document.querySelectorAll('.scrub, .cvo__grid img')];
+      const photo = document.querySelector('.hero__photo');
+      let mx = innerWidth / 2, my = 240, tx = mx, ty = my, raf = 0;
 
-      // 按名字长度降序排序
-      const sortedAuthors = Object.entries(authorsData).sort((a, b) => b[0].length - a[0].length);
+      addEventListener('pointermove', e => {
+        tx = e.clientX; ty = e.clientY;
+        if (!raf) raf = requestAnimationFrame(tick);
+      });
 
-      // 遍历所有作者
-      for (const [name, url] of sortedAuthors) {
-        if (!url) continue;
-
-        // 确保URL有协议
-        let fullUrl = url.trim();
-        if (!fullUrl.match(/^(https?|mailto):\/\//) && !fullUrl.startsWith('/')) {
-          fullUrl = 'https://' + fullUrl;
-        }
-
-        // 转义特殊字符用于正则表达式
-        const escapedName = name.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
-
-        // 模式1: 处理 <strong>名字</strong> 或 <strong>名字*</strong>
-        const strongPattern = new RegExp(`<strong>\\s*(${escapedName})\\s*(\\*?)\\s*<\\/strong>`, 'gi');
-        html = html.replace(strongPattern, function (match, namePart, star) {
-          if (match.includes('<a href')) return match; // 已经有链接，跳过
-          return `<strong><a href="${fullUrl}" class="author-with-link" style="color: inherit; text-decoration: none;">${namePart}${star || ''}</a></strong>`;
-        });
-
-        // 模式2: 处理普通名字（不在标签内）
-        // 使用简单直接的方法：直接查找并替换名字
-        // 但要确保不在HTML标签内
-        const nameWithStar = escapedName + '(\\*?)';
-        const normalPattern = new RegExp(nameWithStar, 'gi');
-
-        // 先找到所有匹配位置
-        const matches = [];
-        let match;
-        while ((match = normalPattern.exec(html)) !== null) {
-          matches.push({
-            index: match.index,
-            length: match[0].length,
-            name: match[0],
-            star: match[1] || ''
-          });
-        }
-
-        // 从后往前替换，避免位置偏移
-        for (let i = matches.length - 1; i >= 0; i--) {
-          const m = matches[i];
-          const start = m.index;
-          const end = start + m.length;
-
-          // 检查是否在HTML标签内
-          const textBefore = html.substring(0, start);
-          const textAfter = html.substring(end);
-
-          // 检查是否已经在链接内
-          const openLinks = (textBefore.match(/<a\s+[^>]*>/gi) || []).length;
-          const closeLinks = (textBefore.match(/<\/a>/gi) || []).length;
-          if (openLinks > closeLinks) continue;
-
-          // 检查是否在HTML标签内
-          const lastOpenTag = textBefore.lastIndexOf('<');
-          const lastCloseTag = textBefore.lastIndexOf('>');
-          if (lastOpenTag > lastCloseTag) {
-            // 在未闭合的标签内，检查是否是<strong>
-            const tagText = textBefore.substring(lastOpenTag);
-            if (tagText.includes('<strong>')) {
-              continue; // <strong>标签已经处理过了
-            }
-            continue; // 在其他标签内，跳过
-          }
-
-          // 检查名字前后是否是单词边界（不是字母，可以是空格、逗号等）
-          const charBefore = start > 0 ? html[start - 1] : ' ';
-          const charAfter = end < html.length ? html[end] : ' ';
-          // 允许空格、逗号、句号等，但不允许字母（避免部分匹配）
-          if (charBefore.match(/[a-zA-Z]/) || (charAfter.match(/[a-zA-Z]/) && !charAfter.match(/[\s,.]/))) {
-            continue; // 不是单词边界，跳过
-          }
-
-          // 可以替换（m.name已经包含了star，所以直接使用）
-          const replacement = `<a href="${fullUrl}" class="author-with-link" style="color: inherit; text-decoration: none;">${m.name}</a>`;
-          html = html.substring(0, start) + replacement + html.substring(end);
-        }
+      // 鼠标进入 bio 区 -> 整盏灯调亮。离开就收回去。
+      const hero = document.querySelector('.hero');
+      if (hero) {
+        hero.addEventListener('pointerenter', () => document.body.classList.add('is-lit'));
+        hero.addEventListener('pointerleave', () => document.body.classList.remove('is-lit'));
       }
 
-      element.innerHTML = html;
+      function tick() {
+        raf = 0;
+        // 缓动 —— 光有惯性，不会瞬移
+        mx += (tx - mx) * 0.24;
+        my += (ty - my) * 0.24;
+
+        lamp.style.setProperty('--lx', mx + 'px');
+        lamp.style.setProperty('--ly', my + 'px');
+
+        // 头像：随光源方向的边缘高光 + 长投影 + 朝光倾斜。
+        // 不加模糊 —— 那个我们试过，脸糊掉不是设计，是 bug。
+        if (photo) {
+          const r = photo.getBoundingClientRect();
+          const cx = r.left + r.width / 2, cy = r.top + r.height / 2;
+          const dx = cx - mx, dy = cy - my;
+          const d  = Math.hypot(dx, dy) || 1;
+          const ux = dx / d, uy = dy / d;               // 背光方向的单位向量
+          const reach = Math.min(d / 12, 42);           // 投影长度
+          const near  = Math.max(0, 1 - d / 1100);      // 越近光越强
+
+          const ox = ux * reach, oy = uy * reach;
+          photo.style.boxShadow =
+            // 迎光面的边缘高光（两层：亮核 + 柔晕）
+            `${(-ux * 3).toFixed(1)}px ${(-uy * 3).toFixed(1)}px 0 1px rgba(255,250,238,${(0.85 * near + 0.1).toFixed(2)}),` +
+            ` ${(-ux * 10).toFixed(1)}px ${(-uy * 10).toFixed(1)}px 22px rgba(255,240,214,${(0.55 * near).toFixed(2)}),` +
+            // 背光面的长投影
+            ` ${ox.toFixed(1)}px ${oy.toFixed(1)}px ${(18 + reach * 1.1).toFixed(0)}px rgba(52,36,25,${(0.46 * near + 0.06).toFixed(2)})`;
+
+          // 朝光源微微倾斜 —— 让它像一个真实的立体物
+          const tilt = 5 * near;
+          photo.style.transform =
+            `perspective(600px) rotateY(${(-ux * tilt).toFixed(2)}deg) rotateX(${(uy * tilt).toFixed(2)}deg)`;
+        }
+
+        // 把光源换算到每个受光文字元素自己的坐标系里
+        for (const el of swept) {
+          const r = el.getBoundingClientRect();
+          if (r.bottom < -240 || r.top > innerHeight + 240) continue;
+          el.style.setProperty('--sx', (mx - r.left) + 'px');
+          el.style.setProperty('--sy', (my - r.top) + 'px');
+        }
+
+        // 名字：跟随光源的暖色辉光。
+        // 用 text-shadow 而不是提亮字色 —— 辉光在字的"外面"，
+        // 所以能加足戏剧性而完全不动文字本身的对比度。
+        if (name) {
+          const r  = name.getBoundingClientRect();
+          const cx = r.left + r.width / 2, cy = r.top + r.height / 2;
+          const d  = Math.hypot(cx - mx, cy - my);
+          const g  = Math.max(0, 1 - d / 460);            // 光越近辉光越强
+          if (g > 0.01) {
+            const ux = (cx - mx) / (d || 1), uy = (cy - my) / (d || 1);
+            name.style.textShadow =
+              `0 0 ${(26 * g).toFixed(0)}px rgba(255,214,150,${(0.55 * g).toFixed(2)}),` +
+              ` ${(ux * 5 * g).toFixed(1)}px ${(uy * 5 * g).toFixed(1)}px ${(14 * g).toFixed(0)}px rgba(90,60,32,${(0.30 * g).toFixed(2)})`;
+          } else {
+            name.style.textShadow = 'none';
+          }
+        }
+
+        for (const el of lit) {
+          const r = el.getBoundingClientRect();
+          if (r.bottom < -100 || r.top > innerHeight + 100) continue;   // 屏外的不算
+
+          const cx = r.left + r.width / 2;
+          const cy = r.top + r.height / 2;
+          const dx = cx - mx, dy = cy - my;
+          const dist = Math.hypot(dx, dy) || 1;
+
+          // 阴影背对光源，长度随距离增长但有上限 —— 像真实的软阴影
+          const reach = Math.min(dist / 26, 16);
+          const ox = (dx / dist) * reach;
+          const oy = (dy / dist) * reach;
+          const blur = 14 + reach * 1.6;
+          const alpha = 0.16 * Math.max(0, 1 - dist / 1400);
+
+          el.style.boxShadow =
+            `${ox.toFixed(1)}px ${oy.toFixed(1)}px ${blur.toFixed(0)}px rgba(60,42,30,${alpha.toFixed(3)}),` +
+            ` inset 0 0 0 1px rgba(36,33,29,.07)`;
+        }
+
+
+        if (Math.abs(tx - mx) > 0.4 || Math.abs(ty - my) > 0.4) raf = requestAnimationFrame(tick);
+      }
+      tick();
+    })();
+
+    // ——————————————————————————————————————————————————
+    //  可交互的可视化（Selected Work 的两张卡）。
+    //
+    //  每张卡是一张雪碧图：所有状态预渲染好，切换只是改 background-position。
+    //  一次请求、零延迟随机访问。
+    //
+    //  没人碰的时候自己来回播 —— 一个静止的控件没人知道它能玩。
+    //  鼠标/手指一上去就交出控制权，离开后过一会儿再自己接着播。
+    // ——————————————————————————————————————————————————
+    // 桌面上不用"拖" —— 鼠标移过去就行。只有触屏才是拖。
+    // 指令说错比不说更糟：访客会按字面去试，试不出来就以为坏了。
+    if (matchMedia('(hover: none)').matches) {
+      const n = document.querySelector('[data-live-note]');
+      if (n) n.textContent = 'Both figures are interactive — drag across them.';
+      document.querySelectorAll('[data-verb]').forEach(v => { v.textContent = 'Drag'; });
+    }
+
+    document.querySelectorAll('[data-scrub]').forEach(fig => {
+      const base  = fig.dataset.atlas;
+      const twoD  = fig.dataset.mode === '2d';
+      const fade  = +fig.dataset.fade || 0;
+      const [la, lb] = fig.querySelectorAll('.scrub__l');
+      const dot  = fig.querySelector('[data-dot]');
+      const vdot = fig.querySelector('[data-vdot]');
+      const end0 = fig.querySelector('[data-end0]');
+      const end1 = fig.querySelector('[data-end1]');
+
+      if (matchMedia('(hover: none)').matches) {
+        const t = fig.querySelector('[data-cue-text]');
+        if (t) t.textContent = 'drag';
+      }
+
+      fetch(base + '.json').then(r => r.json()).then(m => {
+        const { cols, rows } = m;
+        const url = `url(${base}.jpg)`;
+
+        // 两端标签从素材自己声明的 colLabels 取
+        if (end0 && m.colLabels) end0.textContent = m.colLabels[0];
+        if (end1 && m.colLabels) end1.textContent = m.colLabels[m.colLabels.length - 1];
+
+        for (const l of [la, lb]) {
+          l.style.backgroundImage = url;
+          l.style.backgroundSize = `${cols * 100}% ${rows * 100}%`;
+        }
+        // 两层各自淡入淡出会闪：中途两层都是 50%，合成后的总不透明度只剩
+        // 75%，容器的浅底就从缝里透出来 —— 每次换帧闪一下白。
+        // 所以底层永远不透明，只有顶层淡入，淡完再把结果交接给底层。
+        la.style.opacity = 1;
+        lb.style.opacity = 0;
+        lb.style.transition = 'none';
+
+        const posOf = (c, r) =>
+          `${cols > 1 ? (c / (cols - 1)) * 100 : 0}% ${rows > 1 ? (r / (rows - 1)) * 100 : 0}%`;
+
+        let cc = -1, rr = -1, settle = 0;
+        function put(c, r) {
+          if (c === cc && r === rr) return;
+          cc = c; rr = r;
+          const pos = posOf(c, r);
+
+          if (!fade) {
+            // 不加过渡 —— 任何插值都会把"焦点变化"这件事本身糊掉
+            la.style.backgroundPosition = pos;
+          } else {
+            clearTimeout(settle);
+            // 上一次淡入还没走完就被打断：先让它落地，别回跳
+            if (lb.style.opacity === '1') la.style.backgroundPosition = lb.style.backgroundPosition;
+
+            lb.style.transition = 'none';
+            lb.style.opacity = 0;
+            lb.style.backgroundPosition = pos;
+            void lb.offsetWidth;                        // 让上面的重置先落定
+            lb.style.transition = `opacity ${fade}ms ease`;
+            lb.style.opacity = 1;
+
+            settle = setTimeout(() => {                 // 淡完，交接给底层
+              la.style.backgroundPosition = pos;
+              lb.style.transition = 'none';
+              lb.style.opacity = 0;
+            }, fade + 30);
+          }
+
+          // 进度条上的点：纯显示，指示当前位置在两端之间的哪里
+          if (dot) dot.style.left = (cols > 1 ? (c / (cols - 1)) * 100 : 50) + '%';
+          if (vdot) vdot.style.top = (rows > 1 ? (r / (rows - 1)) * 100 : 50) + '%';
+        }
+
+        // —— 自动播放：走一条来回的路径 ——
+        // 节奏由 HTML 上的 data-cycle / data-gap 声明，不写死在这里 ——
+        // 每张卡该多快取决于它在演示什么：焦点拉动只有快起来才看得出变化，
+        // 而阴影强度慢一点才看得清。
+        const GAP   = +fig.dataset.gap   || (fade ? 900 : 90);    // 换帧间隔
+        const CYCLE = +fig.dataset.cycle || (fade ? 5200 : 3600); // 一个来回多久
+        const SPEED = 2 / (CYCLE / GAP);                          // 三角波周期是 2
+
+        let t = 0, auto = true, timer = 0;
+        const tri = x => 1 - Math.abs(((x % 2) + 2) % 2 - 1);   // 0→1→0
+
+        // data-ease: 两端带阻尼，像车进站 —— 余弦缓动在 u=0 和 u=1 处导数为 0，
+        // 所以光扫到边上会自己慢下来、停一下、再往回走，而不是撞到墙弹回来。
+        // 三角波在折返点有个尖角，但缓动的导数在那里正好是 0，合起来是平滑的。
+        // 匀速才是对的场合就别开它 —— 比如拉焦，那条轴本身就是线性的。
+        const eased = fig.dataset.ease !== undefined;
+        const shape = u => eased ? .5 - .5 * Math.cos(Math.PI * u) : u;
+
+        const step = () => {
+          if (!auto) return;
+          t += SPEED;
+          put(Math.round(shape(tri(t)) * (cols - 1)),
+              twoD ? Math.round(shape(tri(t * 0.62 + 0.5)) * (rows - 1)) : 0);
+          timer = setTimeout(() => requestAnimationFrame(step), GAP);
+        };
+
+        // —— 交互接管 ——
+        let resume;
+        const cue = fig.querySelector('[data-cue]');
+        const takeover = () => {
+          if (cue && !cue.classList.contains('is-gone')) {
+            cue.classList.add('is-gone');            // 先淡出，再移除 —— 别"啪"地消失
+            setTimeout(() => cue.remove(), 420);
+          }
+          auto = false;
+          clearTimeout(timer);
+          clearTimeout(resume);
+          fig.classList.add('is-live');
+        };
+        const grab = e => {
+          takeover();
+          const b = fig.getBoundingClientRect();
+          const x = Math.min(1, Math.max(0, (e.clientX - b.left) / b.width));
+          const y = Math.min(1, Math.max(0, (e.clientY - b.top) / b.height));
+          put(Math.round(x * (cols - 1)), twoD ? Math.round(y * (rows - 1)) : 0);
+        };
+        const release = () => {
+          fig.classList.remove('is-live');
+          clearTimeout(resume);
+          resume = setTimeout(() => { auto = true; step(); }, 1200);   // 松手后隔一会儿自己接着播
+        };
+
+        fig.addEventListener('pointermove', grab);
+        fig.addEventListener('pointerdown', grab);
+        fig.addEventListener('pointerleave', release);
+        fig.addEventListener('pointercancel', release);
+
+        // —— 键盘 ——
+        // 这两张图是这一页最值得玩的东西；只让鼠标玩得到，等于把用键盘的人
+        // 挡在门外。方向键走一格，Home/End 直接到两端。
+        fig.tabIndex = 0;
+        fig.setAttribute('role', 'slider');
+        fig.setAttribute('aria-label', fig.dataset.atlas.includes('shadow')
+          ? 'Light direction across the portrait' : 'Focus distance');
+        fig.setAttribute('aria-valuemin', 0);
+        fig.setAttribute('aria-valuemax', cols - 1);
+        const announce = c => {
+          fig.setAttribute('aria-valuenow', c);
+          if (m.colLabels) fig.setAttribute('aria-valuetext',
+            c === 0 ? m.colLabels[0] : c === cols - 1 ? m.colLabels[m.colLabels.length - 1] : `${c + 1} of ${cols}`);
+        };
+        fig.addEventListener('keydown', e => {
+          const step = { ArrowLeft: -1, ArrowRight: 1, ArrowDown: -1, ArrowUp: 1 }[e.key];
+          let next = null;
+          if (step) next = Math.min(cols - 1, Math.max(0, (cc < 0 ? 0 : cc) + step));
+          else if (e.key === 'Home') next = 0;
+          else if (e.key === 'End') next = cols - 1;
+          if (next === null) return;
+          e.preventDefault();
+          takeover();
+          put(next, Math.max(0, rr));
+          announce(next);
+        });
+        fig.addEventListener('blur', release);
+
+        // —— 滑杆本身也能抓（光的高度固定在最自然的平视档） ——
+        if (fig.classList.contains('scrub--pad')) {
+          const htrack = fig.querySelector('.scrub__track');
+          const hhud = fig.querySelector('[data-hud]');
+          const hgrab = e => {
+            e.stopPropagation();
+            takeover();
+            const b = htrack.getBoundingClientRect();
+            const x = Math.min(1, Math.max(0, (e.clientX - b.left) / b.width));
+            put(Math.round(x * (cols - 1)), Math.max(0, rr));
+          };
+          hhud.addEventListener('pointermove', hgrab);
+          hhud.addEventListener('pointerdown', hgrab);
+        }
+
+        // 只在进入视野后才开始播 —— 屏幕外的动画是纯浪费
+        new IntersectionObserver((es, o) => {
+          es.forEach(e => {
+            if (e.isIntersecting) { step(); o.unobserve(fig); }
+          });
+        }, { rootMargin: '120px' }).observe(fig);
+
+        put(twoD ? (cols - 1) >> 1 : 2, twoD ? (rows - 1) >> 1 : 0);
+      }).catch(() => fig.remove());   // 素材挂了就整块撤掉，不留空壳
     });
-      }
 
-    // 动态调整图片切换动画 - 根据每个项目的图片数量自动设置
-    document.addEventListener('DOMContentLoaded', function () {
-      // 先处理作者链接
-      try {
-        addAuthorLinks();
-      } catch (e) {
-        console.error('Error adding author links:', e);
-      }
-      const sliders = document.querySelectorAll('.publication-image-slider');
+    // ——————————————————————————————————————————————————
+    //  News：自动折叠一年以前的条目。
+    //  日期从 <time datetime> 读，不写死 —— 加新条目时不用改代码，
+    //  过一年它自己就会沉下去。
+    // ——————————————————————————————————————————————————
+    (function () {
+      const list = document.querySelector('.news__list');
+      if (!list) return;
 
-      sliders.forEach(function (slider, sliderIndex) {
-        const images = slider.querySelectorAll('img');
-        const imageCount = images.length;
+      const items = [...list.querySelectorAll('li')];
+      const cutoff = new Date();
+      cutoff.setFullYear(cutoff.getFullYear() - 1);
 
-        if (imageCount > 1) {
-          // 交叉淡化：淡入 F → 峰值 H → 淡出 F；下一张在 (F+H) 秒后开始淡入，与上一张淡出重叠；T=n(F+H) 使首尾与中间同为 soft 衔接
-          const F = 0.25;
-          const H = 0.5;
-          const totalSec = imageCount * (F + H);
-          const totalDuration = totalSec + 's';
-          const fadeInEndPct = (F / totalSec) * 100;
-          const holdEndPct = ((F + H) / totalSec) * 100;
-          const slotEndPct = ((2 * F + H) / totalSec) * 100;
-          const staggerSec = F + H;
+      const KEEP_MIN = 2;   // 再旧也至少留两条，否则区块会空得莫名其妙
+      const old = items.filter((li, i) => {
+        const t = li.querySelector('time')?.getAttribute('datetime');
+        if (!t) return false;
+        return i >= KEEP_MIN && new Date(t + '-01') < cutoff;
+      });
+      if (!old.length) return;
 
-          const keyframeName = 'imageFadeMulti_' + sliderIndex;
-          const style = document.createElement('style');
-          style.textContent = `
-              @keyframes ${keyframeName} {
-                0% { opacity: 0; }
-                ${fadeInEndPct.toFixed(4)}% { opacity: 1; }
-                ${holdEndPct.toFixed(4)}% { opacity: 1; }
-                ${slotEndPct.toFixed(4)}% { opacity: 0; }
-                ${Math.min(slotEndPct + 0.05, 100).toFixed(4)}%, 100% { opacity: 0; }
-              }
-            `;
-          document.head.appendChild(style);
+      old.forEach(li => li.hidden = true);
 
-          slider.style.setProperty('--animation-duration', totalDuration);
+      const btn = document.createElement('button');
+      btn.className = 'news__more';
+      btn.type = 'button';
+      const label = n => `Show ${n} earlier ${n === 1 ? 'item' : 'items'}`;
+      btn.textContent = label(old.length);
+      btn.setAttribute('aria-expanded', 'false');
 
-          images.forEach(function (img, index) {
-            const delay = (index * staggerSec) + 's';
-            img.style.setProperty('animation-delay', delay);
-            img.style.setProperty('animation-name', keyframeName);
-            img.style.setProperty('animation-duration', totalDuration);
-            img.style.setProperty('animation-iteration-count', 'infinite');
-            img.style.setProperty('animation-fill-mode', 'both');
-            img.style.setProperty('animation-timing-function', 'ease-in-out');
-          });
-        }
+      btn.addEventListener('click', () => {
+        const open = btn.getAttribute('aria-expanded') === 'true';
+        old.forEach(li => li.hidden = open);
+        btn.setAttribute('aria-expanded', String(!open));
+        btn.textContent = open ? label(old.length) : 'Show less';
       });
 
-      // 动态调整视频切换动画 - 根据每个项目的视频数量自动设置
-      const videoSliders = document.querySelectorAll('.publication-video-slider');
+      list.after(btn);
+    })();
 
-      videoSliders.forEach(function (slider, sliderIndex) {
-        const videos = slider.querySelectorAll('video');
-        const videoCount = videos.length;
+    // 作者名 -> 主页链接。数据来自 _data/authors.yml。
+    (function () {
+      const authors = {
+        {%- for a in site.data.authors -%}
+          {%- if a[1] and a[1] != "" %}{{ a[0] | jsonify }}: {{ a[1] | jsonify }},{% endif -%}
+        {%- endfor -%}
+      };
+      // 长名字优先，避免 "Chao Dong" 被 "Chao" 抢先匹配
+      const names = Object.keys(authors).sort((a, b) => b.length - a.length);
 
-        if (videoCount > 1) {
-          const F = 0.25;
-          const H = 0.5;
-          // T=n(F+H)，首尾与中间同为交叉淡化
-          const totalSec = videoCount * (F + H);
-          const totalDuration = totalSec + 's';
-          const fadeInEndPct = (F / totalSec) * 100;
-          const holdEndPct = ((F + H) / totalSec) * 100;
-          const slotEndPct = ((2 * F + H) / totalSec) * 100;
-          const staggerSec = F + H;
+      document.querySelectorAll('.pub__authors').forEach(el => {
+        // 只在纯文本节点上替换，绝不碰已有的 <strong>/<a> 结构
+        const walker = document.createTreeWalker(el, NodeFilter.SHOW_TEXT);
+        const texts = [];
+        while (walker.nextNode()) texts.push(walker.currentNode);
 
-          const keyframeName = 'videoFadeMulti_' + sliderIndex;
-          const style = document.createElement('style');
-          style.textContent = `
-              @keyframes ${keyframeName} {
-                0% { opacity: 0; }
-                ${fadeInEndPct.toFixed(4)}% { opacity: 1; }
-                ${holdEndPct.toFixed(4)}% { opacity: 1; }
-                ${slotEndPct.toFixed(4)}% { opacity: 0; }
-                ${Math.min(slotEndPct + 0.05, 100).toFixed(4)}%, 100% { opacity: 0; }
-              }
-            `;
-          document.head.appendChild(style);
-
-          slider.style.setProperty('--animation-duration', totalDuration);
-
-          videos.forEach(function (video, index) {
-            const delay = (index * staggerSec) + 's';
-            video.style.setProperty('animation-delay', delay);
-            video.style.setProperty('animation-name', keyframeName);
-            video.style.setProperty('animation-duration', totalDuration);
-            video.style.setProperty('animation-iteration-count', 'infinite');
-            video.style.setProperty('animation-fill-mode', 'both');
-            video.style.setProperty('animation-timing-function', 'ease-in-out');
-
-            // 确保视频在切换时同步播放
-            video.addEventListener('loadedmetadata', function () {
-              // 当视频元数据加载完成后，设置当前时间以同步播放
-              if (index > 0) {
-                video.currentTime = 0;
-              }
-            });
-
-            // 监听视频播放，确保循环
-            video.addEventListener('ended', function () {
-              video.currentTime = 0;
-              video.play();
-            });
-          });
-        }
-      });
-
-      // 视频错误处理和调试
-      const videos = document.querySelectorAll('.publication-image video');
-      videos.forEach(function (video) {
-        console.log('Found video element, source:', video.querySelector('source')?.src || video.src);
-
-        video.addEventListener('loadstart', function () {
-          console.log('Video load started:', video.querySelector('source')?.src || video.src);
-        });
-
-        video.addEventListener('error', function (e) {
-          console.error('Video loading error:', {
-            src: video.querySelector('source')?.src || video.src,
-            error: video.error,
-            code: video.error?.code,
-            message: video.error?.message
-          });
-        });
-
-        video.addEventListener('loadedmetadata', function () {
-          console.log('Video metadata loaded:', {
-            src: video.querySelector('source')?.src || video.src,
-            duration: video.duration,
-            videoWidth: video.videoWidth,
-            videoHeight: video.videoHeight
-          });
-        });
-
-        video.addEventListener('loadeddata', function () {
-          console.log('Video data loaded:', video.querySelector('source')?.src || video.src);
-        });
-
-        video.addEventListener('canplay', function () {
-          console.log('Video can play:', video.querySelector('source')?.src || video.src);
-          // 尝试播放
-          video.play().catch(function (error) {
-            console.error('Video play error:', error);
-          });
-        });
-
-        video.addEventListener('playing', function () {
-          console.log('Video is playing:', video.querySelector('source')?.src || video.src);
-        });
-
-        // 循环播放保护：确保视频在结束后重新播放
-        video.addEventListener('ended', function () {
-          console.log('Video ended, restarting loop:', video.querySelector('source')?.src || video.src);
-          this.currentTime = 0;
-          this.play().catch(function (error) {
-            console.error('Video loop restart error:', error);
-            // 如果播放失败，尝试重新加载视频
-            video.load();
-            setTimeout(function () {
-              video.play().catch(function (err) {
-                console.error('Video reload play error:', err);
-              });
-            }, 100);
-          });
-        });
-
-        // 定期检查视频状态，确保持续播放（防止循环失效）
-        let lastCheckTime = Date.now();
-        const checkInterval = setInterval(function () {
-          const now = Date.now();
-          // 每2秒检查一次
-          if (now - lastCheckTime >= 2000) {
-            lastCheckTime = now;
-
-            // 如果视频应该播放但处于暂停状态（且不是用户手动暂停）
-            if (video.paused && !video.ended && document.visibilityState === 'visible') {
-              console.log('Video paused unexpectedly, attempting to resume:', video.querySelector('source')?.src || video.src);
-              video.play().catch(function (error) {
-                console.error('Video auto-resume error:', error);
-              });
-            }
-
-            // 如果视频已结束但currentTime没有重置，手动重置
-            if (video.ended && video.currentTime > 0) {
-              console.log('Video ended but not looping, forcing restart:', video.querySelector('source')?.src || video.src);
-              video.currentTime = 0;
-              video.play().catch(function (error) {
-                console.error('Video forced restart error:', error);
-              });
+        texts.forEach(node => {
+          if (node.parentElement.closest('a')) return;
+          let html = node.nodeValue, hit = false;
+          for (const name of names) {
+            const re = new RegExp(`\\b${name.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}\\b`, 'g');
+            if (re.test(html)) {
+              html = html.replace(re, `<a class="author" href="${authors[name]}">${name}</a>`);
+              hit = true;
             }
           }
-        }, 2000); // 每2秒检查一次
-
-        // 页面可见性变化时，确保视频继续播放
-        document.addEventListener('visibilitychange', function () {
-          if (document.visibilityState === 'visible' && video.paused && !video.ended) {
-            video.play().catch(function (error) {
-              console.error('Video visibility resume error:', error);
-            });
-          }
+          if (!hit) return;
+          const span = document.createElement('span');
+          span.innerHTML = html;
+          node.replaceWith(span);
         });
       });
-    });
+    })();
+
+    // 多图/多视频交叉淡化。CSS 只声明外观，时序在这里算。
+    (function () {
+      document.querySelectorAll('[data-slider]').forEach((slider, i) => {
+        const frames = slider.children;
+        const n = frames.length;
+        if (n < 2) return;
+
+        const FADE = 0.4, HOLD = 2.2;      // 秒：淡入淡出 / 停留
+        const slot = FADE + HOLD;
+        const total = n * slot;
+        const pct = s => (s / total * 100).toFixed(3);
+
+        const css = `@keyframes slide${i}{
+          0%{opacity:0}
+          ${pct(FADE)}%{opacity:1}
+          ${pct(slot)}%{opacity:1}
+          ${pct(slot + FADE)}%{opacity:0}
+          100%{opacity:0}
+        }`;
+        const style = document.createElement('style');
+        style.textContent = css;
+        document.head.appendChild(style);
+
+        [...frames].forEach((f, k) => {
+          f.style.animation = `slide${i} ${total}s ${k * slot}s infinite both`;
+        });
+      });
+    })();
   </script>
-
 </body>
 
 </html>

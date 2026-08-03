@@ -2,10 +2,10 @@
 layout: post
 title:  "Large-Scale Light Field Synthesis from Videos Enables Geometrically Consistent Bokeh Editing"
 date:   2025-11-01 22:21:59 +00:00
-image: /images/vid2bokeh.gif
+image: /videos/vid2bokeh.mp4
 categories: GenAI
 authors: "<strong>Haoming Cai</strong>, Zhoutong Zhang, Christopher Metzler, Shumian Xin"
 website: /vid2bokeh/
-venue: "<strongvenue> Check the playground in the website! </strongvenue> "
+venue: "ECCV 2026"
 ---
-A large image bokeh dataset from video for joint focus and DoF editing on any image
+Render geometrically consistent bokeh on scenes that defeat other methods — transparent surfaces, thin structures, cluttered depth

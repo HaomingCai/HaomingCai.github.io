@@ -10,4 +10,4 @@ venue: "<strongvenue>ECCV 2022</strongvenue>"
 arxiv: https://arxiv.org/pdf/2210.04198
 website:  https://github.com/HaomingCai/SRPO
 ---
-Do super-resolution by predicting where to sample, not what to generate
+Super-resolve by predicting where to sample, not what to generate

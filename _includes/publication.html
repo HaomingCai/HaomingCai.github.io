@@ -1,0 +1,117 @@
+{%- comment -%}
+  单条论文条目。取代原先在 default.html 里复制了 4 遍的 Liquid 块。
+
+  用法:
+    {% include publication.html post=post %}              完整（带缩略图）
+    {% include publication.html post=post compact=true %} 紧凑（纯文字行，用于早期工作）
+
+  缩略图逻辑（按优先级）:
+    1. image 是 .mp4      -> <video>（可选 image2 也是 mp4 -> 双视频交叉淡化）
+    2. 存在 image2..image8 -> 图片轮播
+    3. 其余              -> 单张 <img>
+{%- endcomment -%}
+
+{%- assign p = include.post -%}
+
+{%- if include.featured -%}
+
+  <article class="pub pub--featured">
+    <div class="pub__media">
+      {%- if p.image contains '.mp4' -%}
+        <video autoplay muted loop playsinline preload="metadata"><source src="/tn{{ p.image }}?v={{ site.asset_v }}" type="video/mp4"></video>
+      {%- else -%}
+        <img src="/tn{{ p.image }}" alt="" loading="lazy">
+      {%- endif -%}
+    </div>
+    <div class="pub__body">
+      <h3 class="pub__title">
+        {%- if p.website -%}<a href="{{ p.website }}">{{ p.title }}</a>{%- else -%}{{ p.title }}{%- endif -%}
+      </h3>
+      <p class="pub__venue">{{ p.venue | strip_html | strip }}</p>
+      <div class="pub__excerpt">{{ p.excerpt | strip_html | strip }}</div>
+      <p class="pub__links">
+        {%- if p.arxiv -%}<a href="{{ p.arxiv }}">PDF</a>{%- endif -%}
+        {%- if p.website -%}<a href="{{ p.website }}">Website</a>{%- endif -%}
+      </p>
+    </div>
+  </article>
+
+{%- elsif include.compact -%}
+
+  <article class="pub pub--compact">
+    <div class="pub__body">
+      <h3 class="pub__title">
+        {%- if p.website -%}<a href="{{ p.website }}">{{ p.title }}</a>{%- else -%}{{ p.title }}{%- endif -%}
+      </h3>
+      <p class="pub__authors">{{ p.authors | add_author_links }}</p>
+      <p class="pub__meta">
+        <span class="pub__venue">{{ p.venue | strip_html | strip }}</span>
+        {%- if p.arxiv -%}<a href="{{ p.arxiv }}">PDF</a>{%- endif -%}
+        {%- if p.website -%}<a href="{{ p.website }}">Website</a>{%- endif -%}
+        {%- if p.code -%}<a href="{{ p.code }}">Code</a>{%- endif -%}
+      </p>
+    </div>
+  </article>
+
+{%- else -%}
+
+  <article class="pub">
+    <div class="pub__media">
+      {%- if p.image contains '.mp4' -%}
+        {%- if p.image2 and p.image2 contains '.mp4' -%}
+          <div class="slider" data-slider>
+            <video autoplay muted loop playsinline preload="metadata"><source src="/tn{{ p.image }}?v={{ site.asset_v }}" type="video/mp4"></video>
+            <video autoplay muted loop playsinline preload="metadata"><source src="/tn{{ p.image2 }}?v={{ site.asset_v }}" type="video/mp4"></video>
+          </div>
+        {%- else -%}
+          <video autoplay muted loop playsinline preload="metadata"><source src="/tn{{ p.image }}?v={{ site.asset_v }}" type="video/mp4"></video>
+        {%- endif -%}
+      {%- elsif p.image2 -%}
+        <div class="slider" data-slider>
+          <img src="/tn{{ p.image }}" alt="" loading="lazy">
+          <img src="/tn{{ p.image2 }}" alt="" loading="lazy">
+          {%- for n in (3..8) -%}
+            {%- assign key = 'image' | append: n -%}
+            {%- assign src = p[key] -%}
+            {%- if src -%}<img src="/tn{{ src }}" alt="" loading="lazy">{%- endif -%}
+          {%- endfor -%}
+        </div>
+      {%- else -%}
+        <img src="/tn{{ p.image }}" alt="" loading="lazy">
+      {%- endif -%}
+    </div>
+
+    <div class="pub__body">
+      <h3 class="pub__title">
+        {%- if p.website -%}<a href="{{ p.website }}">{{ p.title }}</a>{%- else -%}{{ p.title }}{%- endif -%}
+      </h3>
+
+      <p class="pub__authors">{{ p.authors | add_author_links }}</p>
+      <p class="pub__venue">{{ p.venue | strip_html | strip }}</p>
+
+      {%- if p.excerpt and p.excerpt != empty -%}
+        <div class="pub__excerpt">{{ p.excerpt | strip_html | strip }}</div>
+      {%- endif -%}
+
+      <p class="pub__links">
+        {%- if p.arxiv -%}<a href="{{ p.arxiv }}">PDF</a>{%- endif -%}
+        {%- if p.website -%}<a href="{{ p.website }}">Website</a>{%- endif -%}
+        {%- if p.code -%}<a href="{{ p.code }}">Code</a>{%- endif -%}
+        {%- if p.dataset -%}<a href="{{ p.dataset }}">Dataset</a>{%- endif -%}
+        {%- if p.video -%}<a href="{{ p.video }}">Video</a>{%- endif -%}
+        {%- if p.poster -%}<a href="{{ p.poster }}">Poster</a>{%- endif -%}
+        {%- if p.slides -%}<a href="{{ p.slides }}">Slides</a>{%- endif -%}
+
+        {%- comment -%}
+          任意数量的额外链接。frontmatter 里写 `links: ["标签|网址", ...]`。
+          PIPAL 有三个 NTIRE 挑战赛要挂，固定字段塞不下。
+        {%- endcomment -%}
+        {%- for l in p.links -%}
+          {%- assign parts = l | split: "|" -%}
+          <a href="{{ parts[1] | strip }}">{{ parts[0] | strip }}</a>
+        {%- endfor -%}
+      </p>
+    </div>
+  </article>
+
+{%- endif -%}

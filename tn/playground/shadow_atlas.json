@@ -1,0 +1,13 @@
+{
+ "cols": 7,
+ "rows": 1,
+ "tile": 420,
+ "colLabels": [
+  "front",
+  "right"
+ ],
+ "hud": [
+  "Light"
+ ],
+ "source": "ShadowDirector 1113, face-level light (y=0.0); smoothest run, slots [11, 12, 14, 16, 17, 19, 20] (x=[0.1, 0.2, 0.4, 0.6, 0.7, 0.9, 1.0]); geometry locked"
+}

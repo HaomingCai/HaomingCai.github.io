@@ -1,0 +1,884 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{{ site.name }}</title>
+  <meta name="author" content="{{ site.name }}">
+  <meta name="description" content="Haoming Cai — CS PhD at the University of Maryland working on generative media: image and video models taught to respect light, geometry, and the camera.">
+  <link rel="canonical" href="{{ page.url | replace:'index.html','' | prepend: site.baseurl | prepend: site.url }}">
+
+  {%- comment -%} 社交卡片(分享到 Twitter/Slack/iMessage 时的预览) + favicon {%- endcomment -%}
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Haoming Cai — Generative Media & Computational Imaging">
+  <meta property="og:description" content="CS PhD at the University of Maryland. I work on generative media — image and video models — teaching them to respect light, geometry, and the camera.">
+  <meta property="og:image" content="{{ '/images/og.jpg' | absolute_url }}">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:url" content="{{ '/' | absolute_url }}">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Haoming Cai — Generative Media & Computational Imaging">
+  <meta name="twitter:description" content="CS PhD at the University of Maryland — generative media, taught to respect light, geometry, and the camera.">
+  <meta name="twitter:image" content="{{ '/images/og.jpg' | absolute_url }}">
+  <link rel="icon" type="image/png" sizes="32x32" href="{{ site.baseurl }}/images/favicon-32.png">
+  <link rel="icon" type="image/png" sizes="512x512" href="{{ site.baseurl }}/images/favicon-512.png">
+  <link rel="apple-touch-icon" href="{{ site.baseurl }}/images/apple-touch-icon.png">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  {%- comment -%}
+    字体表原先挡在关键路径上（Lighthouse: 阻塞渲染 940ms）。
+    改成异步加载 —— 先用系统字体把内容画出来，字体到了再换。
+  {%- endcomment -%}
+  <link rel="preload" as="style"
+        href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;700&display=swap"
+        onload="this.onload=null;this.rel='stylesheet'">
+  <noscript>
+    <link rel="stylesheet"
+          href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;700&display=swap">
+  </noscript>
+
+  {%- comment -%} LCP 元素就是这张雪碧图 —— 让它尽早开始下载 {%- endcomment -%}
+  <link rel="preload" as="image" href="{{ site.baseurl }}/tn/playground/shadow_atlas.jpg">
+  <link rel="stylesheet" href="{{ site.baseurl }}/style.css">
+
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-E00L9PT3V9"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+    gtag('config', 'G-E00L9PT3V9');
+  </script>
+
+  {%- comment -%}
+    ——— Usha 外壳(仅"格式与个性"层,不动内容)———
+    左右固定 + 中间穿行遮挡 + 猫爪滚动 + 镜头散景。主体仍是 default 的
+    交互图 + 缩略图论文表;外壳只在页边做点缀,内容才是主人。
+  {%- endcomment -%}
+  <style>
+    /* v10_02 —— 回到 v20 布局 + 浅插画皮肤;取消固定左栏与滑动肖像 */
+    .lamp{display:none !important}
+
+    /* 浅浅的插画感背景:极淡暖色光晕 + 纸感颗粒,不抢内容 */
+    body{background:#f5f1e8}
+    body::before{content:"";position:fixed;inset:0;z-index:-3;pointer-events:none;
+      background:radial-gradient(56% 42% at 85% 5%,rgba(244,168,86,.12),transparent 70%),
+                 radial-gradient(46% 40% at 6% 99%,rgba(150,168,118,.10),transparent 72%),#f5f1e8}
+    /* 极淡的水彩猫壁纸:方向/大小随机,无缝平铺 */
+    body::after{content:"";position:fixed;inset:0;z-index:-2;pointer-events:none;
+      background-image:url("{{ site.baseurl }}/images/decor/cat_tile.png");background-size:880px auto;background-repeat:repeat}
+
+    /* hero:倚靠插画肖像 + 手绘名字(手臂搭在名字上);左栏收窄不占地 */
+    .hero{display:flex !important;gap:56px !important;align-items:center !important}
+    .hero__id{flex:0 0 244px !important;width:244px !important;max-width:244px !important;text-align:center}
+    .hero__lede{max-width:560px}      /* 收紧行长(~60字符)并抬高,和左栏拉平 */
+    .hero__photo{width:204px !important;height:204px !important;border-radius:18px !important;
+      object-fit:cover !important;background:transparent !important;box-shadow:0 6px 20px rgba(84,52,22,.16) !important;margin:0 auto;display:block;animation:uFocus 1.7s cubic-bezier(.2,.7,.2,1) both}
+    @keyframes uFocus{0%{filter:blur(11px) saturate(.8);opacity:.45}55%{filter:blur(2.5px)}100%{filter:blur(0);opacity:1}}
+    /* 名字完整放在肖像下方,在米底上清晰可读 —— 不再塞到手臂下 */
+    .hero__wordmark{display:block;width:96%;margin:6px auto 0;font-size:0;line-height:0}
+    .hero__wordmark img{width:100%;height:auto;display:block}
+    /* 3D 倾斜:提到独立合成层 -> 不卡;名字加投影 -> 立体感 */
+    .hero__photo,.hero__wordmark{will-change:transform;backface-visibility:hidden;transform-origin:center}
+    .hero__wordmark img{filter:drop-shadow(1.5px 3px 2.5px rgba(115,64,28,.32))}
+    .hero__name{display:none !important}
+    .rule .sl{color:#9c4413;font-weight:400;margin-left:.08em;margin-right:auto}
+    .cvo__title .sl{color:#9c4413;font-weight:400}
+    .hero__phonetic{margin-top:8px !important;font-size:12px !important;text-align:center}
+    .hero__tagline{margin-top:6px !important;font-size:13.5px !important;text-align:center}
+
+    /* 猫区块:插画猫 */
+    .cvo__grid--illus{display:block !important;grid-template-columns:none !important}
+    .cvo__grid--illus img{width:240px;max-width:56%;height:auto;border-radius:0;filter:none}
+
+    /* 精致猫爪滚动指示(右侧细列,小、优雅、不喧宾夺主) */
+    .catscroll{position:fixed;top:0;right:32px;height:100%;width:44px;z-index:8;pointer-events:none;
+      display:flex;flex-direction:column;justify-content:center;align-items:center;gap:21px}
+    .catscroll::before{content:"";position:absolute;left:50%;top:7%;bottom:7%;width:2px;transform:translateX(-50%);background:#e3d9c3;border-radius:2px;width:2.5px}
+    .catscroll .p{width:23px;height:23px;position:relative}
+    .catscroll .p svg{width:100%;height:100%;display:block;fill:#d7cbb0;transition:fill .3s,transform .3s}
+    .catscroll .p:nth-child(odd){transform:translateX(-5px) rotate(-14deg)}
+    .catscroll .p:nth-child(even){transform:translateX(5px) rotate(14deg)}
+    .catscroll .p.lit svg{fill:#cf7a2e}
+    .catscroll .p.head svg{fill:#b34e17;transform:scale(1.55);filter:drop-shadow(0 1px 3px rgba(150,70,20,.35))}
+    /* 神奇动物脚印:看不见的动物沿轨迹走过,身后渐消 */
+    .tracks{position:fixed;inset:0;z-index:-1;pointer-events:none;overflow:hidden}
+    .tracks .fp{position:absolute;opacity:0;transition:opacity .5s ease}
+    .tracks .fp svg{display:block}
+    /* SR 压缩组 & CVO 字号与其他 section 对齐(别缩那么小) */
+    .pub--compact .pub__title{font-size:16px !important}
+    .pub--compact .pub__authors{font-size:14px !important}
+    .pub--compact .pub__meta,.pub--compact .pub__venue{font-size:14px !important}
+    .cvo__note{font-size:16px !important}
+    /* 可读性:暖底上偏灰的次级文字调深、调实 */
+    .pub__authors{color:#3e382f !important}
+    .pub__excerpt{color:#544d43 !important}
+    .pubs__note,.cvo__note,.selected__note,.hero__tagline{color:#554e44 !important}
+    .hero__phonetic{color:#5d574b !important}
+    .pubs__theme em{color:#5d574b !important}
+    /* ——— 工艺打磨:配色变量 / 选中高亮 / 焦点环 / 链接与缩略图微交互 ——— */
+    :root{--accent:#b0503a;--accent-deep:#9c4413;--paw:#c9631f}
+    ::selection{background:#ecc9a0;color:#211f1a}
+    ::-moz-selection{background:#ecc9a0;color:#211f1a}
+    a:focus-visible,button:focus-visible,[tabindex]:focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:3px}
+    .page a{transition:color .15s ease,border-color .15s ease}
+    /* 链接色:壁纸压在链接底下时 #b0503a 只有 3.9:1 —— 它在这个米底上本来就只剩
+       4.30:1(连最初那版最淡的壁纸都压不住),换成配色里已有的深赤陶,4.84:1。
+       只在这一页改:线上首页没有壁纸,那边 #b0503a 是 4.88:1,不用动。 */
+    .page a,.page a:visited{color:var(--accent-deep)}
+    .hero__lede a,.hero__lede a:visited{color:var(--accent-deep);-webkit-text-fill-color:var(--accent-deep)}
+    /* 缩略图:统一那些风格杂乱的配图 —— 静态微收敛,hover 复活并轻微放大 */
+    .pub__media{overflow:hidden;border-radius:8px}
+    .pub__media img,.pub__media video{filter:saturate(.9) contrast(1.02);transition:filter .28s ease,transform .3s ease}
+    .pub:hover .pub__media img,.pub:hover .pub__media video{filter:none;transform:scale(1.035)}
+    @media (max-width:900px){ .catscroll{display:none} }
+    /* 移动端:hero 换列堆叠,正文占满,别被挤扁 */
+    @media (max-width:760px){
+      .hero{flex-direction:column !important;gap:22px !important;align-items:center !important}
+      .hero__id{flex:none !important;width:100% !important;max-width:none !important}
+      .hero__photo{width:188px !important}
+      .hero__wordmark{width:auto;max-width:240px}
+      .hero__lede{width:100%}
+      body::after{background-size:520px auto}   /* 手机上壁纸略收一点 */
+    }
+    /* 无障碍:尊重"减少动效" */
+    @media (prefers-reduced-motion: reduce){
+      .catscroll .p svg{transition:none !important}
+      .hero__photo{animation:none !important;filter:none !important}
+    }
+  </style>
+</head>
+
+<body>
+  {%- comment -%}
+    常驻导航。页面 5000px+，原先没有任何导航，读者滑到底后无处可去、
+    也无处可点 CV/邮箱。Sitzmann、Anthropic 都有。
+  {%- endcomment -%}
+  {%- comment -%} 左侧固定栏:插画名字 + 插画肖像 {%- endcomment -%}
+  <div class="catscroll" id="catscroll" aria-hidden="true"></div>
+  <div class="tracks" id="tracks" aria-hidden="true"></div>
+
+  <script>
+    // 精致猫爪滚动指示:随进度点亮,当前位置的爪子放大强调
+    (function(){
+      var box=document.getElementById('catscroll'); if(!box) return;
+      var N=9, paw='<svg viewBox="0 0 100 100"><ellipse cx="50" cy="64" rx="26" ry="20"/><ellipse cx="26" cy="40" rx="9" ry="11.5"/><ellipse cx="43" cy="27" rx="9" ry="12"/><ellipse cx="61" cy="28" rx="9" ry="12"/><ellipse cx="77" cy="42" rx="8.5" ry="11"/></svg>';
+      for(var i=0;i<N;i++){var d=document.createElement('div'); d.className='p'; d.innerHTML=paw; box.appendChild(d);}
+      var ps=[].slice.call(box.children);
+      function up(){var m=document.body.scrollHeight-innerHeight, pr=m>0?Math.min(1,scrollY/m):0, f=pr*N, head=Math.min(N-1,Math.floor(f));
+        ps.forEach(function(el,i){el.classList.toggle('lit', i<Math.round(f)); el.classList.toggle('head', pr>0.002 && i===head);});}
+      addEventListener('scroll',up,{passive:true}); addEventListener('resize',up); up();
+    })();
+
+    // ——————————————————————————————————————————————
+    //  神奇动物脚印。看不见的动物沿不同轨迹走过背景,脚印一步步
+    //  出现、身后的渐渐淡去。不同动物不同脚印,稀疏、克制。
+    // ——————————————————————————————————————————————
+    (function(){
+      var box=document.getElementById('tracks'); if(!box) return;
+      if (matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+      var C=[
+        {s:34,stride:40,spread:13,life:5400,svg:'<svg viewBox="0 0 100 100" width="@S@" height="@S@"><g fill="currentColor"><ellipse cx="50" cy="64" rx="26" ry="20"/><ellipse cx="26" cy="40" rx="9" ry="11.5"/><ellipse cx="43" cy="27" rx="9" ry="12"/><ellipse cx="61" cy="28" rx="9" ry="12"/><ellipse cx="77" cy="42" rx="8.5" ry="11"/></g></svg>'},
+        {s:38,stride:48,spread:17,life:5600,svg:'<svg viewBox="0 0 100 100" width="@S@" height="@S@"><g fill="currentColor"><ellipse cx="50" cy="67" rx="23" ry="22"/><ellipse cx="28" cy="37" rx="8" ry="12.5"/><ellipse cx="44" cy="25" rx="8.5" ry="13"/><ellipse cx="60" cy="26" rx="8.5" ry="13"/><ellipse cx="74" cy="39" rx="8" ry="12.5"/></g></svg>'},
+        {s:34,stride:38,spread:9,life:4800,svg:'<svg viewBox="0 0 100 100" width="@S@" height="@S@"><g stroke="currentColor" stroke-width="8" stroke-linecap="round" fill="none"><path d="M50 58 L50 92"/><path d="M50 58 L22 22"/><path d="M50 58 L50 14"/><path d="M50 58 L78 22"/></g></svg>'},
+        {s:30,stride:40,spread:12,life:5400,svg:'<svg viewBox="0 0 100 100" width="@S@" height="@S@"><g fill="currentColor"><ellipse cx="50" cy="60" rx="16" ry="18"/><ellipse cx="34" cy="38" rx="6.5" ry="10"/><ellipse cx="45" cy="28" rx="6.5" ry="10.5"/><ellipse cx="57" cy="28" rx="6.5" ry="10.5"/><ellipse cx="68" cy="38" rx="6.5" ry="10"/></g></svg>'},
+        {s:34,stride:62,spread:18,life:5400,svg:'<svg viewBox="0 0 100 100" width="@S@" height="@S@"><g fill="currentColor"><ellipse cx="50" cy="58" rx="12" ry="30"/><circle cx="37" cy="22" r="5"/><circle cx="50" cy="16" r="5"/><circle cx="63" cy="22" r="5"/></g></svg>'},
+        {s:36,stride:54,spread:14,life:5600,svg:'<svg viewBox="0 0 100 100" width="@S@" height="@S@"><g fill="currentColor"><path d="M45 20 C36 44 42 82 49 84 C51 60 49 34 49 20 Z"/><path d="M55 20 C64 44 58 82 51 84 C49 60 51 34 51 20 Z"/></g></svg>'},
+        {s:32,stride:34,spread:10,life:4800,svg:'<svg viewBox="0 0 100 100" width="@S@" height="@S@"><g fill="currentColor"><path d="M50 24 C40 40 30 60 27 80 C39 71 50 69 50 69 C50 69 61 71 73 80 C70 60 60 40 50 24 Z"/></g></svg>'}
+      ];
+      var active=0, MAX=2, rnd=function(a,b){return a+Math.random()*(b-a);};
+      function spawn(){
+        setTimeout(spawn, active<1?250:rnd(1300,3000)); // 始终有,最多4条
+        if(active>=MAX) return;
+        active++;
+        var c=C[(Math.random()*C.length)|0], W=innerWidth, H=innerHeight, e=(Math.random()*4)|0, x,y,a;
+        if(e===0){x=-30;y=rnd(40,H-40);a=rnd(-0.5,0.5);}
+        else if(e===1){x=W+30;y=rnd(40,H-40);a=Math.PI+rnd(-0.5,0.5);}
+        else if(e===2){x=rnd(40,W-40);y=-30;a=Math.PI/2+rnd(-0.6,0.6);}
+        else {x=rnd(40,W-40);y=H+30;a=-Math.PI/2+rnd(-0.6,0.6);}
+        var side=1, n=0, N=(rnd(24,42))|0, alpha=rnd(0.10,0.16), turn=rnd(-0.015,0.015);
+        (function step(){
+          var px=x-Math.sin(a)*side*c.spread, py=y+Math.cos(a)*side*c.spread;
+          var el=document.createElement('div'); el.className='fp';
+          el.style.left=px+'px'; el.style.top=py+'px'; el.style.color='rgba(150,86,40,'+alpha.toFixed(3)+')';
+          el.style.transform='translate(-50%,-50%) rotate('+(a*180/Math.PI+90).toFixed(1)+'deg)';
+          el.innerHTML=c.svg.replace(/@S@/g,c.s);
+          box.appendChild(el);
+          requestAnimationFrame(function(){el.style.opacity=1;});
+          setTimeout(function(){el.style.transition='opacity 2.2s ease'; el.style.opacity=0;}, c.life);
+          setTimeout(function(){el.remove();}, c.life+2500);
+          side=-side; a+=turn; x+=Math.cos(a)*c.stride; y+=Math.sin(a)*c.stride; n++;
+          if(n<N && x>-90&&x<W+90&&y>-90&&y<H+90) setTimeout(step, rnd(640,900));
+          else active--;
+        })();
+      }
+      setTimeout(spawn, 300); setTimeout(spawn, 1200); setTimeout(spawn, 2200);
+    })();
+
+  </script>
+
+  <main class="page" id="top">
+
+    {%- comment -%}
+      产品视角的排布：陌生人只给这一页 ~30 秒。
+      顺序 = 你是谁 → 你做什么 → 证据（作品）→ 近况 → 完整列表。
+      头像和名字并排（不再各占一行），把作品往上顶。
+    {%- endcomment -%}
+
+    {%- comment -%}
+      不对称英雄区（抄 Anthropic）：身份在左，叙述在右，两栏错开。
+      比"居中堆叠"更有编辑感，也把作品往上顶。
+    {%- endcomment -%}
+    <header class="hero">
+      <div class="hero__id">
+        <picture>
+          <source srcset="{{ site.baseurl }}/images/profile_380.webp" type="image/webp">
+          <img class="hero__photo" src="{{ site.baseurl }}/images/profile_380.jpg" width="380" height="380" alt="Haoming Cai" fetchpriority="high">
+        </picture>
+        <h1 class="hero__wordmark"><img src="{{ site.baseurl }}/images/decor/name_t.png" alt="Haoming Cai 蔡昊明"></h1>
+        <p class="hero__phonetic">/haʊˈmɪŋ tsaɪ/ · he/him</p>
+        <p class="hero__tagline">Generative Media<br>Computational Imaging</p>
+      </div>
+
+      <div class="hero__lede">
+        <p>
+          Fourth-year CS PhD student at the
+          <a href="https://www.cs.umd.edu/">University of Maryland</a>, advised by
+          <a href="https://www.cs.umd.edu/people/metzler">Christopher Metzler</a>.
+          I work on generative media &mdash; image and video models &mdash;
+          teaching them to respect light, geometry, and the camera.
+        </p>
+        <p>
+          Previously at <a href="https://xpixel.group/index.html">X-Pixel</a> (2020–2022)
+          with <a href="https://scholar.google.com/citations?user=OSDCB0UAAAAJ&hl=en">Chao Dong</a>
+          and <a href="https://www.jasongt.com/">Jinjin Gu</a>; BEng from
+          <a href="https://www.cuhk.edu.cn/en/about-us">The Chinese University of Hong Kong, Shenzhen</a>.
+          Always happy to talk research or early-career questions.
+        </p>
+
+        {%- comment -%} CV 是求职页面的主转化动作，给它主按钮的分量。 {%- endcomment -%}
+        <div class="cta">
+          <a class="cta__primary" href="https://drive.google.com/file/d/1qady-8lu348j0o9xsiIKBTJ_2dnBntV9/view?usp=sharing">Curriculum Vitae</a>
+          <a class="cta__link" href="mailto:hmcai@umd.edu">hmcai@umd.edu</a>
+          <a class="cta__link" href="https://scholar.google.com/citations?hl=en&user=Jzs37TkAAAAJ">Google Scholar</a>
+        </div>
+      </div>
+    </header>
+
+
+    {%- comment -%}
+      代表作。改这一行就能换 —— 匹配 _posts 里 title 的片段。
+    {%- endcomment -%}
+    {%- assign featured = "Parametric Shadow Control,Large-Scale Light Field Synthesis" | split: "," -%}
+
+    {%- comment -%}
+      Selected Work = 两个可交互的可视化，不是两张图。
+      没人碰的时候自己来回播（证明它是活的），鼠标一上去就交给访客控制。
+      素材都是这两篇论文的真实模型输出。
+    {%- endcomment -%}
+    <section class="selected band" id="work">
+      <h2 class="rule">Selected work<span class="sl">/</span></h2>
+      <p class="selected__note" data-live-note>Two figures from my papers &mdash; move your cursor across them to move the light, and to pull focus.</p>
+
+      <div class="selected__grid">
+
+        <article class="pub pub--featured">
+          <figure class="scrub scrub--pad" data-scrub
+                  data-atlas="/tn/playground/shadow_atlas"
+                  data-mode="1d" data-fade="75" data-ease
+                  data-cycle="1600" data-gap="40">
+            <div class="scrub__l"></div>
+            <div class="scrub__l"></div>
+            <div class="scrub__cue" data-cue aria-hidden="true">
+              <svg viewBox="0 0 24 24" width="11" height="11" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M9 5 4 12l5 7M15 5l5 7-5 7"/>
+              </svg>
+              <b data-cue-text>move</b>
+            </div>
+            <figcaption class="scrub__hud" data-hud>
+              <span class="scrub__end" data-end0></span>
+              <span class="scrub__track"><i class="scrub__dot" data-dot></i></span>
+              <span class="scrub__end" data-end1></span>
+            </figcaption>
+          </figure>
+          <div class="pub__body">
+            <h3 class="pub__title">
+            <a href="/tn/projects_html/ShadowDirector/">Parametric Shadow Control for Portrait Generation in Text-to-Image Diffusion Models</a>
+          </h3>
+          <p class="pub__venue">ICCV 2025</p>
+          <div class="pub__excerpt">Put a shadow knob on a text-to-image model &mdash; direction, softness and shape, with no retraining. <span data-verb>Move your cursor</span> across to walk the light around her face.</div>
+          <p class="pub__links">
+            <a href="https://arxiv.org/pdf/2503.21943">PDF</a>
+            <a href="/tn/projects_html/ShadowDirector/">Website</a>
+          </p>
+          </div>
+        </article>
+
+        <article class="pub pub--featured">
+          <figure class="scrub" data-scrub
+                  data-atlas="/tn/playground/bokeh_atlas"
+                  data-mode="1d" data-fade="0" data-ease
+                  data-cycle="700" data-gap="16">
+            <div class="scrub__l"></div>
+            <div class="scrub__l"></div>
+            <div class="scrub__cue" data-cue aria-hidden="true">
+              <svg viewBox="0 0 24 24" width="11" height="11" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M9 5 4 12l5 7M15 5l5 7-5 7"/>
+              </svg>
+              <b data-cue-text>move</b>
+            </div>
+            <figcaption class="scrub__hud" data-hud>
+              <span class="scrub__end" data-end0></span>
+              <span class="scrub__track"><i class="scrub__dot" data-dot></i></span>
+              <span class="scrub__end" data-end1></span>
+            </figcaption>
+          </figure>
+          <div class="pub__body">
+            <h3 class="pub__title">
+            <a href="/vid2bokeh/">Large-Scale Light Field Synthesis from Videos Enables Geometrically Consistent Bokeh Editing</a>
+          </h3>
+          <p class="pub__venue">ECCV 2026</p>
+          <div class="pub__excerpt">Render geometrically consistent bokeh on scenes that defeat other methods &mdash; here, a toy behind a transparent lid. <span data-verb>Move your cursor</span> across to pull focus through it.</div>
+          <p class="pub__links">
+            <a href="/vid2bokeh/">Website</a>
+          </p>
+          </div>
+        </article>
+
+      </div>
+    </section>
+
+    <section class="news" id="news">
+      <h2 class="rule">News<span class="sl">/</span></h2>
+      <ul class="news__list">
+        <li>
+          <time datetime="2026-07">2026.07</time>
+          <p>Our work on vision&ndash;language robustness under adverse imaging was accepted to CoLM 2026. Congratulations to <a href="https://tianfwang.github.io/">Tianfu</a> and <a href="https://mingyangx.github.io/">Mingyang</a>.</p>
+        </li>
+        <li>
+          <time datetime="2026-06">2026.06</time>
+          <p><a href="/vid2bokeh/">Large-Scale Light Field Synthesis from Videos</a> was accepted to ECCV 2026.</p>
+        </li>
+        <li>
+          <time datetime="2026-05">2026.05</time>
+          <p>Back at the <a href="https://research.adobe.com/articles/indigo/indigo.html">Adobe NextCam team</a> for a second summer internship.</p>
+        </li>
+        <li>
+          <time datetime="2025-06">2025.06</time>
+          <p><a href="/tn/projects_html/ShadowDirector/">Parametric Shadow Control</a> was accepted to ICCV 2025.</p>
+        </li>
+        <li>
+          <time datetime="2025-06">2025.06</time>
+          <p>Named an <a href="https://cvpr.thecvf.com/Conferences/2025/ProgramCommittee#:~:text=Ni%0AHaoming%20Zou-,Haoming%20Cai,-Haonan%20Qin">Outstanding Reviewer</a> for CVPR 2025.</p>
+        </li>
+        <li>
+          <time datetime="2025-05">2025.05</time>
+          <p>Joined the <a href="https://research.adobe.com/articles/indigo/indigo.html">Adobe NextCam team</a> (led by <a href="https://graphics.stanford.edu/~levoy/">Marc Levoy</a>) as a summer intern, mentored by <a href="https://shumianxin.github.io/">Shumian Xin</a> and <a href="https://ztzhang.info/">Zhoutong Zhang</a>.</p>
+        </li>
+        <li>
+          <time datetime="2025-02">2025.02</time>
+          <p>Two papers accepted to CVPR 2025. Congratulations to <a href="https://tianfwang.github.io/">Tianfu</a>, <a href="https://mingyangx.github.io/">Mingyang</a>, and <a href="https://codingrex.github.io/">Jingxi</a>.</p>
+        </li>
+      </ul>
+    </section>
+
+    <section class="pubs" id="publications">
+      <h2 class="rule">
+        All publications<span class="sl">/</span>
+        <a class="rule__aside" href="https://scholar.google.com/citations?hl=en&user=Jzs37TkAAAAJ">Google Scholar &rarr;</a>
+      </h2>
+      <p class="pubs__note">* denotes equal contribution.</p>
+
+      {%- assign sections = "GenAI|Generative media,AdverseWeather|Imaging under hard conditions,IQA|Perceptual image quality,SR|Efficient image restoration" | split: "," -%}
+      {%- assign years = "2024 — 2026,2023 — 2025,2020 — 2023,2020 — 2022" | split: "," -%}
+
+      {%- comment -%}
+        密度梯度：只有 SR 阶段（2020–2022，X-Pixel 时期）压成纯文字行。
+        PhD 期间的三个方向全部保留缩略图。
+      {%- endcomment -%}
+      {%- assign compact_cats = "SR" | split: "," -%}
+
+      {%- for s in sections -%}
+        {%- assign parts = s | split: "|" -%}
+        {%- assign cat = parts[0] -%}
+        {%- assign is_compact = false -%}
+        {%- if compact_cats contains cat %}{% assign is_compact = true %}{% endif -%}
+
+        <div class="pubs__group{% if is_compact %} pubs__group--compact{% endif %}">
+          <h3 class="pubs__theme">
+            <span>{{ parts[1] }}</span>
+            <em>{{ years[forloop.index0] }}</em>
+          </h3>
+          {%- for post in site.posts -%}
+            {%- if post.categories contains cat -%}
+              {% include publication.html post=post compact=is_compact %}
+            {%- endif -%}
+          {%- endfor -%}
+        </div>
+      {%- endfor -%}
+    </section>
+
+    {%- comment -%}
+      猫。降级成辅助区块 —— 它之前和 "Selected Work" 同级，
+      在一个求职页面上把宠物和研究并列是品味事故。
+    {%- endcomment -%}
+    <section class="cvo band">
+      <h2 class="cvo__title">Chief vibe officer<span class="sl">/</span></h2>
+      <p class="cvo__note">Presides over the Maryland headquarters. Contributes to every paper by lying on the keyboard. Has strong feelings about not being in the acknowledgements.</p>
+      <div class="cvo__grid">
+          {%- assign cvo = "001.jpg,002.jpg,003.jpg,004.jpg,005.jpg,007.jpg" | split: "," -%}
+          {%- for img in cvo -%}
+            <img src="{{ site.baseurl }}/tn/images/cvo/{{ img }}" alt="" loading="lazy">
+          {%- endfor -%}
+        </div>
+    </section>
+
+    {%- comment -%}
+      页脚行动入口。整页 5000px+，而 CV / 邮箱原先只在最顶部出现一次 ——
+      一个读完全部论文、已经被说服的人，滑到底后无处可点，得往回滚 4000px。
+    {%- endcomment -%}
+    <footer class="foot">
+      <p class="foot__ask">Interested in the work, or just want to talk?</p>
+      <div class="cta">
+        <a class="cta__primary" href="https://drive.google.com/file/d/1qady-8lu348j0o9xsiIKBTJ_2dnBntV9/view?usp=sharing">Curriculum Vitae</a>
+        <a class="cta__link" href="mailto:hmcai@umd.edu">hmcai@umd.edu</a>
+        <a class="cta__link" href="https://scholar.google.com/citations?hl=en&user=Jzs37TkAAAAJ">Google Scholar</a>
+      </div>
+      <p class="foot__aside">Off-hours: <a href="https://www.flickr.com/photos/201416778@N04/">photography</a>.</p>
+    </footer>
+
+  </main>
+
+  <!-- 光源层：跟随鼠标的柔和暖光。静止时页面就是一张普通的纸。 -->
+  <div class="lamp" aria-hidden="true"></div>
+
+  <script>
+    // ——————————————————————————————————————————————————
+    //  光。
+    //
+    //  这一页的主人研究的是"教模型尊重光、几何和相机"。所以这一页
+    //  本身也应该尊重光：鼠标是一个光源，卡片按它的方向投影，头像
+    //  默认散景虚化、靠近才合焦（这正是 Vid2Bokeh 在做的事）。
+    //
+    //  克制是重点：静止时它看起来只是一张纸。
+    // ——————————————————————————————————————————————————
+    (function () {
+      const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+      if (reduce || matchMedia('(hover: none)').matches) return;   // 触屏 / 减少动效：直接不启用
+
+      const lamp = document.querySelector('.lamp');
+      const name = document.querySelector('.hero__name');
+      // 整个 bio 区都吃光，不只是名字
+      const swept = [...document.querySelectorAll(
+        '.hero__name, .hero__phonetic, .hero__tagline, .hero__lede p')];
+      const lit   = [...document.querySelectorAll('.scrub, .cvo__grid img')];
+      const photo = document.querySelector('.hero__photo');
+      const wordmark = document.querySelector('.hero__wordmark');
+      let mx = innerWidth / 2, my = 240, tx = mx, ty = my, raf = 0;
+
+      addEventListener('pointermove', e => {
+        tx = e.clientX; ty = e.clientY;
+        if (!raf) raf = requestAnimationFrame(tick);
+      });
+
+      // 鼠标进入 bio 区 -> 整盏灯调亮。离开就收回去。
+      const hero = document.querySelector('.hero');
+      if (hero) {
+        hero.addEventListener('pointerenter', () => document.body.classList.add('is-lit'));
+        hero.addEventListener('pointerleave', () => document.body.classList.remove('is-lit'));
+      }
+
+      function tick() {
+        raf = 0;
+        // 缓动 —— 光有惯性，不会瞬移
+        mx += (tx - mx) * 0.24;
+        my += (ty - my) * 0.24;
+
+        lamp.style.setProperty('--lx', mx + 'px');
+        lamp.style.setProperty('--ly', my + 'px');
+
+        // 头像：随光源方向的边缘高光 + 长投影 + 朝光倾斜。
+        // 不加模糊 —— 那个我们试过，脸糊掉不是设计，是 bug。
+        if (photo) {
+          const r = photo.getBoundingClientRect();
+          const cx = r.left + r.width / 2, cy = r.top + r.height / 2;
+          const dx = cx - mx, dy = cy - my;
+          const d  = Math.hypot(dx, dy) || 1;
+          const ux = dx / d, uy = dy / d;               // 背光方向的单位向量
+          const reach = Math.min(d / 12, 42);           // 投影长度
+          const near  = Math.max(0, 1 - d / 1100);      // 越近光越强
+
+          const ox = ux * reach, oy = uy * reach;
+          photo.style.boxShadow =
+            // 迎光面的边缘高光（两层：亮核 + 柔晕）
+            `${(-ux * 3).toFixed(1)}px ${(-uy * 3).toFixed(1)}px 0 1px rgba(255,250,238,${(0.85 * near + 0.1).toFixed(2)}),` +
+            ` ${(-ux * 10).toFixed(1)}px ${(-uy * 10).toFixed(1)}px 22px rgba(255,240,214,${(0.55 * near).toFixed(2)}),` +
+            // 背光面的长投影
+            ` ${ox.toFixed(1)}px ${oy.toFixed(1)}px ${(18 + reach * 1.1).toFixed(0)}px rgba(52,36,25,${(0.46 * near + 0.06).toFixed(2)})`;
+
+          // 朝光源微微倾斜 —— 让它像一个真实的立体物
+          const tilt = 14 * near;
+          const t3d = `perspective(460px) rotateY(${(-ux * tilt).toFixed(2)}deg) rotateX(${(uy * tilt).toFixed(2)}deg)`;
+          photo.style.transform = t3d;
+          // 名字和头像一起转（同一方向的 3D 倾斜）
+          if (wordmark) wordmark.style.transform = t3d;
+        }
+
+        // 把光源换算到每个受光文字元素自己的坐标系里
+        for (const el of swept) {
+          const r = el.getBoundingClientRect();
+          if (r.bottom < -240 || r.top > innerHeight + 240) continue;
+          el.style.setProperty('--sx', (mx - r.left) + 'px');
+          el.style.setProperty('--sy', (my - r.top) + 'px');
+        }
+
+        // 名字：跟随光源的暖色辉光。
+        // 用 text-shadow 而不是提亮字色 —— 辉光在字的"外面"，
+        // 所以能加足戏剧性而完全不动文字本身的对比度。
+        if (name) {
+          const r  = name.getBoundingClientRect();
+          const cx = r.left + r.width / 2, cy = r.top + r.height / 2;
+          const d  = Math.hypot(cx - mx, cy - my);
+          const g  = Math.max(0, 1 - d / 460);            // 光越近辉光越强
+          if (g > 0.01) {
+            const ux = (cx - mx) / (d || 1), uy = (cy - my) / (d || 1);
+            name.style.textShadow =
+              `0 0 ${(26 * g).toFixed(0)}px rgba(255,214,150,${(0.55 * g).toFixed(2)}),` +
+              ` ${(ux * 5 * g).toFixed(1)}px ${(uy * 5 * g).toFixed(1)}px ${(14 * g).toFixed(0)}px rgba(90,60,32,${(0.30 * g).toFixed(2)})`;
+          } else {
+            name.style.textShadow = 'none';
+          }
+        }
+
+        for (const el of lit) {
+          const r = el.getBoundingClientRect();
+          if (r.bottom < -100 || r.top > innerHeight + 100) continue;   // 屏外的不算
+
+          const cx = r.left + r.width / 2;
+          const cy = r.top + r.height / 2;
+          const dx = cx - mx, dy = cy - my;
+          const dist = Math.hypot(dx, dy) || 1;
+
+          // 阴影背对光源，长度随距离增长但有上限 —— 像真实的软阴影
+          const reach = Math.min(dist / 26, 16);
+          const ox = (dx / dist) * reach;
+          const oy = (dy / dist) * reach;
+          const blur = 14 + reach * 1.6;
+          const alpha = 0.16 * Math.max(0, 1 - dist / 1400);
+
+          el.style.boxShadow =
+            `${ox.toFixed(1)}px ${oy.toFixed(1)}px ${blur.toFixed(0)}px rgba(60,42,30,${alpha.toFixed(3)}),` +
+            ` inset 0 0 0 1px rgba(36,33,29,.07)`;
+        }
+
+
+        if (Math.abs(tx - mx) > 0.4 || Math.abs(ty - my) > 0.4) raf = requestAnimationFrame(tick);
+      }
+      tick();
+    })();
+
+    // ——————————————————————————————————————————————————
+    //  可交互的可视化（Selected Work 的两张卡）。
+    //
+    //  每张卡是一张雪碧图：所有状态预渲染好，切换只是改 background-position。
+    //  一次请求、零延迟随机访问。
+    //
+    //  没人碰的时候自己来回播 —— 一个静止的控件没人知道它能玩。
+    //  鼠标/手指一上去就交出控制权，离开后过一会儿再自己接着播。
+    // ——————————————————————————————————————————————————
+    // 桌面上不用"拖" —— 鼠标移过去就行。只有触屏才是拖。
+    // 指令说错比不说更糟：访客会按字面去试，试不出来就以为坏了。
+    if (matchMedia('(hover: none)').matches) {
+      const n = document.querySelector('[data-live-note]');
+      if (n) n.textContent = 'Two figures from my papers — drag across them to move the light, and to pull focus.';
+      document.querySelectorAll('[data-verb]').forEach(v => { v.textContent = 'Drag'; });
+    }
+
+    document.querySelectorAll('[data-scrub]').forEach(fig => {
+      const base  = fig.dataset.atlas;
+      const twoD  = fig.dataset.mode === '2d';
+      const fade  = +fig.dataset.fade || 0;
+      const [la, lb] = fig.querySelectorAll('.scrub__l');
+      const dot  = fig.querySelector('[data-dot]');
+      const vdot = fig.querySelector('[data-vdot]');
+      const end0 = fig.querySelector('[data-end0]');
+      const end1 = fig.querySelector('[data-end1]');
+
+      if (matchMedia('(hover: none)').matches) {
+        const t = fig.querySelector('[data-cue-text]');
+        if (t) t.textContent = 'drag';
+      }
+
+      fetch(base + '.json').then(r => r.json()).then(m => {
+        const { cols, rows } = m;
+        const url = `url(${base}.jpg)`;
+
+        // 两端标签从素材自己声明的 colLabels 取
+        if (end0 && m.colLabels) end0.textContent = m.colLabels[0];
+        if (end1 && m.colLabels) end1.textContent = m.colLabels[m.colLabels.length - 1];
+
+        for (const l of [la, lb]) {
+          l.style.backgroundImage = url;
+          l.style.backgroundSize = `${cols * 100}% ${rows * 100}%`;
+        }
+        // 两层各自淡入淡出会闪：中途两层都是 50%，合成后的总不透明度只剩
+        // 75%，容器的浅底就从缝里透出来 —— 每次换帧闪一下白。
+        // 所以底层永远不透明，只有顶层淡入，淡完再把结果交接给底层。
+        la.style.opacity = 1;
+        lb.style.opacity = 0;
+        lb.style.transition = 'none';
+
+        const posOf = (c, r) =>
+          `${cols > 1 ? (c / (cols - 1)) * 100 : 0}% ${rows > 1 ? (r / (rows - 1)) * 100 : 0}%`;
+
+        let cc = -1, rr = -1, settle = 0;
+        function put(c, r) {
+          if (c === cc && r === rr) return;
+          cc = c; rr = r;
+          const pos = posOf(c, r);
+
+          if (!fade) {
+            // 不加过渡 —— 任何插值都会把"焦点变化"这件事本身糊掉
+            la.style.backgroundPosition = pos;
+          } else {
+            clearTimeout(settle);
+            // 上一次淡入还没走完就被打断：先让它落地，别回跳
+            if (lb.style.opacity === '1') la.style.backgroundPosition = lb.style.backgroundPosition;
+
+            lb.style.transition = 'none';
+            lb.style.opacity = 0;
+            lb.style.backgroundPosition = pos;
+            void lb.offsetWidth;                        // 让上面的重置先落定
+            lb.style.transition = `opacity ${fade}ms ease`;
+            lb.style.opacity = 1;
+
+            settle = setTimeout(() => {                 // 淡完，交接给底层
+              la.style.backgroundPosition = pos;
+              lb.style.transition = 'none';
+              lb.style.opacity = 0;
+            }, fade + 30);
+          }
+
+          // 进度条上的点：纯显示，指示当前位置在两端之间的哪里
+          if (dot) dot.style.left = (cols > 1 ? (c / (cols - 1)) * 100 : 50) + '%';
+          if (vdot) vdot.style.top = (rows > 1 ? (r / (rows - 1)) * 100 : 50) + '%';
+        }
+
+        // —— 自动播放：走一条来回的路径 ——
+        // 节奏由 HTML 上的 data-cycle / data-gap 声明，不写死在这里 ——
+        // 每张卡该多快取决于它在演示什么：焦点拉动只有快起来才看得出变化，
+        // 而阴影强度慢一点才看得清。
+        const GAP   = +fig.dataset.gap   || (fade ? 900 : 90);    // 换帧间隔
+        const CYCLE = +fig.dataset.cycle || (fade ? 5200 : 3600); // 一个来回多久
+        const SPEED = 2 / (CYCLE / GAP);                          // 三角波周期是 2
+
+        let t = 0, auto = true, timer = 0;
+        const tri = x => 1 - Math.abs(((x % 2) + 2) % 2 - 1);   // 0→1→0
+
+        // data-ease: 两端带阻尼，像车进站 —— 余弦缓动在 u=0 和 u=1 处导数为 0，
+        // 所以光扫到边上会自己慢下来、停一下、再往回走，而不是撞到墙弹回来。
+        // 三角波在折返点有个尖角，但缓动的导数在那里正好是 0，合起来是平滑的。
+        // 匀速才是对的场合就别开它 —— 比如拉焦，那条轴本身就是线性的。
+        const eased = fig.dataset.ease !== undefined;
+        const shape = u => eased ? .5 - .5 * Math.cos(Math.PI * u) : u;
+
+        const step = () => {
+          if (!auto) return;
+          t += SPEED;
+          put(Math.round(shape(tri(t)) * (cols - 1)),
+              twoD ? Math.round(shape(tri(t * 0.62 + 0.5)) * (rows - 1)) : 0);
+          timer = setTimeout(() => requestAnimationFrame(step), GAP);
+        };
+
+        // —— 交互接管 ——
+        let resume;
+        const cue = fig.querySelector('[data-cue]');
+        const takeover = () => {
+          if (cue && !cue.classList.contains('is-gone')) {
+            cue.classList.add('is-gone');            // 先淡出，再移除 —— 别"啪"地消失
+            setTimeout(() => cue.remove(), 420);
+          }
+          auto = false;
+          clearTimeout(timer);
+          clearTimeout(resume);
+          fig.classList.add('is-live');
+        };
+        const grab = e => {
+          takeover();
+          const b = fig.getBoundingClientRect();
+          const x = Math.min(1, Math.max(0, (e.clientX - b.left) / b.width));
+          const y = Math.min(1, Math.max(0, (e.clientY - b.top) / b.height));
+          put(Math.round(x * (cols - 1)), twoD ? Math.round(y * (rows - 1)) : 0);
+        };
+        const release = () => {
+          fig.classList.remove('is-live');
+          clearTimeout(resume);
+          resume = setTimeout(() => { auto = true; step(); }, 1200);   // 松手后隔一会儿自己接着播
+        };
+
+        fig.addEventListener('pointermove', grab);
+        fig.addEventListener('pointerdown', grab);
+        fig.addEventListener('pointerleave', release);
+        fig.addEventListener('pointercancel', release);
+
+        // —— 键盘 ——
+        // 这两张图是这一页最值得玩的东西；只让鼠标玩得到，等于把用键盘的人
+        // 挡在门外。方向键走一格，Home/End 直接到两端。
+        fig.tabIndex = 0;
+        fig.setAttribute('role', 'slider');
+        fig.setAttribute('aria-label', fig.dataset.atlas.includes('shadow')
+          ? 'Light direction across the portrait' : 'Focus distance');
+        fig.setAttribute('aria-valuemin', 0);
+        fig.setAttribute('aria-valuemax', cols - 1);
+        const announce = c => {
+          fig.setAttribute('aria-valuenow', c);
+          if (m.colLabels) fig.setAttribute('aria-valuetext',
+            c === 0 ? m.colLabels[0] : c === cols - 1 ? m.colLabels[m.colLabels.length - 1] : `${c + 1} of ${cols}`);
+        };
+        fig.addEventListener('keydown', e => {
+          const step = { ArrowLeft: -1, ArrowRight: 1, ArrowDown: -1, ArrowUp: 1 }[e.key];
+          let next = null;
+          if (step) next = Math.min(cols - 1, Math.max(0, (cc < 0 ? 0 : cc) + step));
+          else if (e.key === 'Home') next = 0;
+          else if (e.key === 'End') next = cols - 1;
+          if (next === null) return;
+          e.preventDefault();
+          takeover();
+          put(next, Math.max(0, rr));
+          announce(next);
+        });
+        fig.addEventListener('blur', release);
+
+        // —— 滑杆本身也能抓（光的高度固定在最自然的平视档） ——
+        if (fig.classList.contains('scrub--pad')) {
+          const htrack = fig.querySelector('.scrub__track');
+          const hhud = fig.querySelector('[data-hud]');
+          const hgrab = e => {
+            e.stopPropagation();
+            takeover();
+            const b = htrack.getBoundingClientRect();
+            const x = Math.min(1, Math.max(0, (e.clientX - b.left) / b.width));
+            put(Math.round(x * (cols - 1)), Math.max(0, rr));
+          };
+          hhud.addEventListener('pointermove', hgrab);
+          hhud.addEventListener('pointerdown', hgrab);
+        }
+
+        // 只在进入视野后才开始播 —— 屏幕外的动画是纯浪费
+        new IntersectionObserver((es, o) => {
+          es.forEach(e => {
+            if (e.isIntersecting) { step(); o.unobserve(fig); }
+          });
+        }, { rootMargin: '120px' }).observe(fig);
+
+        put(twoD ? (cols - 1) >> 1 : 2, twoD ? (rows - 1) >> 1 : 0);
+      }).catch(() => fig.remove());   // 素材挂了就整块撤掉，不留空壳
+    });
+
+    // ——————————————————————————————————————————————————
+    //  News：自动折叠一年以前的条目。
+    //  日期从 <time datetime> 读，不写死 —— 加新条目时不用改代码，
+    //  过一年它自己就会沉下去。
+    // ——————————————————————————————————————————————————
+    (function () {
+      const list = document.querySelector('.news__list');
+      if (!list) return;
+
+      const items = [...list.querySelectorAll('li')];
+      const cutoff = new Date();
+      cutoff.setFullYear(cutoff.getFullYear() - 1);
+
+      const KEEP_MIN = 2;   // 再旧也至少留两条，否则区块会空得莫名其妙
+      const old = items.filter((li, i) => {
+        const t = li.querySelector('time')?.getAttribute('datetime');
+        if (!t) return false;
+        return i >= KEEP_MIN && new Date(t + '-01') < cutoff;
+      });
+      if (!old.length) return;
+
+      old.forEach(li => li.hidden = true);
+
+      const btn = document.createElement('button');
+      btn.className = 'news__more';
+      btn.type = 'button';
+      const label = n => `Show ${n} earlier ${n === 1 ? 'item' : 'items'}`;
+      btn.textContent = label(old.length);
+      btn.setAttribute('aria-expanded', 'false');
+
+      btn.addEventListener('click', () => {
+        const open = btn.getAttribute('aria-expanded') === 'true';
+        old.forEach(li => li.hidden = open);
+        btn.setAttribute('aria-expanded', String(!open));
+        btn.textContent = open ? label(old.length) : 'Show less';
+      });
+
+      list.after(btn);
+    })();
+
+    // 作者名 -> 主页链接。数据来自 _data/authors.yml。
+    (function () {
+      const authors = {
+        {%- for a in site.data.authors -%}
+          {%- if a[1] and a[1] != "" %}{{ a[0] | jsonify }}: {{ a[1] | jsonify }},{% endif -%}
+        {%- endfor -%}
+      };
+      // 长名字优先，避免 "Chao Dong" 被 "Chao" 抢先匹配
+      const names = Object.keys(authors).sort((a, b) => b.length - a.length);
+
+      document.querySelectorAll('.pub__authors').forEach(el => {
+        // 只在纯文本节点上替换，绝不碰已有的 <strong>/<a> 结构
+        const walker = document.createTreeWalker(el, NodeFilter.SHOW_TEXT);
+        const texts = [];
+        while (walker.nextNode()) texts.push(walker.currentNode);
+
+        texts.forEach(node => {
+          if (node.parentElement.closest('a')) return;
+          let html = node.nodeValue, hit = false;
+          for (const name of names) {
+            const re = new RegExp(`\\b${name.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}\\b`, 'g');
+            if (re.test(html)) {
+              html = html.replace(re, `<a class="author" href="${authors[name]}">${name}</a>`);
+              hit = true;
+            }
+          }
+          if (!hit) return;
+          const span = document.createElement('span');
+          span.innerHTML = html;
+          node.replaceWith(span);
+        });
+      });
+    })();
+
+    // 多图/多视频交叉淡化。CSS 只声明外观，时序在这里算。
+    (function () {
+      document.querySelectorAll('[data-slider]').forEach((slider, i) => {
+        const frames = slider.children;
+        const n = frames.length;
+        if (n < 2) return;
+
+        const FADE = 0.4, HOLD = 2.2;      // 秒：淡入淡出 / 停留
+        const slot = FADE + HOLD;
+        const total = n * slot;
+        const pct = s => (s / total * 100).toFixed(3);
+
+        const css = `@keyframes slide${i}{
+          0%{opacity:0}
+          ${pct(FADE)}%{opacity:1}
+          ${pct(slot)}%{opacity:1}
+          ${pct(slot + FADE)}%{opacity:0}
+          100%{opacity:0}
+        }`;
+        const style = document.createElement('style');
+        style.textContent = css;
+        document.head.appendChild(style);
+
+        [...frames].forEach((f, k) => {
+          f.style.animation = `slide${i} ${total}s ${k * slot}s infinite both`;
+        });
+      });
+    })();
+  </script>
+</body>
+
+</html>

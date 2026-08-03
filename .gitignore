@@ -1,4 +1,6 @@
 _site
+.env
+.env.*
 .DS_Store
 .jekyll
 .jekyll-metadata
@@ -10,3 +12,14 @@ node_modules
 package.json
 favicon.ico
 *vendor*
+
+# 设计迭代快照：203 张截图 / 357MB，是"让下一轮能对比上一轮"用的过程留痕。
+# 定稿之后它们的使命就结束了 —— 留在磁盘上自己看，但不进 git。
+# 计划 / 评分 / 快照脚本这三个小文件记录了决策，留着。
+design_versions/*
+!design_versions/v10_PLAN.md
+!design_versions/SCORES.md
+!design_versions/snap.sh
+
+__pycache__/
+*.pyc

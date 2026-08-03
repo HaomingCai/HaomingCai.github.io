@@ -1,13 +1,17 @@
 ---
 layout: post
-title:  "Pipal: a large-scale image quality assessment dataset for perceptual image restoration"
+title:  "PIPAL: A Large-Scale Image Quality Assessment Dataset for Perceptual Image Restoration"
 date:   2023-08-09 22:21:59 +00:00
 image: /images/PIPAL2.png
 categories: IQA
 author: "Haoming Cai"
-authors: Jinjin Gu, <strong>Haoming Cai</strong>, Haoyu Chen, Xiaoxing Ye, Jimmy S Ren, Chao Dong.
+authors: Jinjin Gu, <strong>Haoming Cai</strong>, Haoyu Chen, Xiaoxing Ye, Jimmy S. Ren, Chao Dong
 venue: "<strongvenue>ECCV 2020</strongvenue>"
 arxiv: https://arxiv.org/pdf/2007.12142
-website: https://www.jasongt.com/projectpages/pipal.html
+dataset: https://github.com/HaomingCai/PIPAL-dataset
+links:
+  - "NTIRE'21 Challenge|https://competitions.codalab.org/competitions/28050"
+  - "NTIRE'22 Full-Ref|https://codalab.lisn.upsaclay.fr/competitions/1567"
+  - "NTIRE'22 No-Ref|https://codalab.lisn.upsaclay.fr/competitions/1568"
 ---
-A large Image-Quality-Assessment dataset that captures perceptual artifacts from modern image restoration methods
+Score image quality on the artifacts that modern restoration models actually produce

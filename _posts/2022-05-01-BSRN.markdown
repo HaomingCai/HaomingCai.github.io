@@ -10,4 +10,4 @@ venue: "<strongvenue>NTIRE Challenge @ CVPR 2023</strongvenue>"
 arxiv: https://openaccess.thecvf.com/content/CVPR2022W/NTIRE/papers/Li_Blueprint_Separable_Residual_Network_for_Efficient_Image_Super-Resolution_CVPRW_2022_paper.pdf
 website: https://github.com/xiaom233/BSRN
 ---
-Winner of Efficient Image Super-Resolution Track @ NTIRE workshop of CVPR'23
+Super-resolve on a tight compute budget — winner of the NTIRE'23 efficient SR track

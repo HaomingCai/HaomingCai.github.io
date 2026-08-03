@@ -92,3 +92,8 @@ exclude:
   - _temp/index.html
   - _temp/
   - vendor/
+
+# 静态资源版本号。视频/图片被替换后手动 +1 来刷掉旧缓存。
+# 之前这里用的是 site.time —— 每次构建都变，等于每发布一次，
+# 回访的人就要把 4.5MB 视频重新下一遍。
+asset_v: 1

@@ -1,0 +1,23 @@
+{
+ "cols": 12,
+ "rows": 1,
+ "tile": 400,
+ "colLabels": [
+  "near",
+  "9%",
+  "18%",
+  "27%",
+  "36%",
+  "45%",
+  "55%",
+  "64%",
+  "73%",
+  "82%",
+  "91%",
+  "far"
+ ],
+ "hud": [
+  "Focus"
+ ],
+ "source": "vid2bokeh Data_Capture IMG_5253 (Hello Kitty), aperture fixed at f/20"
+}

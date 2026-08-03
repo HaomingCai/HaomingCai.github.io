@@ -1,227 +1,1128 @@
 ---
 ---
 
+// ============================================================
+//  v2 — Terracotta
+//  编辑式极简：暖米白底 / 衬线大标题 / 无衬线正文 / 等宽元信息
+// ============================================================
+
+// —— 唯一的配色开关。换版本只动这四行。——
+$accent:  #b0503a;   // 赤陶 / 铁锈 —— 只用于可点击的东西
+$bg:      #faf8f3;   // 奶油（更暖）
+$ink:     #24211d;   // 暖调深褐灰
+$ink-soft: #4e4740;  // 次要正文（作者行）——比 muted 重，比 ink 轻
+$muted:   #726b61;   // 元信息 / 摘要 —— 4.96:1，刚好过 WCAG AA(4.5)。别再调浅了。
+
+$rule:    #e8e2d7;
+// 按钮底色的染色浓度。染太深会把赤陶字的对比度压到 WCAG AA 线下（8% 时只有 4.39:1）。
+$accent-soft: rgba($accent, .05);
+
+// 字体分工 —— 抄 Anthropic 的真实做法（我原先做反了）：
+//   标题用【粗无衬线】：自信、现代、像个严肃的研究机构
+//   正文用【衬线】：温度、可读性、编辑感
+//   细衬线大标题看着像婚礼请柬，不像做研究的人。
+$sans:    'Inter', -apple-system, BlinkMacSystemFont, sans-serif;  // UI / 次级标题
+$display: 'Space Grotesk', 'Inter', sans-serif;                    // 展示性文字：名字 + 区块标题
+$serif: 'Source Serif 4', Georgia, serif;                          // 正文散文
+// 等宽字已被移除。它原先在页面上干了 8 份工作（tagline / venue / 按钮 /
+// 分区标题 / 日期 / 链接…）。"大写+拉开字距的等宽字"是开发者作品集里最被
+// 用烂的手法 —— 它是想让页面"看起来被设计过"时的条件反射。
+// Anthropic 全站零等宽、零大写展示。格调来自减法。
+
+// 8px 间距基准
+$s1: 8px;  $s2: 16px;  $s3: 24px;  $s4: 40px;  $s5: 64px;  $s6: 96px;
+
+*, *::before, *::after { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; scroll-padding-top: 80px; }
+
+// —————————————————————————— 常驻导航
+// 5000px 的页面必须随时能回到顶部、随时能拿到 CV。
+.nav {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  backdrop-filter: blur(12px);
+  background: rgba(#faf8f3, .78);
+  border-bottom: 1px solid rgba(#24211d, .08);
+
+  &__inner {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 14px 24px;
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 24px;
+  }
+
+  &__me {
+    font-family: 'Inter', sans-serif;
+    font-size: 15px;
+    font-weight: 700;
+    letter-spacing: -.01em;
+    color: #24211d;
+    border: 0;
+  }
+
+  &__links {
+    display: flex;
+    gap: 22px;
+
+    a {
+      font-family: 'Inter', sans-serif;
+      font-size: 14px;
+      color: #726b61;
+      border: 0;
+      transition: color .15s;
+
+      &:hover { color: #b0503a; }
+    }
+  }
+
+  &__cv { color: #b0503a !important; font-weight: 600; }
+}
+
+@media (max-width: 640px) {
+  .nav__inner { padding: 12px 20px; gap: 12px; }
+  .nav__links { gap: 14px; a { font-size: 13px; } }
+  .nav__links a:nth-child(3) { display: none; }   // 手机上藏掉最长的一项
+}
+
+// ——————————————————————————————————————————————
+//  背景质感 —— "格调"不来自颜色，来自背景不是死的。
+//  两个叠加的手法：
+//    1. 柔和光晕：大范围径向渐变，顶部暖、底部沉，页面像被打了光
+//    2. 颗粒噪点：内联 SVG feTurbulence，极低不透明度，给纸张质感
+//  纯 CSS + data URI，零外部请求。
+// ——————————————————————————————————————————————
+
+$glow-warm:  #f6e4d6;   // 暖光（右上）
+$glow-cool:  #e8ecec;   // 冷光（左下），制造色温差
+
+body {
+  margin: 0;
+  color: $ink;
+  font-family: $serif;
+  font-size: 18px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+
+  background-color: $bg;
+  // 整页只留一道极淡的顶部暖光。之前那团四色"柔雾"糊在全页背后，
+  // 读起来像 AI 生成的渐变，不像设计 —— 因为它没有结构、没有意图。
+  // 真正的层次交给下面的"区块色带"：每个区块自己的底色，边缘柔和过渡。
+  background-image: radial-gradient(90rem 40rem at 50% -10%, rgba(#f0d9c2, .5), transparent 65%);
+  background-attachment: fixed;
+}
+
+// 颗粒噪点层。盖在渐变之上、内容之下。
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  // baseFrequency 越高颗粒越细。0.9 接近印刷网点的尺度。
+  opacity: 1;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='.13'/%3E%3C/svg%3E");
+  mix-blend-mode: multiply;
+}
+
+// 极淡的暗角 —— 让页面像一张被光照亮的纸，而不是一块发光的屏幕。
+body::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background: radial-gradient(120% 90% at 50% 40%, transparent 55%, rgba(#6b5847, .07) 100%);
+}
+
+// 光源层。一盏灯照在纸上，不是屏幕在发光。
+.lamp {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background: radial-gradient(
+    22rem 22rem at var(--lx, 50%) var(--ly, -20%),
+    rgba(#fffaf0, .95),
+    rgba(#ffeed6, .42) 34%,
+    rgba(#f3dcc0, .14) 62%,
+    transparent 78%
+  );
+  mix-blend-mode: soft-light;
+  opacity: 1;
+  transition: opacity .35s ease, filter .35s ease;
+}
+
+// 鼠标进入 bio 区：整盏灯亮起来。离开就收回。
+body.is-lit .lamp {
+  filter: brightness(1.35) saturate(1.15);
+}
+
+
+
+.page { position: relative; z-index: 1; }
+
+// 头像也吃光：JS 会按光源方向给它一道边缘高光 + 投影
+.hero__photo {
+  transition: box-shadow .1s ease-out, transform .18s ease-out;
+  will-change: box-shadow, transform;
+}
+
+// ——————————————————————————————————————————————
+//  整个 bio 区都被光扫过 —— 不只是名字。
 //
-// IMPORTS
-//
-
-//@import "reset";
-//@import "variables";
-// Syntax highlighting @import is at the bottom of this file
-
-/**************/
-/* BASE RULES */
-/**************/
-// a {
-//   color: #1772d0;
-//   text-decoration: none;
-// }
-a {
-  color: #3f99f3;
-  font-size: 17px;
-  text-decoration: none;
+//  用 background-clip:text 把一团随光源移动的暖色渐变裁进文字里。
+//  高光核心的亮度受对比度约束：
+//    · 大名字（44px/700，WCAG 只要 3:1） -> 可以亮到 #a07a52 (3.66:1)
+//    · 正文（19px 常规，需 4.5:1）      -> 最亮只能到 #7e6040 (5.44:1)
+//  链接不做高光：#b0503a 本身才 4.88:1，再提亮就读不清了。
+// ——————————————————————————————————————————————
+%swept {
+  background-image: radial-gradient(
+    11rem 11rem at var(--sx, -60%) var(--sy, 50%),
+    #7e6040 0%,
+    #56462f 26%,
+    #322c24 54%,
+    $ink 76%
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  -webkit-text-fill-color: transparent;
 }
 
-a2 {
-  color: #3f99f3;
-  font-size: 17px;
-  text-decoration: none;
+.hero__lede p { @extend %swept; }
+.hero__phonetic { @extend %swept; }
+
+// 链接照常显示 —— 它们是父元素的子节点，会盖在被裁切的背景之上
+.hero__lede a,
+.hero__lede a:visited {
+  -webkit-text-fill-color: $accent;
+  color: $accent;
 }
 
-a:focus,
-a:hover {
-  color: #f09228;
-  text-decoration: none;
-}
-
-body,
-td,
-th,
-tr,
-
-p {
-  font-family: 'Lato', Verdana, Helvetica, sans-serif;
-  font-size: 14px;
-  font-display: auto;
-  color: #ffffff; /* New heading color */
-}
-
-p2 {
-  font-family: 'Lato', Verdana, Helvetica, sans-serif;
-  font-size: 17px;
-  font-display: auto;
-  color: #ffffff; /* New heading color */
-}
-
-quote {
-  font-family: 'Great Vibes', cursive;
-  font-size: 24px; /* Adjust font size as needed */
-  letter-spacing: 0.02em; /* Adjust letter spacing as needed */
-  font-display: auto;
-  color: #ffffff; /* New heading color */
+// tagline 用赤陶系的扫光（它本来就是强调色）
+.hero__tagline {
+  background-image: radial-gradient(
+    11rem 11rem at var(--sx, -60%) var(--sy, 50%),
+    #b0503a 0%,
+    #8a4c3a 30%,
+    #6b5340 58%,
+    $ink-soft 78%
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  -webkit-text-fill-color: transparent;
 }
 
 a {
-  font-family: 'Lato', Verdana, Helvetica, sans-serif;
-  font-size: 14px;
-  font-display: auto;
+  color: $accent;
+  text-decoration: none;
+  border-bottom: 1px solid rgba($accent, .28);
+  transition: border-color .15s, color .15s;
+
+  &:hover { border-bottom-color: $accent; }
 }
 
-strong {
-  font-family: 'Lato', Verdana, Helvetica, sans-serif;
-  font-size: 14px;
-  font-display: auto;
-  color: #f85503; /* New heading color */
+img, video { max-width: 100%; display: block; }
+
+// ——————————————————————————————————————————————
+//  防孤行。
+//  末行只剩两三个词看着像"没排完"。text-wrap:pretty 让浏览器
+//  回溯前几行来避免这种情况；短文本用 balance 把各行长度均分。
+//  两者都是浏览器原生排版，不改一个字。
+// ——————————————————————————————————————————————
+.hero__lede p,
+.foot__ask {
+  text-wrap: pretty;
 }
 
-strongnews {
-  font-family: 'Lato', Verdana, Helvetica, sans-serif;
-  font-size: 14px;
-  font-display: auto;
-  color: #f8bb03; /* New heading color */
+// balance 对 6 行以内的短文本才有效，但它比 pretty 强硬得多 ——
+// pretty 只在"不增加行数"的前提下微调，遇到"末行一个词"经常直接放弃。
+// 实测过：这几处 pretty 没救回来，balance 可以。
+.pub__title,
+.pub__excerpt,
+.news__list p,
+.selected__note,
+.cvo__note,
+.demo__sub {
+  text-wrap: balance;
 }
 
-strongvenue {
-  font-family: 'Lato', Verdana, Helvetica, sans-serif;
-  font-size: 14px;
-  font-display: auto;
-  color:#D8B694; /* New heading color */
+.page {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: $s5 $s3 $s5;
 }
 
-small {
-  font-family: 'Lato', Verdana, Helvetica, sans-serif;
-  font-size: 10px;
-  font-display: auto;
-  font-weight: normal;
-  padding: 0px;
-  margin: 0px;
-  display:inline; 
-  color: #ffffff; /* New heading color */
+// —————————————————————————— Hero
+
+// 不对称英雄区（Anthropic 的做法）：身份在左，叙述在右。
+// 比居中堆叠更有编辑感，也让"作品"更早进入视野。
+.hero {
+  display: grid;
+  grid-template-columns: 300px 1fr;
+  gap: $s5;
+  align-items: start;
+  margin-bottom: 0;                          // 分隔靠下面那条线，不靠空隙
+  padding-bottom: 28px;
+  border-bottom: 1px solid rgba($ink, .1);   // 通栏发丝线
+
+  &__photo {
+    width: 190px;
+    height: 190px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: $s3;
+  }
+
+  // 名字会反光：一道极淡的高光随光源扫过，像光落在纸上的凸印。
+  // 静止时完全看不出来 —— 这正是重点。
+  //
+  // ⚠️ line-height 必须容得下下伸部。background-clip:text 把行盒变成硬裁切边界，
+  //    装不下的部分直接消失。Space Grotesk 在 44px 下需要 56px（Inter 只要 54px）——
+  //    换字体就必须重新量，不同字体的度量不一样。1.32 在桌面和手机都留了余量。
+  &__name {
+    font-family: $display;
+    font-size: 44px;
+    font-weight: 700;
+    line-height: 1.32;
+    letter-spacing: -.03em;
+    margin: 0 0 2px;
+
+    // 高光：一道锐利的金属反光。亮度已到上限（#ab8259 = 3.26:1，
+    // 大字的 WCAG 下限是 3:1），所以戏剧性靠"边缘更锐"而不是"更亮"——
+    // 一条清晰的光带比一团柔光戏剧得多，而且不牺牲一点可读性。
+    background-image: radial-gradient(
+      7rem 7rem at var(--sx, -50%) var(--sy, 50%),
+      #ab8259 0%,
+      #a07a52 12%,
+      #5b4834 30%,       // 骤降 —— 这个陡坡就是"锐"的来源
+      #2b2620 52%,
+      $ink 70%
+    );
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    -webkit-text-fill-color: transparent;
+  }
+
+  &__phonetic {
+    font-family: $serif;
+    font-style: italic;
+    font-size: 16px;
+    color: $muted;
+    margin: 0 0 14px;
+  }
+
+  // 装饰性的东西不配用强调色 —— 强调色只留给可点击的
+  &__tagline {
+    font-family: $serif;
+    font-size: 16px;
+    line-height: 1.5;
+    color: $ink-soft;
+    margin: 0;
+  }
+
+  &__lede p {
+    margin: 0 0 $s2;
+    font-size: 19px;      // Anthropic 是 20px —— 大字号 + 衬线 = 从容
+    line-height: 1.55;
+  }
 }
 
-h2 {
-  font-family: 'Lato', Verdana, Helvetica, sans-serif;
-  font-size: 22px;
-  font-display: auto;
-  font-weight: normal;
-  padding: 0px;
-  margin: 0px;
-  display:inline; 
-  color: #f85503; /* New heading color */
+// —————————————————————————— Bio
+
+
+
+// CV 是求职页面的主转化动作 —— 给它按钮的分量，别和 Flickr 平起平坐。
+.cta {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: $s1 $s4;
+  margin-top: $s3;
+
+  // 三个动作等重、全部可见。原先邮箱和 Scholar 是灰字看着像"禁用"，
+  // 而装饰性的 tagline 反倒是彩色的 —— 求职页面把最重要的入口藏了起来。
+  &__primary,
+  &__link {
+    font-family: $sans;
+    font-size: 16px;
+    font-weight: 500;
+    color: $accent;
+    background: none;
+    border: 0;
+    border-bottom: 1px solid rgba($accent, .35);
+    padding: 0;
+
+    &:hover { border-bottom-color: $accent; }
+  }
+
+  &__primary { font-weight: 600; }
 }
 
-h30 {
-  font-family: 'Lato', Verdana, Helvetica, sans-serif;
-  font-size: 20px;
-  font-display: auto;
-  font-weight: normal;
-  padding: 0px;
-  margin: 0px;
-  display:inline; 
-  color: #ffffff; /* New heading color */
-}
+// —————————————————————————— 区块标题
 
-h25 {
-  font-family: 'Lato', Verdana, Helvetica, sans-serif;
-  font-size: 15px;
-  font-display: auto;
-  font-weight: normal;
-  padding: 0px;
-  margin: 0px;
-  display:inline; 
-  color: #ffffff;
-}
-
-
-
-// h3 {
-//   font-family: 'Lato', Verdana, Helvetica, sans-serif;
-//   font-size: 14px;
-//   font-weight: 700;
-//   font-display: auto;
-//   padding: 0px;
-//   margin: 0px;
-//   display:inline; 
-//   color: #1E90FF; /* New heading color */
-// }
-// 
-h3 {
-  font-family: 'Lato', Verdana, Helvetica, sans-serif;
-  font-size: 14px;
+.rule {
+  font-family: $display;
+  font-size: 30px;
   font-weight: 700;
-  font-display: auto;
-  padding: 0px;
-  margin: 0px;
-  display:inline; 
-  color: #1E90FF; /* New heading color */
+  letter-spacing: -.02em;
+  margin: 0 0 $s3;
+  padding-bottom: 12px;
+  border-bottom: 1px solid rgba($ink, .12);
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+
+  // 招聘经理最想点的链接。原先是 10px 灰色等宽字，几乎不可见。
+  &__aside {
+    font-family: $sans;
+    font-size: 15px;
+    font-weight: 500;
+    color: $accent;
+    border-bottom: 1px solid rgba($accent, .3);
+
+    &:hover { border-bottom-color: $accent; }
+  }
 }
 
-// h3 {
-//   font-family: 'Lato', Verdana, Helvetica, sans-serif;
-//   font-size: 14px;
-//   font-weight: 700;
-//   font-display: auto;
-//   padding: 0px;
-//   margin: 0px;
-//   display:inline; 
-//   color: #ff7300d6; /* New heading color */
-// }
+// —————————————————————————— News（时间轴）
+// 一条竖线穿过所有条目，每条一个节点。最新的那条节点是实心强调色。
 
-h1 {
-  font-family: 'Lato', Verdana, Helvetica, sans-serif;
-  font-size: 32px;
-  font-weight: normal;
-  font-display: auto;
-  text-align: center;
-  padding: 0px;
-  margin-block-start: 14px;
-  margin-block-end: 14px;
-  margin-left: 0px;
-  margin-right: 0px;
-  color: #ffffff; /* New heading color */
+.news {
+  margin-bottom: 80px;
+
+  &__list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    position: relative;
+
+    // 贯穿的时间轴
+    &::before {
+      content: '';
+      position: absolute;
+      left: 79px;
+      top: 12px;
+      bottom: 12px;
+      width: 1px;
+      background: linear-gradient(180deg,
+        rgba($ink, .16) 0%,
+        rgba($ink, .16) 82%,
+        transparent 100%);   // 尾端淡出 —— 时间还在继续
+    }
+
+    li {
+      position: relative;
+      display: grid;
+      grid-template-columns: 64px 1fr;
+      gap: $s4;
+      padding: 10px 0;
+
+      // display:grid 的优先级压过浏览器默认的 [hidden]{display:none}，
+      // 所以 hidden 属性设了也没用 —— 必须显式盖回去。
+      &[hidden] { display: none; }
+
+      // 节点
+      &::before {
+        content: '';
+        position: absolute;
+        left: 75px;
+        top: 22px;
+        width: 7px;
+        height: 7px;
+        border-radius: 50%;
+        background: $bg;
+        box-shadow: 0 0 0 1px rgba($ink, .28);
+      }
+
+      // 最新的一条：实心
+      &:first-child::before {
+        background: $accent;
+        box-shadow: 0 0 0 1px $accent, 0 0 0 4px rgba($accent, .14);
+      }
+    }
+
+    time {
+      font-family: $sans;
+      font-size: 13px;
+      font-variant-numeric: tabular-nums;
+      color: $muted;
+      padding-top: 5px;
+      text-align: right;
+    }
+
+    p { margin: 0; font-family: $serif; font-size: 16px; }
+  }
+
+  // 折叠按钮
+  &__more {
+    display: inline-block;
+    margin: $s2 0 0 104px;
+    padding: 0;
+    background: none;
+    border: 0;
+    border-bottom: 1px solid rgba($accent, .3);
+    font-family: $sans;
+    font-size: 14px;
+    color: $accent;
+    cursor: pointer;
+    transition: border-color .15s;
+
+    &:hover { border-bottom-color: $accent; }
+  }
 }
 
-h11 {
-  font-family: 'Lato', Verdana, Helvetica, sans-serif;
-  font-size: 16px;
-  font-weight: normal;
-  font-display: auto;
-  text-align: center;
-  padding: 0px;
-  margin-block-start: 14px;
-  margin-block-end: 14px;
-  margin-left: 0px;
-  margin-right: 0px;
-  color: #ffffff; /* New heading color */
+// —————————————————————————— Publications
+
+.pubs {
+  margin-bottom: 80px;
+
+  &__note {
+    font-size: 13px;
+    color: $muted;
+    margin: -#{$s2} 0 $s4;
+  }
+
+  &__group { margin-bottom: $s5; }
+
+  // 分区标题。原先是 13px 无衬线小字 + 一根细线，混在论文里几乎看不见。
+  //
+  // 提升显著性但不抢戏：换成展示字体、加大、加一道赤陶短线做锚点。
+  // 线是唯一的彩色元素 —— 标题本身仍然是墨色（它不可点击，不该用强调色）。
+  &__theme {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: $s2;
+    margin: 0 0 $s3;
+    padding-bottom: 10px;
+    border-bottom: 1px solid rgba($ink, .1);
+
+    font-family: $display;
+    font-size: 16px;
+    font-weight: 700;
+    letter-spacing: -.01em;
+    color: $ink;
+
+    // 标题前的赤陶短线 —— 一个安静的锚点
+    span {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+
+      &::before {
+        content: '';
+        width: 18px;
+        height: 2px;
+        border-radius: 2px;
+        background: $accent;
+        flex: 0 0 18px;
+      }
+    }
+
+    em {
+      font-family: $sans;
+      font-style: normal;
+      font-size: 12px;
+      font-weight: 500;
+      font-variant-numeric: tabular-nums;
+      color: $muted;
+      white-space: nowrap;
+    }
+  }
 }
 
-.one {
-  width: 160px;
-  height: 160px;
+.pub {
+  display: grid;
+  grid-template-columns: 150px 1fr;
+  gap: $s3;
+  margin-bottom: 32px;
+
+  &__media {
+    position: relative;
+
+    img, video, .slider {
+      width: 150px;
+      aspect-ratio: 4 / 3;
+      object-fit: cover;
+      background: $rule;
+      border-radius: 6px;
+      overflow: hidden;   // slider 是 grid 容器，子元素需要被圆角裁掉
+      box-shadow: inset 0 0 0 1px rgba($ink, .07);
+    }
+  }
+
+  // 网格项默认 min-width:auto —— 内容(比如一排链接)能把列撑得比 1fr 更宽，
+  // 于是整页被顶出横向滚动。必须显式归零。
+  &__body { min-width: 0; }
+
+  &__title {
+    font-family: $sans;
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 1.45;
+    letter-spacing: -.01em;
+    margin: 0 0 6px;
+
+    a { color: $ink; border: 0; }
+    a:hover { color: $accent; }
+  }
+
+  // 作者比摘要重要，所以更深；摘要退到灰调。原先两者同色，扫读时糊成一团。
+  &__authors {
+    font-family: $sans;
+    font-size: 14px;
+    line-height: 1.55;
+    color: $ink-soft;
+    margin: 0 0 5px;
+
+    strong { font-weight: 600; color: $ink; }
+
+    .author {
+      color: inherit;
+      border: 0;
+      &:hover { color: $accent; }
+    }
+  }
+
+  // venue = 学术圈的硬通货，是信任信号。之前为了"强调色只用在可点击处"这条设计
+  // 洁癖把它做成了最不起眼的灰色 —— 设计上纯粹，产品上是自残。恢复其可见度。
+  // 药丸是不信任自己排版时用来伪造结构的东西。venue 是纯文字，靠字重立住。
+  &__venue {
+    font-family: $sans;
+    font-size: 13px;
+    font-weight: 600;
+    color: $ink;
+    margin: 0 0 6px;
+  }
+
+  &__excerpt {
+    font-family: $serif;
+    font-size: 15px;
+    line-height: 1.5;
+    color: $muted;
+    margin: 0;
+  }
+
+  // 必须能换行：PIPAL 有 5 个链接，不换行会在手机上撑破栅格。
+  &__links {
+    margin: 10px 0 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px $s2;
+
+    a {
+      font-family: $sans;
+      font-size: 14px;
+      color: $accent;
+      border-bottom: 1px solid rgba($accent, .3);
+
+      &:hover { border-bottom-color: $accent; }
+    }
+  }
+}
+
+// —————————————————————————— 区块色带
+// 有结构的背景层次：区块自己坐在一条略微不同的底色上，
+// 上下边缘用柔和渐变化开，不出现硬边。
+.band {
   position: relative;
+  padding: 40px 0 80px;
+  margin-bottom: 0;
+
+  &::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    left: 50%;
+    width: 100vw;
+    transform: translateX(-50%);
+    z-index: -1;
+    background: linear-gradient(
+      180deg,
+      transparent 0%,
+      rgba(#efe4d6, .55) 12%,
+      rgba(#efe4d6, .55) 88%,
+      transparent 100%
+    );
+  }
 }
 
-.two {
-  width: 160px;
-  height: 160px;
-  position: absolute;
-  transition: opacity .2s ease-in-out;
-  -moz-transition: opacity .2s ease-in-out;
-  -webkit-transition: opacity .2s ease-in-out;
+// —————————————————————————— Selected Work（代表作大卡片）
+
+.selected {
+  margin-bottom: 0;      // 色带自带 80px 内边距，别再叠
+
+  // 两张并排 —— 每张卡内部仍是"图左 / 文右"。
+  // 图因此只有 ~165px：小到 artifact 藏得住，又大到还能玩。
+  &__grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: $s4 $s3;
+  }
 }
 
-.fade {
-  transition: opacity .2s ease-in-out;
-  -moz-transition: opacity .2s ease-in-out;
-  -webkit-transition: opacity .2s ease-in-out;
+.pub--featured {
+  display: grid;
+  // 这两张图是全页唯一能"玩"的东西，也是最能证明这些论文是真做出来的证据 ——
+  // 却曾经是页面上最小的元素之一（165px）。给它们该有的分量，但别让它们
+  // 压过标题：215px 试下来太抢，190px 是"看得清、玩得到、不喧宾"的那一档。
+  grid-template-columns: 190px 1fr;
+  gap: $s2;
+  align-items: start;
+  margin: 0;
+
+  .pub__title {
+    font-family: $sans;
+    font-size: 15px;
+    font-weight: 700;
+    letter-spacing: -.01em;
+    line-height: 1.35;
+    margin-bottom: 7px;
+  }
+
+  .pub__venue { font-size: 12px; margin-bottom: 7px; }
+
+  .pub__excerpt {
+    font-size: 13.5px;
+    line-height: 1.5;
+    margin-bottom: 10px;
+  }
+
+  .pub__links {
+    margin-top: 0;
+    gap: 12px;
+    a { font-size: 13px; }
+  }
 }
 
-span.highlight {
-  background-color: #ffffff;
+// 紧凑行：早期工作。没有缩略图，靠密度本身说"这是历史，不是现在"。
+.pub--compact {
+  grid-template-columns: 1fr;
+  gap: 0;
+  margin-bottom: $s2;
+  padding-bottom: $s2;
+  border-bottom: 1px solid rgba($rule, .7);
+
+  &:last-child { border-bottom: 0; }
+
+  .pub__title { font-size: 15px; margin-bottom: 3px; }
+  .pub__authors { font-size: 13px; margin-bottom: 4px; }
+
+  .pub__meta {
+    display: flex;
+    align-items: baseline;
+    flex-wrap: wrap;
+    gap: $s1 $s2;
+    margin: 0;
+    min-width: 0;
+
+    .pub__venue { margin: 0; }
+
+    a {
+      font-family: $sans;
+      font-size: 14px;
+      color: $accent;
+      border-bottom: 1px solid rgba($accent, .3);
+
+      &:hover { border-bottom-color: $accent; }
+    }
+  }
+}
+
+// 多帧交叉淡化：所有帧叠在同一个格子里
+.slider {
+  display: grid;
+
+  > * {
+    grid-area: 1 / 1;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0;
+  }
+}
+
+// —————————————————————————— Chief Vibe Officer
+
+.cvo {
+  margin-bottom: 0;      // 色带自带内边距
+
+  // 辅助级标题 —— 不再和 Selected Work / All Publications 同级
+  &__title {
+    font-family: $sans;
+    font-size: 17px;
+    font-weight: 600;
+    letter-spacing: -.01em;
+    margin: 0 0 4px;
+  }
+
+  // 这行字原先铺满 1000px，第二行只剩"the acknowledgements."三个词 ——
+  // 典型的孤行。收窄版心 + text-wrap:balance，让浏览器把两行长度均分。
+  &__note {
+    font-family: $serif;
+    font-size: 15px;
+    color: $muted;
+    margin: 0 0 $s2;
+    max-width: 620px;
+    text-wrap: balance;
+    text-wrap: pretty;   // balance 不支持时的兜底（至少不留孤行）
+  }
+
+  &__grid {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    max-width: 620px;
+    gap: $s1;
+
+    img {
+      width: 100%;
+      aspect-ratio: 1;
+      object-fit: cover;
+      border-radius: 6px;
+      transition: transform .3s;
+
+      &:hover { transform: translateY(-3px); }
+    }
+  }
+}
+
+// —————————————————————————— Footer
+
+.foot {
+  padding-top: $s4;
+  border-top: 1px solid rgba($ink, .1);
+
+  &__ask {
+    font-family: $serif;
+    font-size: 19px;
+    color: $ink;
+    margin: 0 0 $s2;
+  }
+
+  .cta { margin-top: 0; }
+
+  &__aside {
+    font-family: $serif;
+    font-size: 15px;
+    color: $muted;
+    margin: $s3 0 0;
+
+    a { color: $muted; border-bottom-color: rgba($muted, .35); }
+    a:hover { color: $accent; border-bottom-color: $accent; }
+  }
+}
+
+// —————————————————————————— Mobile
+
+@media (max-width: 640px) {
+  .page { padding: $s4 $s3 $s4; }
+
+  .hero {
+    grid-template-columns: 1fr;
+    gap: $s3;
+    margin-bottom: 0;
+    padding-bottom: $s4;
+
+    &__photo { width: 108px; height: 108px; }
+    &__name { font-size: 36px; }
+    &__lede p { font-size: 17px; }
+  }
+
+  .rule { font-size: 25px; }
+
+  // 关键：手机端保持两栏。让缩略图占满宽度会把页面拉到一万多像素高，没人滑得完。
+  // 必须排除 .pub--compact —— 它没有缩略图，套上 96px 列会留出一个空列把文字挤窄。
+  //
+  // 也必须排除 .pub--featured。这条规则的特异度比 .pub--featured 高，所以它一直在
+  // 悄悄接管那两张交互图：把它们压到 96px，还把摘要整个隐掉 —— 而摘要里正写着
+  // "drag across to..." 这句唯一的操作说明。手机上那两张图于是又小又没人告诉你能玩。
+  // 论文列表要紧凑，代表作要能被玩到，是两件事。
+  .pub:not(.pub--compact):not(.pub--featured) {
+    grid-template-columns: 96px 1fr;
+    gap: $s2;
+    margin-bottom: $s3;
+
+    .pub__media img, .pub__media video, .pub__media .slider { width: 96px; }
+    .pub__title { font-size: 15px; }
+    .pub__excerpt { display: none; }   // 手机上摘要是噪音，标题+venue 足够定位
+  }
+
+  .selected__grid { grid-template-columns: 1fr; gap: $s4; }
+
+  .news__list {
+    &::before { left: 51px; }
+    li {
+      grid-template-columns: 44px 1fr;
+      gap: $s3;
+      &::before { left: 47px; }
+    }
+    p { font-size: 15px; }
+  }
+  .news__more { margin-left: 68px; }
+
+  .cvo__grid { grid-template-columns: repeat(3, 1fr); }
+}
+
+// —————————————————————————— 可交互的可视化（Selected Work）
+// 两张卡都是活的：没人碰时自己播，鼠标上去就交出控制权。
+
+// 「可以玩」的提示。
+//
+// 之前是个带边框、会涨缩、还往外扩光圈的胶囊 —— 像通知角标，很廉价，
+// 和这一页"做减法"的调性完全相反。
+//
+// 现在：没有胶囊，没有边框，没有涨缩。只有文字、一个轻跳的点，
+// 以及文字后面一层没有硬边的柔光在缓缓明灭。呼吸感来自光，不来自框。
+.selected__note {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  margin: -#{$s2} 0 $s3;
+
+  font-family: $sans;
+  font-size: 14px;
+  font-weight: 500;
+  color: $accent;
+
+  // 背后的柔光：大范围、无边界，只是纸面上亮了一块
+  &::after {
+    content: '';
+    position: absolute;
+    inset: -14px -22px;
+    z-index: -1;
+    border-radius: 100px;
+    background: radial-gradient(ellipse at center,
+      rgba($accent, .15) 0%,
+      rgba($accent, .07) 45%,
+      transparent 72%);
+    animation: note-glow 2.1s ease-in-out infinite;
+  }
+
+  // 指示灯：慢一拍，像脉搏
+  &::before {
+    content: '';
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: $accent;
+    animation: note-dot 2.1s ease-in-out infinite;
+  }
+}
+
+// 更快、幅度更大 —— 但仍然只是"光在明灭"，没有硬边、没有涨缩。
+// 优雅不等于微弱：微弱只是让人看不见。
+@keyframes note-glow {
+  0%, 100% { opacity: .22; }
+  50%      { opacity: 1; }
+}
+
+@keyframes note-dot {
+  0%, 100% { opacity: .3;  transform: scale(.7); }
+  50%      { opacity: 1;   transform: scale(1.08); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .selected__note::after,
+  .selected__note::before { animation: none; }
 }
 
 
-// Settled on moving the import of syntax highlighting to the bottom of the CSS
-// ... Otherwise it really bloats up the top of the CSS file and makes it difficult to find the start
-//@import "highlights";
-//@import "svg-icons";
+.scrub {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1;
+  margin: 0;
+  border-radius: 8px;
+  overflow: hidden;
+  cursor: crosshair;
+  touch-action: none;          // 拖它的时候别让页面跟着滚
+  background: $rule;
+  box-shadow: inset 0 0 0 1px rgba($ink, .07);
+
+  &__l {
+    position: absolute;
+    inset: 0;
+    background-repeat: no-repeat;
+    will-change: opacity;
+  }
+
+  // 键盘用户得知道自己站在哪。只在键盘聚焦时出现 —— 鼠标点一下不该画个框。
+  &:focus { outline: none; }
+  &:focus-visible {
+    outline: 2px solid $accent;
+    outline-offset: 3px;
+  }
+
+  // 读数：默认半隐，碰了才完全亮起
+  // 读数 = 一根小进度条。纯显示，不接受点击 —— 交互在整张图上。
+  &__hud {
+    position: absolute;
+    left: 8px;
+    right: 8px;
+    bottom: 8px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 6px 8px;
+    border-radius: 6px;
+    background: rgba(18, 15, 12, .55);
+    backdrop-filter: blur(8px);
+    pointer-events: none;
+    opacity: .85;   // 平时就基本可见 —— 它本身就是这能玩的提示
+    transition: opacity .25s;
+  }
+
+  &__end {
+    font-family: $sans;
+    font-size: 8.5px;
+    font-weight: 600;
+    letter-spacing: .06em;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, .72);
+    white-space: nowrap;
+  }
+
+  &__track {
+    position: relative;
+    flex: 1;
+    height: 2px;
+    border-radius: 2px;
+    background: rgba(255, 255, 255, .28);
+  }
+
+  &__dot {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 7px;
+    height: 7px;
+    margin: -3.5px 0 0 -3.5px;
+    border-radius: 50%;
+    background: #fff;
+    box-shadow: 0 0 0 2px rgba(18, 15, 12, .35);
+    transition: left .12s ease-out, top .12s ease-out;
+  }
+
+  // 竖杆：光的高度。和底部横杆一对 —— ICCV demo 的两根滑杆。
+  &__vhud {
+    position: absolute;
+    top: 12px;
+    right: 8px;
+    bottom: 46px;
+    display: flex;
+    align-items: stretch;
+    padding: 7px 6px;
+    border-radius: 6px;
+    background: rgba(18, 15, 12, .55);
+    backdrop-filter: blur(8px);
+    pointer-events: none;
+    opacity: .85;
+    transition: opacity .25s;
+  }
+
+  &__vtrack {
+    position: relative;
+    width: 2px;
+    border-radius: 2px;
+    background: rgba(255, 255, 255, .28);
+  }
+
+  &.is-live .scrub__vhud { opacity: 1; }
+
+  // 双滑杆卡：杆子本身可以直接抓（各锁一根轴）
+  &--pad .scrub__hud { pointer-events: auto; cursor: ew-resize; }
+  &--pad .scrub__vhud { pointer-events: auto; cursor: ns-resize; }
+
+  // 提示不靠"贴一个标签在脸上"。
+  //
+  // 之前中间压着一个 MOVE 胶囊 —— 在 165px 的图上它盖住了人脸和 Kitty，
+  // 也就是最该被看见的东西。而且"可以交互"这件事已经被说了三遍
+  // （提示行、胶囊、卡片摘要）。说三遍不是更清楚，是更吵。
+  //
+  // 真正的提示是"它在动"：图自己在播、进度条上的点自己在走，
+  // 再加上十字准星的光标。所以进度条平时就基本可见，碰到才全亮。
+  &.is-live .scrub__hud { opacity: 1; }
+
+  // ——「可以玩」的提示 ——
+  //
+  // 上一版压在画面正中 —— 在 165px 的图上正好盖住人脸和 Kitty，
+  // 也就是这张图存在的理由。现在挪到顶部（那里是头发和盒盖，不重要），
+  // 做成磨砂玻璃：够轻，图能透出来。
+  //
+  // 动效是"呼吸 + 轻微漂移"，不是生硬的左右弹跳 —— 后者像广告横幅。
+  &__cue {
+    position: absolute;
+    top: 9px;
+    left: 50%;
+    z-index: 2;
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    padding: 4px 9px 4px 7px;
+    border-radius: 100px;
+    pointer-events: none;
+
+    color: rgba(255, 255, 255, .95);
+    background: rgba(24, 19, 15, .34);
+    backdrop-filter: blur(10px) saturate(1.2);
+    border: 1px solid rgba(255, 255, 255, .18);
+    box-shadow: 0 1px 10px rgba(0, 0, 0, .18);
+
+    animation: cue-float 3.2s ease-in-out infinite;
+    transition: opacity .4s ease, transform .4s ease;
+
+    b {
+      font-family: $sans;
+      font-size: 9px;
+      font-weight: 600;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+    }
+
+    svg { opacity: .8; }
+
+    // 碰过一次就淡出 —— 提示的使命完成了
+    &.is-gone {
+      opacity: 0;
+      transform: translateX(-50%) translateY(-4px) scale(.94);
+      animation: none;
+    }
+  }
+}
+
+// 呼吸 + 轻微左右漂移。幅度很小 —— 它在提示，不在表演。
+@keyframes cue-float {
+  0%, 100% { transform: translateX(-50%) translateX(-3px); opacity: .72; }
+  50%      { transform: translateX(-50%) translateX(3px);  opacity: 1; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .scrub__cue { animation: none; transform: translateX(-50%); }
+}
+
+@media (hover: none) {
+  .scrub { cursor: default; }
+}
+
+@media (max-width: 760px) {
+  .pub--featured {
+    grid-template-columns: 1fr;
+    gap: $s2;
+
+    .pub__title { font-size: 18px; }
+    // 摘要在手机上留着 —— 它带着那句唯一的操作说明（"drag across to…"）。
+    .pub__excerpt { display: block; font-size: 15px; }
+  }
+  .scrub { max-width: 260px; }
+  .scrub__hud { left: 8px; bottom: 8px; padding: 5px 9px; gap: 10px; }
+}

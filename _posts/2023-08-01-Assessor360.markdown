@@ -11,6 +11,4 @@ venue: "<strongvenue>NeurIPS'23</strongvenue>"
 arxiv: https://arxiv.org/abs/2305.10983
 website: https://github.com/TianheWu/Assessor360
 ---
-A blind 360° IQA model built on multi-sequence distortion modeling
-
-
+Assess 360° image quality the way a viewer actually explores the sphere
