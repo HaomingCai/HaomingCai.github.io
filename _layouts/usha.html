@@ -122,6 +122,13 @@
     ::selection{background:#ecc9a0;color:#211f1a}
     ::-moz-selection{background:#ecc9a0;color:#211f1a}
     a:focus-visible,button:focus-visible,[tabindex]:focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:3px}
+    /* 导航:跟着这一页的暖底走。style.scss 里那版是按干净版的 #faf8f3 调的，
+       直接搬过来会比页面偏冷,边界看得出来。 */
+    .nav{background:rgba(245,241,232,.82);border-bottom:1px solid rgba(36,33,29,.09)}
+    .nav__links a{color:#5d574b}
+    .nav__links a:hover{color:var(--accent-deep)}
+    .nav__cv{color:var(--accent-deep) !important}
+    .nav a{border-bottom:0}
     .page a{transition:color .15s ease,border-color .15s ease}
     /* 链接色:壁纸压在链接底下时 #b0503a 只有 3.9:1 —— 它在这个米底上本来就只剩
        4.30:1(连最初那版最淡的壁纸都压不住),换成配色里已有的深赤陶,4.84:1。
@@ -155,6 +162,17 @@
     常驻导航。页面 5000px+，原先没有任何导航，读者滑到底后无处可去、
     也无处可点 CV/邮箱。Sitzmann、Anthropic 都有。
   {%- endcomment -%}
+  <nav class="nav">
+    <div class="nav__inner">
+      <a class="nav__me" href="#top">Haoming Cai</a>
+      <div class="nav__links">
+        <a href="#work">Work</a>
+        <a href="#news">News</a>
+        <a href="#publications">Publications</a>
+        <a class="nav__cv" href="https://drive.google.com/file/d/1qady-8lu348j0o9xsiIKBTJ_2dnBntV9/view?usp=sharing">CV</a>
+      </div>
+    </div>
+  </nav>
   {%- comment -%} 左侧固定栏:插画名字 + 插画肖像 {%- endcomment -%}
   <div class="catscroll" id="catscroll" aria-hidden="true"></div>
   <div class="tracks" id="tracks" aria-hidden="true"></div>
