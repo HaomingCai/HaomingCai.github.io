@@ -9,11 +9,27 @@
 
 ```bash
 export PATH="/opt/homebrew/opt/ruby@3.4/bin:$PATH"   # 必须。系统自带 Ruby 2.6 太老，跑不动
+bundle install                                       # 只有第一次 / 换机器时需要
 bundle exec jekyll serve
 ```
 → http://localhost:4000/
 
 **第一行不能省。** 忘了它会得到一堆 bundler 版本错误。
+
+**全新机器还需要**（2026-08 实测顺序）：
+
+```bash
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+eval "$(/opt/homebrew/bin/brew shellenv)"            # 装完照它提示写进 ~/.zprofile
+brew install ruby@3.4                                # 别装 ruby（默认已是 4.x，Jekyll 没验证过）
+```
+
+> `Gemfile` / `Gemfile.lock` 现在**在版本库里**。它们曾经被 `.gitignore` 忽略且磁盘上也不存在 ——
+> 后果是上面这条 `bundle exec jekyll serve` 对任何 clone 这个仓库的人（包括换了新机器的自己）
+> 都**根本跑不起来**，因为没有任何东西可以 resolve。别再把它们加回 `.gitignore`。
+>
+> `_config.yml` 的 `exclude` 里仍然列着这两个文件 —— 那是"不要发布到站点上"，
+> 和"要不要进版本库"是两件事，别混淆。
 
 ---
 
@@ -21,7 +37,8 @@ bundle exec jekyll serve
 
 | 文件 | 管什么 |
 |---|---|
-| `_layouts/default.html` | 整个页面结构 + 所有 JS（光影、交互控件、News 折叠、作者链接） |
+| `_layouts/usha.html` | **整个页面结构 + 所有 JS**（光影、交互控件、News 折叠、作者链接）。改页面改这个 |
+| `_layouts/default.html` | ⚠️ **死文件，没有任何页面在用它**。`index.html` / `usha.html` / `_layouts/post.html` 全部 `layout: usha`。它是 usha 的旧副本，改它不会有任何效果 |
 | `_includes/publication.html` | 单条论文。三种形态：`featured`（大卡）/ `compact`（纯文字行）/ 默认（带缩略图） |
 | `style.scss` | 全部样式。顶部四行是配色开关 |
 | `_posts/*.markdown` | 论文数据。**加论文只需新建一个文件，不用碰代码** |
@@ -54,16 +71,35 @@ links:                        # 可选，任意多个额外链接
 一句话摘要（祈使句，说"这让你能做什么"）
 ```
 
-分区由 `categories` 决定。**只有 `SR` 分区不显示缩略图**（在 `default.html` 的 `compact_cats` 里改）。
+分区由 `categories` 决定。**只有 `SR` 分区不显示缩略图**（在 `usha.html` 的 `compact_cats` 里改）。
 
 ### 加一条 News
-`default.html` 的 `.news__list` 里加一个 `<li>`。**`<time datetime="2026-01">` 必须写** —— 一年前的条目靠它自动折叠。
+`usha.html` 的 `.news__list` 里加一个 `<li>`。**`<time datetime="2026-01">` 必须写** —— 一年前的条目靠它自动折叠。
 
 ### 换 Selected Work 的两篇
-`default.html` 里改这一行（匹配 title 的片段）：
+`usha.html` 里改这一行（匹配 title 的片段）：
 ```liquid
 {%- assign featured = "Parametric Shadow Control,Large-Scale Light Field Synthesis" | split: "," -%}
 ```
+
+### 更新 CV
+
+CV 自托管在仓库根目录，线上固定地址是 **`https://www.hm-cai.com/cv.pdf`**。
+
+```bash
+cp /path/to/新的/cv.pdf ./cv.pdf     # 覆盖，不要改名
+git add cv.pdf && git commit -m "Update CV" && git push
+# ↓ 这步别忘，见 4.9
+# 去 Cloudflare 控制台 Purge Cache
+```
+
+顺手把两处 `Updated Aug 2026` 小字也改掉（`usha.html` 里搜 `cta__note`，共 2 处）。
+
+> **文件名必须永远是 `cv.pdf`。** 不要 `cv_v2.pdf`、不要 `cv_2026.pdf`、不要任何版本号或日期后缀。
+>
+> 这个 URL 会被写进求职申请表和邮件里。**一旦改名，之前所有发出去的链接立刻全废。**
+> 这正是当初抛弃 Google Drive 的原因 —— 它每次上传都换一个 file ID。
+> 加后缀等于把刚扔掉的问题重新捡回来。
 
 ### 补作者链接
 `_data/authors.yml` 里加 `"姓名": "链接"`。不用改任何代码。
@@ -164,6 +200,35 @@ ffmpeg -y -i in.gif -vf "scale=480:480:flags=lanczos,setsar=1:1,fps=25" \
 Chrome 的实现很保守，遇到"末行只剩一个词"直接放弃。
 **短文本用 `text-wrap: balance`**（6 行以内有效）。当前 `.pub__title` / `.pub__excerpt` / `.news__list p` / `.cvo__note` 都用的 balance。
 
+### 4.9 站点在 Cloudflare 后面 —— 静态文件推上去了也未必看得到
+
+**推送成功 ≠ 上线。** `www.hm-cai.com` 走的是 Cloudflare，它会缓存静态资源（PDF / 图片 / CSS），
+`max-age=14400`，也就是**最长 4 小时**。
+
+HTML 页面是 `cf-cache-status: DYNAMIC`（不缓存），所以**改页面不受影响**，推完就能看到。
+**受影响的是 `cv.pdf` 这类静态文件。**
+
+2026-08-10 真实踩坑：`cv.pdf` 第一次上线时，Cloudflare 在文件还没部署完的窗口里请求了一次，
+把那个 **404 缓存了下来**。结果 GitHub Pages 那边文件完全正常，但线上访问：
+
+```
+https://www.hm-cai.com/cv.pdf          →  404   (cf-cache-status: HIT)
+https://www.hm-cai.com/cv.pdf?x=123    →  200   (cf-cache-status: MISS，源站是好的)
+```
+
+**诊断方法** —— 带个随机查询参数再请求一次，绕开缓存键：
+
+```bash
+curl -sSI https://www.hm-cai.com/cv.pdf              # 看 cf-cache-status 和 age
+curl -sSI "https://www.hm-cai.com/cv.pdf?x=$RANDOM"  # 这个是 200 就说明源站没问题，是缓存的锅
+```
+
+两者不一致 → 就是缓存。**解法：Cloudflare 控制台 → 域名 → Caching → Configuration → Purge Everything。**
+清完约 10 秒内生效。
+
+**每次更新 `cv.pdf` 之后都要清一次**，否则最多 4 小时内别人下到的还是旧版 CV ——
+而且这种失败是静默的：你自己浏览器可能有本地缓存，看着"是新的"，别人看到的却是旧的。
+
 ---
 
 ## 5. 每次改完，跑这些检查
@@ -195,7 +260,7 @@ lighthouse http://localhost:4000/ --preset=desktop --view
    - 其余：Hongtao Wu、Xuequan Lu、Jing Xiao、Yinqiang Zheng、Chenyu Dong、Chun Yuan、Ruofan Zhang、Xiaoxing Ye
 
 2. **GoatCounter 访客统计**（替代已删的 ClustrMaps）
-   去 goatcounter.com 注册拿一个站点名，然后在 `default.html` 的 `<head>` 加：
+   去 goatcounter.com 注册拿一个站点名，然后在 `usha.html` 的 `<head>` 加：
    ```html
    <script data-goatcounter="https://你的站点名.goatcounter.com/count"
            async src="//gc.zgo.at/count.js"></script>
@@ -209,12 +274,33 @@ lighthouse http://localhost:4000/ --preset=desktop --view
 
 ## 7. 上线
 
-**远端已被移除**（`git remote remove origin`），所以现在**物理上推不出去**。
-确认满意后：
+**远端现在是接着的**（`origin` → `git@github.com:HaomingCai/HaomingCai.github.io.git`），
+`git push` 会**直接改动线上真站**。推之前先本地看一眼。
 
 ```bash
-git remote add origin git@github.com:HaomingCai/HaomingCai.github.io.git
 git push origin master
 ```
 
-> 移除远端不是多此一举：这个目录是本地副本，但它的 remote 原本**直接指向线上真站**。规则会被违反，物理限制不会。
+推完到真正上线约 **2 分钟**（2026-08-10 实测 105 秒）。判断是否上线，别刷浏览器 —— 浏览器有本地缓存，
+直接查线上：
+
+```bash
+curl -s -o /dev/null -w "%{http_code}\n" "https://www.hm-cai.com/cv.pdf?x=$RANDOM"
+```
+
+**如果动了 `cv.pdf` 之类的静态文件，推完还要去 Cloudflare 清缓存 —— 见 4.9。**
+
+> 这份文档早期版本写的是"远端已被移除（`git remote remove origin`），物理上推不出去"，
+> 理由是"规则会被违反，物理限制不会"。那个保护**现在已经不在了**，remote 是通的。
+> 想恢复那种保护就 `git remote remove origin`，但记住：恢复之后这一节的命令也要跟着改回去。
+
+### 提交身份
+
+这个仓库的 git 身份已写进本地配置（`HaomingCai <helmut.choy@gmail.com>`）。
+不设的话，git 会自动推断成 `haomingcai@<机器名>.local` —— **提交能成功，但 GitHub 认不出是你**，
+贡献记录不会计入你的账号。换新机器 clone 之后记得设：
+
+```bash
+git config --local user.name "HaomingCai"
+git config --local user.email "helmut.choy@gmail.com"
+```
