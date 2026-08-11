@@ -6,8 +6,11 @@ _site
 .jekyll-metadata
 .bundle
 .sass-cache
-Gemfile
-Gemfile.lock
+# Gemfile / Gemfile.lock 原先在这里被忽略 —— 后果是 clone 下来的人（包括换了新机器的
+# 自己）执行 MAINTENANCE.md 里的 `bundle exec jekyll serve` 时，根本没有东西可以 resolve，
+# 本地压根跑不起来。现在提交它们，构建环境才是可复现的。
+# 注意 _config.yml 的 exclude 里仍然列着这两个文件 —— 那是"不要发布到站点上"，
+# 和"要不要进版本库"是两件事，别混淆。
 node_modules
 package.json
 favicon.ico

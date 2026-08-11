@@ -169,7 +169,7 @@
         <a href="#work">Work</a>
         <a href="#news">News</a>
         <a href="#publications">Publications</a>
-        <a class="nav__cv" href="https://drive.google.com/file/d/1qady-8lu348j0o9xsiIKBTJ_2dnBntV9/view?usp=sharing">CV</a>
+        <a class="nav__cv" href="/cv.pdf">CV</a>
       </div>
     </div>
   </nav>
@@ -276,10 +276,20 @@
         </p>
 
         {%- comment -%} CV 是求职页面的主转化动作，给它主按钮的分量。 {%- endcomment -%}
+        {%- comment -%}
+          CV 自托管在 /cv.pdf —— 这个 URL 会被写进求职申请表和邮件里，所以文件名
+          永远固定，每次更新覆盖同一个文件。不要加版本号或日期后缀。
+        {%- endcomment -%}
         <div class="cta">
-          <a class="cta__primary" href="https://drive.google.com/file/d/1qady-8lu348j0o9xsiIKBTJ_2dnBntV9/view?usp=sharing">Curriculum Vitae</a>
+          <a class="cta__primary" href="/cv.pdf">Curriculum Vitae</a>
           <a class="cta__link" href="mailto:hmcai@umd.edu">hmcai@umd.edu</a>
           <a class="cta__link" href="https://scholar.google.com/citations?hl=en&user=Jzs37TkAAAAJ">Google Scholar</a>
+          {%- comment -%}
+            必须是 span，不能是 p —— `.hero__lede p` 会 @extend %swept（那套跟鼠标走的
+            渐变扫光：color:transparent + background-clip:text），权重 0,1,1 压过
+            .cta__note 的 0,1,0，会把这行小字变成 19px 的透明渐变字。
+          {%- endcomment -%}
+          <span class="cta__note">Updated Aug 2026</span>
         </div>
       </div>
     </header>
@@ -459,9 +469,10 @@
     <footer class="foot">
       <p class="foot__ask">Interested in the work, or just want to talk?</p>
       <div class="cta">
-        <a class="cta__primary" href="https://drive.google.com/file/d/1qady-8lu348j0o9xsiIKBTJ_2dnBntV9/view?usp=sharing">Curriculum Vitae</a>
+        <a class="cta__primary" href="/cv.pdf">Curriculum Vitae</a>
         <a class="cta__link" href="mailto:hmcai@umd.edu">hmcai@umd.edu</a>
         <a class="cta__link" href="https://scholar.google.com/citations?hl=en&user=Jzs37TkAAAAJ">Google Scholar</a>
+        <span class="cta__note">Updated Aug 2026</span>
       </div>
       <p class="foot__aside">Off-hours: <a href="https://www.flickr.com/photos/201416778@N04/">photography</a>.</p>
     </footer>

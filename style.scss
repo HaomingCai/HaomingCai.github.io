@@ -365,6 +365,17 @@ img, video { max-width: 100%; display: block; }
   }
 
   &__primary { font-weight: 600; }
+
+  // CV 现在自托管在固定 URL /cv.pdf 上 —— 文件名永不变，所以"这份是不是最新的"
+  // 没法靠 URL 判断。标一行更新时间，读者才知道手里这份新不新。
+  // flex-basis:100% 让它在按钮行下面另起一行，而不是挤在 Scholar 后面。
+  &__note {
+    flex-basis: 100%;
+    font-family: $sans;
+    font-size: 13px;
+    color: rgba($ink, .55);
+    margin: 0;
+  }
 }
 
 // —————————————————————————— 区块标题

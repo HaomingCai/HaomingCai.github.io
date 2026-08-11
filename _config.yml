@@ -42,7 +42,9 @@ google_analytics:
 
 # Your website URL (e.g. http://barryclark.github.io or http://www.barryclark.co)
 # Used for Sitemap.xml and your RSS feed
-url: "https://haomingcai.github.io/" # the base hostname & protocol for your site
+url: "https://www.hm-cai.com" # the base hostname & protocol for your site
+# 这里原先写的是 https://haomingcai.github.io/，和 CNAME 里的 www.hm-cai.com 不符，
+# 导致 sitemap.xml 报给搜索引擎的是旧域名。改成实际域名。（尾部不加斜杠是 Jekyll 惯例）
 
 # If you're hosting your site at a Project repository on GitHub pages
 # (http://yourusername.github.io/repository-name)
