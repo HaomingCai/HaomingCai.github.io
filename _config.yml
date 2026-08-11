@@ -88,6 +88,15 @@ exclude:
   - Gemfile.lock
   - LICENSE
   - README.md
+  # 内部文档。没有前置 front matter 的 .md 会被 Jekyll 当静态文件原样发布 ——
+  # 这两个此前一直挂在 https://www.hm-cai.com/MAINTENANCE.md 上公开可读。
+  # 里面有 git 邮箱、待办清单、以及"哪些颜色卡在 WCAG 边缘 / 哪里会横向溢出"
+  # 这类站点弱点。不算机密，但这是写给自己看的，而读这个主页的人里有招聘方。
+  - MAINTENANCE.md
+  - REDESIGN_PLAN.md
+  # 同一类：设计迭代的评分和计划。v10_PLAN.md 尤其不适合公开 —— 它用第三人称
+  # 讨论"他喜欢的点"，读起来像一份对站主的内部评估。
+  - design_versions/
   - CNAME
   - command.txt
   - todo.txt
