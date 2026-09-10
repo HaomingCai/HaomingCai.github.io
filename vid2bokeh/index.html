@@ -1,548 +1,504 @@
-<!--
-  Nerfies: Deformable Neural Radiance Fields Project Page
-  Author: Keunhong Park et al.
-  This HTML file presents the project, paper, video, code, and related resources.
-  Main sections:
-    - Navigation bar with research links
-    - Hero section with project title, authors, and links
-    - Teaser video and subtitle
-    - Results carousel with example videos
-    - Abstract describing the method
-    - Paper video
-    - Visual Effects and Matting demos
-    - Animation section with interpolation and re-rendering demos
-    - Related links to concurrent work
-    - BibTeX citation
-    - Footer with license and source code info
--->
 <!DOCTYPE html>
-<html>
-
+<html lang="en">
 <head>
-  <!-- Meta tags and page title -->
   <meta charset="utf-8">
-  <meta name="description"
-    content="Deformable Neural Radiance Fields creates free-viewpoint portraits (nerfies) from casually captured videos.">
-  <meta name="keywords" content="Nerfies, D-NeRF, NeRF">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Vid2Bokeh</title>
-
-  <!-- Global site tag (gtag.js) - Google Analytics -->
-  <script>
-    window.dataLayer = window.dataLayer || [];
-
-    function gtag() {
-      dataLayer.push(arguments);
-    }
-
-    gtag('js', new Date());
-
-    gtag('config', 'G-PYVRSFMDRL');
-  </script>
-
-  <!-- External CSS and JS libraries -->
-  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro" rel="stylesheet">
-
-  <link rel="stylesheet" href="./static/css/bulma.min.css">
-  <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
-  <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
-  <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
-  <link rel="stylesheet" href="./static/css/index.css">
+  <title>Vid2Bokeh — Large-Scale Light Field Synthesis from Videos</title>
+  <meta name="description" content="Vid2Bokeh reconstructs 25x25 light fields from casual videos with feed-forward 3D, rendering geometrically faithful bokeh training data without depth estimation.">
   <link rel="icon" href="./static/images/bokeh.png">
-
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-  <script defer src="./static/js/fontawesome.all.min.js"></script>
-  <script src="./static/js/bulma-carousel.min.js"></script>
-  <script src="./static/js/bulma-slider.min.js"></script>
-  <script src="./static/js/index.js"></script>
-  <!-- 新增：我们的交互脚本 -->
-  <script src="./static/js/CVPR_Mine_DataGen_Bokeh.js"></script>
-  <!-- Our Method Playground 交互 -->
-  <script src="./static/js/CVPR_Mine_OurMethod_Playground.js"></script>
-  <!-- Data Capture Compare 交互 -->
-  <script src="./static/js/CVPR_Mine_DataCapture_Compare.js"></script>
+  <link rel="stylesheet" href="./static/css/v2b.css">
 </head>
-
 <body>
 
-  <!-- Hero section: Project title -->
-  <section class="hero">
-    <div class="hero-body">
-      <div class="container is-max-desktop">
-        <div class="columns is-centered">
-          <div class="column has-text-centered">
-            <h1 class="title is-3 publication-title" style="line-height:1.2;">
-              Large-Scale Light Field Synthesis from Videos Enables Geometrically Consistent Bokeh Editing
-            </h1>
-            <!-- Navigation bar with research links -->
-            <nav class="navbar" role="navigation" aria-label="main navigation">
-              <div class="navbar-brand">
-                <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
-                  <span aria-hidden="true"></span>
-                  <span aria-hidden="true"></span>
-                  <span aria-hidden="true"></span>
-                </a>
-              </div>
-              <div class="navbar-menu">
-                <div class="navbar-start" style="flex-grow: 1; justify-content: center;">
-                  <a class="navbar-item" href="#DataCaptureCompare">Vid2Bokeh Advantage</a>
-                  <a class="navbar-item" href="#VisualEffects">Vid2Bokeh Pipeline</a>
-                  <a class="navbar-item" href="#OurMethodDemo">Real-World Editing</a>
-                </div>
-              </div>
-          </div>
-          </nav>
+<!-- ============================ HEADER ============================ -->
+<div class="header-wrapper">
+  <div class="header-container">
+
+    <div class="header-top">
+      <span class="venue-badge">ECCV 2026</span>
+      <h1>Large-Scale Light Field Synthesis from Videos</h1>
+      <p class="subtitle">Enables Geometrically Consistent Bokeh Editing</p>
+    </div>
+
+    <div class="header-grid">
+    <div class="header-content">
+
+      <p class="authors">
+        <a href="https://www.hm-cai.com/">Haoming Cai</a><sup>1,†</sup> &nbsp;
+        <a href="https://ztzhang.info/">Zhoutong Zhang</a><sup>2,†</sup> &nbsp;
+        <a href="https://www.cs.umd.edu/~metzler/">Christopher Metzler</a><sup>1</sup> &nbsp;
+        <a href="https://shumianxin.github.io/">Shumian Xin</a><sup>2</sup>
+      </p>
+      <p class="affil">
+        <sup>1</sup>University of Maryland &nbsp;·&nbsp;
+        <sup>2</sup>Adobe &nbsp;·&nbsp;
+        <sup>†</sup>Equal contribution
+      </p>
+
+      <p class="lede">
+        <span class="tldr-badge">TL;DR</span>
+        Bokeh training data is either hard to scale (hardware capture) or corrupted by estimated
+        depth (synthetic rendering). Our principle: render bokeh supervision from light fields
+        reconstructed out of casual video &mdash; faithful and scalable at once.
+      </p>
+
+      <div class="icon-container">
+        <div class="icon-item">
+          <svg viewBox="0 0 24 24"><path d="M3 7.5h11a1.5 1.5 0 0 1 1.5 1.5v6a1.5 1.5 0 0 1-1.5 1.5H3A1.5 1.5 0 0 1 1.5 15V9A1.5 1.5 0 0 1 3 7.5Z"/><path d="m15.5 13 5 3V8l-5 3"/><circle cx="5.6" cy="10.4" r="1"/></svg>
+          <div><strong>Easy bokeh data collection.</strong> Bokeh supervision is rendered from a light field synthesized by a feed-forward 3D model. <a href="#pipeline-detail">How it works</a></div>
+        </div>
+        <div class="icon-item">
+          <svg viewBox="0 0 24 24"><rect x="2.5" y="2.5" width="8" height="8" rx="1"/><rect x="13.5" y="2.5" width="8" height="8" rx="1"/><rect x="2.5" y="13.5" width="8" height="8" rx="1"/><rect x="13.5" y="13.5" width="8" height="8" rx="1"/><circle cx="12" cy="12" r="2.2"/></svg>
+          <div><strong>Geometrically faithful bokeh supervision, at 100K-scene scale.</strong> Every training sample is integrated from a dense 625-view grid, making it robust to reconstruction errors. <a href="#faithful">Is it faithful?</a></div>
+        </div>
+        <div class="icon-item">
+          <svg viewBox="0 0 24 24"><path d="M12 3.6c-4.9 0-8.9 3.8-8.9 8.4S7.1 20.4 12 20.4s8.9-3.8 8.9-8.4S16.9 3.6 12 3.6Z"/><circle cx="12" cy="12" r="3.2"/><path d="M19 6.5 15.2 9M5 6.5 8.8 9M12 20.4V15.2"/></svg>
+          <div><strong>Better data alone makes a better editor.</strong> A plain diffusion-model fine-tune with no depth branch, trained on Vid2Bokeh, stays geometrically consistent where depth-based editors fail. <a href="#results">See Results</a></div>
         </div>
       </div>
-    </div>
-    </div>
-  </section>
 
-  <!-- Teaser video and subtitle -->
-  <!-- <section class="hero teaser">
-  <div class="container is-max-desktop">
-    <div class="hero-body">
-      <video id="teaser" autoplay muted loop playsinline height="100%">
-        <source src="./static/videos/teaser.mp4"
-                type="video/mp4">
-      </video>
-      <h2 class="subtitle has-text-centered">
-        <span class="dnerf">Nerfies</span> turns selfie videos from your phone into
-        free-viewpoint
-        portraits.
-      </h2>
+      <div class="button-container">
+        <span class="btn is-muted">
+          <svg viewBox="0 0 384 512"><path d="M369.9 97.9 286 14C277 5 264.8-.1 252.1-.1H48C21.5 0 0 21.5 0 48v416c0 26.5 21.5 48 48 48h288c26.5 0 48-21.5 48-48V131.9c0-12.7-5.1-25-14.1-34zM332.1 128H256V51.9l76.1 76.1zM48 464V48h160v104c0 13.3 10.7 24 24 24h104v288H48z"/></svg>
+          Paper <span class="tag-soon">soon</span>
+        </span>
+        <span class="btn is-muted">
+          <svg viewBox="0 0 576 512"><path d="M0 128C0 92.7 28.7 64 64 64H320c35.3 0 64 28.7 64 64V384c0 35.3-28.7 64-64 64H64c-35.3 0-64-28.7-64-64V128zM559.1 99.8c10.4 5.6 16.9 16.4 16.9 28.2V384c0 11.8-6.5 22.6-16.9 28.2s-23 5-32.9-1.6l-96-64L416 337.1V320 192 174.9l14.2-9.5 96-64c9.8-6.5 22.4-7.2 32.9-1.6z"/></svg>
+          Video <span class="tag-soon">soon</span>
+        </span>
+        <span class="btn is-muted has-tip" data-tip="Under legal review">
+          <svg viewBox="0 0 448 512"><path d="M144 144v48h160v-48c0-44.2-35.8-80-80-80s-80 35.8-80 80zM80 192v-48C80 64.5 144.5 0 224 0s144 64.5 144 144v48h16c35.3 0 64 28.7 64 64v192c0 35.3-28.7 64-64 64H64c-35.3 0-64-28.7-64-64V256c0-35.3 28.7-64 64-64h16z"/></svg>
+          Resources
+        </span>
+      </div>
+
+    </div>
+
+    <div class="header-media">
+      <figure>
+        <video src="./static/media/header_kitty.mp4" autoplay muted loop playsinline preload="metadata"></video>
+        <figcaption>
+          Wide-aperture focus sweep through a <strong>transparent lid</strong> — rendered from a light
+          field reconstructed out of one casual video.
+        </figcaption>
+      </figure>
+    </div>
+    </div>
+
+  </div>
+</div>
+
+
+<!-- ============================ 导航 ============================ -->
+<nav class="nav">
+  <div class="nav-inner">
+    <span class="nav-brand">Vid2Bokeh</span>
+    <a href="#why">Motivation</a>
+    <a href="#pipeline-detail">Pipeline</a>
+    <a href="#dataset">Dataset</a>
+    <a href="#faithful">Data Validation</a>
+    <a href="#results">Editing Result</a>
+    <a href="#limits">Limitations</a>
+    <a href="#cite">BibTeX</a>
+  </div>
+</nav>
+
+<!-- ============================ GALLERY: 三步 ============================ -->
+<!-- ============================ 正文 ============================ -->
+
+  <!-- ─────────── 为什么深度会失败 ─────────── -->
+<section id="why" class="band band-b">
+  <div class="band-inner">
+    <div class="roadmap"><span class="rm-step current">1&thinsp;&middot;&thinsp;Motivation</span><span class="rm-step">2&thinsp;&middot;&thinsp;Pipeline</span><span class="rm-step">3&thinsp;&middot;&thinsp;Dataset</span><span class="rm-step">4&thinsp;&middot;&thinsp;Data Validation</span><span class="rm-step">5&thinsp;&middot;&thinsp;Editing Result</span></div>
+    <h2>Where depth-based bokeh breaks</h2>
+
+    <p class="lead">
+      Bokeh editors consistently fail on complex geometry &mdash; reflections, thin structures &mdash;
+      exactly where depth estimation struggles. The cause is the training data: captured datasets are
+      accurate but non-scalable; synthetic ones scale but render labels through estimated depth,
+      inheriting its errors.
+    </p>
+
+    <figure class="fig plain">
+      <img src="./static/figures/107_Main_00_Teaser_02_A.jpg" alt="">
+      <figcaption>Depth estimation fails on reflective and see-through surfaces, and the errors pass straight into the rendered bokeh.</figcaption>
+    </figure>
+
+    <div class="callout">
+      <p><b>Claim</b> The bottleneck is data, not architecture: retraining BokehDiff on Vid2Bokeh,
+         architecture unchanged, improves it across the board.</p>
     </div>
   </div>
-</section> -->
+</section>
 
+  <!-- ─────────── Pipeline ─────────── -->
+<section id="pipeline-detail" class="band">
+  <div class="band-inner">
+    <div class="roadmap"><span class="rm-step done">1&thinsp;&middot;&thinsp;Motivation</span><span class="rm-step current">2&thinsp;&middot;&thinsp;Pipeline</span><span class="rm-step">3&thinsp;&middot;&thinsp;Dataset</span><span class="rm-step">4&thinsp;&middot;&thinsp;Data Validation</span><span class="rm-step">5&thinsp;&middot;&thinsp;Editing Result</span></div>
+    <h2>The Vid2Bokeh Data Pipeline</h2>
 
+    <p class="chain">Casual video &rarr; 25&times;25 light field &rarr; bokeh at any focus and aperture.
+    All three clips below come from the same handheld video.</p>
 
+    <div class="steps">
 
+    <div class="step">
+      <div class="step-head"><span class="step-num">01</span><span class="step-name">Casual video</span></div>
+      <video src="./static/media/step1_video.mp4" autoplay muted loop playsinline preload="metadata"></video>
+      <p class="step-cap">A handheld walk-around on an ordinary camera. <strong>No rig, no light-field camera, no per-focus DSLR capture.</strong></p>
+    </div>
 
+    <div class="step">
+      <div class="step-head"><span class="step-num">02</span><span class="step-name">25&times;25 light field</span></div>
+      <video src="./static/media/step2_lightfield.mp4" autoplay muted loop playsinline preload="metadata"></video>
+      <p class="step-cap">Feed-forward 3D synthesizes 625 sub-aperture views in one pass — <strong>under 30&nbsp;s on a single A100.</strong></p>
+    </div>
 
+    <div class="step">
+      <div class="step-head"><span class="step-num">03</span><span class="step-name">Bokeh on the fly</span></div>
+      <video src="./static/media/step3_bokeh.mp4" autoplay muted loop playsinline preload="metadata"></video>
+      <p class="step-cap">Integrating over the light field gives any focus and aperture &mdash; <strong>occlusion correct, no depth map involved.</strong></p>
+    </div>
 
+  </div>
 
+    <p class="lead">
+      A feed-forward 3D model (LaCT) lifts each clip into a 25&times;25 light field around selected
+      key frames; bokeh pairs render directly from it &mdash; no depth map anywhere in label generation.
+    </p>
 
+    <figure class="fig">
+      <img src="./static/figures/Fig_Main_02_Data_Gen_Pipeline.jpg" alt="">
+      <figcaption><b>The data generation pipeline.</b> A single video becomes a dense 25&times;25 light field; bokeh renders on the fly at arbitrary focal plane &kappa; and aperture radius <em>a</em>, giving supervision pairs (&kappa;<sub>1</sub>, a<sub>1</sub>) &rarr; (&kappa;<sub>1</sub>+&Delta;&kappa;, a<sub>1</sub>+&Delta;a).</figcaption>
+    </figure>
 
+    <h3>Try it: render bokeh at any (&kappa;, <em>a</em>)</h3>
+    <div class="demo">
+      <div class="demo-hint">
+        <svg viewBox="0 0 512 512"><path d="M256 512A256 256 0 1 0 256 0a256 256 0 1 0 0 512zM216 336h24V272H216c-13.3 0-24-10.7-24-24s10.7-24 24-24h48c13.3 0 24 10.7 24 24v88h8c13.3 0 24 10.7 24 24s-10.7 24-24 24H216c-13.3 0-24-10.7-24-24s10.7-24 24-24zm40-208a32 32 0 1 1 0 64 32 32 0 1 1 0-64z"/></svg>
+        <span>Rendered by the dataset pipeline (not model outputs); previews are downscaled.</span>
+      </div>
 
+      <div style="text-align:center; margin-bottom:.6rem;">
+        <span class="bokehdata-image-title">Rendered from the light field of a single handheld clip</span>
+      </div>
+      <div id="bokehdata-viewer" style="text-align:center; color:#8b93a5; font-size:.9rem;">Loading&hellip;</div>
 
-
-
-
-
-
-
-
-
-  <!-- Data Acquisition Advantage: Depth-Based vs. Ours -->
-  <section class="section" id="DataCaptureCompare">
-    <div class="container is-max-desktop">
-      <div class="columns is-centered">
-        <div class="column is-full-width">
-
-          <h2 class="title is-3">Vid2Bokeh Data Acquisition Evaluation</h2>
-          <h3 class="title is-4">Advantage : <u>Scalable</u> and <u>Geometrically Faithful</u> Bokeh Synthesis on
-            Complex Scenes</h3>
-
-          <div class="content has-text-justified">
-            <p>
-              Our Vid2Bokeh pipeline synthesizes physically accurate bokeh directly from multi-view light fields,
-              avoiding the depth estimation errors that cause artifacts in depth-based rendering.
-              Drag the sliders below to compare a depth-based baseline against our method
-              on the same real-world capture, with independent control over aperture size and focal plane.
-            </p>
-          </div>
-
-          <!-- Row 1: Static reference images -->
-          <div class="columns is-vcentered interpolation-panel" style="margin-bottom: 1.5rem;">
-            <div class="column interpolation-video-column has-text-centered">
-              <div class="video-title">Selected Near All-in-Focus View from a Captured Video</div>
-              <img src="./static/Data_Capture/IMG_5253_BokehDiff/view_000/input/view_000.jpg"
-                class="interpolation-image" alt="Near AiF input" />
-            </div>
-            <div class="column interpolation-video-column has-text-centered">
-              <div class="video-title">Depth Map</div>
-              <img src="./static/Data_Capture/IMG_5253_BokehDiff/view_000/depth/view_000_inferno.png"
-                class="interpolation-image" alt="Depth map" />
-            </div>
-          </div>
-
-          <!-- Row 2: Interactive comparison -->
-          <div class="columns is-vcentered interpolation-panel">
-
-            <!-- Left: Ours (swapped to match Near AiF position) -->
-            <div class="column interpolation-video-column">
-              <div class="video-title has-text-centered">
-                <strong style="color:#fb03a0; font-size:1.05rem;">Ours (Vid2Bokeh, Depth-Free)</strong>
-              </div>
-              <img id="dc-ours-img" class="interpolation-image" alt="Our bokeh rendering" />
-
-              <div class="content" style="margin-top:1rem;">
-                <p>
-                  <strong>Aperture Radius (ap)</strong>
-                  <span style="float:right; font-size:0.85rem; color:#888;">ap = <span
-                      id="dc-ours-ap-label">06.00</span></span>
-                </p>
-                <div style="display:flex; align-items:center; width:100%;">
-                  <span style="width:50px; text-align:left; font-size:0.9rem; color:#666;">Small</span>
-                  <input class="slider is-fullwidth is-large is-warning" id="dc-ours-ap-slider" type="range" min="0"
-                    max="100" value="0" step="1" style="flex:1; margin:0 10px;">
-                  <span style="width:50px; text-align:right; font-size:0.9rem; color:#666;">Large</span>
-                </div>
-              </div>
-
-              <div class="content" style="margin-top:0.5rem;">
-                <p>
-                  <strong>Focal Plane (slope)</strong>
-                  <span style="float:right; font-size:0.85rem; color:#888;">slope = <span
-                      id="dc-ours-slope-label">+0.000</span></span>
-                </p>
-                <div style="display:flex; align-items:center; width:100%;">
-                  <span style="width:50px; text-align:left; font-size:0.9rem; color:#666;">Far</span>
-                  <input class="slider is-fullwidth is-large is-info" id="dc-ours-slope-slider" type="range" min="0"
-                    max="100" value="75" step="1" style="flex:1; margin:0 10px;">
-                  <span style="width:50px; text-align:right; font-size:0.9rem; color:#666;">Near</span>
-                </div>
-              </div>
-            </div>
-
-            <!-- Right: Depth-Based -->
-            <div class="column interpolation-video-column">
-              <div class="video-title has-text-centered">Depth-Based Rendering</div>
-              <img id="dc-depth-img" class="interpolation-image" alt="Depth-based bokeh" />
-
-              <div class="content" style="margin-top:1rem;">
-                <p>
-                  <strong>Aperture Radius (K)</strong>
-                  <span style="float:right; font-size:0.85rem; color:#888;">K = <span
-                      id="dc-depth-k-label">18.0</span></span>
-                </p>
-                <div style="display:flex; align-items:center; width:100%;">
-                  <span style="width:50px; text-align:left; font-size:0.9rem; color:#666;">Small</span>
-                  <input class="slider is-fullwidth is-large is-warning" id="dc-depth-k-slider" type="range" min="0"
-                    max="100" value="0" step="1" style="flex:1; margin:0 10px;">
-                  <span style="width:50px; text-align:right; font-size:0.9rem; color:#666;">Large</span>
-                </div>
-              </div>
-
-              <div class="content" style="margin-top:0.5rem;">
-                <p>
-                  <strong>Focal Plane (var)</strong>
-                  <span style="float:right; font-size:0.85rem; color:#888;">var = <span
-                      id="dc-depth-var-label">+0.000</span></span>
-                </p>
-                <div style="display:flex; align-items:center; width:100%;">
-                  <span style="width:50px; text-align:left; font-size:0.9rem; color:#666;">Far</span>
-                  <input class="slider is-fullwidth is-large is-info" id="dc-depth-var-slider" type="range" min="0"
-                    max="100" value="75" step="1" style="flex:1; margin:0 10px;">
-                  <span style="width:50px; text-align:right; font-size:0.9rem; color:#666;">Near</span>
-                </div>
-              </div>
-            </div>
-
-          </div>
-          <!-- /Row 2 -->
-
-          <br />
+      <div class="ctrl">
+        <div class="ctrl-head"><strong>Focal plane &kappa;</strong></div>
+        <div class="ctrl-row">
+          <span>Far</span>
+          <input class="is-info" id="bokehdata-focal-slider" step="1" min="0" max="100" value="50" type="range">
+          <span>Near</span>
+        </div>
+      </div>
+      <div class="ctrl">
+        <div class="ctrl-head"><strong>Aperture radius <em>a</em></strong></div>
+        <div class="ctrl-row">
+          <span>Small</span>
+          <input class="is-warning" id="bokehdata-aperture-slider" step="1" min="0" max="100" value="50" type="range">
+          <span>Large</span>
         </div>
       </div>
     </div>
-  </section>
-  <!-- /Data Acquisition Advantage -->
+  </div>
+</section>
 
+  <!-- ─────────── Dataset ─────────── -->
+<section id="dataset" class="band band-b">
+  <div class="band-inner">
+    <div class="roadmap"><span class="rm-step done">1&thinsp;&middot;&thinsp;Motivation</span><span class="rm-step done">2&thinsp;&middot;&thinsp;Pipeline</span><span class="rm-step current">3&thinsp;&middot;&thinsp;Dataset</span><span class="rm-step">4&thinsp;&middot;&thinsp;Data Validation</span><span class="rm-step">5&thinsp;&middot;&thinsp;Editing Result</span></div>
+    <h2>The Vid2Bokeh Dataset</h2>
 
-  <!-- Visual Effects, Matting, and Animation demos -->
-  <section class="section" id="VisualEffects">
-    <div class="container is-max-desktop">
+    <p class="lead">
+      Built on DL3DV: several key frames per video each yield a 25&times;25 light field &mdash; about
+      10K videos become 100K+ light fields, with continuous (&kappa;, <em>a</em>) sampling.
+    </p>
 
-      <!-- Bokeh Data Sample -->
-      <div class="columns is-centered" id="BokehData">
-        <div class="column is-full-width">
-          <h2 class="title is-3">Vid2Bokeh Full Pipeline</h2>
-          <h3 class="title is-4">Bokeh Synthesis from Light Field Reconstrcuted from Video</h3>
+    <div class="tbl-wrap">
+      <table class="paper-tbl">
+        <thead>
+          <tr>
+            <th rowspan="2">Method</th>
+            <th colspan="2">Editing Space</th>
+            <th colspan="2">Training Dataset</th>
+            <th colspan="3">Data Generation</th>
+          </tr>
+          <tr>
+            <th>Focus</th><th>DoF</th><th>Name</th><th>Scenes</th>
+            <th>Core Philosophy</th><th>Depth-Est-Free</th><th>Scalable</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>DC&sup2;</td><td class="c">&#10003;</td><td class="c">&#10003;</td><td>&ndash;</td><td>100</td><td>Physical Capture (Multi-Cam)</td><td class="c"></td><td class="c"></td></tr>
+          <tr><td>Tedla et&nbsp;al.</td><td class="c">&#10003;</td><td class="c"></td><td>Focal Stack</td><td>1,637</td><td>Physical Capture (Multi-Cam)</td><td class="c y">&#10003;</td><td class="c"></td></tr>
+          <tr><td>DPDNet</td><td class="c"></td><td class="c">&uarr;</td><td>DPDD</td><td>500</td><td>Physical Capture (Multi-Cam)</td><td class="c y">&#10003;</td><td class="c"></td></tr>
+          <tr><td>AiFNet</td><td class="c"></td><td class="c">&uarr;</td><td>LFDOF</td><td>100</td><td>Physical Capture (Light Field)</td><td class="c y">&#10003;</td><td class="c"></td></tr>
+          <tr><td>Bokehlicious</td><td class="c"></td><td class="c">&darr;</td><td>RealBokeh</td><td>4.4k</td><td>Physical Capture</td><td class="c y">&#10003;</td><td class="c"></td></tr>
+          <tr><td>RVR-LAAF</td><td class="c">&#10003;</td><td class="c">&darr;</td><td>Aperture</td><td>2,942</td><td>Physical Capture</td><td class="c y">&#10003;</td><td class="c"></td></tr>
+          <tr class="grp-end"><td>PyNET</td><td class="c"></td><td class="c">&darr;</td><td>EBB!</td><td>5k</td><td>Physical Capture</td><td class="c y">&#10003;</td><td class="c"></td></tr>
+          <tr><td>BokehDiff</td><td class="c"></td><td class="c">&darr;</td><td>&ndash;</td><td>&ndash;</td><td>Compositional Synthesis</td><td class="c y">&#10003;</td><td class="c"></td></tr>
+          <tr class="grp-end"><td>BokehMe</td><td class="c"></td><td class="c">&darr;</td><td>&ndash;</td><td>150</td><td>Compositional Synthesis</td><td class="c y">&#10003;</td><td class="c"></td></tr>
+          <tr><td>DiffCamera</td><td class="c">&#10003;</td><td class="c">&#10003;</td><td>&ndash;</td><td>20k</td><td>Depth-based Hybrid Synthesis</td><td class="c"></td><td class="c y">&#10003;</td></tr>
+          <tr class="grp-end"><td>GenRefocus</td><td class="c">&#10003;</td><td class="c">&#10003;</td><td>&ndash;</td><td>&ndash;</td><td>Depth-based Hybrid Synthesis</td><td class="c"></td><td class="c y">&#10003;</td></tr>
+          <tr class="ours"><td>Vid2Bokeh (Ours)</td><td class="c">&#10003;</td><td class="c">&#10003;</td><td>Vid2Bokeh</td><td>100k</td><td>Synthetic Light Field from Video</td><td class="c y">&#10003;</td><td class="c y">&#10003;</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="tbl-cap"><b>Vid2Bokeh is the only pipeline that is simultaneously depth-estimation-free and scalable.</b>
+    &uarr;/&darr; in DoF: one-directional blur change; &#10003;: full bidirectional control supporting blurry inputs.</p>
 
-          <!-- <h3 class="title is-4">Interactive Exploration</h3> -->
-          <div class="content has-text-justified">
-            <p>
-              Use the sliders below to explore variations in focal plane and aperture radius. These bokeh samples are
-              directly generated from our Vid2Bokeh pipeline.
-            </p>
-          </div>
+    <figure class="fig">
+      <img src="./static/figures/Fig_Main_02_Data_Gen_Sample.jpg" alt="">
+      <figcaption>Rows shift &kappa;, columns grow <em>a</em>; any two cells form a supervision pair.</figcaption>
+    </figure>
+  </div>
+</section>
 
-          <div class="content has-text-centered" style="margin-top:-0.8rem; margin-bottom:1.2rem;">
-            <p style="color:#fb03a0; font-size:0.95rem;">
-              <strong>Note:</strong> Minor artifacts are visible due to video compression and the reduced resolution
-              used to keep the file size small.
-            </p>
-          </div>
+  <!-- ─────────── 数据可信吗 ─────────── -->
+<section id="faithful" class="band">
+  <div class="band-inner">
+    <div class="roadmap"><span class="rm-step done">1&thinsp;&middot;&thinsp;Motivation</span><span class="rm-step done">2&thinsp;&middot;&thinsp;Pipeline</span><span class="rm-step done">3&thinsp;&middot;&thinsp;Dataset</span><span class="rm-step current">4&thinsp;&middot;&thinsp;Data Validation</span><span class="rm-step">5&thinsp;&middot;&thinsp;Editing Result</span></div>
+    <h2>Data Validation</h2>
 
-          <!-- Interactive area -->
-          <div class="columns is-vcentered interpolation-panel">
-            <div class="column interpolation-video-column">
+    <p class="lead">
+      The light field is synthesized, so we validate the rendered bokeh directly &mdash; against
+      Blender path-traced ground truth, and side by side on real captures.
+    </p>
 
-              <!-- Video Pair: Scene 1 only -->
-              <div id="bokehdata-video-wrapper" style="margin-top: 1rem; margin-bottom: 1.5rem;">
-                <div id="bokehdata-video-scene1" style="display: block;">
-                  <div style="display: flex; justify-content: center; gap: 20px; flex-wrap: wrap;">
-                    <div style="text-align: center;">
-                      <div class="video-title">Step 1: Original Video</div>
-                      <video src="./static/DataGen_Bokeh/CityHall_h264.mp4" autoplay muted loop playsinline controls
-                        style="width: 420px; border-radius: 8px;"></video>
-                    </div>
-                    <div style="text-align: center;">
-                      <div class="video-title">Step 2: Synthesized Light Field at Selected View (row by row)</div>
-                      <video src="./static/DataGen_Bokeh/CityHall_LF_h264.mp4" autoplay muted loop playsinline controls
-                        style="width: 420px; border-radius: 8px;"></video>
-                    </div>
-                  </div>
-                </div>
-              </div>
+    <figure class="fig plain">
+      <img src="./static/figures/107_Main_02_OurBenefit_2cases.jpg" alt="">
+      <figcaption><b>A toy behind a transparent lid; cables in front of far text.</b> Depth collapses each to a single surface; light-field integration keeps the see-through structure.</figcaption>
+    </figure>
 
-              <!-- Image viewer title -->
-              <div class="content has-text-centered" style="margin-bottom: 0.5rem;">
-                <span class="bokehdata-image-title">
-                  Step 3: Bokeh images Rendered from Light Field
-                </span>
-              </div>
+    <figure class="fig plain">
+      <img src="./static/figures/107_Main_03_DatasetValid.jpg" alt="">
+      <figcaption><b>Against Blender path-traced ground truth,</b> bokeh from our synthesized light field closely matches the reference (quantitative table in the paper).</figcaption>
+    </figure>
 
-              <!-- Image viewer -->
-              <div id="bokehdata-viewer">Loading...</div>
+    <h3>Side by side on a real capture</h3>
+    <div class="demo">
+      <div class="demo-hint">
+        <svg viewBox="0 0 512 512"><path d="M256 512A256 256 0 1 0 256 0a256 256 0 1 0 0 512zM216 336h24V272H216c-13.3 0-24-10.7-24-24s10.7-24 24-24h48c13.3 0 24 10.7 24 24v88h8c13.3 0 24 10.7 24 24s-10.7 24-24 24H216c-13.3 0-24-10.7-24-24s10.7-24 24-24zm40-208a32 32 0 1 1 0 64 32 32 0 1 1 0-64z"/></svg>
+        <span>Different parameterizations on the two sides &mdash; match them by eye, not by number.</span>
+      </div>
 
-              <!-- Focal slider -->
-              <div class="content" style="margin-top: 1rem;">
-                <p><strong>Focal Plane</strong></p>
-                <div style="display:flex; align-items:center; width:100%;">
-                  <span style="width:50px; text-align:left; font-size:0.9rem; color:#666;">Far</span>
-                  <input class="slider is-fullwidth is-large is-info" id="bokehdata-focal-slider" step="1" min="0"
-                    max="100" value="50" type="range" style="flex:1; margin: 0 10px;">
-                  <span style="width:50px; text-align:right; font-size:0.9rem; color:#666;">Near</span>
-                </div>
-              </div>
-
-              <!-- Aperture slider -->
-              <div class="content" style="margin-top: 1rem;">
-                <p><strong>Aperture Radius</strong></p>
-                <div style="display:flex; align-items:center; width:100%;">
-                  <span style="width:50px; text-align:left; font-size:0.9rem; color:#666;">Small</span>
-                  <input class="slider is-fullwidth is-large is-warning" id="bokehdata-aperture-slider" step="1" min="0"
-                    max="100" value="50" type="range" style="flex:1; margin: 0 10px;">
-                  <span style="width:50px; text-align:right; font-size:0.9rem; color:#666;">Large</span>
-                </div>
-              </div>
-
-            </div>
-          </div>
-
-          <br />
+      <div class="panel-grid" style="margin-bottom:20px;">
+        <div class="panel">
+          <div class="video-title">Near all-in-focus view from the captured video</div>
+          <img src="./static/Data_Capture/IMG_5253_BokehDiff/view_000/input/view_000.jpg" class="interpolation-image" alt="Near AiF input">
+        </div>
+        <div class="panel">
+          <div class="video-title">Estimated depth map (DepthAnything&nbsp;V3)</div>
+          <img src="./static/Data_Capture/IMG_5253_BokehDiff/view_000/depth/view_000_inferno.png" class="interpolation-image" alt="Depth map">
         </div>
       </div>
-      <!--/ Bokeh Data Sample -->
 
+      <div class="panel-grid">
+        <div class="panel">
+          <div class="video-title"><span class="ours">Ours &mdash; light-field integration</span></div>
+          <img id="dc-ours-img" class="interpolation-image" alt="Our bokeh rendering">
+          <div class="ctrl">
+            <div class="ctrl-head"><strong>Aperture radius <em>a</em></strong><span class="ctrl-val">a = <span id="dc-ours-ap-label">06.00</span></span></div>
+            <div class="ctrl-row"><span>Small</span><input class="is-warning" id="dc-ours-ap-slider" type="range" min="0" max="100" value="0" step="1"><span>Large</span></div>
+          </div>
+          <div class="ctrl">
+            <div class="ctrl-head"><strong>Focal plane &kappa;</strong><span class="ctrl-val">&kappa; = <span id="dc-ours-slope-label">+0.000</span></span></div>
+            <div class="ctrl-row"><span>Far</span><input class="is-info" id="dc-ours-slope-slider" type="range" min="0" max="100" value="75" step="1"><span>Near</span></div>
+          </div>
+        </div>
+
+        <div class="panel">
+          <div class="video-title">BokehDiff &mdash; depth-based rendering</div>
+          <img id="dc-depth-img" class="interpolation-image" alt="Depth-based bokeh">
+          <div class="ctrl">
+            <div class="ctrl-head"><strong>Blur radius</strong><span class="ctrl-val">K = <span id="dc-depth-k-label">18.0</span></span></div>
+            <div class="ctrl-row"><span>Small</span><input class="is-warning" id="dc-depth-k-slider" type="range" min="0" max="100" value="0" step="1"><span>Large</span></div>
+          </div>
+          <div class="ctrl">
+            <div class="ctrl-head"><strong>Focal distance</strong><span class="ctrl-val">var = <span id="dc-depth-var-label">+0.000</span></span></div>
+            <div class="ctrl-row"><span>Far</span><input class="is-info" id="dc-depth-var-slider" type="range" min="0" max="100" value="75" step="1"><span>Near</span></div>
+          </div>
+        </div>
+      </div>
     </div>
-  </section>
+  </div>
+</section>
 
+  <!-- ─────────── Editing Results ─────────── -->
+<section id="results" class="band band-b">
+  <div class="band-inner">
+    <div class="roadmap"><span class="rm-step done">1&thinsp;&middot;&thinsp;Motivation</span><span class="rm-step done">2&thinsp;&middot;&thinsp;Pipeline</span><span class="rm-step done">3&thinsp;&middot;&thinsp;Dataset</span><span class="rm-step done">4&thinsp;&middot;&thinsp;Data Validation</span><span class="rm-step current">5&thinsp;&middot;&thinsp;Editing Result</span></div>
+    <h2>Editing Results</h2>
 
-  <!-- Our Method Playground (NEW) -->
-  <div class="columns is-centered" id="OurMethodDemo">
-    <div class="column is-full-width">
-      <!-- ⭐ 新增：统一控制尺寸的外壳 -->
+    <p class="lead">
+      A plain diffusion model fine-tuned on Vid2Bokeh. Input: one photograph plus offsets
+      (&Delta;&kappa;, &Delta;a); output: the re-rendered photograph at the new focus and aperture
+      &mdash; in either direction.
+    </p>
+
+    <h3>Against a depth-based baseline</h3>
+    <div class="demo">
+      <div style="max-width:420px; margin:0 auto 20px; text-align:center;">
+        <div class="video-title">Near all-in-focus input</div>
+        <img src="./static/Our_Res_Playground/Case_03_Sparse/images/input.jpg" class="interpolation-image" alt="Near AiF input">
+      </div>
+
+      <div class="panel-grid">
+        <div class="panel">
+          <div class="video-title">BokehDiff &mdash; depth-based</div>
+          <img id="cmp-bd-img" class="interpolation-image" alt="BokehDiff rendering">
+          <div class="ctrl">
+            <div class="ctrl-head"><strong>Blur radius</strong><span class="ctrl-val">K = <span id="cmp-bd-ap-label">8.0</span></span></div>
+            <div class="ctrl-row"><span>Small</span><input class="is-warning" id="cmp-bd-ap-slider" type="range" min="0" max="100" value="0" step="1"><span>Large</span></div>
+          </div>
+          <div class="ctrl">
+            <div class="ctrl-head"><strong>Focal distance</strong><span class="ctrl-val">var = <span id="cmp-bd-focal-label">0.00</span></span></div>
+            <div class="ctrl-row"><span>Far</span><input class="is-info" id="cmp-bd-focal-slider" type="range" min="0" max="100" value="50" step="1"><span>Near</span></div>
+          </div>
+        </div>
+
+        <div class="panel">
+          <div class="video-title"><span class="ours">Ours &mdash; trained on Vid2Bokeh</span></div>
+          <img id="ourmethod-compare-output-img" class="interpolation-image" alt="Our bokeh rendering">
+          <div class="ctrl">
+            <div class="ctrl-head"><strong>&Delta; Aperture radius</strong><span class="ctrl-val">&Delta;a = <span id="cmp-ours-ap-label">+0.00</span></span></div>
+            <div class="ctrl-row"><span>Small</span><input class="is-warning" id="ourmethod-compare-aperture-slider" type="range" min="0" max="100" value="50" step="1"><span>Large</span></div>
+          </div>
+          <div class="ctrl">
+            <div class="ctrl-head"><strong>&Delta; Focal plane</strong><span class="ctrl-val">&Delta;&kappa; = <span id="cmp-ours-focal-label">+0.00</span></span></div>
+            <div class="ctrl-row"><span>Far</span><input class="is-info" id="ourmethod-compare-focal-slider" type="range" min="0" max="100" value="50" step="1"><span>Near</span></div>
+          </div>
+        </div>
+      </div>
+      <p class="tbl-cap" style="margin-top:14px;">
+        Note the two sides are parameterized differently: ours takes <em>relative</em> offsets from the
+        input's own optical setting, the baseline takes <em>absolute</em> blur radius and focal distance.
+      </p>
+    </div>
+
+    <h3>Bidirectional joint focus&ndash;DoF editing</h3>
+    <div class="demo" id="OurMethodDemo">
       <div class="ourmethod-card">
-
-        <h2 class="title is-3">Bokeh Editing</h2>
-
-        <!-- ─── Subsection 1: Compare to BokehDiff ──────────────────────── -->
-        <h3 class="title is-4" style="margin-top: 1.5rem;">Compare to Depth-based Method</h3>
-
-        <div class="content has-text-justified">
-          <p>
-            Direct side-by-side comparison of our method against a depth-based baseline (BokehDiff).
-            Adjust aperture and focal plane independently on each panel to observe where depth
-            estimation errors cause artifacts, while our approach maintains geometrically faithful bokeh.
-          </p>
+        <div class="scene-buttons">
+          <button class="ourmethod-scene-button is-active is-info" data-scene="scene2">Scaffolding</button>
+          <button class="ourmethod-scene-button" data-scene="scene1">Chess set</button>
         </div>
 
-        <!-- Row 1: Near AiF centered -->
-        <div class="columns is-centered interpolation-panel" style="margin-bottom: 1.5rem;">
-          <div class="column is-half has-text-centered">
-            <div class="video-title">Near All-in-Focus Input</div>
-            <img src="./static/Our_Res_Playground/Case_03_Sparse/images/input.jpg" class="interpolation-image"
-              alt="Near AiF input" />
+        <div class="demo-hint">
+          <svg viewBox="0 0 512 512"><path d="M256 512A256 256 0 1 0 256 0a256 256 0 1 0 0 512zM216 336h24V272H216c-13.3 0-24-10.7-24-24s10.7-24 24-24h48c13.3 0 24 10.7 24 24v88h8c13.3 0 24 10.7 24 24s-10.7 24-24 24H216c-13.3 0-24-10.7-24-24s10.7-24 24-24zm40-208a32 32 0 1 1 0 64 32 32 0 1 1 0-64z"/></svg>
+          <span>&Delta;&kappa; is sensitive: when the input has a sparse depth distribution, most positions
+                push the whole scene out of focus. The dot marks the input's own setting.</span>
+        </div>
+
+        <div id="ourmethod-viewer">
+          <div class="ourmethod-img-box">
+            <img id="ourmethod-input-img" style="width:100%;height:auto;border-radius:7px;display:none;">
+            <div class="ourmethod-img-label">Input</div>
+          </div>
+          <div class="ourmethod-img-box">
+            <img id="ourmethod-output-img" style="width:100%;height:auto;border-radius:7px;">
+            <div class="ourmethod-img-label">Our editing result</div>
           </div>
         </div>
 
-        <!-- Row 2: BokehDiff (left) + Ours (right) -->
-        <div class="columns is-vcentered interpolation-panel">
-
-          <!-- Left: BokehDiff -->
-          <div class="column interpolation-video-column">
-            <div class="video-title has-text-centered">BokehDiff (Depth-Based)</div>
-            <img id="cmp-bd-img" class="interpolation-image" alt="BokehDiff rendering" />
-
-            <div class="content" style="margin-top:1rem;">
-              <p>
-                <strong>Aperture Radius (K)</strong>
-                <span style="float:right; font-size:0.85rem; color:#888;">K = <span
-                    id="cmp-bd-ap-label">8.0</span></span>
-              </p>
-              <div style="display:flex; align-items:center; width:100%;">
-                <span style="width:40px; text-align:left; font-size:0.9rem; color:#666;">Small</span>
-                <input class="slider is-fullwidth is-large is-warning" id="cmp-bd-ap-slider" type="range" min="0"
-                  max="100" value="0" step="1" style="flex:1; margin:0 8px;">
-                <span style="width:40px; text-align:right; font-size:0.9rem; color:#666;">Large</span>
-              </div>
+        <div class="ctrl" style="margin-top:26px;">
+          <div class="ctrl-head"><strong>&Delta;&kappa; &mdash; focal plane shift</strong></div>
+          <div class="ctrl-row">
+            <span>Toward background</span>
+            <div class="ourmethod-slider-wrapper">
+              <input class="is-info" id="ourmethod-focal-slider" step="1" min="0" max="100" value="50" type="range">
+              <div class="ourmethod-origin-dot"></div>
+              <div class="ourmethod-origin-tag">Input's focal plane</div>
             </div>
-
-            <div class="content" style="margin-top:0.5rem;">
-              <p>
-                <strong>Focal Plane (var)</strong>
-                <span style="float:right; font-size:0.85rem; color:#888;">var = <span
-                    id="cmp-bd-focal-label">0.00</span></span>
-              </p>
-              <div style="display:flex; align-items:center; width:100%;">
-                <span style="width:40px; text-align:left; font-size:0.9rem; color:#666;">Far</span>
-                <input class="slider is-fullwidth is-large is-info" id="cmp-bd-focal-slider" type="range" min="0"
-                  max="100" value="50" step="1" style="flex:1; margin:0 8px;">
-                <span style="width:40px; text-align:right; font-size:0.9rem; color:#666;">Near</span>
-              </div>
-            </div>
-          </div>
-
-          <!-- Right: Ours -->
-          <div class="column interpolation-video-column">
-            <div class="video-title has-text-centered">
-              <strong style="color:#fb03a0; font-size:1.05rem;">Our Editing Result</strong>
-            </div>
-            <img id="ourmethod-compare-output-img" class="interpolation-image" alt="Our bokeh rendering" />
-
-            <div class="content" style="margin-top:1rem;">
-              <p>
-                <strong>&#916; Aperture Radius</strong>
-                <span style="float:right; font-size:0.85rem; color:#888;">dd = <span
-                    id="cmp-ours-ap-label">+0.00</span></span>
-              </p>
-              <div style="display:flex; align-items:center; width:100%;">
-                <span style="width:40px; text-align:left; font-size:0.9rem; color:#666;">Small</span>
-                <input class="slider is-fullwidth is-large is-warning" id="ourmethod-compare-aperture-slider"
-                  type="range" min="0" max="100" value="50" step="1" style="flex:1; margin:0 8px;">
-                <span style="width:40px; text-align:right; font-size:0.9rem; color:#666;">Larg</span>
-              </div>
-            </div>
-
-            <div class="content" style="margin-top:0.5rem;">
-              <p>
-                <strong>&#916; Focal Plane</strong>
-                <span style="float:right; font-size:0.85rem; color:#888;">ds = <span
-                    id="cmp-ours-focal-label">+0.00</span></span>
-              </p>
-              <div style="display:flex; align-items:center; width:100%;">
-                <span style="width:40px; text-align:left; font-size:0.9rem; color:#666;">Far</span>
-                <input class="slider is-fullwidth is-large is-info" id="ourmethod-compare-focal-slider" type="range"
-                  min="0" max="100" value="50" step="1" style="flex:1; margin:0 8px;">
-                <span style="width:40px; text-align:right; font-size:0.9rem; color:#666;">Near</span>
-              </div>
-            </div>
-          </div>
-
-        </div>
-
-
-        <hr style="margin: 2rem 0;">
-
-        <!-- ─── Subsection 2: Bidirectional Joint-DoF-Focus Editing ─────── -->
-        <h3 class="title is-4">Bidiretional Joint-DoF-Focus Editing</h3>
-
-        <div class="content has-text-justified">
-          <p>
-            Interactively explore our method's joint control of focal plane and aperture radius. Drag the sliders to see
-            how focus and depth-of-field change on real photographs.
-          </p>
-        </div>
-
-        <!-- Scene selector: scene1 + scene2 only -->
-        <div class="content has-text-centered" style="margin-bottom: 1rem;">
-          <div class="buttons is-centered">
-            <button class="button is-small is-rounded is-info ourmethod-scene-button is-active"
-              data-scene="scene2">Scene 1</button>
-            <button class="button is-small is-rounded is-light ourmethod-scene-button" data-scene="scene1">Scene
-              2</button>
+            <span>Toward foreground</span>
           </div>
         </div>
 
-        <!-- Interactive area -->
-        <div class="columns is-vcentered interpolation-panel">
-          <div class="column interpolation-video-column">
-
-            <div class="content has-text-centered" style="margin-top:-0.8rem; margin-bottom:1.2rem;">
-              <p style="color:#fb0307; font-size:0.95rem;">
-                <strong>Note:</strong> Focal-plane adjustment is highly sensitive, as most positions will lead to
-                out-of-focus results when the input image has a sparse depth distribution.
-              </p>
+        <div class="ctrl" style="margin-top:26px;">
+          <div class="ctrl-head"><strong>&Delta;a &mdash; aperture radius change</strong></div>
+          <div class="ctrl-row">
+            <span>Less blur</span>
+            <div class="ourmethod-slider-wrapper">
+              <input class="is-warning" id="ourmethod-aperture-slider" step="1" min="0" max="100" value="50" type="range">
+              <div class="ourmethod-origin-dot"></div>
+              <div class="ourmethod-origin-tag">Input's aperture</div>
             </div>
-
-            <div id="ourmethod-viewer" style="display:flex; justify-content:center; align-items:flex-start; gap:16px;">
-              <div class="ourmethod-img-box">
-                <img id="ourmethod-input-img" style="width:100%; height:auto; border-radius:6px; display:none;" />
-                <div class="ourmethod-img-label">Input</div>
-              </div>
-              <div class="ourmethod-img-box">
-                <img id="ourmethod-output-img" style="width:100%; height:auto; border-radius:6px;" />
-                <div class="ourmethod-img-label">Our Editing Result</div>
-              </div>
-            </div>
-
-            <div class="content" style="margin-top: 1rem;">
-              <p><strong>&#916; Focal Plane (Relative Shift)</strong></p>
-              <div style="display:flex; align-items:center; width:100%;">
-                <span style="width:50px; text-align:left; font-size:0.9rem; color:#666;">Toward Background</span>
-                <div class="ourmethod-slider-wrapper">
-                  <input class="slider is-fullwidth is-large is-info" id="ourmethod-focal-slider" step="1" min="0"
-                    max="100" value="50" type="range">
-                  <div class="ourmethod-origin-dot"></div>
-                  <div class="ourmethod-origin-tag">Original Focal Plane</div>
-                </div>
-                <span style="width:50px; text-align:right; font-size:0.9rem; color:#666;">Toward Foreground</span>
-              </div>
-            </div>
-
-            <div class="content" style="margin-top: 1rem;">
-              <p><strong>&#916; Aperture Radius (Relative Change)</strong></p>
-              <div style="display:flex; align-items:center; width:100%;">
-                <span style="width:60px; text-align:left; font-size:0.9rem; color:#666;">Less Blur</span>
-                <div class="ourmethod-slider-wrapper">
-                  <input class="slider is-fullwidth is-large is-warning" id="ourmethod-aperture-slider" step="1" min="0"
-                    max="100" value="50" type="range">
-                  <div class="ourmethod-origin-dot"></div>
-                  <div class="ourmethod-origin-tag">Original Aperture Radius</div>
-                </div>
-                <span style="width:60px; text-align:right; font-size:0.9rem; color:#666;">More Blur</span>
-              </div>
-            </div>
-
+            <span>More blur</span>
           </div>
         </div>
-
-        <br />
-      </div> <!-- ⭐ ourmethod-card 结束 -->
+      </div>
     </div>
   </div>
+</section>
+
+  <!-- ─────────── Limitations ─────────── -->
+<section id="limits" class="band">
+  <div class="band-inner">
+    <p class="section-kicker">After the argument &middot; Limitations</p>
+    <h2>What this does not do yet</h2>
+    <ul class="limits-list">
+      <li><b>Resolution.</b> Editing operates at 768&times;768; high-resolution bidirectional editing remains open.</li>
+      <li><b>RGB, not RAW.</b> Highlight circles-of-confusion are approximate; a RAW-capable reconstruction model can slot in.</li>
+      <li><b>Static scenes, estimated poses.</b> Both assumptions are weakest on the reflective, textureless scenes this work targets.</li>
+      <li><b>Aperture shape.</b> Circular model; other profiles only change the integration region.</li>
+    </ul>
+  </div>
+</section>
+
+  <!-- ─────────── BibTeX ─────────── -->
+<section id="cite" class="band band-b">
+  <div class="band-inner">
+    <p class="section-kicker">After the argument &middot; Citation</p>
+    <h2>BibTeX</h2>
+    <div class="bibtex">@inproceedings{cai2026vid2bokeh,
+  title     = {Large-Scale Light Field Synthesis from Videos Enables
+               Geometrically Consistent Bokeh Editing},
+  author    = {Cai, Haoming and Zhang, Zhoutong and Metzler, Christopher
+               and Xin, Shumian},
+  booktitle = {European Conference on Computer Vision (ECCV)},
+  year      = {2026}
+}</div>
+  </div>
+</section>
 
 
+<footer class="foot">
+  <p>
+    Page template adapted from the
+    <a href="https://distill.pub" target="_blank" rel="noopener">Distill</a>-style academic layout.
+    &nbsp;·&nbsp; <a href="https://www.hm-cai.com/" target="_blank" rel="noopener">Haoming Cai</a>
+  </p>
+</footer>
 
+<script src="./static/js/CVPR_Mine_DataGen_Bokeh.js"></script>
+<script src="./static/js/CVPR_Mine_OurMethod_Playground.js"></script>
+<script src="./static/js/CVPR_Mine_DataCapture_Compare.js"></script>
 
+<script>
+(function () {
+  var links = Array.prototype.slice.call(document.querySelectorAll('.nav a[href^="#"]'));
+  var map = {};
+  links.forEach(function (a) {
+    var el = document.getElementById(a.getAttribute('href').slice(1));
+    if (el) map[el.id] = a;
+  });
+  var obs = new IntersectionObserver(function (entries) {
+    entries.forEach(function (e) {
+      if (!e.isIntersecting) return;
+      links.forEach(function (a) { a.classList.remove('active'); });
+      if (map[e.target.id]) map[e.target.id].classList.add('active');
+    });
+  }, { rootMargin: '-35% 0px -55% 0px' });
+  Object.keys(map).forEach(function (id) { obs.observe(document.getElementById(id)); });
+})();
+</script>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
+<script>
+document.querySelectorAll('.header-media video').forEach(function (v) {
+  v.playbackRate = 2.0;
+  v.addEventListener('loadedmetadata', function () { v.playbackRate = 2.0; });
+});
+</script>
 </body>
-
 </html>
