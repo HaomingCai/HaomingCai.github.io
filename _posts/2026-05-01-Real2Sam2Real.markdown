@@ -8,5 +8,6 @@ authors: "Jiayi Wu*, <strong>Haoming Cai*</strong>, Cornelia Fermuller, Christop
 venue: "<strongvenue>Manuscript</strongvenue>"
 arxiv: https://arxiv.org/pdf/2606.00299
 website: https://jiayi-wu-leo.github.io/real2sam2real/
+year: 2026
 ---
 Control the camera and the objects in video generation with a generative 3D cache

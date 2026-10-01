@@ -6,9 +6,10 @@ date:   2023-08-09 22:21:59 +00:00
 image: /images/00_Pub_23_OBIQA.png
 categories: IQA
 author: "Haoming Cai"
-authors: Tianhe Wu, Shuwei Shi, <strong>Haoming Cai</strong> , Mingdeng Cao, Jing Xiao, Yinqiang Zheng, Yujiu Yang
+authors: Tianhe Wu, Shuwei Shi, <strong>Haoming Cai</strong>, Mingdeng Cao, Jing Xiao, Yinqiang Zheng, Yujiu Yang
 venue: "<strongvenue>NeurIPS'23</strongvenue>"
 arxiv: https://arxiv.org/abs/2305.10983
 website: https://github.com/TianheWu/Assessor360
+year: 2023
 ---
 Assess 360° image quality the way a viewer actually explores the sphere

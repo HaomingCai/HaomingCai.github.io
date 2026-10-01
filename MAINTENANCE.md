@@ -37,10 +37,15 @@ brew install ruby@3.4                                # 别装 ruby（默认已�
 
 | 文件 | 管什么 |
 |---|---|
-| `_layouts/usha.html` | **整个页面结构 + 所有 JS**（光影、交互控件、News 折叠、作者链接）。改页面改这个 |
-| `_layouts/default.html` | ⚠️ **死文件，没有任何页面在用它**。`index.html` / `usha.html` / `_layouts/post.html` 全部 `layout: usha`。它是 usha 的旧副本，改它不会有任何效果 |
-| `_includes/publication.html` | 单条论文。三种形态：`featured`（大卡）/ `compact`（纯文字行）/ 默认（带缩略图） |
-| `style.scss` | 全部样式。顶部四行是配色开关 |
+| `_layouts/home.html` | **整个首页结构 + 所有 JS**（光和影子、交互控件、目录高亮、明暗切换、News 折叠、作者链接、彩蛋猫）。改页面改这个 |
+| `_layouts/paper.html` | **每篇论文自己的页面** `/papers/<文件名去掉日期>/`：标题、作者、会议、一句话、链接、Google Scholar 标签、结构化数据。`post.html` 只是转给它 |
+| `_includes/head-common.html` | 首页和论文页共用的 `<head>`：主题开关、字体、样式表、统计代码 |
+| `_includes/jsonld-person.html` | 首页里给机器读的"名片"（schema.org JSON-LD）：本人 + 全部论文。**拿到 LinkedIn / ORCID 等网址后加进 `sameAs`** |
+| `_includes/entry.html` | 单条论文。两种形态：默认（带缩略图）/ `compact`（纯文字行，早期工作）。标题链到论文页 |
+| `_data/experience.yml` | 首页 Experience 和 `/llms.txt` 的经历都从这里来（CV 原文） |
+| `llms.txt` | 写给 AI 的纯文本自我介绍 + 论文清单，自动生成，见第 6 节 |
+| `home.scss` | 首页全部样式。**顶部的 token 就是配色开关**：浅色在 `:root`，深色在 `dark-tokens` 这个 mixin 里，两套都要改 |
+| `usha.html` | 旧预览页地址，现在只是跳回首页，别删（可能有人收藏过） |
 | `_posts/*.markdown` | 论文数据。**加论文只需新建一个文件，不用碰代码** |
 | `_data/authors.yml` | 作者 → 主页链接。页面上的作者名会自动变成链接 |
 | `tn/playground/` | 两个交互控件的雪碧图 + JSON |
@@ -62,25 +67,29 @@ image: /images/xxx.png        # 或 /videos/xxx.mp4
 categories: GenAI             # GenAI | AdverseWeather | IQA | SR
 authors: "<strong>Haoming Cai</strong>, Other Person"
 venue: "<strongvenue>CVPR 2026</strongvenue>"
+year: 2026                    # 发表年份。别用上面的 date —— 大部分旧 post 的 date 是统一填的 2023-08-09
 arxiv: https://...
 website: https://...
 dataset: https://...          # 可选
 links:                        # 可选，任意多个额外链接
   - "标签|https://..."
+bibtex: |                     # 可选。写了才在论文页显示 —— 不自动生成，拼错的引用比没有更糟
+  @inproceedings{...}
 ---
 一句话摘要（祈使句，说"这让你能做什么"）
 ```
 
-分区由 `categories` 决定。**只有 `SR` 分区不显示缩略图**（在 `usha.html` 的 `compact_cats` 里改）。
+分区由 `categories` 决定。**只有 `SR` 分区不显示缩略图**（在 `home.html` 的 `compact_cats` 里改）。
+
+新建这一个文件，以下都会自动出现：首页列表里的一条、`/papers/<名字>/` 论文页、首页结构化数据里的一篇、`/llms.txt` 里的一行、sitemap 里的一个地址。
+改完跑 `python design_versions/checks/structured_data.py` 确认（作者里要能对上 "Haoming Cai"）。
 
 ### 加一条 News
-`usha.html` 的 `.news__list` 里加一个 `<li>`。**`<time datetime="2026-01">` 必须写** —— 一年前的条目靠它自动折叠。
+`home.html` 的 `.news` 列表里加一个 `<li>`。**`<time datetime="2026-01">` 必须写** —— 一年前的条目靠它自动折叠。
 
 ### 换 Selected Work 的两篇
-`usha.html` 里改这一行（匹配 title 的片段）：
-```liquid
-{%- assign featured = "Parametric Shadow Control,Large-Scale Light Field Synthesis" | split: "," -%}
-```
+这两篇是两张交互图，写死在 `home.html` 的 `#work` 那一节里（每张卡一个 `<figure data-scrub data-atlas="...">`）。
+换论文 = 先在 `tn/playground/` 里做一张新的雪碧图 + JSON，再改这一节的标题、会议名和链接。
 
 ### 更新 CV
 
@@ -93,7 +102,7 @@ git add cv.pdf && git commit -m "Update CV" && git push
 # 去 Cloudflare 控制台 Purge Cache
 ```
 
-顺手把两处 `Updated Aug 2026` 小字也改掉（`usha.html` 里搜 `cta__note`，共 2 处）。
+顺手把两处 `Updated Aug 2026` 小字也改掉（`home.html` 里搜 `class="updated"`，共 2 处）。
 
 > **文件名必须永远是 `cv.pdf`。** 不要 `cv_v2.pdf`、不要 `cv_2026.pdf`、不要任何版本号或日期后缀。
 >
@@ -105,7 +114,7 @@ git add cv.pdf && git commit -m "Update CV" && git push
 `_data/authors.yml` 里加 `"姓名": "链接"`。不用改任何代码。
 
 ### 换配色
-`style.scss` 顶部四行。**改完必须跑对比度检查**（见第 4 节）。
+`home.scss` 顶部的 token（浅色 `:root` + 深色 `dark-tokens`）。**深浅两套都要改，改完必须跑对比度检查**（见第 4、5 节，`snap.py` 会两套一起扫）。
 
 ---
 
@@ -113,28 +122,33 @@ git add cv.pdf && git commit -m "Update CV" && git push
 
 ### 4.1 对比度是硬上限，不是建议
 
-页面上每一处颜色都卡在 WCAG 的边缘，**再亮一点点就读不清了**：
+2026-09 改版后的 token（`home.scss` 顶部）。正文要 4.5:1，最紧的两处在**左栏**（左栏底色比主栏深半档）：
 
-| 元素 | 当前值 | 对比度 | 余量 |
-|---|---|---|---|
-| 名字高光核心 | `#ab8259` | 3.26:1 | 大字要 **3:1** —— **几乎没有余量** |
-| bio 正文高光 | `#7e6040` | 5.44:1 | 正文要 4.5:1 |
-| `$muted`（摘要/元信息）| `#726b61` | 4.96:1 | **别再调浅** |
-| 链接 `$accent` | `#b0503a` | 4.88:1 | **不能再亮** |
-| 提示行的柔光底 | 染色 ≤ 5.5% | 4.54:1 | 染到 8% 就掉线 |
+| token | 浅色 | 对比度 | 深色 | 对比度 |
+|---|---|---|---|---|
+| `--muted` 元信息，**在左栏上** | `#6b6358` on `#efe8da` | **4.85:1** ← 最紧，别再调浅 | `#a1978a` on `#211d19` | 5.83:1 |
+| `--accent` 链接，**在左栏上** | `#a4452b` on `#efe8da` | **4.97:1** ← 不能再亮 | `#e08a6c` on `#211d19` | 6.39:1 |
+| `--muted` 在主栏上 | on `#f6f1e7` | 5.25:1 | on `#1b1815` | 6.15:1 |
+| `--accent` 在主栏上 | on `#f6f1e7` | 5.38:1 | on `#1b1815` | 6.75:1 |
+| 主按钮字 `--on-accent` | on `--accent` | 5.84:1 | on `--accent` | 6.75:1 |
 
-**每次改颜色，截图脚本会自动扫描页面上真实渲染的每一段文字并报警。** 别忽略它。
+**每次改颜色，`snap.py` 会自动扫描页面上真实渲染的每一段文字（深浅两套）并报警。** 别忽略它。
+
+> 2026-09 的实例：8 月加的 `Updated Aug 2026` 小字用了 `rgba(ink, .55)`，肉眼看着刚好，实测 **3.55:1**，
+> 在线上挂了一个多月没人发现 —— 当时只量了字号和颜色值，没算对比度。
 
 > 教训：我曾把 `$muted` 调浅一点点，肉眼看着更精致，实测掉到 **3.53:1**。而且回头一查，**原来的值（4.36:1）也一直不达标** —— 从第一版就错了，三轮都没发现，因为它"看起来没问题"。
 
 ### 4.2 `background-clip: text` 会裁掉字母的尾巴
 
-名字和 bio 正文用了 `background-clip: text`（那道跟随鼠标的高光）。**它把行盒变成硬裁切边界** —— 装不下的部分**直接消失**。
+开头的大字（研究方向那一句，`.intro__thesis.sweep`）用了 `background-clip: text`（那块跟随鼠标的暖光）。
+**它把行盒变成硬裁切边界** —— 装不下的部分**直接消失**。
 
-- Space Grotesk 在 44px 下需要 **56px** 行高（Inter 只要 54px）
-- 当前 `line-height: 1.32`，留了余量
+- 这句话里有下伸字母（image 的 g、geometry 的 g 和 y），现在靠行高 `1.14` + `padding-bottom: .12em` 兜底
+- **改这句话、换字体（岔路口 B 的衬线版也要看）或改字号 → 必须重新截图放大看一眼末行**，否则字母尾巴会被砍掉
 
-**换字体或改字号 → 必须重新量**，否则 `Haoming` 的 `g` 会被砍头。
+另外 `.sweep` 的颜色是 `color: transparent`，任何放进 `.intro__thesis` 里的子元素都会跟着透明 ——
+8 月旧版里 `Updated` 小字被正文的扫光样式接管、渲染成 19px 透明字，就是同一类坑。别往带 `.sweep` 的元素里塞别的东西。
 
 ### 4.3 视频：三条铁律
 
@@ -233,15 +247,32 @@ curl -sSI "https://www.hm-cai.com/cv.pdf?x=$RANDOM"  # 这个是 200 就说明�
 
 ## 5. 每次改完，跑这些检查
 
-截图脚本在 `design_versions/snap.sh`，它会自动：
-- Jekyll 构建
-- 桌面（1280px）+ 手机（390px）双截图
+> **这些脚本不在公开仓库里**（2026-10 站主决定：改版记录和检查脚本只留在本机）。
+> 它们在本地分支 `worktree-redesign+lars` 的 `design_versions/` 里 —— 这个分支别删。
+> 要用时把 `snap.py` 和 `checks/` 拷进主目录的 `design_versions/`；`.gitignore` 会挡住它们，不会被误提交。
+
+截图脚本在 `design_versions/snap.py`，它会自动：
+- Jekyll 构建，并在 `http://127.0.0.1:4001/` 起一个常驻静态服务
+- 桌面（1440px）+ 手机（390px）× 浅色 + 深色，四组截图
 - **扫描页面上每一段真实渲染的文字，检查 WCAG AA 对比度**
-- 检查破图 / 横向溢出
+- 检查破图 / 横向溢出 / 控制台报错 / CV 入口数量 / 交互图数量
 
 ```bash
-./design_versions/snap.sh v22
+python design_versions/snap.py v22          # 需要装了 playwright + pillow 的 Python
 ```
+
+**大改之后跑全量回归**（`design_versions/checks/`，每个脚本管一类踩过的坑，见 `sweep.py` 顶部说明）：
+
+```bash
+python design_versions/checks/sweep.py            # 多宽度、明暗开关、各种屏幕、元素重叠、打印、首屏下载量、键盘…
+python design_versions/checks/sweep.py --audit    # 再加上：文字和链接逐条对照线上（慢）
+```
+
+> 旧的 `snap.sh` 已删除：它把截图目录写死在某次会话的临时目录里，还在拷已经没人用的
+> `_layouts/default.html`，早就跑不通了。
+>
+> 2026-09 这个脚本第一次跑就抓到一个线上 bug：8 月加的 `Updated Aug 2026` 小字对比度只有
+> 3.55:1。当时验收只量了字号和颜色值，没算对比度 —— **这正是它要自动跑的原因。**
 
 **跨浏览器**（这一版重度依赖 `backdrop-filter` / `background-clip: text` / `mix-blend-mode`，Safari 有名的坑）：
 三个引擎都实测通过（Chrome / Safari / Firefox），但**改了这些属性就要重测**。
@@ -253,14 +284,41 @@ lighthouse http://localhost:4000/ --preset=desktop --view
 
 ---
 
-## 6. 还没做的
+## 6. 让搜索引擎和 AI 找到你
+
+ChatGPT / Claude / Perplexity 这类 agent 回答问题时，基本是先去搜索引擎查（ChatGPT 主要用 Bing），
+再打开搜到的网页读。所以关键是两件事：**被收录**，以及**页面让机器一读就懂**。2026-10 做了这些：
+
+| 东西 | 在哪 | 作用 |
+|---|---|---|
+| 结构化数据 | 首页 `<head>`（`_includes/jsonld-person.html`）+ 每个论文页 | 用 schema.org 标准告诉机器：这个人是谁、在哪、研究什么、写了哪些论文、和谁合作 |
+| 论文页 | `/papers/<名字>/`（`_layouts/paper.html`） | 每项工作一个专门的地址 —— 别人搜研究主题、不提名字也能命中；带 Google Scholar 的 `citation_*` 标签 |
+| `/llms.txt` | 仓库根目录 `llms.txt` | 写给 AI 的纯文本自我介绍 + 论文清单（llmstxt.org 约定，采用程度还不确定，但成本几乎为零） |
+| sitemap | 自动（jekyll-sitemap） | 现在包含全部论文页 |
+
+**全部自动生成**：加论文、改经历都不用碰这些文件。
+
+**Cloudflare**（2026-10 核对过）：AI Crawl Control 里各家 AI 爬虫都是放行的，ClaudeBot / OAI-SearchBot / Googlebot / BingBot
+都在正常抓取。别开 "Block AI bots"、"AI Labyrinth"、"Pay per crawl"。"Markdown for Agents" 要付费套餐，不需要。
+
+**只能站主自己做的**（网站之外）：
+- Bing Webmaster Tools、Google Search Console 各提交一次 `https://www.hm-cai.com/sitemap.xml`
+- Google Scholar、ORCID、Semantic Scholar、OpenReview、DBLP、LinkedIn 的个人主页都填 `https://www.hm-cai.com/`；
+  拿到这些主页的网址后，加进 `_includes/jsonld-person.html` 的 `sameAs` —— agent 靠它确认"是同一个人"
+- 论文项目页、GitHub README 里能放主页链接的地方都放上
+
+**别做**：meta keywords（早被忽略）、只给机器看的隐藏关键词（会被判作弊）。
+
+---
+
+## 7. 还没做的
 
 1. **10 位合作者的链接**（填 `_data/authors.yml`）：
    - 优先：**Lin Zhou**（VapSR 共同一作）、**Yingqi Liu**（出现 2 篇）
    - 其余：Hongtao Wu、Xuequan Lu、Jing Xiao、Yinqiang Zheng、Chenyu Dong、Chun Yuan、Ruofan Zhang、Xiaoxing Ye
 
 2. **GoatCounter 访客统计**（替代已删的 ClustrMaps）
-   去 goatcounter.com 注册拿一个站点名，然后在 `usha.html` 的 `<head>` 加：
+   去 goatcounter.com 注册拿一个站点名，然后在 `home.html` 的 `<head>` 加：
    ```html
    <script data-goatcounter="https://你的站点名.goatcounter.com/count"
            async src="//gc.zgo.at/count.js"></script>
@@ -272,7 +330,7 @@ lighthouse http://localhost:4000/ --preset=desktop --view
 
 ---
 
-## 7. 上线
+## 8. 上线
 
 **远端现在是接着的**（`origin` → `git@github.com:HaomingCai/HaomingCai.github.io.git`），
 `git push` 会**直接改动线上真站**。推之前先本地看一眼。

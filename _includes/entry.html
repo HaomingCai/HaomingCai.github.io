@@ -1,0 +1,77 @@
+{%- comment -%}
+  单条论文（首页 lars 版）。格式学 Lars：缩略图 + 标题 + 等宽的会议·年份 + 作者 + 一句话 + 链接小标签。
+
+  用法:
+    {% include entry.html post=post %}              带缩略图
+    {% include entry.html post=post compact=true %} 纯文字（早期工作）
+
+  视频缩略图是懒加载的（<source data-src>，preload="none"）：由 home.html 里的脚本在快滚到时
+  才填上 src 并播放。以前是 autoplay，一打开页面就下载全部视频 —— 首屏 5.6MB 里有 4.5MB 是
+  好几屏之外的缩略图视频。
+
+  缩略图逻辑和旧的 publication.html 一样:
+    1. image 是 .mp4      -> <video>（image2 也是 mp4 -> 双视频交叉淡化）
+    2. 存在 image2..image8 -> 图片轮播
+    3. 其余              -> 单张 <img>
+{%- endcomment -%}
+
+{%- assign p = include.post -%}
+<article class="entry{% if include.compact %} entry--compact{% endif %}">
+  {%- unless include.compact -%}
+  <div class="entry__media">
+    {%- if p.image contains '.mp4' -%}
+      {%- if p.image2 and p.image2 contains '.mp4' -%}
+        <div class="slider" data-slider>
+          <video muted loop playsinline preload="none" data-lazy><source data-src="/tn{{ p.image }}?v={{ site.asset_v }}" type="video/mp4"></video>
+          <video muted loop playsinline preload="none" data-lazy><source data-src="/tn{{ p.image2 }}?v={{ site.asset_v }}" type="video/mp4"></video>
+        </div>
+      {%- else -%}
+        <video muted loop playsinline preload="none" data-lazy><source data-src="/tn{{ p.image }}?v={{ site.asset_v }}" type="video/mp4"></video>
+      {%- endif -%}
+    {%- elsif p.image2 -%}
+      <div class="slider" data-slider>
+        <img src="/tn{{ p.image }}" alt="" loading="lazy">
+        <img src="/tn{{ p.image2 }}" alt="" loading="lazy">
+        {%- for n in (3..8) -%}
+          {%- assign key = 'image' | append: n -%}
+          {%- assign src = p[key] -%}
+          {%- if src -%}<img src="/tn{{ src }}" alt="" loading="lazy">{%- endif -%}
+        {%- endfor -%}
+      </div>
+    {%- else -%}
+      <img src="/tn{{ p.image }}" alt="" loading="lazy">
+    {%- endif -%}
+  </div>
+  {%- endunless -%}
+
+  <div class="entry__body">
+    {%- comment -%}
+      标题链到这篇的独立页面（/papers/<slug>/）：搜索引擎和 AI agent 顺着链接爬到它。
+      项目主页、PDF 等外链照旧在下面的小标签里，访客一步直达。
+    {%- endcomment -%}
+    <h3 class="entry__title"><a href="{{ p.url | relative_url }}">{{ p.title }}</a></h3>
+    <p class="entry__venue">{{ p.venue | strip_html | strip }}</p>
+    <p class="entry__authors">{{ p.authors | add_author_links }}</p>
+
+    {%- unless include.compact -%}
+      {%- if p.excerpt and p.excerpt != empty -%}
+        <p class="entry__excerpt">{{ p.excerpt | strip_html | strip }}</p>
+      {%- endif -%}
+    {%- endunless -%}
+
+    <p class="chips">
+      {%- if p.arxiv -%}<a href="{{ p.arxiv }}">PDF</a>{%- endif -%}
+      {%- if p.website -%}<a href="{{ p.website }}">Website</a>{%- endif -%}
+      {%- if p.code -%}<a href="{{ p.code }}">Code</a>{%- endif -%}
+      {%- if p.dataset -%}<a href="{{ p.dataset }}">Dataset</a>{%- endif -%}
+      {%- if p.video -%}<a href="{{ p.video }}">Video</a>{%- endif -%}
+      {%- if p.poster -%}<a href="{{ p.poster }}">Poster</a>{%- endif -%}
+      {%- if p.slides -%}<a href="{{ p.slides }}">Slides</a>{%- endif -%}
+      {%- comment -%} 任意数量的额外链接：frontmatter 里写 `links: ["标签|网址", ...]` {%- endcomment -%}
+      {%- for l in p.links -%}
+        {%- assign parts = l | split: "|" -%}
+        <a href="{{ parts[1] | strip }}">{{ parts[0] | strip }}</a>
+      {%- endfor -%}
+    </p>
+  </div>
+</article>

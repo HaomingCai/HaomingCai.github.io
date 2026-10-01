@@ -1,0 +1,724 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{{ site.name }}</title>
+  <meta name="author" content="{{ site.name }}">
+  <meta name="description" content="Haoming Cai — CS PhD student (expected 2027) at the University of Maryland working on generative media: image and video models taught to respect light, geometry, and the camera. On the job market · full-time from 2027.">
+  <link rel="canonical" href="{{ page.url | replace:'index.html','' | prepend: site.baseurl | prepend: site.url }}">
+
+  {%- comment -%} 社交卡片(分享到 Twitter/Slack/iMessage 时的预览) + favicon {%- endcomment -%}
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Haoming Cai — Generative Media & Computational Imaging">
+  <meta property="og:description" content="CS PhD student (expected 2027) at the University of Maryland. I work on generative media — image and video models — teaching them to respect light, geometry, and the camera. On the job market · full-time from 2027.">
+  <meta property="og:image" content="{{ '/images/og.jpg' | absolute_url }}">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:url" content="{{ '/' | absolute_url }}">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Haoming Cai — Generative Media & Computational Imaging">
+  <meta name="twitter:description" content="CS PhD student (expected 2027) at the University of Maryland — generative media, taught to respect light, geometry, and the camera. On the job market · full-time from 2027.">
+  <meta name="twitter:image" content="{{ '/images/og.jpg' | absolute_url }}">
+
+  {% include jsonld-person.html %}
+  {% include head-common.html %}
+</head>
+
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+
+
+  {%- comment -%}
+    左侧固定栏：任何时候都看得到"是谁、在哪、怎么联系、页面上有什么"。
+    CV 入口在这里一个、开头一个、页脚一个 —— /cv.pdf 这个 URL 已经写进求职材料，不能丢。
+  {%- endcomment -%}
+  <aside class="side">
+    <picture>
+      <source srcset="{{ site.baseurl }}/images/profile_380.webp" type="image/webp">
+      <img class="side__photo" src="{{ site.baseurl }}/images/profile_380.jpg" width="380" height="380" alt="Portrait of Haoming Cai" fetchpriority="high">
+    </picture>
+
+    <div class="side__id">
+      <h1 class="side__name">Haoming Cai</h1>
+      <p class="side__zh" lang="zh">蔡昊明</p>
+      <p class="side__say">/haʊˈmɪŋ tsaɪ/ · he/him</p>
+    </div>
+
+    <p class="side__focus">Generative Media<br>Computational Imaging</p>
+
+    <ul class="side__tags" aria-label="Affiliations">
+      <li>UMD</li>
+      <li>Adobe</li>
+      <li>Dolby</li>
+    </ul>
+
+    {%- comment -%} 编号 = 在页面上的先后顺序；当前读到的那一节会被点亮 {%- endcomment -%}
+    <nav class="side__toc" aria-label="Sections">
+      <a href="#work">Selected work <span>01</span></a>
+      <a href="#news">News <span>02</span></a>
+      <a href="#experience">Experience <span>03</span></a>
+      <a href="#publications">Publications <span>04</span></a>
+    </nav>
+
+    {%- comment -%}
+      左栏底部这一组（按钮 → 小猫 → Email）。它自己量剩下多少空间：放不下猫就把猫收起，
+      保证 Email 那行永远在视口里 —— 屏幕高度怎么变、目录多几条都不用改断点。
+    {%- endcomment %}
+    <div class="side__foot">
+      {%- comment -%}
+        CV 和 Scholar 是招聘方最常找的两样，做成按钮（站主 2026-10 定的 A+B：左栏一处、开头一处）。
+        左栏一直钉在屏幕上，滚到哪都看得见；手机上左栏变成顶部区块，按钮就在名字下面。
+      {%- endcomment %}
+      <div class="side__cta">
+        <a class="btn btn--solid" href="/cv.pdf">CV <small>PDF</small></a>
+        <a class="btn" href="https://scholar.google.com/citations?hl=en&user=Jzs37TkAAAAJ">Scholar <span aria-hidden="true">&nearr;</span></a>
+      </div>
+
+      {%- comment -%}
+        按钮和 Email 之间：一只团起来睡觉的小猫趴在 Email 那条线上，旁边两行小字，
+        点了跳到页尾猫的那一节。屏幕太矮时整块收起（见 home.scss），不把 Email 那行挤出视口。
+      {%- endcomment %}
+      <div class="side__cat">
+        <a href="#cvo">
+          <picture>
+            <source srcset="{{ site.baseurl }}/images/decor/cat_curl_sm.webp" type="image/webp">
+            <img src="{{ site.baseurl }}/images/decor/cat_curl_sm.png" alt="" width="400" height="351" decoding="async">
+          </picture>
+          <span>Meet our<br>chief vibe officer</span>
+        </a>
+      </div>
+
+      <ul class="side__links">
+        <li><a href="mailto:hmcai@umd.edu">Email</a></li>
+        <li><a href="https://www.flickr.com/photos/201416778@N04/">Flickr</a></li>
+      </ul>
+    </div>
+
+    {%- comment -%}
+      明暗切换。默认跟随系统（这时 <html> 上没有 data-theme，全靠 CSS 媒体查询）；
+      点过一次就记住（localStorage），之后以访客的选择为准。
+      放在左栏里：桌面上它是 fixed，照样钉在视口右上角；手机上左栏变成顶部区块，
+      它就贴着 Email/Flickr 那一行的右边 —— 放在名字旁边的话，320 宽会把名字挡住。
+    {%- endcomment -%}
+    <div class="theme" role="group" aria-label="Color theme">
+      <button type="button" data-set-theme="dark">Dark</button>
+      <button type="button" data-set-theme="light">Light</button>
+    </div>
+  </aside>
+
+  <main class="main" id="main">
+
+    <header class="sec intro" id="top">
+      <div class="intro__kicker">
+        <p class="intro__market">On the job market · full-time from 2027</p>
+        <p class="intro__status">PhD Student · UMD · expected 2027</p>
+      </div>
+
+      {%- comment -%}
+        大字写"研究什么"，不写"PhD Student"：Lars 的 "Research Engineer" 是岗位，成立；
+        "PhD Student" 只是身份，招聘方扫一眼得不到信息。措辞由站主定（2026-10），排成一行；改字要重新算字号系数，见 home.scss 的 .intro__thesis。
+        有下伸字母（g、y）+ background-clip:text 的暖光 → 行高和 padding-bottom 别再收（MAINTENANCE 4.2）。
+      {%- endcomment -%}
+      <h2 class="intro__thesis sweep">Teaching generative models to respect light, geometry, and the camera.</h2>
+
+      <div class="intro__bio">
+        <p>
+          CS PhD student at the
+          <a href="https://www.cs.umd.edu/">University of Maryland</a>, advised by
+          <a href="https://www.cs.umd.edu/people/metzler">Christopher Metzler</a>.
+        </p>
+        {%- comment -%}
+          研究方向总结（站主 2026-10 批准，替换掉原来逐篇列论文的 A 版 —— 站主觉得像工作清单）。
+          写的是方向，不是论文清单；论文在下面 Selected work / Publications 里。
+          留着几个具体的词（光照、对焦、玻璃反光、3D、event cameras），既不空泛，也是别人会搜的词。
+          第二句"扩散模型缺少可靠的控制手柄"是研究动机，站主看过。
+        {%- endcomment %}
+        <p>
+          I work on making image and video generation physically controllable.
+          Diffusion models can produce convincing pictures, but they give you few reliable handles on how a picture was formed.
+          My work adds those handles (where the light comes from, what is in focus, what is reflected in glass)
+          and uses 3D structure and other sensors, such as event cameras, to keep the result consistent with a real scene.
+          I have also worked on restoring images captured in hard conditions and on perceptual image quality.
+        </p>
+        <p>
+          Previously at <a href="https://xpixel.group/index.html">X-Pixel</a> (2020–2022)
+          with <a href="https://scholar.google.com/citations?user=OSDCB0UAAAAJ&hl=en">Chao Dong</a>
+          and <a href="https://www.jasongt.com/">Jinjin Gu</a>; BEng from
+          <a href="https://www.cuhk.edu.cn/en/about-us">The Chinese University of Hong Kong, Shenzhen</a>.
+          Always happy to talk research or early-career questions.
+        </p>
+      </div>
+
+      <div class="actions">
+        <a class="btn btn--solid" href="/cv.pdf">Download CV</a>
+        <a class="btn" href="https://scholar.google.com/citations?hl=en&user=Jzs37TkAAAAJ">Google Scholar <span aria-hidden="true">&nearr;</span></a>
+        <span class="updated">Updated Aug 2026</span>
+      </div>
+    </header>
+
+    {%- comment -%}
+      代表作 = 两个可交互的可视化，不是两张图。素材是两篇论文的真实模型输出。
+      没人碰的时候自己来回播，鼠标一上去就交给访客。
+    {%- endcomment -%}
+    <section class="sec" id="work">
+      <h2 class="sec__title">Selected work</h2>
+      <p class="sec__note" data-live-note>Two figures from my papers &mdash; move your cursor across them to move the light, and to pull focus.</p>
+
+      <div class="featured">
+        <article class="feat">
+          <figure class="scrub scrub--pad" data-scrub
+                  data-atlas="/tn/playground/shadow_atlas"
+                  data-mode="1d" data-fade="75" data-ease
+                  data-cycle="1600" data-gap="40">
+            <div class="scrub__l"></div>
+            <div class="scrub__l"></div>
+            <div class="scrub__cue" data-cue aria-hidden="true">
+              <svg viewBox="0 0 24 24" width="11" height="11" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5 4 12l5 7M15 5l5 7-5 7"/></svg>
+              <b data-cue-text>move</b>
+            </div>
+            <figcaption class="scrub__hud" data-hud>
+              <span class="scrub__end" data-end0></span>
+              <span class="scrub__track"><i class="scrub__dot" data-dot></i></span>
+              <span class="scrub__end" data-end1></span>
+            </figcaption>
+          </figure>
+          <h3 class="feat__title"><a href="/tn/projects_html/ShadowDirector/">Parametric Shadow Control for Portrait Generation in Text-to-Image Diffusion Models</a></h3>
+          <p class="feat__venue">ICCV 2025</p>
+          <p class="feat__excerpt">Put a shadow knob on a text-to-image model &mdash; direction, softness and shape, with no retraining. <span data-verb>Move your cursor</span> across to walk the light around her face.</p>
+          <p class="chips">
+            <a href="https://arxiv.org/pdf/2503.21943">PDF</a>
+            <a href="/tn/projects_html/ShadowDirector/">Website</a>
+          </p>
+        </article>
+
+        <article class="feat">
+          <figure class="scrub" data-scrub
+                  data-atlas="/tn/playground/bokeh_atlas"
+                  data-mode="1d" data-fade="0" data-ease
+                  data-cycle="700" data-gap="16">
+            <div class="scrub__l"></div>
+            <div class="scrub__l"></div>
+            <div class="scrub__cue" data-cue aria-hidden="true">
+              <svg viewBox="0 0 24 24" width="11" height="11" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5 4 12l5 7M15 5l5 7-5 7"/></svg>
+              <b data-cue-text>move</b>
+            </div>
+            <figcaption class="scrub__hud" data-hud>
+              <span class="scrub__end" data-end0></span>
+              <span class="scrub__track"><i class="scrub__dot" data-dot></i></span>
+              <span class="scrub__end" data-end1></span>
+            </figcaption>
+          </figure>
+          <h3 class="feat__title"><a href="/vid2bokeh/">Large-Scale Light Field Synthesis from Videos Enables Geometrically Consistent Bokeh Editing</a></h3>
+          <p class="feat__venue">ECCV 2026</p>
+          <p class="feat__excerpt">Render geometrically consistent bokeh on scenes that defeat other methods &mdash; here, a toy behind a transparent lid. <span data-verb>Move your cursor</span> across to pull focus through it.</p>
+          <p class="chips">
+            <a href="/vid2bokeh/">Website</a>
+          </p>
+        </article>
+      </div>
+    </section>
+
+    <section class="sec" id="news">
+      <h2 class="sec__title">News</h2>
+      <ol class="news">
+        <li>
+          <time datetime="2026-07">2026.07</time>
+          <p>Our work on vision&ndash;language robustness under adverse imaging was accepted to CoLM 2026. Congratulations to <a href="https://tianfwang.github.io/">Tianfu</a> and <a href="https://mingyangx.github.io/">Mingyang</a>.</p>
+        </li>
+        <li>
+          <time datetime="2026-06">2026.06</time>
+          <p><a href="/vid2bokeh/">Large-Scale Light Field Synthesis from Videos</a> was accepted to ECCV 2026.</p>
+        </li>
+        <li>
+          <time datetime="2026-05">2026.05</time>
+          <p>Back at the <a href="https://research.adobe.com/articles/indigo/indigo.html">Adobe NextCam team</a> for a second summer internship.</p>
+        </li>
+        <li>
+          <time datetime="2025-06">2025.06</time>
+          <p><a href="/tn/projects_html/ShadowDirector/">Parametric Shadow Control</a> was accepted to ICCV 2025.</p>
+        </li>
+        <li>
+          <time datetime="2025-06">2025.06</time>
+          <p>Named an <a href="https://cvpr.thecvf.com/Conferences/2025/ProgramCommittee#:~:text=Ni%0AHaoming%20Zou-,Haoming%20Cai,-Haonan%20Qin">Outstanding Reviewer</a> for CVPR 2025.</p>
+        </li>
+        <li>
+          <time datetime="2025-05">2025.05</time>
+          <p>Joined the <a href="https://research.adobe.com/articles/indigo/indigo.html">Adobe NextCam team</a> (led by <a href="https://graphics.stanford.edu/~levoy/">Marc Levoy</a>) as a summer intern, mentored by <a href="https://shumianxin.github.io/">Shumian Xin</a> and <a href="https://ztzhang.info/">Zhoutong Zhang</a>.</p>
+        </li>
+        <li>
+          <time datetime="2025-02">2025.02</time>
+          <p>Two papers accepted to CVPR 2025. Congratulations to <a href="https://tianfwang.github.io/">Tianfu</a>, <a href="https://mingyangx.github.io/">Mingyang</a>, and <a href="https://codingrex.github.io/">Jingxi</a>.</p>
+        </li>
+      </ol>
+    </section>
+
+    {%- comment -%}
+      经历。数据在 _data/experience.yml（文字原样来自 CV，只排版不改写；/llms.txt 也从那里生成）。
+      XPixel 是研究院不是公司，所以标题叫 Experience 而不是 Industry。
+    {%- endcomment -%}
+    <section class="sec" id="experience">
+      <h2 class="sec__title">Experience</h2>
+      <ol class="xp">
+        {%- for x in site.data.experience %}
+        <li class="xp__item">
+          <p class="xp__when">{{ x.when }}</p>
+          <div class="xp__body">
+            <h3 class="xp__org">{{ x.org }} <span class="xp__where">{{ x.where }}</span></h3>
+            <p class="xp__role">{{ x.role }}</p>
+            {%- if x.desc %}
+            <p class="xp__desc">{{ x.desc }}</p>
+            {%- endif %}
+            {%- if x.links %}
+            <p class="chips">
+              {%- for l in x.links -%}
+                {%- assign parts = l | split: "|" -%}
+                <a href="{{ parts[1] | strip }}">{{ parts[0] | strip }}</a>
+              {%- endfor -%}
+            </p>
+            {%- endif %}
+          </div>
+        </li>
+        {%- endfor %}
+      </ol>
+    </section>
+
+    <section class="sec pubs" id="publications">
+      <h2 class="sec__title">
+        Publications
+        <a href="https://scholar.google.com/citations?hl=en&user=Jzs37TkAAAAJ">Google Scholar &rarr;</a>
+      </h2>
+      <p class="pubs__note">* denotes equal contribution.</p>
+
+      {%- assign sections = "GenAI|Generative media,AdverseWeather|Imaging under hard conditions,IQA|Perceptual image quality,SR|Efficient image restoration" | split: "," -%}
+      {%- assign years = "2024 — 2026,2023 — 2025,2020 — 2023,2020 — 2022" | split: "," -%}
+      {%- comment -%} 只有 SR（2020–2022，X-Pixel 时期）压成纯文字行 {%- endcomment -%}
+      {%- assign compact_cats = "SR" | split: "," -%}
+
+      {%- for s in sections -%}
+        {%- assign parts = s | split: "|" -%}
+        {%- assign cat = parts[0] -%}
+        {%- assign is_compact = false -%}
+        {%- if compact_cats contains cat %}{% assign is_compact = true %}{% endif -%}
+        <div class="pubs__group">
+          <h3 class="pubs__theme"><span>{{ parts[1] }}</span><em>{{ years[forloop.index0] }}</em></h3>
+          {%- for post in site.posts -%}
+            {%- if post.categories contains cat -%}
+              {% include entry.html post=post compact=is_compact %}
+            {%- endif -%}
+          {%- endfor -%}
+        </div>
+      {%- endfor -%}
+    </section>
+
+    <section class="sec cvo" id="cvo">
+      <h2 class="cvo__title">Chief vibe officer</h2>
+      <p class="cvo__note">Presides over the Maryland headquarters. Contributes to every paper by lying on the keyboard. Has strong feelings about not being in the acknowledgements.</p>
+      <div class="cvo__grid">
+        {%- assign cvo = "001.jpg,002.jpg,003.jpg,004.jpg,005.jpg,007.jpg" | split: "," -%}
+        {%- for img in cvo -%}
+          <img src="{{ site.baseurl }}/tn/images/cvo/{{ img }}" alt="" loading="lazy">
+        {%- endfor -%}
+      </div>
+    </section>
+
+    <footer class="sec foot">
+      {%- comment -%}
+        岔路口 A（猫留多少）。两只猫都在这里，CSS 按 data-cats 决定出现哪只：
+        bg  = 一只躺着的猫一直趴在页脚这条线上
+        egg = 平时看不见；滚到页尾时，一只猫从线后面探出头
+      {%- endcomment -%}
+      <div class="foot__cat foot__cat--lie" aria-hidden="true">
+        <picture>
+          <source srcset="{{ site.baseurl }}/images/decor/cat_lie_sm.webp" type="image/webp">
+          <img src="{{ site.baseurl }}/images/decor/cat_lie_sm.png" alt="" width="600" height="336" loading="lazy">
+        </picture>
+      </div>
+      <div class="foot__cat foot__cat--peek" aria-hidden="true" data-peek>
+        <picture>
+          <source srcset="{{ site.baseurl }}/images/decor/cat_look_sm.webp" type="image/webp">
+          <img src="{{ site.baseurl }}/images/decor/cat_look_sm.png" alt="" width="320" height="586" loading="lazy">
+        </picture>
+      </div>
+      <p class="foot__ask">Interested in the work, or just want to talk?</p>
+      <div class="actions">
+        <a class="btn btn--solid" href="/cv.pdf">Download CV</a>
+        <a class="btn" href="mailto:hmcai@umd.edu">hmcai@umd.edu</a>
+        <span class="updated">Updated Aug 2026</span>
+      </div>
+      <p class="foot__aside">Off-hours: <a href="https://www.flickr.com/photos/201416778@N04/">photography</a>.</p>
+    </footer>
+  </main>
+
+  <script>
+    // ——————————————————————————————————————————————————
+    //  光。站主研究的是"教模型尊重光、几何和相机"，所以这一页也尊重光：
+    //  鼠标是光源，开头大标题上有一块跟着走的暖光。静止时它就是普通的字。
+    // ——————————————————————————————————————————————————
+    (function () {
+      if (matchMedia('(prefers-reduced-motion: reduce)').matches || matchMedia('(hover: none)').matches) return;
+      const swept = [...document.querySelectorAll('.sweep')];
+      // 受光物体：两张交互图 + 左栏照片。影子背对光源，越远越长、越淡 —— 像真实的软阴影。
+      const lit = [...document.querySelectorAll('.scrub, .side__photo')];
+      const shade = () => getComputedStyle(document.documentElement).getPropertyValue('--shade').trim() || '52, 36, 25';
+      let mx = innerWidth / 2, my = 240, tx = mx, ty = my, raf = 0;
+      addEventListener('pointermove', e => {
+        tx = e.clientX; ty = e.clientY;
+        if (!raf) raf = requestAnimationFrame(tick);
+      });
+      function tick() {
+        raf = 0;
+        mx += (tx - mx) * 0.24;          // 光有惯性，不会瞬移
+        my += (ty - my) * 0.24;
+        for (const el of swept) {
+          const r = el.getBoundingClientRect();
+          if (r.bottom < -240 || r.top > innerHeight + 240) continue;
+          el.style.setProperty('--sx', (mx - r.left) + 'px');
+          el.style.setProperty('--sy', (my - r.top) + 'px');
+        }
+        const rgb = shade();
+        for (const el of lit) {
+          const r = el.getBoundingClientRect();
+          if (r.bottom < -100 || r.top > innerHeight + 100) continue;   // 屏外的不算
+          const dx = r.left + r.width / 2 - mx, dy = r.top + r.height / 2 - my;
+          const d = Math.hypot(dx, dy) || 1;
+          const reach = Math.min(d / 28, 14);                          // 影子长度有上限
+          const a = 0.16 * Math.max(0, 1 - d / 1400);                   // 光越远影子越淡
+          el.style.boxShadow = `${(dx / d * reach).toFixed(1)}px ${(dy / d * reach).toFixed(1)}px ${(14 + reach * 1.5).toFixed(0)}px rgba(${rgb}, ${a.toFixed(3)})`;
+        }
+        if (Math.abs(tx - mx) > 0.4 || Math.abs(ty - my) > 0.4) raf = requestAnimationFrame(tick);
+      }
+    })();
+
+    // ——————————————————————————————————————————————————
+    //  左栏目录：点亮当前读到的那一节
+    // ——————————————————————————————————————————————————
+    (function () {
+      const links = [...document.querySelectorAll('.side__toc a')];
+      if (!links.length || !('IntersectionObserver' in window)) return;
+      const byId = new Map(links.map(a => [a.getAttribute('href').slice(1), a]));
+      const set = id => links.forEach(a => a.setAttribute('aria-current', String(a === byId.get(id))));
+      // 视口中上部那条"阅读线"穿过哪一节，就点亮哪一节。
+      // 开头那节也要监听（它不在目录里）：读线回到开头时要清空高亮，
+      // 否则从页尾滚回顶部，高亮会停在最后一节。
+      const io = new IntersectionObserver(es => {
+        es.forEach(e => { if (e.isIntersecting) set(e.target.id); });
+      }, { rootMargin: '-35% 0px -60% 0px' });
+      [document.getElementById('top'), ...[...byId.keys()].map(id => document.getElementById(id))]
+        .forEach(sec => sec && io.observe(sec));
+    })();
+
+    // ——————————————————————————————————————————————————
+    //  可交互的可视化（代表作的两张卡）。原样搬自旧布局。
+    //
+    //  每张卡是一张雪碧图：所有状态预渲染好，切换只是改 background-position。
+    //  没人碰的时候自己来回播；鼠标/手指一上去就交出控制权。
+    // ——————————————————————————————————————————————————
+    // 桌面上不用"拖" —— 鼠标移过去就行。只有触屏才是拖。
+    if (matchMedia('(hover: none)').matches) {
+      const n = document.querySelector('[data-live-note]');
+      if (n) n.textContent = 'Two figures from my papers — drag across them to move the light, and to pull focus.';
+      document.querySelectorAll('[data-verb]').forEach(v => { v.textContent = 'Drag'; });
+    }
+
+    document.querySelectorAll('[data-scrub]').forEach(fig => {
+      const base  = fig.dataset.atlas;
+      const twoD  = fig.dataset.mode === '2d';
+      const fade  = +fig.dataset.fade || 0;
+      const [la, lb] = fig.querySelectorAll('.scrub__l');
+      const dot  = fig.querySelector('[data-dot]');
+      const vdot = fig.querySelector('[data-vdot]');
+      const end0 = fig.querySelector('[data-end0]');
+      const end1 = fig.querySelector('[data-end1]');
+
+      if (matchMedia('(hover: none)').matches) {
+        const t = fig.querySelector('[data-cue-text]');
+        if (t) t.textContent = 'drag';
+      }
+
+      // 键盘可达性先设好：素材还没加载时，Tab 也要能停在这里
+      fig.tabIndex = 0;
+      fig.setAttribute('role', 'slider');
+      fig.setAttribute('aria-label', base.includes('shadow') ? 'Light direction across the portrait' : 'Focus distance');
+
+      // 雪碧图两张共 ~417KB。新版里交互图在第三屏，不该和首屏抢带宽 ——
+      // 提前一屏才开始加载（以前 <head> 里还 preload 了一张，那是它还在首屏时的做法）。
+      const load = () => fetch(base + '.json').then(r => r.json()).then(m => {
+        const { cols, rows } = m;
+        const url = `url(${base}.jpg)`;
+        if (end0 && m.colLabels) end0.textContent = m.colLabels[0];
+        if (end1 && m.colLabels) end1.textContent = m.colLabels[m.colLabels.length - 1];
+
+        for (const l of [la, lb]) {
+          l.style.backgroundImage = url;
+          l.style.backgroundSize = `${cols * 100}% ${rows * 100}%`;
+        }
+        // 底层永远不透明，只有顶层淡入，淡完再交接给底层 —— 两层各自淡入淡出会闪白。
+        la.style.opacity = 1;
+        lb.style.opacity = 0;
+        lb.style.transition = 'none';
+
+        const posOf = (c, r) =>
+          `${cols > 1 ? (c / (cols - 1)) * 100 : 0}% ${rows > 1 ? (r / (rows - 1)) * 100 : 0}%`;
+
+        let cc = -1, rr = -1, settle = 0;
+        function put(c, r) {
+          if (c === cc && r === rr) return;
+          cc = c; rr = r;
+          const pos = posOf(c, r);
+          if (!fade) {
+            la.style.backgroundPosition = pos;       // 不加过渡：插值会把"焦点变化"本身糊掉
+          } else {
+            clearTimeout(settle);
+            if (lb.style.opacity === '1') la.style.backgroundPosition = lb.style.backgroundPosition;
+            lb.style.transition = 'none';
+            lb.style.opacity = 0;
+            lb.style.backgroundPosition = pos;
+            void lb.offsetWidth;
+            lb.style.transition = `opacity ${fade}ms ease`;
+            lb.style.opacity = 1;
+            settle = setTimeout(() => {
+              la.style.backgroundPosition = pos;
+              lb.style.transition = 'none';
+              lb.style.opacity = 0;
+            }, fade + 30);
+          }
+          if (dot) dot.style.left = (cols > 1 ? (c / (cols - 1)) * 100 : 50) + '%';
+          if (vdot) vdot.style.top = (rows > 1 ? (r / (rows - 1)) * 100 : 50) + '%';
+        }
+
+        // 自动播放的节奏由 data-cycle / data-gap 声明（两者不是线性关系，改了要实测 —— MAINTENANCE 4.5）
+        const GAP   = +fig.dataset.gap   || (fade ? 900 : 90);
+        const CYCLE = +fig.dataset.cycle || (fade ? 5200 : 3600);
+        const SPEED = 2 / (CYCLE / GAP);
+        let t = 0, auto = true, timer = 0;
+        const tri = x => 1 - Math.abs(((x % 2) + 2) % 2 - 1);
+        const eased = fig.dataset.ease !== undefined;
+        const shape = u => eased ? .5 - .5 * Math.cos(Math.PI * u) : u;
+
+        const step = () => {
+          if (!auto) return;
+          t += SPEED;
+          put(Math.round(shape(tri(t)) * (cols - 1)),
+              twoD ? Math.round(shape(tri(t * 0.62 + 0.5)) * (rows - 1)) : 0);
+          timer = setTimeout(() => requestAnimationFrame(step), GAP);
+        };
+
+        let resume;
+        const cue = fig.querySelector('[data-cue]');
+        const takeover = () => {
+          if (cue && !cue.classList.contains('is-gone')) {
+            cue.classList.add('is-gone');
+            setTimeout(() => cue.remove(), 420);
+          }
+          auto = false;
+          clearTimeout(timer);
+          clearTimeout(resume);
+          fig.classList.add('is-live');
+        };
+        const grab = e => {
+          takeover();
+          const b = fig.getBoundingClientRect();
+          const x = Math.min(1, Math.max(0, (e.clientX - b.left) / b.width));
+          const y = Math.min(1, Math.max(0, (e.clientY - b.top) / b.height));
+          put(Math.round(x * (cols - 1)), twoD ? Math.round(y * (rows - 1)) : 0);
+        };
+        const release = () => {
+          fig.classList.remove('is-live');
+          clearTimeout(resume);
+          resume = setTimeout(() => { auto = true; step(); }, 1200);
+        };
+        fig.addEventListener('pointermove', grab);
+        fig.addEventListener('pointerdown', grab);
+        fig.addEventListener('pointerleave', release);
+        fig.addEventListener('pointercancel', release);
+
+        // 键盘：方向键走一格，Home/End 到两端
+        fig.tabIndex = 0;
+        fig.setAttribute('role', 'slider');
+        fig.setAttribute('aria-label', fig.dataset.atlas.includes('shadow')
+          ? 'Light direction across the portrait' : 'Focus distance');
+        fig.setAttribute('aria-valuemin', 0);
+        fig.setAttribute('aria-valuemax', cols - 1);
+        const announce = c => {
+          fig.setAttribute('aria-valuenow', c);
+          if (m.colLabels) fig.setAttribute('aria-valuetext',
+            c === 0 ? m.colLabels[0] : c === cols - 1 ? m.colLabels[m.colLabels.length - 1] : `${c + 1} of ${cols}`);
+        };
+        fig.addEventListener('keydown', e => {
+          const s = { ArrowLeft: -1, ArrowRight: 1, ArrowDown: -1, ArrowUp: 1 }[e.key];
+          let next = null;
+          if (s) next = Math.min(cols - 1, Math.max(0, (cc < 0 ? 0 : cc) + s));
+          else if (e.key === 'Home') next = 0;
+          else if (e.key === 'End') next = cols - 1;
+          if (next === null) return;
+          e.preventDefault();
+          takeover();
+          put(next, Math.max(0, rr));
+          announce(next);
+        });
+        fig.addEventListener('blur', release);
+
+        if (fig.classList.contains('scrub--pad')) {
+          const htrack = fig.querySelector('.scrub__track');
+          const hhud = fig.querySelector('[data-hud]');
+          const hgrab = e => {
+            e.stopPropagation();
+            takeover();
+            const b = htrack.getBoundingClientRect();
+            const x = Math.min(1, Math.max(0, (e.clientX - b.left) / b.width));
+            put(Math.round(x * (cols - 1)), Math.max(0, rr));
+          };
+          hhud.addEventListener('pointermove', hgrab);
+          hhud.addEventListener('pointerdown', hgrab);
+        }
+
+        // 进入视野才开始播 —— 屏幕外的动画是纯浪费
+        new IntersectionObserver((es, o) => {
+          es.forEach(e => { if (e.isIntersecting) { step(); o.unobserve(fig); } });
+        }, { rootMargin: '120px' }).observe(fig);
+
+        put(twoD ? (cols - 1) >> 1 : 2, twoD ? (rows - 1) >> 1 : 0);
+        announce(cc);   // 读屏软件从一开始就能读出"当前在第几格"，不用等第一次操作
+      }).catch(() => fig.remove());   // 素材挂了就整块撤掉，不留空壳
+
+      if (!('IntersectionObserver' in window)) { load(); return; }
+      new IntersectionObserver((es, o) => {
+        if (es.some(e => e.isIntersecting)) { o.disconnect(); load(); }
+      }, { rootMargin: '100% 0px' }).observe(fig);
+    });
+
+    // ——————————————————————————————————————————————————
+    //  News：自动折叠一年以前的条目。日期从 <time datetime> 读，不写死。
+    // ——————————————————————————————————————————————————
+    (function () {
+      const list = document.querySelector('.news');
+      if (!list) return;
+      const items = [...list.querySelectorAll('li')];
+      const cutoff = new Date();
+      cutoff.setFullYear(cutoff.getFullYear() - 1);
+      const KEEP_MIN = 2;   // 再旧也至少留两条
+      const old = items.filter((li, i) => {
+        const t = li.querySelector('time')?.getAttribute('datetime');
+        return t && i >= KEEP_MIN && new Date(t + '-01') < cutoff;
+      });
+      if (!old.length) return;
+      old.forEach(li => li.hidden = true);
+      const btn = document.createElement('button');
+      btn.className = 'news__more';
+      btn.type = 'button';
+      const label = n => `Show ${n} earlier ${n === 1 ? 'item' : 'items'}`;
+      btn.textContent = label(old.length);
+      btn.setAttribute('aria-expanded', 'false');
+      btn.addEventListener('click', () => {
+        const open = btn.getAttribute('aria-expanded') === 'true';
+        old.forEach(li => li.hidden = open);
+        btn.setAttribute('aria-expanded', String(!open));
+        btn.textContent = open ? label(old.length) : 'Show less';
+      });
+      list.after(btn);
+    })();
+
+    // ——————————————————————————————————————————————————
+    //  作者名 -> 主页链接。数据来自 _data/authors.yml。
+    //  GitHub Pages 不跑 _plugins/，所以 add_author_links 过滤器在线上不生效；
+    //  这一段在浏览器里补上同样的事。
+    // ——————————————————————————————————————————————————
+    (function () {
+      const authors = {
+        {%- for a in site.data.authors -%}
+          {%- if a[1] and a[1] != "" %}{{ a[0] | jsonify }}: {{ a[1] | jsonify }},{% endif -%}
+        {%- endfor -%}
+      };
+      const names = Object.keys(authors).sort((a, b) => b.length - a.length);   // 长名字优先
+      document.querySelectorAll('.entry__authors').forEach(el => {
+        const walker = document.createTreeWalker(el, NodeFilter.SHOW_TEXT);
+        const texts = [];
+        while (walker.nextNode()) texts.push(walker.currentNode);
+        texts.forEach(node => {
+          if (node.parentElement.closest('a')) return;
+          let html = node.nodeValue, hit = false;
+          for (const name of names) {
+            const re = new RegExp(`\\b${name.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}\\b`, 'g');
+            if (re.test(html)) {
+              html = html.replace(re, `<a class="author" href="${authors[name]}">${name}</a>`);
+              hit = true;
+            }
+          }
+          if (!hit) return;
+          const span = document.createElement('span');
+          span.innerHTML = html;
+          node.replaceWith(span);
+        });
+      });
+    })();
+
+    // 明暗切换：按钮显示的是"现在实际生效的"主题，不管它来自系统还是访客的选择
+    (function () {
+      const d = document.documentElement;
+      const btns = [...document.querySelectorAll('[data-set-theme]')];
+      const sys = matchMedia('(prefers-color-scheme: dark)');
+      const sync = () => {
+        const eff = d.dataset.theme || (sys.matches ? 'dark' : 'light');
+        btns.forEach(b => b.setAttribute('aria-pressed', String(b.dataset.setTheme === eff)));
+      };
+      btns.forEach(b => b.addEventListener('click', () => {
+        // 切换那一瞬间关掉颜色过渡：否则按钮的字色慢 0.15s 才跟上，会闪一下"深底深字"
+        d.classList.add('is-switching');
+        requestAnimationFrame(() => requestAnimationFrame(() => d.classList.remove('is-switching')));
+        d.dataset.theme = b.dataset.setTheme;
+        try { localStorage.setItem('theme', b.dataset.setTheme); } catch (e) {}
+        sync();
+      }));
+      sys.addEventListener('change', sync);
+      sync();
+    })();
+
+    // 彩蛋猫：页脚进入视野才探头。只出现一次，之后就一直在那儿 —— 反复缩回去会很吵。
+    (function () {
+      const cat = document.querySelector('[data-peek]');
+      if (!cat || !('IntersectionObserver' in window)) { cat && cat.classList.add('is-peek'); return; }
+      new IntersectionObserver((es, o) => {
+        es.forEach(e => { if (e.isIntersecting) { cat.classList.add('is-peek'); o.disconnect(); } });
+      }, { rootMargin: '0px 0px -12% 0px' }).observe(cat.parentElement);
+    })();
+
+    // 论文缩略图视频：快滚到时才加载并播放（提前一屏开始，免得滚到时还是空的）。
+    // 减弱动效时只加载、停在第一帧，不循环播放。
+    (function () {
+      const vids = [...document.querySelectorAll('video[data-lazy]')];
+      if (!vids.length) return;
+      const still = matchMedia('(prefers-reduced-motion: reduce)').matches;
+      const start = v => {
+        v.querySelectorAll('source[data-src]').forEach(s => { s.src = s.dataset.src; s.removeAttribute('data-src'); });
+        v.load();
+        if (!still) v.play().catch(() => {});
+      };
+      if (!('IntersectionObserver' in window)) { vids.forEach(start); return; }
+      const io = new IntersectionObserver(es => es.forEach(e => {
+        if (e.isIntersecting) { start(e.target); io.unobserve(e.target); }
+      }), { rootMargin: '100% 0px' });
+      vids.forEach(v => io.observe(v));
+    })();
+
+    // 多图/多视频交叉淡化。CSS 只声明外观，时序在这里算。
+    (function () {
+      document.querySelectorAll('[data-slider]').forEach((slider, i) => {
+        const frames = slider.children;
+        const n = frames.length;
+        if (n < 2) return;
+        const FADE = 0.4, HOLD = 2.2;
+        const slot = FADE + HOLD;
+        const total = n * slot;
+        const pct = s => (s / total * 100).toFixed(3);
+        const style = document.createElement('style');
+        style.textContent = `@keyframes slide${i}{0%{opacity:0}${pct(FADE)}%{opacity:1}${pct(slot)}%{opacity:1}${pct(slot + FADE)}%{opacity:0}100%{opacity:0}}`;
+        document.head.appendChild(style);
+        [...frames].forEach((f, k) => { f.style.animation = `slide${i} ${total}s ${k * slot}s infinite both`; });
+      });
+    })();
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+{%- comment -%}
+  单篇论文页：/papers/<slug>/。给搜索引擎和 AI agent 一个"专门讲这项工作"的地址 ——
+  有人搜研究主题（不提名字）时，命中的是这一页，再顺着它找到站主。
+
+  只用 _posts 里已有的数据：标题、作者、会议、年份、一句话简介、链接、缩略图。
+  BibTeX 不自动生成（作者顺序、会议全称拼错比没有更糟）；post 里写了 bibtex: 才显示。
+  <meta name="citation_*"> 是 Google Scholar 认的论文标签。
+{%- endcomment -%}
+{%- assign summary = page.excerpt | strip_html | strip -%}
+{%- assign venue = page.venue | strip_html | strip -%}
+{%- assign names = page.authors | strip_html | remove: "*" | split: "," -%}
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{{ page.title | strip }} — Haoming Cai</title>
+  <meta name="author" content="Haoming Cai">
+  <meta name="description" content="{{ page.title | strip }} ({{ venue }}). {{ summary }}">
+  <link rel="canonical" href="{{ page.url | absolute_url }}">
+
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="{{ page.title | strip }}">
+  <meta property="og:description" content="{{ venue }} — {{ summary }}">
+  <meta property="og:url" content="{{ page.url | absolute_url }}">
+  <meta property="og:image" content="{{ '/images/og.jpg' | absolute_url }}">
+  <meta name="twitter:card" content="summary">
+
+  {%- comment -%} Google Scholar 的论文标签 {%- endcomment %}
+  <meta name="citation_title" content="{{ page.title | strip }}">
+  {%- for n in names %}
+  {%- assign nn = n | strip -%}
+  {%- assign tail = nn | slice: -1 -%}
+  {%- if tail == "." -%}{%- assign cut = nn.size | minus: 1 -%}{%- assign nn = nn | slice: 0, cut -%}{%- endif %}
+  <meta name="citation_author" content="{{ nn }}">
+  {%- endfor %}
+  {%- if page.year %}
+  <meta name="citation_publication_date" content="{{ page.year }}">
+  {%- endif %}
+  <meta name="citation_conference_title" content="{{ venue }}">
+  {%- if page.arxiv and page.arxiv contains ".pdf" %}
+  <meta name="citation_pdf_url" content="{{ page.arxiv }}">
+  {%- endif %}
+  <meta name="citation_abstract_html_url" content="{{ page.url | absolute_url }}">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "ScholarlyArticle",
+    "@id": {{ page.url | absolute_url | append: "#paper" | jsonify }},
+    "name": {{ page.title | strip | jsonify }},
+    "headline": {{ page.title | strip | jsonify }},
+    "url": {{ page.url | absolute_url | jsonify }},
+    {%- if page.year %}
+    "datePublished": "{{ page.year }}",
+    {%- endif %}
+    "description": {{ summary | jsonify }},
+    "publication": {"@type": "PublicationEvent", "name": {{ venue | jsonify }}},
+    "author": [
+      {%- for n in names -%}
+        {%- assign nn = n | strip -%}
+        {%- assign tail = nn | slice: -1 -%}
+        {%- if tail == "." -%}{%- assign cut = nn.size | minus: 1 -%}{%- assign nn = nn | slice: 0, cut -%}{%- endif -%}
+        {%- if nn == "Haoming Cai" -%}
+        {"@type": "Person", "@id": {{ site.url | append: "/#person" | jsonify }}, "name": "Haoming Cai", "url": {{ "/" | absolute_url | jsonify }}}
+        {%- else -%}
+        {"@type": "Person", "name": {{ nn | jsonify }}}
+        {%- endif -%}
+        {%- unless forloop.last -%}, {% endunless -%}
+      {%- endfor -%}
+    ]
+  }
+  </script>
+
+  {% include head-common.html %}
+</head>
+
+<body class="paperpage">
+  <a class="skip" href="#main">Skip to content</a>
+
+  <header class="paperbar">
+    <a class="paperbar__home" href="{{ '/' | relative_url }}">Haoming Cai</a>
+    <a class="paperbar__all" href="{{ '/#publications' | relative_url }}">All publications</a>
+    <div class="theme" role="group" aria-label="Color theme">
+      <button type="button" data-set-theme="dark">Dark</button>
+      <button type="button" data-set-theme="light">Light</button>
+    </div>
+  </header>
+
+  <main class="paper" id="main">
+    {%- assign year = page.year | append: "" %}
+    <p class="paper__venue">{{ venue }}{% if page.year %}{% unless venue contains year %} · {{ year }}{% endunless %}{% endif %}</p>
+    <h1 class="paper__title">{{ page.title | strip }}</h1>
+    <p class="paper__authors">{{ page.authors }}</p>
+    <p class="paper__summary">{{ summary }}</p>
+
+    {%- if page.image %}
+    <figure class="paper__media">
+      {%- if page.image contains '.mp4' -%}
+        <video autoplay muted loop playsinline preload="metadata" aria-label="Teaser for {{ page.title | strip | escape }}"><source src="/tn{{ page.image }}?v={{ site.asset_v }}" type="video/mp4"></video>
+      {%- else -%}
+        <img src="/tn{{ page.image }}" alt="Teaser figure for {{ page.title | strip | escape }}">
+      {%- endif -%}
+    </figure>
+    {%- endif %}
+
+    <p class="chips">
+      {%- if page.arxiv -%}<a href="{{ page.arxiv }}">PDF</a>{%- endif -%}
+      {%- if page.website -%}<a href="{{ page.website }}">Project page</a>{%- endif -%}
+      {%- if page.code -%}<a href="{{ page.code }}">Code</a>{%- endif -%}
+      {%- if page.dataset -%}<a href="{{ page.dataset }}">Dataset</a>{%- endif -%}
+      {%- if page.video -%}<a href="{{ page.video }}">Video</a>{%- endif -%}
+      {%- for l in page.links -%}
+        {%- assign parts = l | split: "|" -%}
+        <a href="{{ parts[1] | strip }}">{{ parts[0] | strip }}</a>
+      {%- endfor -%}
+    </p>
+
+    {%- if page.bibtex %}
+    <section class="paper__cite">
+      <h2>Citation</h2>
+      <pre><code>{{ page.bibtex | strip | escape }}</code></pre>
+    </section>
+    {%- endif %}
+
+    <p class="paper__back"><a href="{{ '/#publications' | relative_url }}">&larr; All publications by Haoming Cai</a></p>
+  </main>
+
+  <script>
+    // 明暗切换（和首页同一套逻辑；按钮显示实际生效的主题）
+    (function () {
+      const d = document.documentElement;
+      const btns = [...document.querySelectorAll('[data-set-theme]')];
+      const sys = matchMedia('(prefers-color-scheme: dark)');
+      const sync = () => {
+        const eff = d.dataset.theme || (sys.matches ? 'dark' : 'light');
+        btns.forEach(b => b.setAttribute('aria-pressed', String(b.dataset.setTheme === eff)));
+      };
+      btns.forEach(b => b.addEventListener('click', () => {
+        d.classList.add('is-switching');
+        requestAnimationFrame(() => requestAnimationFrame(() => d.classList.remove('is-switching')));
+        d.dataset.theme = b.dataset.setTheme;
+        try { localStorage.setItem('theme', b.dataset.setTheme); } catch (e) {}
+        sync();
+      }));
+      sys.addEventListener('change', sync);
+      sync();
+    })();
+  </script>
+</body>
+</html>

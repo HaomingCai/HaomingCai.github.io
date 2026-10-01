@@ -1,3 +1,8 @@
 ---
-layout: usha
+layout: paper
 ---
+{%- comment -%}
+  _posts/ 里的论文用这个布局（front matter 写的是 layout: post），实际渲染交给 paper.html。
+  以前它必须套首页布局 —— 那是 permalink: / 让每篇都写进 /index.html 时的权宜之计，现已不需要。
+{%- endcomment -%}
+{{ content }}

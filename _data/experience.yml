@@ -1,0 +1,29 @@
+# 经历。文字原样来自 CV（HMC-CV/cv.tex 的 Research Experience），只排版不改写。
+# 首页的 Experience 区块和 /llms.txt 都从这里生成 —— 只改这一处。
+# role 里可以写 HTML 链接；llms.txt 会自动去掉标签。
+# links: "标签|网址"，和 _posts 里的 links 一个写法。
+
+- when: Summer 2026
+  org: Adobe
+  where: San Jose, CA
+  role: 'Ph.D. Research Intern, NextCam team (<a href="https://graphics.stanford.edu/~levoy/">Marc Levoy</a>).'
+
+- when: Summer 2025
+  org: Adobe
+  where: San Jose, CA
+  role: 'Ph.D. Research Intern, NextCam team (<a href="https://graphics.stanford.edu/~levoy/">Marc Levoy</a>), supervised by <a href="https://shumianxin.github.io/">Shumian Xin</a> and <a href="https://ztzhang.info/">Zhoutong Zhang</a>.'
+  desc: 'Bokeh editing project; outcome: ECCV 2026. Patent filing in process.'
+  links: ["ECCV 2026 paper|/vid2bokeh/"]
+
+- when: Summer 2024
+  org: Dolby Vision Lab
+  where: Sunnyvale, CA
+  role: 'Ph.D. Research Intern, supervised by <a href="https://scholar.google.com/citations?user=oe-qvf4AAAAJ&hl=en">Guan-Ming Su</a>.'
+  desc: 'Portrait lighting control for text-to-image diffusion models without light stage data. Outcome: ICCV 2025, one patent.'
+  links: ["ICCV 2025 paper|/tn/projects_html/ShadowDirector/"]
+
+- when: 2020 – 2022
+  org: XPixel Group, SIAT
+  where: Shenzhen, China
+  role: 'Undergraduate Research Assistant, supervised by <a href="https://scholar.google.com/citations?user=OSDCB0UAAAAJ&hl=en">Chao Dong</a>.'
+  desc: 'Efficient and controllable image restoration; image quality and aesthetic assessment. Outcome: two ECCV papers, two CVPR workshops organized, one patent.'

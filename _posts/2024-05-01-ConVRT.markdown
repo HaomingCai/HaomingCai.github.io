@@ -8,5 +8,6 @@ author: "Leo Keselman"
 authors: "<strong>Haoming Cai*</strong>, Jingxi Chen*, Brandon Y. Feng, Weiyun Jiang, Mingyang Xie, Kevin Zhang, Cornelia Fermuller, Yiannis Aloimonos, Ashok Veeraraghavan, Christopher Metzler."
 arxiv: https://proceedings.neurips.cc/paper_files/paper/2024/file/4eb91efe090f72f7cf42c69aab03fe85-Paper-Conference.pdf
 venue: "<strongvenue>NeurIPS 2024</strongvenue>"
+year: 2024
 ---
 Low-pass the temporal dimension to strip atmospheric turbulence out of video

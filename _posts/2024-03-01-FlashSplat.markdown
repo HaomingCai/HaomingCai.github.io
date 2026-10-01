@@ -9,5 +9,6 @@ Christopher Metzler"
 venue: "<strongvenue>ECCV 2024</strongvenue>"
 arxiv: https://arxiv.org/pdf/2410.02764
 website: https://mingyangx.github.io/Flash-Splat/
+year: 2024
 ---
 Separate reflections in 3D using flash-induced cues

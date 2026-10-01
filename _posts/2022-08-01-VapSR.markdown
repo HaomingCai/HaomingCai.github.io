@@ -9,5 +9,6 @@ authors: "<strong>Haoming Cai*</strong>, Lin Zhou*, Jinjin Gu, Zheyuan Li, Yingq
 venue: "<strongvenue>AIM Challenge @ ECCV 2022</strongvenue>"
 arxiv: https://arxiv.org/pdf/2210.05960
 website:  https://github.com/zhoumumu/VapSR
+year: 2022
 ---
 Widen the receptive field with attention instead of depth

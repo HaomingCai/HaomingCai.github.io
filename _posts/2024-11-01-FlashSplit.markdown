@@ -7,5 +7,6 @@ categories: GenAI
 authors: "Tianfu Wang*, Mingyang Xie*, <strong>Haoming Cai</strong>, Sachin Shah, Christopher Metzler"
 venue: "<strongvenue>CVPR 2025</strongvenue>"
 arxiv: https://arxiv.org/pdf/2501.00637
+year: 2025
 ---
 Separate reflection from transmission with flash cues and a diffusion prior

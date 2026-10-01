@@ -9,5 +9,6 @@ authors:  <strong>Haoming Cai</strong>, Jingwen He, Yu Qiao, Chao Dong.
 venue: "<strongvenue>CVPRW'21</strongvenue>"
 arxiv: https://openaccess.thecvf.com/content/CVPR2021W/NTIRE/papers/Cai_Toward_Interactive_Modulation_for_Photo-Realistic_Image_Restoration_CVPRW_2021_paper.pdf
 website: https://github.com/HaomingCai/CUGAN
+year: 2021
 ---
 Dial deblurring and denoising continuously, on a GAN, without retraining

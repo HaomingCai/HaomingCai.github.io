@@ -1,0 +1,50 @@
+---
+layout: null
+permalink: /llms.txt
+sitemap: false
+---
+{%- comment -%}
+  给 AI / agent 读的纯文本自我介绍（llmstxt.org 约定）。全部从现有数据生成：
+  经历 ← _data/experience.yml；论文 ← _posts/。加论文、改经历都不用改这里。
+  只写已经在首页公开的事实，不加新说法。
+{%- endcomment -%}
+# Haoming Cai (蔡昊明)
+
+> CS PhD student (expected 2027) at the University of Maryland, College Park, advised by Christopher Metzler. Works on generative media: teaching generative models to respect light, geometry, and the camera. On the job market for full-time roles from 2027.
+
+Previously an undergraduate research assistant at XPixel (SIAT, Shenzhen) with Chao Dong and Jinjin Gu; BEng from The Chinese University of Hong Kong, Shenzhen.
+
+## Contact
+
+- Homepage: {{ "/" | absolute_url }}
+- Email: hmcai@umd.edu
+- CV (PDF, always the latest version): {{ "/cv.pdf" | absolute_url }}
+- Google Scholar: https://scholar.google.com/citations?user=Jzs37TkAAAAJ
+
+## Research topics
+
+Generative media; computational imaging; image and video diffusion models; light field synthesis and bokeh rendering; portrait lighting control; reflection removal; event cameras; atmospheric turbulence mitigation; Gaussian splatting; image quality assessment; image super-resolution and restoration.
+
+## Experience
+{% for x in site.data.experience %}
+- {{ x.when }} — {{ x.org }}, {{ x.where }}. {{ x.role | strip_html }}{% if x.desc %} {{ x.desc }}{% endif %}
+{%- endfor %}
+
+## Publications
+
+Newest first. Each title links to a page for that paper.
+{% for p in site.posts %}
+{%- assign venue = p.venue | strip_html | strip -%}
+{%- assign year = p.year | append: "" -%}
+{%- assign authors = p.authors | strip_html | strip -%}
+{%- assign tail = authors | slice: -1 -%}{%- if tail == "." -%}{%- assign cut = authors.size | minus: 1 -%}{%- assign authors = authors | slice: 0, cut -%}{%- endif -%}
+{%- assign summary = p.excerpt | strip_html | strip -%}
+{%- assign tail = summary | slice: -1 -%}{%- unless tail == "." -%}{%- assign summary = summary | append: "." -%}{%- endunless %}
+- [{{ p.title | strip }}]({{ p.url | absolute_url }}) — {{ venue }}{% if p.year %}{% unless venue contains year %} ({{ year }}){% endunless %}{% endif %}. Authors: {{ authors }}. {{ summary }}
+{%- if p.arxiv %} PDF: {{ p.arxiv }}{% endif %}{% if p.website %} Project: {% if p.website contains "://" %}{{ p.website }}{% else %}{{ p.website | absolute_url }}{% endif %}{% endif %}
+{%- endfor %}
+
+## Optional
+
+- Interactive figures from the two featured papers are on the homepage (drag across them to move the light, and to pull focus).
+- Off-hours photography: https://www.flickr.com/photos/201416778@N04/

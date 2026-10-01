@@ -1,0 +1,76 @@
+{%- comment -%}
+  结构化数据（schema.org JSON-LD）：给搜索引擎和 AI agent 读的"名片"。
+  —— 这个人是谁、在哪、研究什么、在哪些平台有主页；以及他的每一篇论文（作者、年份、链接）。
+  agent 读到这一段就不用从版面里猜。论文部分从 _posts 自动生成，加论文不用改这里。
+
+  sameAs：同一个人在其他平台的主页。LinkedIn / ORCID / Semantic Scholar 等拿到网址后加进来。
+  作者名：取 _posts 的 authors 字段，去掉 HTML 和表示共同一作的 *；"Haoming Cai" 指回本人。
+{%- endcomment -%}
+{%- assign me = site.url | append: "/#person" -%}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Person",
+      "@id": {{ me | jsonify }},
+      "name": "Haoming Cai",
+      "alternateName": "蔡昊明",
+      "url": {{ "/" | absolute_url | jsonify }},
+      "image": {{ "/images/profile_380.jpg" | absolute_url | jsonify }},
+      "email": "mailto:hmcai@umd.edu",
+      "jobTitle": "PhD Student",
+      "description": "CS PhD student (expected 2027) at the University of Maryland, advised by Christopher Metzler. Works on generative media: teaching generative models to respect light, geometry, and the camera. On the job market for full-time roles from 2027.",
+      "affiliation": {
+        "@type": "CollegeOrUniversity",
+        "name": "University of Maryland, College Park",
+        "department": {"@type": "Organization", "name": "Department of Computer Science"},
+        "url": "https://www.cs.umd.edu/"
+      },
+      "alumniOf": [
+        {"@type": "CollegeOrUniversity", "name": "The Chinese University of Hong Kong, Shenzhen", "url": "https://www.cuhk.edu.cn/en"}
+      ],
+      "knowsAbout": [
+        "Generative media", "Computational imaging", "Diffusion models", "Video diffusion models",
+        "Light field synthesis", "Bokeh rendering", "Portrait lighting control", "Reflection removal",
+        "Event cameras", "Atmospheric turbulence mitigation", "Gaussian splatting",
+        "Image quality assessment", "Image super-resolution", "Image restoration"
+      ],
+      "sameAs": [
+        "https://scholar.google.com/citations?user=Jzs37TkAAAAJ",
+        "https://www.flickr.com/photos/201416778@N04/"
+      ]
+    }
+    {%- for p in site.posts %},
+    {
+      "@type": "ScholarlyArticle",
+      "@id": {{ p.url | absolute_url | append: "#paper" | jsonify }},
+      "name": {{ p.title | strip | jsonify }},
+      "headline": {{ p.title | strip | jsonify }},
+      "url": {{ p.url | absolute_url | jsonify }},
+      {%- if p.year %}
+      "datePublished": "{{ p.year }}",
+      {%- endif %}
+      "description": {{ p.excerpt | strip_html | strip | jsonify }},
+      "publication": {"@type": "PublicationEvent", "name": {{ p.venue | strip_html | strip | jsonify }}},
+      "author": [
+        {%- assign names = p.authors | strip_html | remove: "*" | split: "," -%}
+        {%- for n in names -%}
+          {%- assign nn = n | strip -%}
+          {%- assign tail = nn | slice: -1 -%}
+          {%- if tail == "." -%}{%- assign cut = nn.size | minus: 1 -%}{%- assign nn = nn | slice: 0, cut -%}{%- endif -%}
+          {%- if nn == "Haoming Cai" -%}{"@id": {{ me | jsonify }}}{%- else -%}{"@type": "Person", "name": {{ nn | jsonify }}}{%- endif -%}
+          {%- unless forloop.last -%}, {% endunless -%}
+        {%- endfor -%}
+      ]
+      {%- assign same = "" | split: "" -%}
+      {%- if p.arxiv %}{% assign same = same | push: p.arxiv %}{% endif -%}
+      {%- if p.website %}{% assign same = same | push: p.website %}{% endif -%}
+      {%- if same.size > 0 %},
+      "sameAs": [{% for s in same %}{% if s contains "://" %}{{ s | jsonify }}{% else %}{{ s | absolute_url | jsonify }}{% endif %}{% unless forloop.last %}, {% endunless %}{% endfor %}]
+      {%- endif %}
+    }
+    {%- endfor %}
+  ]
+}
+</script>

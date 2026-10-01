@@ -9,5 +9,6 @@ authors: "Jinjin Gu, <strong>Haoming Cai</strong>, Chenyu Dong, Ruofan Zhang, Yu
 venue: "<strongvenue>ECCV 2022</strongvenue>"
 arxiv: https://arxiv.org/pdf/2210.04198
 website:  https://github.com/HaomingCai/SRPO
+year: 2022
 ---
 Super-resolve by predicting where to sample, not what to generate

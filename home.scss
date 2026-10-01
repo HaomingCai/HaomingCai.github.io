@@ -1,0 +1,790 @@
+---
+---
+// ============================================================
+//  首页样式（lars 系列）
+//  骨架学 larsjebe.com：左侧固定栏 + 主栏、等宽字标题、极少的颜色。
+//  个性保留：赤陶点缀、奶油底、跟鼠标走的暖光、交互图、猫。
+//  所有设计决定和理由见 design_versions/LARS_PLAN.md。
+//
+//  颜色一律走下面的 token。深色只重定义 token，组件里不写死颜色 ——
+//  否则总有一处在另一套主题里变成"深底深字"。
+// ============================================================
+
+@mixin dark-tokens {
+  --paper: #1b1815;
+  --side: #211d19;
+  --ink: #ece5d8;
+  --ink-2: #c9bfb0;
+  --muted: #a1978a;
+  --rule: #3a332c;
+  --accent: #e08a6c;
+  --accent-soft: rgba(224, 138, 108, .10);
+  --on-accent: #1b1815;
+  --sweep-a: #f3c79a;
+  --sweep-b: #e6b58c;
+  --sweep-c: #d9c8b3;
+  --shade: 0, 0, 0;
+  --wall-opacity: .07;
+  color-scheme: dark;
+}
+
+// —— 浅色（基准）。打印时也强制用它，见文件末尾 ——
+@mixin light-tokens {
+  --paper: #f6f1e7;      // 奶油底
+  --side: #efe8da;       // 左栏比主栏深半档，分出层次但不用框
+  --ink: #221e1a;
+  --ink-2: #4a433a;      // 次级正文：简介、作者行
+  --muted: #6b6358;      // 元信息。左栏上 4.85:1，别再调浅（MAINTENANCE 4.1）
+  --rule: #e0d7c5;
+  --accent: #a4452b;     // 赤陶：唯一的点缀色。链接、主按钮、当前位置
+  --accent-soft: rgba(164, 69, 43, .07);
+  --on-accent: #fffaf3;
+  // 暖光扫过：光斑中心是暖棕，外圈回到正文色。静止时整行就是 --ink。
+  --sweep-a: #9a5a2c;
+  --sweep-b: #6d4a2e;
+  --sweep-c: #3a2f25;
+  --shade: 52, 36, 25;
+  --wall-opacity: .16;
+  color-scheme: light;
+}
+
+:root {
+  @include light-tokens;
+
+  --mono: "JetBrains Mono", ui-monospace, "SF Mono", Menlo, monospace;
+  --sans: "Inter Tight", "Inter", -apple-system, "Segoe UI", sans-serif;
+  --serif: "Source Serif 4", Georgia, serif;
+  --body: var(--sans);   // 岔路口 B：?font=serif 切到衬线
+
+  --side-w: 320px;
+  --pad-x: clamp(24px, 6vw, 88px);
+}
+:root[data-font="serif"] { --body: var(--serif); }
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) { @include dark-tokens; }
+}
+:root[data-theme="dark"] { @include dark-tokens; }
+
+// —————————————————————————— 基础
+
+*, *::before, *::after { box-sizing: border-box; }
+html { scroll-behavior: smooth; scroll-padding-top: 24px; -webkit-text-size-adjust: 100%; }
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font: 17px/1.6 var(--body);
+  -webkit-font-smoothing: antialiased;
+}
+img, video { max-width: 100%; display: block; }
+h1, h2, h3 { margin: 0; text-wrap: balance; }
+p { margin: 0; }
+a { color: var(--accent); text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 3px; text-decoration-color: color-mix(in srgb, var(--accent) 40%, transparent); }
+a:hover { text-decoration-color: var(--accent); }
+:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 2px; }
+::selection { background: color-mix(in srgb, var(--accent) 22%, var(--paper)); color: var(--ink); }
+
+.skip {
+  position: absolute; left: 12px; top: -48px; z-index: 50;
+  padding: 8px 12px; background: var(--ink); color: var(--paper); font: 500 14px var(--sans);
+  &:focus { top: 12px; }
+}
+
+.is-switching *, .is-switching *::before, .is-switching *::after { transition: none !important; }
+
+// —— 明暗切换（右上角，学 Lars）——
+.theme {
+  position: fixed;
+  top: 16px; right: 16px;
+  z-index: 20;
+  display: flex;
+  padding: 3px;
+  gap: 2px;
+  border: 1px solid var(--rule);
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--paper) 88%, transparent);
+  backdrop-filter: blur(8px);
+  button {
+    font: 500 11px/1 var(--mono);
+    letter-spacing: .08em;
+    text-transform: uppercase;
+    padding: 7px 11px;
+    border: 0;
+    border-radius: 999px;
+    background: none;
+    color: var(--ink-2);
+    cursor: pointer;
+    &:hover { color: var(--ink); }
+    &[aria-pressed="true"] { background: var(--ink); color: var(--paper); }
+  }
+}
+
+// 小标签：会议·年份、链接、机构。等宽字只出现在这类地方和标题上 —— 克制地用。
+%label {
+  font-family: var(--mono);
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+}
+
+// —————————————————————————— 左侧固定栏
+
+.side {
+  position: fixed;
+  inset: 0 auto 0 0;
+  width: var(--side-w);
+  padding: 32px 32px 28px;
+  overflow-y: auto;
+  background: var(--side);
+  border-right: 1px solid var(--rule);
+  display: flex;
+  flex-direction: column;
+  --gap: 18px;
+  gap: var(--gap);
+  z-index: 5;
+
+  &__photo {
+    width: 100%;
+    height: auto;          // 必须写：<img height="380"> 属性会压过 aspect-ratio，把照片撑成竖长条
+    aspect-ratio: 1;
+    object-fit: cover;
+    border-radius: 3px;
+    background: var(--rule);
+    transition: box-shadow .2s ease-out;
+  }
+
+  &__id { display: grid; gap: 4px; }
+
+  &__name {
+    font: 700 30px/1.15 var(--mono);
+    letter-spacing: -.02em;
+  }
+  &__zh { font: 500 15px/1.4 var(--sans); color: var(--ink-2); letter-spacing: .08em; }
+  &__say { font: 400 12px/1.5 var(--mono); color: var(--muted); }
+
+  &__focus {
+    font: 500 13px/1.65 var(--mono);
+    color: var(--ink);
+  }
+
+  &__tags {
+    display: flex; flex-wrap: wrap; gap: 6px;
+    list-style: none; margin: 0; padding: 0;
+    li {
+      @extend %label;
+      font-size: 11px;
+      padding: 2px 8px;
+      border: 1px solid var(--rule);
+      border-radius: 2px;
+      color: var(--ink-2);
+    }
+  }
+
+  &__toc {
+    border-top: 1px solid var(--rule);
+    padding-top: 14px;
+    display: grid;
+    a {
+      display: flex; justify-content: space-between; align-items: baseline;
+      padding: 4px 0;
+      font: 400 14px/1.4 var(--sans);
+      color: var(--ink-2);
+      text-decoration: none;
+      span { font: 400 12px var(--mono); color: var(--muted); }
+      &:hover { color: var(--ink); }
+      &[aria-current="true"] {
+        color: var(--ink); font-weight: 600;
+        span { color: var(--accent); }
+      }
+    }
+  }
+
+  // 底部这一组（按钮 → 小猫 → Email）占掉目录下面剩下的全部空间、内容贴底。
+  // 它是一个量高度的容器：剩下的空间放不下猫（见下面的 @container），就把猫收起，Email 那行永远在视口里
+  &__foot {
+    flex: 1 1 0;
+    min-height: 0;
+    container: sidefoot / size;
+    display: flex; flex-direction: column; justify-content: flex-end;
+    gap: var(--gap);
+  }
+
+  // CV / Scholar 两个按钮（招聘方最常找的两样）
+  &__cta {
+    padding-top: 14px;
+    border-top: 1px solid var(--rule);
+    display: grid; grid-template-columns: 1fr 1fr; gap: 8px;
+    .btn { justify-content: center; padding: 11px 8px; font-size: 14px; }
+    small { font: 500 11px var(--mono); letter-spacing: .04em; opacity: .85; }
+  }
+
+  // 小猫 + "Meet our chief vibe officer"，趴在 Email 那条线上，点了跳到页尾猫的那一节
+  &__cat {
+    display: flex;
+    margin-bottom: calc(-1 * var(--gap));   // 抵掉间距，猫直接趴在下面那条线上
+    a {
+      display: flex; align-items: flex-end; gap: 12px;
+      font: 400 12px/1.5 var(--mono);
+      color: var(--muted);
+      text-decoration: none;
+      &:hover { color: var(--accent); span { text-decoration: underline; text-underline-offset: 3px; } }
+    }
+    picture { flex: none; display: block; line-height: 0; }   // 别用 display: contents —— <source> 会变成一个空格子，多吃一份 gap
+    img { width: 88px; height: auto; }
+    span { padding-bottom: 8px; }
+  }
+  // 按钮 53 + 间距 18 + 猫 77 + Email 那行 46 = 194（实测，猫的负边距抵掉了它下面那份间距），留几像素余量
+  @container sidefoot (max-height: 200px) {
+    &__cat { display: none; }
+  }
+
+  &__links {
+    margin-top: 0;
+    padding-top: 14px;
+    border-top: 1px solid var(--rule);
+    display: flex; flex-wrap: wrap; gap: 0 16px;
+    list-style: none; margin-bottom: 0; padding-left: 0;
+    a {
+      @extend %label;
+      display: inline-block;
+      padding: 6px 0;         // 可点区域撑到 ~28px 高（WCAG 2.5.8 要 24px）
+      color: var(--ink-2);
+      text-decoration: none;
+      &:hover { color: var(--accent); }
+    }
+  }
+}
+
+// —————————————————————————— 主栏
+
+.main {
+  margin-left: var(--side-w);
+  min-width: 0;
+  position: relative;
+  isolation: isolate;
+}
+
+.sec {
+  padding: 64px var(--pad-x);
+  border-top: 1px solid var(--rule);
+  &:first-child { border-top: 0; }
+
+  > * { max-width: 940px; }
+  &__title {
+    font: 700 24px/1.25 var(--mono);   // 24px：比开头那句（一行时 ~30px）小一号，开头才是页面上最显眼的字
+    letter-spacing: -.02em;
+    margin-bottom: 28px;
+    display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: 4px 16px;
+    a { @extend %label; font-size: 12px; text-decoration: none; white-space: nowrap; padding: 6px 0; }
+  }
+  &__note { color: var(--ink-2); font-size: 15px; margin: -12px 0 28px; max-width: 64ch; }
+}
+
+// —————————————————————————— 开头
+
+.intro {
+  padding-top: 64px;
+  padding-bottom: 64px;
+  display: grid;
+  gap: 28px;
+
+  &__market {
+    @extend %label;
+    display: inline-flex; align-items: center; gap: 10px;
+    color: var(--ink);
+    &::before {
+      content: ""; width: 8px; height: 8px; border-radius: 50%;
+      background: var(--accent);
+      box-shadow: 0 0 0 4px var(--accent-soft);
+    }
+  }
+
+  // 两行小字：求职状态 + 身份。身份降到这里，大字留给"研究什么"
+  &__kicker { display: grid; gap: 10px; }
+  &__status { @extend %label; color: var(--muted); padding-left: 18px; }  // 和上一行的文字对齐（圆点 8px + 间距 10px）
+
+  // 大字 = 研究方向一句话，站主要求排成一行。用正文字体（随岔路口 B 变）。
+  // 字号按开头区宽度缩放（cqi），保证一行放下：实测这句在 100px 下宽 3042px（无衬线）/ 2948px（衬线），
+  // 所以系数 3.2 / 3.25 cqi（留约 3% 余量）；上限 30 / 31px 防止超宽屏上冲出 940px 的内容栏。
+  // 改这句话的文字 → 系数要重新量（design_versions/checks 里没有，手算：开头区宽 / 100px 宽 × 100）。
+  // 有 g、y 这类下伸字母 + .sweep 的 background-clip:text：行高 1.2 + padding-bottom .12em 兜底，别再收
+  &__thesis {
+    font: 600 min(3.2cqi, 30px)/1.2 var(--body);
+    letter-spacing: -.025em;
+    white-space: nowrap;
+    padding-bottom: .12em;
+  }
+}
+// 衬线版系数按字体加载完后实测：100px 下宽 ≈2948px（第一次量到的 2756 是还没换上 Source Serif 时的备用字体）
+:root[data-font="serif"] .intro__thesis { font-size: min(3.25cqi, 31px); }
+// 开头区太窄（平板、手机）时硬塞一行字会小到 18px 以下，不像标题了 → 改回自然折行
+@container (max-width: 720px) {
+  .intro__thesis, :root[data-font="serif"] .intro__thesis { white-space: normal; font-size: 30px; }
+}
+@container (max-width: 400px) {
+  .intro__thesis, :root[data-font="serif"] .intro__thesis { font-size: 26px; }
+}
+.intro {
+  container-type: inline-size;   // 让上面的 cqi 和 @container 以开头区的宽度为准
+
+  &__bio {
+    display: grid; gap: 16px;
+    max-width: 62ch;
+    font-size: 18px;
+    color: var(--ink-2);
+    a { color: var(--ink); text-decoration-color: color-mix(in srgb, var(--accent) 55%, transparent); }
+  }
+}
+
+// 暖光扫过：光斑跟着鼠标。靠 background-clip:text，所以行盒就是裁切边界 ——
+// 行高给足，别把字母尾巴裁掉（MAINTENANCE 4.2）。
+.sweep {
+  background-image: radial-gradient(12rem 12rem at var(--sx, -60%) var(--sy, 50%),
+    var(--sweep-a) 0%, var(--sweep-b) 30%, var(--sweep-c) 58%, var(--ink) 78%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  -webkit-text-fill-color: transparent;
+  padding-bottom: .06em;
+}
+
+// —————————————————————————— 按钮 / 小标签链接
+
+.actions {
+  display: flex; flex-wrap: wrap; align-items: center; gap: 12px 12px;
+}
+.btn {
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 12px 18px;
+  font: 500 15px/1 var(--sans);
+  color: var(--ink);
+  text-decoration: none;
+  border: 1px solid color-mix(in srgb, var(--ink) 35%, transparent);
+  border-radius: 2px;
+  transition: border-color .15s, background-color .15s, color .15s;
+  &:hover { border-color: var(--ink); }
+  &--solid {
+    background: var(--accent); color: var(--on-accent); border-color: var(--accent);
+    &:hover { background: color-mix(in srgb, var(--accent) 88%, var(--ink)); border-color: transparent; }
+  }
+}
+// CV 自托管在固定的 /cv.pdf 上，文件名永不变，所以"这份新不新"只能靠这行字。
+.updated { font: 400 12px/1.4 var(--mono); color: var(--muted); }
+
+.chips {
+  display: flex; flex-wrap: wrap; gap: 8px;
+  a {
+    @extend %label;
+    font-size: 11px;
+    padding: 6px 10px;      // ~25px 高，过 24px 的触控下限
+    border: 1px solid var(--rule);
+    border-radius: 2px;
+    color: var(--ink-2);
+    text-decoration: none;
+    &:hover { color: var(--accent); border-color: var(--accent); }
+  }
+}
+
+// —————————————————————————— 代表作（交互图）
+
+.featured {
+  display: grid;
+  // 每张卡封顶 280px（≈450 → 380 → 280，站主两次说图太大）；两张之间留宽一点
+  grid-template-columns: repeat(2, minmax(0, 280px));
+  gap: 48px 96px;
+}
+.feat {
+  display: grid; gap: 14px; align-content: start;
+  &__title { font: 600 17px/1.35 var(--body); letter-spacing: -.01em; a { color: var(--ink); text-decoration: none; &:hover { color: var(--accent); } } }
+  &__venue { @extend %label; color: var(--ink); }
+  &__excerpt { font-size: 15px; color: var(--ink-2); }
+}
+
+// —————————————————————————— 经历
+
+.xp {
+  list-style: none; margin: 0; padding: 0;
+  display: grid;
+  &__item {
+    display: grid;
+    grid-template-columns: 140px minmax(0, 1fr);
+    gap: 24px;
+    padding: 18px 0;
+    border-top: 1px solid var(--rule);
+    &:last-child { border-bottom: 1px solid var(--rule); }
+  }
+  &__when { @extend %label; color: var(--muted); padding-top: 4px; }
+  &__body { display: grid; gap: 6px; }
+  &__org { font: 600 19px/1.35 var(--body); letter-spacing: -.01em; }
+  &__where { font-weight: 400; color: var(--muted); font-size: 15px; }
+  &__role { font-size: 15px; color: var(--ink); }
+  &__desc { font-size: 15px; color: var(--ink-2); max-width: 70ch; }
+  .chips { margin-top: 6px; }
+}
+
+// —————————————————————————— 论文条目（Lars 格式）
+
+.pubs__note { font-size: 14px; color: var(--muted); margin: -16px 0 24px; }
+.pubs__group { margin-top: 40px; &:first-of-type { margin-top: 0; } }
+.pubs__theme {
+  display: flex; justify-content: space-between; align-items: baseline; gap: 16px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid var(--ink);
+  font: 600 16px/1.3 var(--body);
+  em { @extend %label; font-style: normal; color: var(--muted); white-space: nowrap; }
+}
+
+.entry {
+  display: grid;
+  grid-template-columns: 136px minmax(0, 1fr);
+  gap: 22px;
+  padding: 18px 0;
+  border-bottom: 1px solid var(--rule);
+
+  &__media {
+    width: 136px;
+    aspect-ratio: 4 / 3;
+    overflow: hidden;
+    border-radius: 2px;
+    background: var(--rule);
+    > img, > video, > .slider {   // 只管直接子元素：轮播里的每一帧不要再被滤一遍
+      width: 100%; height: 100%; object-fit: cover;
+      // 各篇论文的配图风格很杂：静止时略收饱和度统一一下，悬停时"复活"
+      filter: saturate(.85);
+      transition: filter .25s ease, transform .35s ease;
+    }
+  }
+  &:hover &__media {
+    > img, > video, > .slider { filter: none; transform: scale(1.04); }
+  }
+  &:hover &__title a { color: var(--accent); }
+  &__body { display: grid; gap: 6px; min-width: 0; align-content: start; }
+  &__title { font: 600 17px/1.4 var(--body); letter-spacing: -.005em; a { color: var(--ink); text-decoration: none; &:hover { color: var(--accent); } } }
+  &__venue { @extend %label; color: var(--ink); }
+  &__authors { font-size: 14px; color: var(--ink-2); strong { color: var(--ink); font-weight: 600; } a { color: inherit; } }
+  &__excerpt { font-size: 15px; color: var(--ink-2); max-width: 70ch; }
+  .chips { margin-top: 4px; }
+
+  &--compact {
+    grid-template-columns: minmax(0, 1fr);
+    padding: 16px 0;
+  }
+}
+
+// 多帧交叉淡化：所有帧叠在同一个格子里，时序由脚本算
+.slider {
+  display: grid;
+  > * { grid-area: 1 / 1; width: 100%; height: 100%; object-fit: cover; opacity: 0; }
+}
+
+// —————————————————————————— News
+
+.news {
+  list-style: none; margin: 0; padding: 0;
+  display: grid;
+  li {
+    display: grid; grid-template-columns: 140px minmax(0, 1fr); gap: 24px;   // 和 Experience 的日期列对齐
+    padding: 12px 0;
+    border-top: 1px solid var(--rule);
+    font-size: 15px;
+    color: var(--ink-2);
+    &[hidden] { display: none; }
+  }
+  time { font: 400 13px/1.6 var(--mono); color: var(--muted); font-variant-numeric: tabular-nums; }
+}
+.news__more {
+  margin-top: 14px;
+  @extend %label;
+  background: none; border: 0; padding: 6px 0; cursor: pointer;
+  color: var(--accent);
+}
+
+// —————————————————————————— 猫（首席氛围官）
+
+// 辅助级区块：不和 Selected work / Publications 同级，也不进目录编号。
+// 旧布局里的原话："在求职页面上把宠物和研究并列是品味事故。"
+.cvo {
+  // 用 .sec.cvo（两个类）：窄屏媒体查询里后写的 `.sec { padding… }` 同权重会盖掉单独的 .cvo
+  &.sec { padding-top: 48px; padding-bottom: 56px; }
+  // 页脚的猫插画坐在这一节的底边上（bottom: 100% of footer）。视口 <1440 时照片网格会伸到猫底下，
+  // 实测两版猫都会盖住照片 —— 底部留出猫的高度（躺猫 210px 宽 ≈ 118px 高）。
+  @media (max-width: 1439px) { &.sec { padding-bottom: 132px; } }
+  @media (max-width: 600px)  { &.sec { padding-bottom: 96px; } }   // 手机上猫 150px 宽 ≈ 84px 高
+  &__title {
+    font: 600 17px/1.3 var(--mono);
+    letter-spacing: -.01em;
+    margin-bottom: 8px;
+  }
+  &__note { font-size: 15px; color: var(--ink-2); max-width: 62ch; margin-bottom: 18px; }
+  &__grid {
+    display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 8px;
+    max-width: 720px;
+    img { width: 100%; aspect-ratio: 1; object-fit: cover; border-radius: 2px; }
+  }
+}
+
+// —— 岔路口 A：猫留多少 ——
+//   bg  = 壁纸（看得见但不抢）+ 目录当前节的小猫爪 + 页脚上趴着一只
+//   egg = 背景干净；滚到页尾，一只猫从页脚线后面探出头
+.foot__cat {
+  position: absolute;
+  bottom: 100%;               // 坐在页脚顶上那条线上
+  right: var(--pad-x);
+  pointer-events: none;
+  img { width: 100%; height: auto; }
+}
+.foot__cat--lie { width: 210px; margin-bottom: -6px; }
+.foot__cat--peek {
+  width: 112px;
+  height: 104px;              // 只露头和肩膀
+  overflow: hidden;
+  img { transform: translateY(100%); transition: transform 1s cubic-bezier(.2, .8, .2, 1) .25s; }
+  &.is-peek img { transform: translateY(6%); }
+}
+[data-cats="bg"] .foot__cat--peek,
+[data-cats="egg"] .foot__cat--lie { display: none; }
+
+// 目录里当前读到的那一节：编号前面亮一个小猫爪
+[data-cats="bg"] .side__toc a[aria-current="true"] span {
+  display: inline-flex; align-items: center; gap: 6px;
+  &::before {
+    content: "";
+    width: 12px; height: 12px;
+    background: var(--accent);
+    -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cellipse cx='50' cy='64' rx='26' ry='20'/%3E%3Cellipse cx='26' cy='40' rx='9' ry='11.5'/%3E%3Cellipse cx='43' cy='27' rx='9' ry='12'/%3E%3Cellipse cx='61' cy='28' rx='9' ry='12'/%3E%3Cellipse cx='77' cy='42' rx='8.5' ry='11'/%3E%3C/svg%3E") center / contain no-repeat;
+            mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cellipse cx='50' cy='64' rx='26' ry='20'/%3E%3Cellipse cx='26' cy='40' rx='9' ry='11.5'/%3E%3Cellipse cx='43' cy='27' rx='9' ry='12'/%3E%3Cellipse cx='61' cy='28' rx='9' ry='12'/%3E%3Cellipse cx='77' cy='42' rx='8.5' ry='11'/%3E%3C/svg%3E") center / contain no-repeat;
+  }
+}
+
+// 水彩猫壁纸：只铺在主栏底下，左栏保持干净
+[data-cats="bg"] .main::before {
+  content: "";
+  position: fixed; inset: 0 0 0 var(--side-w);
+  z-index: -1;
+  pointer-events: none;
+  background: url("{{ site.baseurl }}/images/decor/cat_tile.png") 0 0 / 880px auto repeat;
+  opacity: var(--wall-opacity);
+  // 只在右侧留白里显现，往正文方向渐隐 —— 猫不压在字底下
+  -webkit-mask-image: linear-gradient(to right, transparent 45%, #000 85%);
+          mask-image: linear-gradient(to right, transparent 45%, #000 85%);
+}
+
+// —————————————————————————— 页脚
+
+.foot {
+  position: relative;
+  display: grid; gap: 18px;
+  padding-bottom: 88px;
+  &__ask { font: 600 22px/1.3 var(--body); letter-spacing: -.01em; }
+  &__aside { font-size: 14px; color: var(--muted); }
+}
+
+// —————————————————————————— 单篇论文页（/papers/<slug>/，布局 _layouts/paper.html）
+
+.paperbar {
+  display: flex; align-items: center; flex-wrap: wrap; gap: 8px 20px;
+  padding: 14px var(--pad-x);
+  background: var(--side);
+  border-bottom: 1px solid var(--rule);
+  &__home { font: 700 18px/1.2 var(--mono); letter-spacing: -.01em; color: var(--ink); text-decoration: none; }
+  &__all {
+    @extend %label;
+    margin-right: auto;
+    padding: 6px 0;
+    color: var(--ink-2);
+    text-decoration: none;
+    &:hover { color: var(--accent); }
+  }
+  // 首页的开关是 fixed 钉在右上角 / 手机上 absolute；这里就老老实实待在标题栏里（.paperbar .theme 权重压过两处）
+  .theme { position: static; }
+}
+.paper {
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 56px var(--pad-x) 88px;
+  display: grid;
+  gap: 18px;
+  &__venue { @extend %label; color: var(--accent); }
+  &__title { font: 600 clamp(28px, 3.4vw, 40px)/1.2 var(--body); letter-spacing: -.02em; }
+  &__authors { font-size: 16px; color: var(--ink-2); strong { color: var(--ink); font-weight: 600; } }
+  &__summary { font-size: 19px; line-height: 1.55; max-width: 60ch; }
+  &__media {
+    margin: 8px 0 0;
+    // 各篇配图原始尺寸差很多（有的只有几百像素宽）：最多放到原尺寸，别拉大糊掉
+    img, video { width: auto; max-width: 100%; height: auto; border-radius: 3px; background: var(--rule); }
+  }
+  &__cite {
+    h2 { @extend %label; color: var(--muted); margin-bottom: 8px; }
+    pre { margin: 0; overflow-x: auto; padding: 16px; background: var(--side); border: 1px solid var(--rule); border-radius: 2px; font: 13px/1.5 var(--mono); }
+  }
+  &__back { margin-top: 12px; a { @extend %label; text-decoration: none; padding: 6px 0; display: inline-block; } }
+}
+
+// —————————————————————————— 交互图（从旧样式原样搬来，只把颜色换成 token）
+
+.scrub {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1;
+  margin: 0;
+  border-radius: 3px;
+  overflow: hidden;
+  cursor: crosshair;
+  touch-action: none;          // 拖它的时候别让页面跟着滚
+  background: var(--rule);
+
+  &__l { position: absolute; inset: 0; background-repeat: no-repeat; will-change: opacity; }
+
+  // 键盘用户得知道自己站在哪。只在键盘聚焦时出现。
+  &:focus { outline: none; }
+  &:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+
+  // 读数 = 一根小进度条。纯显示，交互在整张图上。平时就基本可见 —— 它本身就是"能玩"的提示。
+  &__hud {
+    position: absolute; left: 10px; right: 10px; bottom: 10px;
+    display: flex; align-items: center; gap: 8px;
+    padding: 7px 10px;
+    border-radius: 3px;
+    background: rgba(18, 15, 12, .58);
+    backdrop-filter: blur(8px);
+    pointer-events: none;
+    opacity: .88;
+    transition: opacity .25s;
+  }
+  &__end {
+    font: 600 9.5px var(--mono);
+    letter-spacing: .06em;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, .8);
+    white-space: nowrap;
+  }
+  &__track { position: relative; flex: 1; height: 2px; border-radius: 2px; background: rgba(255, 255, 255, .3); }
+  &__dot {
+    position: absolute; top: 50%; left: 50%;
+    width: 8px; height: 8px; margin: -4px 0 0 -4px;
+    border-radius: 50%;
+    background: #fff;
+    box-shadow: 0 0 0 2px rgba(18, 15, 12, .35);
+    transition: left .12s ease-out, top .12s ease-out;
+  }
+  &.is-live .scrub__hud { opacity: 1; }
+  &--pad .scrub__hud { pointer-events: auto; cursor: ew-resize; }
+
+  // "可以玩"的提示：顶部一颗磨砂小胶囊，碰过一次就淡出
+  &__cue {
+    position: absolute; top: 10px; left: 50%; z-index: 2;
+    display: inline-flex; align-items: center; gap: 5px;
+    padding: 4px 9px 4px 7px;
+    border-radius: 100px;
+    pointer-events: none;
+    color: rgba(255, 255, 255, .95);
+    background: rgba(24, 19, 15, .36);
+    backdrop-filter: blur(10px) saturate(1.2);
+    border: 1px solid rgba(255, 255, 255, .18);
+    animation: cue-float 3.2s ease-in-out infinite;
+    transition: opacity .4s ease, transform .4s ease;
+    b { font: 600 9.5px var(--mono); letter-spacing: .1em; text-transform: uppercase; }
+    svg { opacity: .8; }
+    &.is-gone { opacity: 0; transform: translateX(-50%) translateY(-4px) scale(.94); animation: none; }
+  }
+}
+@keyframes cue-float {
+  0%, 100% { transform: translateX(-50%) translateX(-3px); opacity: .72; }
+  50%      { transform: translateX(-50%) translateX(3px);  opacity: 1; }
+}
+@media (hover: none) { .scrub { cursor: default; } }
+
+// —————————————————————————— 矮屏笔记本：左栏要一屏放下
+// 1280×720 实测差 32px —— 最底下 Email/CV 那行被挤出视口，得在左栏里再滚一下才看得到，
+// 而没人会想到左栏自己能滚。照片先缩；更矮时连方向和机构标签也收起（开头和 Experience 里都有）。
+@media (min-width: 901px) and (max-height: 820px) {
+  .side { --gap: 14px; padding-top: 24px; padding-bottom: 20px; }
+  .side__photo { width: 190px; }
+  .side__toc { padding-top: 10px; a { padding: 3px 0; } }
+}
+@media (min-width: 901px) and (max-height: 680px) {
+  .side__focus, .side__tags { display: none; }
+  .side__photo { width: 150px; }
+}
+
+// —————————————————————————— 窄屏：左栏变成顶部区块
+
+@media (max-width: 900px) {
+  .side {
+    position: static;
+    width: auto;
+    overflow: visible;
+    border-right: 0;
+    border-bottom: 1px solid var(--rule);
+    padding: 20px var(--pad-x) 16px;
+    display: grid;
+    grid-template-columns: 76px minmax(0, 1fr);
+    gap: 14px 16px;
+    align-items: center;
+
+    // 手机上第一屏要留给开头的大标题：左栏只保留"是谁 + 怎么联系"。
+    // 研究方向和机构在开头副标题、Experience 里都有，这里藏掉不丢信息。
+    &__name { font-size: 22px; }
+    &__focus, &__tags, &__toc, &__cat { display: none; }
+    &__foot { grid-column: 1 / -1; container-type: normal; gap: 2px; }
+    &__cta { padding-top: 12px; }
+    &__links { padding-top: 0; border-top: 0; }
+  }
+  .main { margin-left: 0; }
+  [data-cats="bg"] .main::before { left: 0; }
+  // 手机上开关跟着页面滚走，贴在 Email/Scholar 那一行的右端；只留"切到另一个"那一个按钮
+  .side { position: relative; }
+  .theme {
+    position: absolute;
+    top: auto; bottom: 10px; right: var(--pad-x);
+    button[aria-pressed="true"] { display: none; }
+  }
+  .sec { padding-top: 48px; padding-bottom: 48px; }
+  .intro { padding-top: 40px; }
+  .featured { grid-template-columns: minmax(0, 320px); }   // 单列时也封顶：平板上撑满会是 670px 的大方块
+}
+
+@media (max-width: 600px) {
+  body { font-size: 16px; }
+  .intro__bio { font-size: 16px; }
+  .sec__title { font-size: 21px; }   // 手机上开头那句 26px，标题再小一档
+  .xp__item { grid-template-columns: minmax(0, 1fr); gap: 6px; }
+  // 缩略图再小一档：320 宽时文字栏要留够 ~190px，否则标题一行只剩两三个词
+  .entry { grid-template-columns: 72px minmax(0, 1fr); gap: 14px; &__media { width: 72px; } }
+  .entry--compact { grid-template-columns: minmax(0, 1fr); }
+  .news li { grid-template-columns: minmax(0, 1fr); gap: 2px; }
+  .cvo__grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .side__links { gap: 0 12px; }   // 给行尾的明暗开关留出呼吸空间（320 宽时最挤）
+  .foot__cat--lie { width: 150px; }
+  .foot__cat--peek { width: 84px; height: 78px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .scrub__cue { animation: none; transform: translateX(-50%); }
+}
+
+// —————————————————————————— 打印 / 存成 PDF
+// 招聘方可能会打印或另存 PDF。实测没有这段时：9 页、两张交互图各占大半页、
+// 明暗开关和 MOVE 提示都印出来，最糟的是 —— 深色模式下打印，浏览器默认不印背景，
+// 浅色字印在白纸上几乎看不见。
+@media print {
+  // 不管屏幕上是什么主题，纸上一律浅色（选择器 0,2,0 且写在最后，压过两处深色规则）
+  :root:not([data-never]) { @include light-tokens; }
+  body { background: #fff; }
+
+  .theme, .skip, .side__toc, .side__cat, .scrub__cue, .scrub__hud, .foot__cat { display: none !important; }
+  [data-cats] .main::before { display: none; }
+
+  .sweep { background: none; color: var(--ink); -webkit-text-fill-color: currentColor; }
+  // 交互图的画面是 CSS 背景图（雪碧图）。浏览器默认不印背景 → 纸上一个空框。强制印出来。
+  .scrub, .scrub__l, .intro__market::before, .btn--solid { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  .scrub, .side__photo { box-shadow: none !important; }
+  .featured { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px; }
+
+  .sec { padding-top: 28px; padding-bottom: 28px; }
+  .sec__title, .pubs__theme { break-after: avoid; }
+  .entry, .xp__item, .feat, .news li { break-inside: avoid; }
+}

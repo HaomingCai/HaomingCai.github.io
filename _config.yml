@@ -57,7 +57,13 @@ url: "https://www.hm-cai.com" # the base hostname & protocol for your site
 #
 
 #permalink: /:title/
-permalink: /
+# 每篇论文（_posts/）有自己的页面：/papers/<文件名去掉日期>/，例如 /papers/vid2bokeh/。
+# 给搜索引擎和 AI agent 一个"专门讲这项工作"的地址 —— 搜研究主题、不提名字也能命中。
+#
+# 以前这里是 permalink: /，15 篇 post 全都写到 /index.html，最后写入的那篇就是首页
+# （构建时那一屏 "Conflict" 警告；2026-09 首页换布局时真的被盖掉过）。现在各写各的，问题消失。
+# 已在 GitHub Pages 用的 Jekyll 3.10（github-pages gem，safe 模式）上验证过。
+permalink: /papers/:slug/
 
 
 # The release of Jekyll Now that you're using

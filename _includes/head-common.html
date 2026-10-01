@@ -1,0 +1,44 @@
+{%- comment -%}
+  首页（home.html）和论文页（paper.html）共用的 <head> 部分。
+  各自的 <title>、description、canonical、社交卡片、结构化数据写在各自的布局里，再 include 这个。
+{%- endcomment -%}
+  <link rel="icon" type="image/png" sizes="32x32" href="{{ site.baseurl }}/images/favicon-32.png">
+  <link rel="icon" type="image/png" sizes="512x512" href="{{ site.baseurl }}/images/favicon-512.png">
+  <link rel="apple-touch-icon" href="{{ site.baseurl }}/images/apple-touch-icon.png">
+  {%- comment -%} 给 AI / 工具看的纯文本自我介绍（llmstxt.org 约定），见 /llms.txt {%- endcomment %}
+  <link rel="alternate" type="text/markdown" title="llms.txt" href="{{ '/llms.txt' | relative_url }}">
+
+  {%- comment -%}
+    主题 / 岔路口开关，必须在第一帧之前定下来，否则会先闪一下错的主题。
+    - 主题：记住的选择 > 系统设置（什么都不设 = 跟随系统，由 CSS 媒体查询处理）
+    - ?font=serif|sans、?cats=bg|egg：夜里迭代时两版并排截图用。定稿后改下面两个默认值即可。
+  {%- endcomment %}
+  <script>
+    (function () {
+      var d = document.documentElement, q = new URLSearchParams(location.search);
+      d.dataset.font = q.get('font') || 'sans';
+      d.dataset.cats = q.get('cats') || 'bg';
+      try { var t = localStorage.getItem('theme'); if (t === 'dark' || t === 'light') d.dataset.theme = t; } catch (e) {}
+    })();
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  {%- comment -%} 字体表异步加载：先用系统字体把内容画出来，字体到了再换（不挡首屏） {%- endcomment %}
+  <link rel="preload" as="style"
+        href="https://fonts.googleapis.com/css2?family=Inter+Tight:ital,wght@0,400;0,500;0,600;1,400&family=JetBrains+Mono:wght@400;500;700&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&display=swap"
+        onload="this.onload=null;this.rel='stylesheet'">
+  <noscript>
+    <link rel="stylesheet"
+          href="https://fonts.googleapis.com/css2?family=Inter+Tight:ital,wght@0,400;0,500;0,600;1,400&family=JetBrains+Mono:wght@400;500;700&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&display=swap">
+  </noscript>
+
+  <link rel="stylesheet" href="{{ site.baseurl }}/home.css?v={{ site.asset_v }}">
+
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-E00L9PT3V9"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+    gtag('config', 'G-E00L9PT3V9');
+  </script>

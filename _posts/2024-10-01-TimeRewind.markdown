@@ -8,5 +8,6 @@ authors: "Jingxi Chen, Brandon Y. Feng, <strong>Haoming Cai</strong>, Tianfu Wan
 venue: "<strongvenue>CVPR 2025</strongvenue>"
 arxiv: https://arxiv.org/pdf/2412.07761
 website: https://vdm-evfi.github.io/
+year: 2025
 ---
 Turn event streams into smooth video with a video diffusion model

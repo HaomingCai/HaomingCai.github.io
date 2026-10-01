@@ -13,5 +13,6 @@ links:
   - "NTIRE'21 Challenge|https://competitions.codalab.org/competitions/28050"
   - "NTIRE'22 Full-Ref|https://codalab.lisn.upsaclay.fr/competitions/1567"
   - "NTIRE'22 No-Ref|https://codalab.lisn.upsaclay.fr/competitions/1568"
+year: 2020
 ---
 Score image quality on the artifacts that modern restoration models actually produce

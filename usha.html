@@ -1,4 +1,22 @@
 ---
-layout: usha
+layout: null
 permalink: /usha.html
+sitemap: false
 ---
+{%- comment -%}
+  /usha.html 曾经是插画版的预览页，后来那一版转正成了首页。这个地址在线上活过一段时间，
+  可能被人收藏或分享过，所以不直接删成 404，而是跳回首页。
+{%- endcomment -%}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Haoming Cai</title>
+  <meta name="robots" content="noindex">
+  <link rel="canonical" href="{{ '/' | absolute_url }}">
+  <meta http-equiv="refresh" content="0; url={{ '/' | relative_url }}">
+</head>
+<body>
+  <p>This page has moved to <a href="{{ '/' | relative_url }}">the homepage</a>.</p>
+</body>
+</html>

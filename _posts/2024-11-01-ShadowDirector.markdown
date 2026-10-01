@@ -8,5 +8,6 @@ authors: "<strong>Haoming Cai</strong>, Tsung-Wei Huang, Shiv Gehlot, Brandon Y.
 venue: "<strongvenue>ICCV 2025</strongvenue>"
 arxiv: https://arxiv.org/pdf/2503.21943
 website: /tn/projects_html/ShadowDirector/
+year: 2025
 ---
 Add a shadow knob to AI portraits, without heavy compute
