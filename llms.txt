@@ -23,7 +23,7 @@ Previously an undergraduate research assistant at XPixel (SIAT, Shenzhen) with C
 
 ## Research topics
 
-Generative media; computational imaging; image and video diffusion models; light field synthesis and bokeh rendering; portrait lighting control; reflection removal; event cameras; atmospheric turbulence mitigation; Gaussian splatting; image quality assessment; image super-resolution and restoration.
+Generative media; computational imaging; image and video diffusion models; light field synthesis and bokeh rendering; portrait lighting control; reflection removal; event cameras; atmospheric turbulence mitigation; Gaussian splatting; image quality assessment; image super-resolution and restoration; robustness of vision-language models under adverse imaging conditions.
 
 ## Experience
 {% for x in site.data.experience %}
