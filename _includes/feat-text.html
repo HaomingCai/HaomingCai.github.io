@@ -1,0 +1,22 @@
+{%- comment -%}
+  代表作小卡的文字部分：简称 / 会议 / 一句话 / 链接。全部从这篇论文的 _posts 文件读，
+  和下面 Publications 列表同源 —— 改 _posts 两边一起变。
+
+  用法: {% include feat-text.html post=p name="Shadow Director" %}
+
+  - 标题显示简称（站主 2026-10 定）；完整标题放在鼠标悬停提示里，读屏软件读「简称: 完整标题」。
+  - 标题链接：有项目主页就去项目主页，没有就去本站的论文页（/papers/<名字>/）。
+  - 一句话：_posts 正文那一句，只取破折号前面的部分（Vid2Bokeh 那句太长，小卡放不下后半句）。
+{%- endcomment -%}
+{%- assign p = include.post -%}
+{%- assign href = p.website | default: p.url -%}
+{%- comment -%} 完整标题本来就以简称开头（如 "Flash-Splat: …"）时，读屏名字不再重复简称 {%- endcomment -%}
+{%- assign prefix = include.name | append: ":" -%}
+{%- if p.title contains prefix -%}{%- assign label = p.title -%}{%- else -%}{%- assign label = include.name | append: ": " | append: p.title -%}{%- endif -%}
+<h3 class="feat__title"><a href="{{ href }}" title="{{ p.title | escape }}" aria-label="{{ label | escape }}">{{ include.name }}</a></h3>
+<p class="feat__venue">{{ p.venue | strip_html | strip }}</p>
+<p class="feat__excerpt">{{ p.excerpt | strip_html | split: "—" | first | strip }}</p>
+<p class="chips">
+  {%- if p.arxiv %}<a href="{{ p.arxiv }}">PDF</a>{% endif -%}
+  {%- if p.website %}<a href="{{ p.website }}">Website</a>{% endif -%}
+</p>

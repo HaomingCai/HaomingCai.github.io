@@ -159,12 +159,22 @@
     </header>
 
     {%- comment -%}
-      代表作 = 两个可交互的可视化，不是两张图。素材是两篇论文的真实模型输出。
-      没人碰的时候自己来回播，鼠标一上去就交给访客。
+      代表作：四张小卡（站主 2026-10-23 定）。
+      - 前两张是可交互的可视化（拖光线、拉焦点），素材是论文的真实模型输出；没人碰时自己来回播。
+      - 后两张是前后对比视频（左 Input / 右 Ours），自动静音循环。用的是卡片专用的轻量版（tn/videos/*_card.mp4，
+        560px 以内、~100KB），配一张首帧小图当占位（tn/images/*_card.jpg）。Publications 里的原视频不动 ——
+        两处各下各的，所以卡片这份必须轻。滚到眼前才加载（data-lazy="view"），不提前一屏，免得拖慢首屏。
+        以后站主给新素材：照 tn/videos/ConVRT_card.mp4 的规格另压一份（正方形、≤560px、无声、H.264）。
+      - 文字和链接都从 _posts 读（见 _includes/feat-text.html）。
+      排法：一行够宽（约 1366px 以上的屏幕）四张一排，否则两行两张；手机两行两张。见 home.scss 的 .featured。
     {%- endcomment -%}
+    {%- assign fp_shadow = site.posts | where: "url", "/papers/shadowdirector/" | first -%}
+    {%- assign fp_bokeh = site.posts | where: "url", "/papers/vid2bokeh/" | first -%}
+    {%- assign fp_convrt = site.posts | where: "url", "/papers/convrt/" | first -%}
+    {%- assign fp_splat = site.posts | where: "url", "/papers/flashsplat/" | first %}
     <section class="sec" id="work">
       <h2 class="sec__title">Selected work</h2>
-      <p class="sec__note" data-live-note>Two figures from my papers &mdash; move your cursor across them to move the light, and to pull focus.</p>
+      <p class="sec__note" data-live-note>Four projects from my papers. Move your cursor across the first two to move the light and pull focus.</p>
 
       <div class="featured">
         <article class="feat">
@@ -184,13 +194,7 @@
               <span class="scrub__end" data-end1></span>
             </figcaption>
           </figure>
-          <h3 class="feat__title"><a href="/tn/projects_html/ShadowDirector/">Parametric Shadow Control for Portrait Generation in Text-to-Image Diffusion Models</a></h3>
-          <p class="feat__venue">ICCV 2025</p>
-          <p class="feat__excerpt">Put a shadow knob on a text-to-image model &mdash; direction, softness and shape, with no retraining. <span data-verb>Move your cursor</span> across to walk the light around her face.</p>
-          <p class="chips">
-            <a href="https://arxiv.org/pdf/2503.21943">PDF</a>
-            <a href="/tn/projects_html/ShadowDirector/">Website</a>
-          </p>
+          {% include feat-text.html post=fp_shadow name="Shadow Director" %}
         </article>
 
         <article class="feat">
@@ -210,12 +214,23 @@
               <span class="scrub__end" data-end1></span>
             </figcaption>
           </figure>
-          <h3 class="feat__title"><a href="/vid2bokeh/">Large-Scale Light Field Synthesis from Videos Enables Geometrically Consistent Bokeh Editing</a></h3>
-          <p class="feat__venue">ECCV 2026</p>
-          <p class="feat__excerpt">Render geometrically consistent bokeh on scenes that defeat other methods &mdash; here, a toy behind a transparent lid. <span data-verb>Move your cursor</span> across to pull focus through it.</p>
-          <p class="chips">
-            <a href="/vid2bokeh/">Website</a>
-          </p>
+          {% include feat-text.html post=fp_bokeh name="Vid2Bokeh" %}
+        </article>
+
+        <article class="feat">
+          <figure class="clip">
+            <video muted loop playsinline preload="none" data-lazy="view" poster="/tn/images/ConVRT_card.jpg?v={{ site.asset_v }}" aria-label="Before and after: input on the left, our result on the right"><source data-src="/tn/videos/ConVRT_card.mp4?v={{ site.asset_v }}" type="video/mp4"></video>
+            <figcaption class="clip__tags" aria-hidden="true"><span>Input</span><span>Ours</span></figcaption>
+          </figure>
+          {% include feat-text.html post=fp_convrt name="ConVRT" %}
+        </article>
+
+        <article class="feat">
+          <figure class="clip">
+            <video muted loop playsinline preload="none" data-lazy="view" poster="/tn/images/FlashSplat_card.jpg?v={{ site.asset_v }}" aria-label="Before and after: input on the left, our result on the right"><source data-src="/tn/videos/FlashSplat_card.mp4?v={{ site.asset_v }}" type="video/mp4"></video>
+            <figcaption class="clip__tags" aria-hidden="true"><span>Input</span><span>Ours</span></figcaption>
+          </figure>
+          {% include feat-text.html post=fp_splat name="Flash-Splat" %}
         </article>
       </div>
     </section>
@@ -359,8 +374,8 @@
     (function () {
       if (matchMedia('(prefers-reduced-motion: reduce)').matches || matchMedia('(hover: none)').matches) return;
       const swept = [...document.querySelectorAll('.sweep')];
-      // 受光物体：两张交互图 + 左栏照片。影子背对光源，越远越长、越淡 —— 像真实的软阴影。
-      const lit = [...document.querySelectorAll('.scrub, .side__photo')];
+      // 受光物体：代表作四张图 + 左栏照片。影子背对光源，越远越长、越淡 —— 像真实的软阴影。
+      const lit = [...document.querySelectorAll('.scrub, .clip, .side__photo')];
       const shade = () => getComputedStyle(document.documentElement).getPropertyValue('--shade').trim() || '52, 36, 25';
       let mx = innerWidth / 2, my = 240, tx = mx, ty = my, raf = 0;
       addEventListener('pointermove', e => {
@@ -418,8 +433,7 @@
     // 桌面上不用"拖" —— 鼠标移过去就行。只有触屏才是拖。
     if (matchMedia('(hover: none)').matches) {
       const n = document.querySelector('[data-live-note]');
-      if (n) n.textContent = 'Two figures from my papers — drag across them to move the light, and to pull focus.';
-      document.querySelectorAll('[data-verb]').forEach(v => { v.textContent = 'Drag'; });
+      if (n) n.textContent = 'Four projects from my papers. Drag across the first two to move the light and pull focus.';
     }
 
     document.querySelectorAll('[data-scrub]').forEach(fig => {
@@ -696,10 +710,12 @@
         if (!still) v.play().catch(() => {});
       };
       if (!('IntersectionObserver' in window)) { vids.forEach(start); return; }
-      const io = new IntersectionObserver(es => es.forEach(e => {
+      // data-lazy="view"（代表作的两段视频）：真滚到眼前才加载。它们就在第一屏下面，提前一屏会让首屏多下几百 KB。
+      const watch = margin => new IntersectionObserver((es, io) => es.forEach(e => {
         if (e.isIntersecting) { start(e.target); io.unobserve(e.target); }
-      }), { rootMargin: '100% 0px' });
-      vids.forEach(v => io.observe(v));
+      }), { rootMargin: margin });
+      const early = watch('100% 0px'), onView = watch('0px');
+      vids.forEach(v => (v.dataset.lazy === 'view' ? onView : early).observe(v));
     })();
 
     // 多图/多视频交叉淡化。CSS 只声明外观，时序在这里算。

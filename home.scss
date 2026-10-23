@@ -387,19 +387,72 @@ a:hover { text-decoration-color: var(--accent); }
   }
 }
 
-// —————————————————————————— 代表作（交互图）
+// —————————————————————————— 代表作（四张小卡）
+// 站主 2026-10-23 定：一行够宽时四张一排，否则两行两张（手机也是两行两张）。每张最宽 280px
+// （≈450 → 380 → 280，站主两次说图太大），屏幕再宽也不放大。
+// 「够宽」量的是这一节自己的宽度（container query），不是屏幕宽：左栏和边距在各断点下不一样，
+// 量自己最准。840px ≈ 1366px 宽的屏幕，四张时每张 ≥ 200px，交互图还好用。
 
+#work { container: work / inline-size; }
 .featured {
   display: grid;
-  // 每张卡封顶 280px（≈450 → 380 → 280，站主两次说图太大）；两张之间留宽一点
   grid-template-columns: repeat(2, minmax(0, 280px));
-  gap: 48px 96px;
+  gap: 40px 48px;
 }
+@container work (min-width: 840px) {
+  .featured { grid-template-columns: repeat(4, minmax(0, 280px)); column-gap: 32px; }
+}
+
+// 每张卡一竖列：图 / 简称 / 会议 / 一句话 / 按钮。同一排的卡等高（grid 默认拉伸），
+// 按钮用 margin-top: auto 压到底，所以哪张的一句话短，留白在按钮上面，按钮那一行照样齐。
+// 简称和会议都只有一行，图一样大，所以前几行自然对齐。
+// （试过 subgrid：Chrome 会把图的高度摊到下面几行文字上，名字和会议之间多出一截空白，不用。）
 .feat {
-  display: grid; gap: 14px; align-content: start;
-  &__title { font: 600 17px/1.35 var(--body); letter-spacing: -.01em; a { color: var(--ink); text-decoration: none; &:hover { color: var(--accent); } } }
+  display: flex; flex-direction: column;
+  gap: 10px;
+  > figure { margin-bottom: 4px; }
+  &__title { font: 600 17px/1.3 var(--body); letter-spacing: -.01em; a { color: var(--ink); text-decoration: none; &:hover { color: var(--accent); } } }
   &__venue { @extend %label; color: var(--ink); }
-  &__excerpt { font-size: 15px; color: var(--ink-2); }
+  &__excerpt { font-size: 14px; line-height: 1.5; color: var(--ink-2); }
+  .chips { margin-top: auto; padding-top: 4px; }
+}
+// 小卡（四张一排、手机两张一排）：进度条两端的小字放不下，只留滑条和圆点；顶上的 MOVE 还在
+.featured .scrub { container: fig / inline-size; }
+@container fig (max-width: 249px) {
+  .scrub__end { display: none; }
+}
+// 手机上一张卡只有 ~160px（这一节窄于 460px 时）：字再小一档
+@container work (max-width: 459px) {
+  .feat__title { font-size: 15px; }
+  .feat__excerpt { font-size: 13px; }
+}
+
+// 后两张：前后对比视频（左 Input / 右 Ours）。和交互图一样是正方形、同样的圆角和受光阴影
+.clip {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1;
+  margin: 0;
+  border-radius: 3px;
+  overflow: hidden;
+  background: var(--rule);
+  video { display: block; width: 100%; height: 100%; object-fit: cover; }
+  // 标注和交互图的进度条同一套样式：磨砂深底、等宽小字
+  &__tags {
+    position: absolute; left: 8px; right: 8px; bottom: 8px;
+    display: flex; justify-content: space-between;
+    pointer-events: none;
+    span {
+      font: 600 9.5px var(--mono);
+      letter-spacing: .06em;
+      text-transform: uppercase;
+      color: rgba(255, 255, 255, .9);
+      background: rgba(18, 15, 12, .58);
+      backdrop-filter: blur(8px);
+      padding: 4px 7px;
+      border-radius: 3px;
+    }
+  }
 }
 
 // —————————————————————————— 经历
@@ -743,7 +796,7 @@ a:hover { text-decoration-color: var(--accent); }
   }
   .sec { padding-top: 48px; padding-bottom: 48px; }
   .intro { padding-top: 40px; }
-  .featured { grid-template-columns: minmax(0, 320px); }   // 单列时也封顶：平板上撑满会是 670px 的大方块
+  .featured { gap: 32px 16px; }   // 手机两行两张：卡之间收紧，每张才有 ~160px
 }
 
 @media (max-width: 600px) {
@@ -781,8 +834,8 @@ a:hover { text-decoration-color: var(--accent); }
   .sweep { background: none; color: var(--ink); -webkit-text-fill-color: currentColor; }
   // 交互图的画面是 CSS 背景图（雪碧图）。浏览器默认不印背景 → 纸上一个空框。强制印出来。
   .scrub, .scrub__l, .intro__market::before, .btn--solid { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
-  .scrub, .side__photo { box-shadow: none !important; }
-  .featured { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px; }
+  .scrub, .clip, .side__photo { box-shadow: none !important; }
+  .featured { grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 24px 16px; }
 
   .sec { padding-top: 28px; padding-bottom: 28px; }
   .sec__title, .pubs__theme { break-after: avoid; }
