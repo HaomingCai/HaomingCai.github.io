@@ -27,7 +27,7 @@ Generative media; computational imaging; image and video diffusion models; light
 
 ## Experience
 {% for x in site.data.experience %}
-- {{ x.when }} — {{ x.org }}, {{ x.where }}. {{ x.role | strip_html }}{% if x.desc %} {{ x.desc }}{% endif %}
+- {{ x.when }} — {{ x.org }}, {{ x.where }}. {{ x.role | strip_html }}{% if x.desc %} {{ x.desc | strip_html }}{% endif %}
 {%- endfor %}
 
 ## Publications
