@@ -1,0 +1,16 @@
+# 还没发表的工作（in preparation）。和 _posts 不同：这里的条目不生成 /papers/<名字>/ 论文页，
+# 不进 sitemap，也不进首页的结构化数据（JSON-LD）—— 只在首页 Publications 对应分区的最前面出一条
+# （标题直接链到 url），/llms.txt 里列一行。
+# GitHub Pages 上 _posts 里的每篇都一定会生成论文页，没法单篇关掉，所以单独放在这里。
+#
+# authors 可以不写：首页那一行和 llms.txt 里的 "Authors:" 都不会出现。
+# 论文出来以后：删掉这里的条目，按 MAINTENANCE.md「加一篇论文」在 _posts/ 新建一篇。
+
+- title: "What If? Guided Diffusion as a Tool for Scientific Inquiry into Tropical Cyclones"
+  category: GenAI          # 放在哪个分区：GenAI | AdverseWeather | IQA | SR
+  venue: "In preparation"
+  image: /videos/WhatIf_teaser.mp4   # 和其他视频缩略图一样放 tn/videos/：408x306、H.264、无音轨、faststart
+  url: /whatif/            # 标题链到这里
+  website: /whatif/        # Website 按钮
+  # "high‑impact" 里是不断行连字符 U+2011，免得在行尾断成 "high-" / "impact"
+  excerpt: "Steer an ensemble weather model toward a target storm track or size, to explore rare but high‑impact scenarios"

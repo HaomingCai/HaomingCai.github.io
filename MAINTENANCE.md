@@ -84,6 +84,11 @@ bibtex: |                     # 可选。写了才在论文页显示 —— 不�
 新建这一个文件，以下都会自动出现：首页列表里的一条、`/papers/<名字>/` 论文页、首页结构化数据里的一篇、`/llms.txt` 里的一行、sitemap 里的一个地址。
 改完跑 `python design_versions/checks/structured_data.py` 确认（作者里要能对上 "Haoming Cai"）。
 
+### 加一篇还没发表的工作（in preparation）
+写进 `_data/upcoming.yml`，**不要**放 `_posts/`：`_posts` 里的每篇都会生成一个公开的 `/papers/<名字>/` 论文页、进 sitemap 和结构化数据，GitHub Pages 上没法单篇关掉。
+`upcoming.yml` 里的条目只出现在首页对应分区的最前面（标题直接链到 `url`）和 `/llms.txt` 里一行；`authors` 可以不写。字段说明在文件开头。
+论文出来以后，删掉那一条，按上面在 `_posts/` 新建。
+
 ### 加一条 News
 `home.html` 的 `.news` 列表里加一个 `<li>`。**`<time datetime="2026-01">` 必须写** —— 一年前的条目靠它自动折叠。
 

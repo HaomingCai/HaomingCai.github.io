@@ -33,14 +33,17 @@ Generative media; computational imaging; image and video diffusion models; light
 ## Publications
 
 Newest first. Each title links to a page for that paper.
-{% for p in site.posts %}
+{%- comment -%} 还没发表的（_data/upcoming.yml）排最前；没写作者的不出 "Authors:" {%- endcomment -%}
+{%- assign pubs = site.data.upcoming | concat: site.posts -%}
+{% for p in pubs %}
 {%- assign venue = p.venue | strip_html | strip -%}
 {%- assign year = p.year | append: "" -%}
 {%- assign authors = p.authors | strip_html | strip -%}
 {%- assign tail = authors | slice: -1 -%}{%- if tail == "." -%}{%- assign cut = authors.size | minus: 1 -%}{%- assign authors = authors | slice: 0, cut -%}{%- endif -%}
-{%- assign summary = p.excerpt | strip_html | strip -%}
+{%- comment -%} 首页为排版用的不断行连字符 U+2011，这里换回普通连字符，方便检索 {%- endcomment -%}
+{%- assign summary = p.excerpt | strip_html | strip | replace: "‑", "-" -%}
 {%- assign tail = summary | slice: -1 -%}{%- unless tail == "." -%}{%- assign summary = summary | append: "." -%}{%- endunless %}
-- [{{ p.title | strip }}]({{ p.url | absolute_url }}) — {{ venue }}{% if p.year %}{% unless venue contains year %} ({{ year }}){% endunless %}{% endif %}. Authors: {{ authors }}. {{ summary }}
+- [{{ p.title | strip }}]({{ p.url | absolute_url }}) — {{ venue }}{% if p.year %}{% unless venue contains year %} ({{ year }}){% endunless %}{% endif %}.{% if authors != "" %} Authors: {{ authors }}.{% endif %} {{ summary }}
 {%- if p.arxiv %} PDF: {{ p.arxiv }}{% endif %}{% if p.website %} Project: {% if p.website contains "://" %}{{ p.website }}{% else %}{{ p.website | absolute_url }}{% endif %}{% endif %}
 {%- endfor %}
 

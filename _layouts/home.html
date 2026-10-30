@@ -318,6 +318,12 @@
         {%- if compact_cats contains cat %}{% assign is_compact = true %}{% endif -%}
         <div class="pubs__group">
           <h3 class="pubs__theme"><span>{{ parts[1] }}</span><em>{{ years[forloop.index0] }}</em></h3>
+          {%- comment -%} 还没发表的工作排在分区最前面（_data/upcoming.yml，不生成论文页） {%- endcomment -%}
+          {%- for post in site.data.upcoming -%}
+            {%- if post.category == cat -%}
+              {% include entry.html post=post compact=is_compact %}
+            {%- endif -%}
+          {%- endfor -%}
           {%- for post in site.posts -%}
             {%- if post.categories contains cat -%}
               {% include entry.html post=post compact=is_compact %}
