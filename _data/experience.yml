@@ -16,7 +16,7 @@
   logo: adobe
   where: San Jose, CA
   role: 'Ph.D. Research Intern, NextCam team (<a href="https://graphics.stanford.edu/~levoy/">Marc Levoy</a>), supervised by <a href="https://shumianxin.github.io/">Shumian Xin</a> and <a href="https://ztzhang.info/">Zhoutong Zhang</a>.'
-  desc: 'Turned casual videos into light fields to create physically correct bokeh training data at <span style="white-space:nowrap">100K-scene</span> scale. ECCV 2026; patent filing in process.'
+  desc: 'Turned casual videos into light fields to create physically correct bokeh training data. <span style="white-space:nowrap">ECCV 2026</span>; patent filing in process.'
   links: ["ECCV 2026 paper|/vid2bokeh/"]
 
 - when: Summer 2024
