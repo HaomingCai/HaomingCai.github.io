@@ -66,9 +66,9 @@ date:   2026-01-01 00:00:00 +00:00
 image: /images/xxx.png        # 或 /videos/xxx.mp4
 categories: GenAI             # GenAI | AdverseWeather | IQA | SR
 authors: "<strong>Haoming Cai</strong>, Other Person"
-venue: "<strongvenue>CVPR 2026</strongvenue>"
-fields: ["Controllable Diffusion", "Data Engine"]   # 领域标签，1–2 个，第一个是主线
-fields_highlight: "…"       # 可选。等于上面某个标签时，那个标签用点缀色轻微突出（如获奖）
+venue: "<strongvenue>CVPR 2026</strongvenue>"   # 写 "CVPR 2026" 这种全称年份；还没发表写 In preparation / Manuscript / arXiv 2026
+fields: ["Controllable Diffusion", "Data Engine"]   # 领域标签：首页不显示了（2026-10-31），只进 llms.txt 和结构化数据的 keywords
+fields_highlight: "…"       # 可选。奖项（如 "NTIRE '22 Winner"），首页跟在会议后面，点缀色
 year: 2026                    # 发表年份。别用上面的 date —— 大部分旧 post 的 date 是统一填的 2023-08-09
 arxiv: https://...
 website: https://...
@@ -80,6 +80,8 @@ bibtex: |                     # 可选。写了才在论文页显示 —— 不�
 ---
 一句话摘要（祈使句，说"这让你能做什么"）
 ```
+
+首页 Publications 是"会议栏"排法（2026-10-31）：宽屏上会议 / 状态在左栏，和标题第一行对齐；窄屏回到标题上面。会议和状态怎么区分、会议名怎么统一，见 `_includes/venue.html`（状态 = In preparation / Manuscript / Under review / Preprint / arXiv，灰色斜体）。代表作卡片用同一个 include，只显示会议。
 
 分区由 `categories` 决定。现在所有分区都显示缩略图；要让某个分区压成纯文字行，把它写进 `home.html` 的 `compact_cats`（以前 `SR` 是这样）。
 

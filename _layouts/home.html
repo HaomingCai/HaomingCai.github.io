@@ -39,11 +39,18 @@
     <div class="bar__in">
       <a class="bar__name" href="#top">Haoming Cai</a>
       {%- comment -%} 当前读到的那一节会被点亮（见页尾脚本） {%- endcomment %}
+      {%- comment -%}
+        手机上（< 640px）这一排挪到名字下面单独一行（Lab 版的手机顶部，站主 2026-10-31 要的），
+        "Selected work" 缩成 "Work"，后面再接 CV 和 Scholar（.bar__m 只在手机上出现；顶栏右边那个 CV 手机上藏起来）。
+        顺序照旧 = 页面顺序。
+      {%- endcomment %}
       <nav class="bar__nav" aria-label="Sections">
-        <a href="#work">Selected work</a>
+        <a href="#work"><span class="bar__long">Selected work</span><span class="bar__short">Work</span></a>
         <a href="#news">News</a>
         <a href="#experience">Experience</a>
         <a href="#publications">Publications</a>
+        <a class="bar__m" href="/cv.pdf">CV</a>
+        <a class="bar__m" href="https://scholar.google.com/citations?hl=en&user=Jzs37TkAAAAJ">Scholar <span aria-hidden="true">&nearr;</span></a>
       </nav>
       <div class="bar__end">
         <a class="bar__cv" href="/cv.pdf">CV <small>PDF</small></a>
@@ -130,8 +137,8 @@
       <div class="intro__side">
         <figure class="intro__portrait">
           <picture>
-            <source type="image/webp" srcset="{{ site.baseurl }}/images/profile_4x5_480.webp 480w, {{ site.baseurl }}/images/profile_4x5_864.webp 864w" sizes="(min-width: 960px) 420px, 40vw">
-            <img src="{{ site.baseurl }}/images/profile_4x5_480.jpg" srcset="{{ site.baseurl }}/images/profile_4x5_480.jpg 480w, {{ site.baseurl }}/images/profile_4x5_864.jpg 864w" sizes="(min-width: 960px) 420px, 40vw" width="480" height="600" alt="Portrait of Haoming Cai" fetchpriority="high">
+            <source type="image/webp" srcset="{{ site.baseurl }}/images/profile_4x5_480.webp 480w, {{ site.baseurl }}/images/profile_4x5_864.webp 864w" sizes="(min-width: 960px) 420px, (min-width: 640px) 40vw, 88px">
+            <img src="{{ site.baseurl }}/images/profile_4x5_480.jpg" srcset="{{ site.baseurl }}/images/profile_4x5_480.jpg 480w, {{ site.baseurl }}/images/profile_4x5_864.jpg 864w" sizes="(min-width: 960px) 420px, (min-width: 640px) 40vw, 88px" width="480" height="600" alt="Portrait of Haoming Cai" fetchpriority="high">
           </picture>
         </figure>
 
@@ -139,7 +146,8 @@
           <div class="id__who">
             <h1 class="id__name">Haoming Cai <span class="id__zh" lang="zh">蔡昊明</span></h1>
             <p class="id__say">/haʊˈmɪŋ tsaɪ/ · he/him</p>
-            <p class="id__status">PhD student at the University of Maryland, expected 2027</p>
+            {%- comment -%} 手机上名字块挪到最上面（Lab 版），这一行换成短的那句 {%- endcomment %}
+            <p class="id__status"><span class="id__long">PhD student at the University of Maryland, expected 2027</span><span class="id__short">PhD Student · UMD · expected&nbsp;2027</span></p>
           </div>
           <div class="id__what">
             <p class="id__focus">Generative Media<br>Computational Imaging</p>
@@ -316,6 +324,10 @@
       SR（2020–2022，X-Pixel 时期）照旧压成纯文字行。
       v5：排在 News + Experience 后面（页面顺序 = 顶栏目录顺序）；缩略图视频在右边 300px。
     {%- endcomment %}
+    {%- comment -%}
+      Publications（2026-10-31 站主定的"会议栏"版）：宽屏上每条的会议 / 状态在左栏，和标题第一行对齐；
+      年份标题看不见了（会议名里有年份），年份之间一条细线。窄屏会议回到标题上面。见 home.scss 的 .entry 和 _includes/venue.html。
+    {%- endcomment %}
     <section class="sec pubs" id="publications">
       <h2 class="sec__title">
         Publications
@@ -454,10 +466,22 @@
     })();
 
     // ——————————————————————————————————————————————————
+    //  手机顶栏第二行（各节链接）放不下时能横着滑：还有没露出来的，右边缘就淡出；滑到底就不淡
+    // ——————————————————————————————————————————————————
+    (function () {
+      const nav = document.querySelector('.bar__nav');
+      if (!nav) return;
+      const upd = () => nav.classList.toggle('is-more', nav.scrollWidth - nav.clientWidth - nav.scrollLeft > 2);
+      nav.addEventListener('scroll', upd, { passive: true });
+      addEventListener('resize', upd);
+      upd();
+    })();
+
+    // ——————————————————————————————————————————————————
     //  顶栏目录：点亮当前读到的那一节
     // ——————————————————————————————————————————————————
     (function () {
-      const links = [...document.querySelectorAll('.bar__nav a')];
+      const links = [...document.querySelectorAll('.bar__nav a[href^="#"]')];
       if (!links.length || !('IntersectionObserver' in window)) return;
       const byId = new Map(links.map(a => [a.getAttribute('href').slice(1), a]));
       // 视口中上部那条"阅读线"穿过哪几节，就点亮哪几节 —— 宽屏上 News 和 Experience 并排，读线同时穿过两节，两个都亮。

@@ -1,6 +1,8 @@
 {%- comment -%}
-  单条论文（首页，改版 B）。文字在左、缩略图在右（Distill / Yen-Chen Lin 的排法）：
-  标题 / 作者 / 「会议 · Paper · Project · Code」一行 / 一句话。链接是文字，不是小方框。
+  单条论文（首页）。缩略图在右。每行只做一件事（2026-10-31 站主定，"会议栏"版）：
+  会议或状态 / 标题 / 作者 / 一句话 / 链接一行（Paper · Project · Code，安静的文字链接，放最底下）。
+  宽屏上会议在左边那一栏（原来放年份的位置），和标题第一行对齐；窄屏回到标题上面。见 home.scss 的 .entry。
+  源码里会议排在标题后面（读屏先读到标题），位置全靠 CSS。领域标签不再显示（见 _includes/venue.html）。
 
   用法:
     {% include entry.html post=post %}              带缩略图
@@ -57,17 +59,21 @@
       项目主页、PDF 等外链照旧在下面那一行文字链接里，访客一步直达。
     {%- endcomment -%}
     <h3 class="entry__title"><a href="{{ p.url | relative_url }}">{{ p.title }}</a></h3>
+    {% include venue.html post=p class="entry__venue" %}
     {%- comment -%} 还没定作者的条目（in preparation）可以不写 authors：整行不出，不留空行 {%- endcomment -%}
     {%- assign au = p.authors | strip -%}
     {%- if au != "" -%}
     <p class="entry__authors">{{ p.authors | add_author_links }}</p>
     {%- endif -%}
 
-    <p class="entry__meta">
-      {%- comment -%} 会议名后面接领域标签（fields，灰色小字，第一个深一档），见 _includes/fields.html {%- endcomment %}
-      <span class="entry__venue">{{ p.venue | strip_html | strip }}{% include fields.html fields=p.fields highlight=p.fields_highlight %}</span>
-      {%- comment -%} 链接包成一组：放不下时整组换行，行首不会挂着一个 "·"（分隔点挂在会议那一段的末尾） {%- endcomment -%}
-      <span class="entry__links">
+    {%- unless include.compact -%}
+      {%- if p.excerpt and p.excerpt != empty -%}
+        <p class="entry__excerpt">{{ p.excerpt | strip_html | strip }}</p>
+      {%- endif -%}
+    {%- endunless -%}
+
+    {%- comment -%} 链接单独一行，放在最底下；一个都没有就整行不出 {%- endcomment -%}
+    <p class="entry__links">
       {%- if p.arxiv -%}<a href="{{ p.arxiv }}">Paper</a>{%- endif -%}
       {%- if p.website -%}<a href="{{ p.website }}">Project</a>{%- endif -%}
       {%- if p.code -%}<a href="{{ p.code }}">Code</a>{%- endif -%}
@@ -80,13 +86,6 @@
         {%- assign parts = l | split: "|" -%}
         <a href="{{ parts[1] | strip }}">{{ parts[0] | strip }}</a>
       {%- endfor -%}
-      </span>
     </p>
-
-    {%- unless include.compact -%}
-      {%- if p.excerpt and p.excerpt != empty -%}
-        <p class="entry__excerpt">{{ p.excerpt | strip_html | strip }}</p>
-      {%- endif -%}
-    {%- endunless -%}
   </div>
 </article>

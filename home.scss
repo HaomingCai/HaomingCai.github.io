@@ -120,10 +120,22 @@ a:hover { color: var(--accent); text-decoration-color: currentColor; }
   letter-spacing: .06em;
   text-transform: uppercase;
 }
-// 领域标签（_includes/fields.html 输出，接在会议名后面）：和会议名同一套灰色小字，不做成小方块；
-// 第一个是主线，深一档
+// 领域标签（_includes/fields.html）：2026-10-31 起首页不再显示（主题词只用筛选那一套）；样式先留着，等 _posts 的 fields 一起清
 .field--main { color: var(--ink-2); }
-.field__award { color: var(--accent); }   // fields_highlight 指定的那个标签（如获奖），只改颜色
+.field__award { color: var(--accent); }
+
+// 会议 / 状态（_includes/venue.html；Publications 条目和代表作卡片共用）：
+// 正式会议 = 墨色、Inter 600、正常大小写 —— 一眼看到"哪一年、哪个会"；
+// 还没发表的状态（In preparation / Manuscript / arXiv …）= 灰色 Newsreader 斜体，明显不是会议名；
+// 奖项（fields_highlight）= 点缀色，跟在后面。
+.venue {
+  font: 600 14px/20px var(--sans);
+  letter-spacing: 0;
+  color: var(--ink);
+  text-wrap: pretty;
+  &--status .venue__name { font: italic 400 16px/20px var(--serif); color: var(--muted); }
+  &__award { font-weight: 500; color: var(--accent); white-space: nowrap; }
+}
 
 // 日期：IBM Plex Mono —— 只用在这里
 %date {
@@ -188,6 +200,9 @@ a:hover { color: var(--accent); text-decoration-color: currentColor; }
     small { font: 500 10px var(--sans); letter-spacing: .06em; color: var(--muted); }
   }
 }
+
+// 手机才出现的：顶栏里的短名字 "Work"、CV / Scholar 两个链接；名字块里的短身份行
+.bar__short, .bar__m, .id__short { display: none; }
 
 // —— 明暗切换（收在顶栏里）：两个字，当前生效的那个是墨色 + 下划线 ——
 .theme {
@@ -427,9 +442,8 @@ a:hover { color: var(--accent); text-decoration-color: currentColor; }
   min-width: 0;
   > figure { margin: 0 0 12px; }
   &__cap { display: flex; flex-direction: column; gap: 4px; flex: 1; min-width: 0; }
-  // 会议 · 领域标签：源码里在标题后面（读屏先读标题），显示在标题上面。
-  // 一排四张时这一行常折成两行 —— 给足两行高度，同一排的标题才对得齐
-  &__venue { order: -1; @extend %meta; font-size: 11px; line-height: 17px; color: var(--muted); min-height: 34px; text-wrap: pretty; }
+  // 会议：源码里在标题后面（读屏先读标题），显示在标题上面。只有会议名，一行放得下，同一排的标题自然对齐
+  &__venue { order: -1; }
   &__title {
     font: 500 21px/26px var(--serif);
     letter-spacing: -.008em;
@@ -488,7 +502,7 @@ a:hover { color: var(--accent); text-decoration-color: currentColor; }
 @media (max-width: 639px) {
   .featured { gap: 36px 16px; margin-top: 24px; }
   .feat {
-    &__venue { font-size: 10px; line-height: 15px; min-height: 45px; letter-spacing: .04em; }   // 两张一排：给足三行，同排标题对齐
+    &__venue { font-size: 13px; line-height: 18px; }
     &__title { font-size: 17px; line-height: 22px; }
     &__excerpt { font-size: 14px; line-height: 20px; }
   }
@@ -618,8 +632,12 @@ a:hover { color: var(--accent); text-decoration-color: currentColor; }
   }
 }
 
-// —————————————————————————— 论文：按年份分组
-// 年份（Newsreader 斜体）在边栏里，往下滚时吸在顶栏下面；条目文字在左、缩略图在右。
+// —————————————————————————— 论文：会议栏（2026-10-31 站主定）
+// 宽屏：每条论文的会议 / 状态放在左边那一栏（第 1–3 栏，节标题正下方），和标题第一行对齐 ——
+// 像 CV 一样顺着左边扫下来，就知道哪一年、哪个会，哪些还没发表。
+// 原来每组前面的大号斜体年份不显示了（会议名里有年份）；年份标题还在（h3，读屏 / 大纲用），只是看不见。
+// 年份之间画一条细线，帮眼睛分组。条目本身：标题 / 作者 / 一句话 / 链接一行；缩略图在右边三栏。
+// 窄于 1000px：会议回到标题上面（见后面的媒体查询）。
 
 .pubs__note { font-size: 14px; line-height: 22px; color: var(--muted); padding-top: 10px; }
 
@@ -650,26 +668,35 @@ a:hover { color: var(--accent); text-decoration-color: currentColor; }
   grid-template-columns: subgrid;
   margin-top: 48px;
 }
+// 年份之间的细线：第一组前面不画；筛选把前面的组藏起来时，第一个看得见的组前面也不画
+.pubs__group:not([hidden]) ~ .pubs__group { border-top: 1px solid var(--rule); padding-top: 40px; margin-top: 40px; }
+// 年份标题：看不见，读屏和大纲照旧有（"2025" 这一组）
 .pubs__year {
-  grid-column: 1 / 4;
-  align-self: start;
-  position: sticky; top: calc(var(--bar-h) + 24px);
-  font: italic 400 32px/40px var(--serif);
-  letter-spacing: -.01em;
-  color: var(--ink);
+  position: absolute;
+  width: 1px; height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
 }
-.pubs__list { grid-column: 4 / 13; display: grid; gap: 40px; }
+.pubs__list { grid-column: 1 / -1; display: grid; grid-template-columns: subgrid; row-gap: 40px; }
 
 .entry {
+  grid-column: 1 / -1;
   display: grid;
-  // 缩略图栏：占条目宽度的 ~1/3，夹在 240–300px（1440 / 1280 屏 300px；1000–1100 屏回到 240px，文字栏才不被挤窄）。
-  // 视频源 408px 宽：300px 在 2× 屏上略软 —— 要更清楚得换 816px 版本（体积 2–7 倍）。
-  grid-template-columns: minmax(0, 1fr) clamp(240px, 34%, 300px);
-  gap: 32px;
+  grid-template-columns: subgrid;
+  // 中间那栏的四样（标题 / 作者 / 一句话 / 链接）自动一行一行往下排；
+  // 最后一行 1fr：缩略图比文字高的时候，多出来的高度都给它，前四行不会被撑开
+  grid-template-rows: repeat(4, auto) 1fr;
+  row-gap: 0;
   align-items: start;
 
+  &__body { display: contents; }
+  // 会议栏：第 1–3 栏，竖跨整条；padding-top 让会议名和标题第一行落在同一条基线上（量过）
+  &__venue { grid-column: 1 / 4; grid-row: 1 / -1; padding-top: 3px; padding-right: 8px; }
+  &__title, &__authors, &__excerpt, &__links { grid-column: 4 / 10; min-width: 0; }
+  // 缩略图：右边三栏（1440 屏上约 280px）。视频源 408px 宽，2× 屏上略软 —— 要更清楚得换 816px 版本
   &__media {
-    grid-column: 2; grid-row: 1;
+    grid-column: 10 / 13; grid-row: 1 / -1;
     width: 100%;
     aspect-ratio: 4 / 3;
     overflow: hidden;
@@ -681,36 +708,43 @@ a:hover { color: var(--accent); text-decoration-color: currentColor; }
     }
   }
   &:hover &__media > * { transform: scale(1.02); }
-  &__body { grid-column: 1; grid-row: 1; display: grid; gap: 6px; min-width: 0; align-content: start; }
   &__title { font: 500 21px/28px var(--serif); letter-spacing: -.005em; text-wrap: pretty; a { color: var(--ink); text-decoration: none; &:hover { color: var(--accent); } } }
   &:hover &__title a { color: var(--accent); }
   &__authors {
+    margin-top: 4px;
     font-size: 15px; line-height: 23px; color: var(--muted);
     strong { color: var(--ink); font-weight: 500; }
     // 合作者链接：不抢眼。和作者行同色、不画下划线；悬停才出下划线、变色
     a { color: inherit; text-decoration: none; &:hover { color: var(--accent); text-decoration: underline; } }
   }
-  &__meta {
-    display: flex; flex-wrap: wrap; align-items: baseline;
+  &__excerpt { margin-top: 8px; font-size: 15px; line-height: 24px; color: var(--ink-2); max-width: 62ch; }
+  // 链接一行：安静的文字链接，在最底下；点挂在后一个链接前面（整行放得下，不会折）
+  &__links {
+    margin-top: 8px;
     font: 400 14px/20px var(--sans);
-    margin-top: 2px;
-    a { color: var(--ink); padding: 3px 0; &:hover { color: var(--accent); } }
+    a { color: var(--ink-2); padding: 3px 0; &:hover { color: var(--accent); } }
+    a + a::before { content: "·"; display: inline-block; margin: 0 .55em; color: var(--muted); }
+    &:empty { display: none; }
   }
-  // 「会议 · 标签」和「Paper · Project」之间的点挂在会议那一段末尾：链接整组换行时，点留在上一行行尾
-  &__venue::after { content: "·"; display: inline-block; margin: 0 .55em; color: var(--muted); }
-  &__venue:has(+ .entry__links:empty)::after { content: none; }
-  &__links:empty { display: none; }
-  &__links a + a::before { content: "·"; display: inline-block; margin: 0 .55em; color: var(--muted); }
-  &__venue { @extend %meta; color: var(--muted); }
-  &__excerpt { font-size: 15px; line-height: 24px; color: var(--ink-2); max-width: 62ch; margin-top: 2px; }
-  // 会议名 + 领域标签是一个整体：自己内部能在空格处折行（不许 nowrap —— 手机上会撑破）
-  &__meta > .entry__venue { max-width: 100%; }
 
-  &--compact { grid-template-columns: minmax(0, 1fr); }
+  // 没有缩略图的条目（compact_cats 里的分区；现在是空的）：文字一直写到右边
+  &--compact { .entry__title, .entry__authors, .entry__excerpt, .entry__links { grid-column: 4 / 13; } }
 }
-// 窄于 1000px：会议 + 标签单独一行，链接另起一行（不然链接折到下一行时，行首会挂着一个孤零零的 "·"）
+
+// 窄于 1000px：节标题叠在上面、没有左栏了 → 会议回到标题上面；条目是「文字 | 缩略图」两栏
 @media (max-width: 999px) {
-  .entry__meta > .entry__venue { flex-basis: 100%; margin-bottom: 2px; &::after { content: none; } }
+  .pubs__group:not([hidden]) ~ .pubs__group { padding-top: 32px; margin-top: 32px; }
+  .pubs__list { grid-template-columns: minmax(0, 1fr); max-width: 860px; }
+  .entry {
+    grid-template-columns: minmax(0, 1fr) clamp(240px, 36%, 300px);   // 平板：缩略图 ~270px
+    grid-template-rows: none;
+    column-gap: 32px;
+    &__body { display: grid; grid-column: 1; grid-row: 1; align-content: start; min-width: 0; }
+    &__venue { grid-column: auto; grid-row: auto; order: -1; padding: 0; margin-bottom: 4px; }
+    &__title, &__authors, &__excerpt, &__links { grid-column: auto; }
+    &__media { grid-column: 2; grid-row: 1; }
+    &--compact { grid-template-columns: minmax(0, 1fr); }
+  }
 }
 
 // 多帧交叉淡化：所有帧叠在同一个格子里，时序由脚本算
@@ -846,10 +880,7 @@ a:hover { color: var(--accent); text-decoration-color: currentColor; }
   // 顶栏改成一行 flex：名字靠左，目录和 CV / 明暗靠右
   .bar__in { display: flex; gap: 28px; padding-inline: var(--pad); }
   .bar__nav { margin-left: auto; gap: 20px; }
-  .pubs__group { grid-column: 2 / 14; max-width: none; margin-top: 36px; }
-  .pubs__year { grid-column: 1 / -1; position: static; margin-bottom: 16px; }
-  .pubs__list { grid-column: 1 / -1; max-width: 860px; }
-  .entry { grid-template-columns: minmax(0, 1fr) clamp(240px, 36%, 300px); }   // 平板：条目全宽，缩略图 ~270px
+  .pubs__group { margin-top: 36px; }
   .cvo__title { grid-column: 2 / 14; margin-bottom: 12px; }
 }
 @media (max-width: 939px) {
@@ -864,10 +895,25 @@ a:hover { color: var(--accent); text-decoration-color: currentColor; }
   body { font-size: 16px; line-height: 26px; }
   .sec { padding-block: 44px; }
   .sec__title { font-size: 28px; line-height: 34px; }
+  // 顶部换成 Lab 版（站主 2026-10-31）：第一行名字 + 明暗，第二行各节链接 + CV + Scholar（放不下就横着滑，右边缘淡出提示）。
+  // 顶栏不吸顶，跟着页面走 —— 两行吸在顶上太占地方；跳到某一节时上面留 24px
+  html { scroll-padding-top: 24px; }
   .bar {
+    position: static;
+    &__in { flex-wrap: wrap; height: auto; column-gap: 16px; row-gap: 0; padding-block: 12px 2px; }
     &__name { font-size: 19px; }
     &__end { gap: 16px; }
-    &__scholar { display: none; }
+    &__cv, &__scholar { display: none; }
+    &__nav {
+      display: flex; order: 3; flex: 1 0 100%;
+      margin-left: 0; gap: 16px;
+      overflow-x: auto; scrollbar-width: none;
+      &::-webkit-scrollbar { display: none; }
+      &.is-more { mask-image: linear-gradient(to right, #000 calc(100% - 32px), transparent); }
+      a { font-size: 14px; color: var(--ink-2); white-space: nowrap; padding: 8px 0 10px; }
+    }
+    &__long { display: none; }
+    &__short, &__m { display: inline; }
   }
   .intro {
     padding-top: 40px;
@@ -875,13 +921,23 @@ a:hover { color: var(--accent); text-decoration-color: currentColor; }
     &__text { gap: 26px; }
     &__thesis { font-size: 38px; line-height: 42px; }
     &__market { font-size: 17px; line-height: 26px; padding-left: 18px; &::before { top: 9px; } }
+    // 名字块挪到最上面（Lab 版）：88px 方形圆角小头像 + 名字 / 读音 / 身份一行（390 宽时身份一行放得下）。
+    // 研究方向、机构、Email / Flickr 手机上不出（页尾有邮箱和按钮）
+    &__text { grid-row: 2; }
     &__side {
-      grid-template-columns: minmax(0, 2fr) minmax(0, 3fr);
+      grid-row: 1;
+      grid-template-columns: 88px minmax(0, 1fr);
+      column-gap: 16px;
+      align-items: center;
       > .intro__portrait { grid-row: 1; }
     }
+    &__portrait img { aspect-ratio: 1; border-radius: 10px; object-position: 50% 55%; }
   }
-  .id { grid-template-columns: minmax(0, 1fr); gap: 10px; align-content: start; }
+  .id { display: block; }
+  .id__what, .id__links, .id__long { display: none; }
+  .id__short { display: inline; }
   .id__name { font-size: 22px; line-height: 28px; }
+  .id__status { margin-top: 4px; font-size: 13.5px; }
   .xp__item, .news li { grid-template-columns: minmax(0, 1fr); gap: 2px; }
   .xp { gap: 28px; }
   .xp__org { font-size: 19px; line-height: 26px; }
@@ -890,8 +946,7 @@ a:hover { color: var(--accent); text-decoration-color: currentColor; }
   .entry--compact { grid-template-columns: minmax(0, 1fr); }
   .entry__title { font-size: 18px; line-height: 24px; }
   .entry__excerpt { font-size: 14px; line-height: 22px; }
-  .pubs__year { font-size: 28px; line-height: 34px; }
-  .pubs__list { gap: 32px; }
+  .pubs__list { row-gap: 32px; }
   .topics { gap: 6px; button { font-size: 13px; padding: 3px 11px; } }
   .cvo__grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
   .cvo { padding-bottom: 110px; }

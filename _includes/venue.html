@@ -1,0 +1,15 @@
+{%- comment -%}
+  会议 / 状态 + 奖项（首页 Publications 条目和代表作卡片共用，2026-10-31 站主定）。
+  - 正式会议（ECCV 2026、CVPRW 2021…）：墨色加粗，正常大小写。
+  - 还没发表的状态（In preparation、Manuscript、Under review、Preprint、arXiv …）：灰色斜体，一眼看出不是会议。
+  - 奖项（_posts 的 fields_highlight，如 BSRN 的 "NTIRE '22 Winner"）：点缀色小字，跟在会议后面。
+  - 领域标签（fields:）不再在首页显示：主题词只有一套，就是 Publications 上方的筛选（_data/topics.yml）。
+  会议名统一写成 "NeurIPS 2023"：_posts 里有两篇写的是 "NeurIPS'23" / "CVPRW'21"，这里显示时换掉（不改 _posts）。
+
+  用法: {% include venue.html post=p class="entry__venue" %}
+{%- endcomment -%}
+{%- assign v = include.post.venue | strip_html | strip | replace: "'2", " 202" -%}
+{%- assign vd = v | downcase -%}
+{%- assign is_status = false -%}
+{%- if vd == "in preparation" or vd == "manuscript" or vd contains "under review" or vd contains "preprint" or vd contains "arxiv" -%}{%- assign is_status = true -%}{%- endif -%}
+<p class="{{ include.class }} venue{% if is_status %} venue--status{% endif %}"><span class="venue__name">{{ v }}</span>{% if include.post.fields_highlight %} <span class="venue__award">{{ include.post.fields_highlight | escape }}</span>{% endif %}</p>
