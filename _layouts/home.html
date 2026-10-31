@@ -308,8 +308,11 @@
 
       {%- assign sections = "GenAI|Generative media,AdverseWeather|Imaging &amp; <span style='white-space:nowrap'>vision&ndash;language</span> models under hard conditions,IQA|Perceptual image quality,SR|Efficient image restoration" | split: "," -%}
       {%- assign years = "2024 — 2026,2023 — 2026,2020 — 2023,2020 — 2022" | split: "," -%}
-      {%- comment -%} 只有 SR（2020–2022，X-Pixel 时期）压成纯文字行 {%- endcomment -%}
-      {%- assign compact_cats = "SR" | split: "," -%}
+      {%- comment -%}
+        压成纯文字行（不显示缩略图）的分区。以前 SR（2020–2022，X-Pixel 时期）是纯文字行；
+        2026-10 起每篇都有了缩略视频，所有分区都显示缩略图。要再压某个分区，把它的分类名写进来，如 "SR"。
+      {%- endcomment -%}
+      {%- assign compact_cats = "" | split: "," -%}
 
       {%- for s in sections -%}
         {%- assign parts = s | split: "|" -%}
