@@ -6,6 +6,7 @@ image: /videos/merged_output.mp4
 categories: GenAI
 authors: "Jingxi Chen, Brandon Y. Feng, <strong>Haoming Cai</strong>, Tianfu Wang, Levi Burner, Dehao Yuan, Cornelia Fermuller, Christopher Metzler, Yiannis Aloimonos"
 venue: "<strongvenue>CVPR 2025</strongvenue>"
+fields: ["Video Diffusion", "Event Cameras"]
 arxiv: https://arxiv.org/pdf/2412.07761
 website: https://vdm-evfi.github.io/
 year: 2025

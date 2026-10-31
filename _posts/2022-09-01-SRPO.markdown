@@ -7,6 +7,7 @@ categories: SR
 author: "Leo Keselman"
 authors: "Jinjin Gu, <strong>Haoming Cai</strong>, Chenyu Dong, Ruofan Zhang, Yulun Zhang, Wenming Yang, Chun Yuan."
 venue: "<strongvenue>ECCV 2022</strongvenue>"
+fields: ["Efficient Models"]
 arxiv: https://arxiv.org/pdf/2210.04198
 website:  https://github.com/HaomingCai/SRPO
 year: 2022

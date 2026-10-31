@@ -7,6 +7,7 @@ categories: SR
 author: "Leo Keselman"
 authors: "<strong>Haoming Cai*</strong>, Lin Zhou*, Jinjin Gu, Zheyuan Li, Yingqi Liu, Xiangyu Chen, Yu Qiao, Chao Dong."
 venue: "<strongvenue>AIM Challenge @ ECCV 2022</strongvenue>"
+fields: ["Efficient Models"]
 arxiv: https://arxiv.org/pdf/2210.05960
 website:  https://github.com/zhoumumu/VapSR
 year: 2022

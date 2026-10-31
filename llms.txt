@@ -44,6 +44,7 @@ Newest first. Each title links to a page for that paper.
 {%- assign summary = p.excerpt | strip_html | strip | replace: "‑", "-" -%}
 {%- assign tail = summary | slice: -1 -%}{%- unless tail == "." -%}{%- assign summary = summary | append: "." -%}{%- endunless %}
 - [{{ p.title | strip }}]({{ p.url | absolute_url }}) — {{ venue }}{% if p.year %}{% unless venue contains year %} ({{ year }}){% endunless %}{% endif %}.{% if authors != "" %} Authors: {{ authors }}.{% endif %} {{ summary }}
+{%- if p.fields %} Fields: {{ p.fields | join: ", " }}.{% endif %}
 {%- if p.arxiv %} PDF: {{ p.arxiv }}{% endif %}{% if p.website %} Project: {% if p.website contains "://" %}{{ p.website }}{% else %}{{ p.website | absolute_url }}{% endif %}{% endif %}
 {%- endfor %}
 

@@ -7,6 +7,7 @@ categories: IQA
 author: "Haoming Cai"
 authors: Jinjin Gu, <strong>Haoming Cai</strong>, Haoyu Chen, Xiaoxing Ye, Jimmy S. Ren, Chao Dong
 venue: "<strongvenue>ECCV 2020</strongvenue>"
+fields: ["Benchmark", "Human Preference Data"]
 arxiv: https://arxiv.org/pdf/2007.12142
 dataset: https://github.com/HaomingCai/PIPAL-dataset
 links:

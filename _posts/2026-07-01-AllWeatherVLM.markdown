@@ -1,10 +1,11 @@
 ---
 layout: post
 title:  "Enhancing Vision Language Models' Robustness Under Adverse Imaging Conditions"
-image: /images/AllWeatherVLM.webp
+image: /videos/AllWeatherVLM_teaser_v2.mp4
 categories: AdverseWeather
 authors: "Tianfu Wang*, Mingyang Xie*, <strong>Haoming Cai</strong>, Tianyi Xiong, Xiyao Wang, Dongdong Fu, Guan-Ming Su, Paola Cascante-Bonilla, Christopher Metzler"
 venue: "<strongvenue>COLM 2026</strongvenue>"
+fields: ["Multimodal LLMs", "Post-training"]
 arxiv: https://mingyangx.github.io/assets/all-weather-vlm.pdf
 website: https://mingyangx.github.io/All-Weather-VLM/
 code: https://github.com/kongdai123/All-Weather-VLM

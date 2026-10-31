@@ -53,6 +53,9 @@
       "datePublished": "{{ p.year }}",
       {%- endif %}
       "description": {{ p.excerpt | strip_html | strip | jsonify }},
+      {%- if p.fields %}
+      "keywords": {{ p.fields | jsonify }},
+      {%- endif %}
       "publication": {"@type": "PublicationEvent", "name": {{ p.venue | strip_html | strip | jsonify }}},
       "author": [
         {%- assign names = p.authors | strip_html | remove: "*" | split: "," -%}

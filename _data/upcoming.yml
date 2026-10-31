@@ -9,6 +9,7 @@
 - title: "What If? Guided Diffusion as a Tool for Scientific Inquiry into Tropical Cyclones"
   category: GenAI          # 放在哪个分区：GenAI | AdverseWeather | IQA | SR
   venue: "In preparation"
+  fields: ["Controllable Diffusion", "AI for Science"]     # 领域标签，显示在会议名后面
   image: /videos/WhatIf_teaser.mp4   # 和其他视频缩略图一样放 tn/videos/：408x306、H.264、无音轨、faststart
   url: /whatif/            # 标题链到这里
   website: /whatif/        # Website 按钮

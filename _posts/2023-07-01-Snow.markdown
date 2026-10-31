@@ -6,8 +6,9 @@ image: /videos/snow_removal.mp4
 categories: AdverseWeather
 authors: Haoyu Chen, Jingjing Ren, Jinjin Gu, Hongtao Wu, Xuequan Lu, <strong>Haoming Cai</strong>, Lei Zhu
 venue: "<strongvenue>ICCV 2023</strongvenue>"
+fields: ["Video Restoration", "Dataset"]
 arxiv: https://openaccess.thecvf.com/content/ICCV2023/html/Chen_Snow_Removal_in_Video_A_New_Dataset_and_A_Novel_ICCV_2023_paper.html
 website: https://haoyuchen.com/VideoDesnowing
 year: 2023
 ---
-Remove snow from video consistently across frames, learned from real snowfall rather than synthetic
+Remove snow from video consistently across frames, with a new dataset of realistic snow rendered onto real footage

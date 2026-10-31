@@ -7,6 +7,7 @@ categories: AdverseWeather
 authors: "Mingyang Xie*, <strong>Haoming Cai*</strong>, Sachin Shah, Yiran Xu, Brandon Y. Feng, Jia-bin Huang,
 Christopher Metzler"
 venue: "<strongvenue>ECCV 2024</strongvenue>"
+fields: ["Computational Photography"]
 arxiv: https://arxiv.org/pdf/2410.02764
 website: https://mingyangx.github.io/Flash-Splat/
 year: 2024

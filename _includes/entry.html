@@ -50,7 +50,7 @@
       项目主页、PDF 等外链照旧在下面的小标签里，访客一步直达。
     {%- endcomment -%}
     <h3 class="entry__title"><a href="{{ p.url | relative_url }}">{{ p.title }}</a></h3>
-    <p class="entry__venue">{{ p.venue | strip_html | strip }}</p>
+    <p class="entry__venue">{{ p.venue | strip_html | strip }}{% include fields.html fields=p.fields %}</p>
     {%- comment -%} 还没定作者的条目（in preparation）可以不写 authors：整行不出，不留空行 {%- endcomment -%}
     {%- assign au = p.authors | strip -%}
     {%- if au != "" -%}

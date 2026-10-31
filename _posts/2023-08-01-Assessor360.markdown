@@ -8,6 +8,7 @@ categories: IQA
 author: "Haoming Cai"
 authors: Tianhe Wu, Shuwei Shi, <strong>Haoming Cai</strong>, Mingdeng Cao, Jing Xiao, Yinqiang Zheng, Yujiu Yang
 venue: "<strongvenue>NeurIPS'23</strongvenue>"
+fields: ["Evaluation", "VR / 360°"]
 arxiv: https://arxiv.org/abs/2305.10983
 website: https://github.com/TianheWu/Assessor360
 year: 2023

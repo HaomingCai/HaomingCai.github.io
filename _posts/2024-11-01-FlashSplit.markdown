@@ -6,6 +6,7 @@ image: /videos/FlashSplit.mp4
 categories: GenAI
 authors: "Tianfu Wang*, Mingyang Xie*, <strong>Haoming Cai</strong>, Sachin Shah, Christopher Metzler"
 venue: "<strongvenue>CVPR 2025</strongvenue>"
+fields: ["Diffusion Priors", "Computational Photography"]
 arxiv: https://arxiv.org/pdf/2501.00637
 year: 2025
 ---

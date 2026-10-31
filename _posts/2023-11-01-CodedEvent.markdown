@@ -7,6 +7,7 @@ categories: AdverseWeather
 author: "Leo Keselman"
 authors: "Sachin Shah, Matthew Albert Chan, <strong>Haoming Cai</strong>, Jingxi Chen, Sakshum Kulshrestha, Chahat Deep Singh, Yiannis Aloimonos, Christopher Metzler."
 venue: "<strongvenue>CVPR 2024</strongvenue>"
+fields: ["Computational Imaging", "Optics Co-design"]
 year: 2024
 ---
 Engineer the PSF so event cameras encode depth for free
