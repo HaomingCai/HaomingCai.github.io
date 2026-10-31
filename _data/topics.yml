@@ -10,6 +10,8 @@ list:
     label: "Imaging & cameras"
   - id: multimodal
     label: Multimodal
+  - id: science
+    label: "AI for Science"
   - id: restore
     label: "Restoration & SR"
   - id: eval
@@ -22,7 +24,7 @@ list:
 #   例外：Flash-Split 虽在 GenAI 分区，但它是去反射（扩散模型当先验），不算"可控生成"；
 #         CodedEvents 虽在 AdverseWeather 分区，但它是光学设计，不算复原。
 papers:
-  "/whatif/": [gen]                                  # In preparation · Controllable Diffusion, AI for Science
+  "/whatif/": [gen, science]                         # In preparation · GenCast 热带气旋（站主 2026-10-31 加 AI for Science，只放这一篇）
   "/papers/allweathervlm/": [multimodal]             # 恶劣成像条件下的 VLM 鲁棒性（站主 2026-10-31 定：归多模态，不归复原）
   "/papers/real2sam2real/": [gen, video]             # 视频扩散 + 相机 / 物体控制
   "/papers/vid2bokeh/": [gen, video, imaging]        # 从视频合成光场 → 可控景深
