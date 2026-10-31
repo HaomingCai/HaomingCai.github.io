@@ -568,6 +568,13 @@ a:hover { color: var(--accent); text-decoration-color: currentColor; }
   &__body { display: grid; gap: 4px; }
   &__org { font: 500 21px/28px var(--serif); letter-spacing: -.005em; color: var(--ink); }
   &__where { font: 400 14px var(--sans); color: var(--muted); margin-left: 4px; }
+  // 机构名前的商标：固定 20×16 的格子，商标按比例缩进去、居中（A 字高 16，Dolby 宽 20）。
+  // 没有商标的行也占着这个格子，几行的名字左边对齐。格子底边比基线低 1px，中线正好落在大写字母半高处。
+  &__logo {
+    display: inline-block; width: 20px; height: 16px; margin-right: 8px;
+    vertical-align: -1px; color: var(--ink);
+    .logo { display: block; width: 100%; height: 100%; }
+  }
   &__role { font-size: 15px; line-height: 24px; color: var(--ink); }
   &__desc { font-size: 15px; line-height: 24px; color: var(--ink-2); max-width: 64ch; }
   .chips { margin-top: 4px; }

@@ -92,20 +92,20 @@
           {%- comment -%}
             研究方向总结（站主 2026-10 批准，替换掉原来逐篇列论文的 A 版 —— 站主觉得像工作清单）。
             写的是方向，不是论文清单；论文在下面 Selected work / Publications 里。
+            2026-10-31 站主要求大幅缩短，改成现在两句；同日又改：括号里加 and more（站主先要 etc.，后改成 and more），后半句说得更概括（physics and geometry，不点名事件相机）。
+            括号保留：换成逗号读起来像一串并列，分不清哪些是"可控的东西"。
+            第三段同日去掉 (2020–2022)（Experience 里有日期）和 "Always happy to talk…"（页尾 "Interested in the work, or just want to talk?" 已经说了）。
           {%- endcomment %}
           <p>
-            I work on making image and video generation physically controllable.
-            Diffusion models can produce convincing pictures, but they give you few reliable handles on how a picture was formed.
-            My work adds those handles (where the light comes from, what is in focus, what is reflected in glass)
-            and uses 3D structure and other sensors, such as event cameras, to keep the result consistent with a real scene.
-            I have also worked on restoring images captured in hard conditions, on making vision&ndash;language models robust to them, and on perceptual image quality.
+            I make image and video generation controllable (light, focus, reflections, camera, and more)
+            and keep it faithful to the real scene by grounding it in physics and geometry.
+            Earlier work covers restoration, image quality, and robust vision&ndash;language models.
           </p>
           <p>
-            Previously at <a href="https://xpixel.group/index.html">X-Pixel</a> (2020–2022)
+            Previously at <a href="https://xpixel.group/index.html">X-Pixel</a>
             with <a href="https://scholar.google.com/citations?user=OSDCB0UAAAAJ&hl=en">Chao Dong</a>
             and <a href="https://www.jasongt.com/">Jinjin Gu</a>; BEng from
-            <a href="https://www.cuhk.edu.cn/en/about-us">The Chinese University of Hong Kong, Shenzhen</a>.
-            Always happy to talk research or early-career questions.
+            <a href="https://www.cuhk.edu.cn/en/about-us" style="white-space:nowrap">CUHK-Shenzhen</a>.
           </p>
         </div>
 
@@ -280,6 +280,8 @@
     {%- comment -%}
       经历。数据在 _data/experience.yml（文字原样来自 CV，只排版不改写；/llms.txt 也从那里生成）。
       XPixel 是研究院不是公司，所以标题叫 Experience 而不是 Industry。
+      机构名前的小商标（站主 2026-10-31 要的：不用读字也知道是哪家公司）：_data/experience.yml 的 logo 字段 → _includes/logos/*.svg，
+      直接内联（Dolby 用 currentColor，深色模式自动变浅）。名字就在旁边，所以商标 aria-hidden。没有商标的行留一个同宽的空位，名字照样对齐。
     {%- endcomment -%}
     <section class="sec" id="experience">
       <h2 class="sec__title">Experience</h2>
@@ -288,7 +290,7 @@
         <li class="xp__item">
           <p class="xp__when">{{ x.when }}</p>
           <div class="xp__body">
-            <h3 class="xp__org">{{ x.org }} <span class="xp__where">{{ x.where }}</span></h3>
+            <h3 class="xp__org"><span class="xp__logo">{% if x.logo %}{% include logos/{{ x.logo }}.svg %}{% endif %}</span>{{ x.org }} <span class="xp__where">{{ x.where }}</span></h3>
             <p class="xp__role">{{ x.role }}</p>
             {%- if x.desc %}
             <p class="xp__desc">{{ x.desc }}</p>

@@ -2,15 +2,18 @@
 # 首页的 Experience 区块和 /llms.txt 都从这里生成 —— 只改这一处。
 # role 和 desc 里可以写 HTML（链接、不断行的 span）；llms.txt 会自动去掉标签。
 # links: "标签|网址"，和 _posts 里的 links 一个写法。
+# logo: 机构名前的小商标，对应 _includes/logos/<logo>.svg（来源见 MAINTENANCE.md）。没有就留空位，名字照样对齐。
 
 - when: Summer 2026
   org: Adobe
+  logo: adobe
   where: San Jose, CA
   role: 'Ph.D. Research Intern, NextCam team (<a href="https://graphics.stanford.edu/~levoy/">Marc Levoy</a>).'
   desc: 'Fast instruction-based local image editing with diffusion transformers: compute scales with the edited region, and everything outside it stays untouched across multi-turn edits. Paper in preparation.'
 
 - when: Summer 2025
   org: Adobe
+  logo: adobe
   where: San Jose, CA
   role: 'Ph.D. Research Intern, NextCam team (<a href="https://graphics.stanford.edu/~levoy/">Marc Levoy</a>), supervised by <a href="https://shumianxin.github.io/">Shumian Xin</a> and <a href="https://ztzhang.info/">Zhoutong Zhang</a>.'
   desc: 'Turned casual videos into light fields to create physically correct bokeh training data at <span style="white-space:nowrap">100K-scene</span> scale. ECCV 2026; patent filing in process.'
@@ -18,6 +21,7 @@
 
 - when: Summer 2024
   org: Dolby Vision Lab
+  logo: dolby
   where: Sunnyvale, CA
   role: 'Ph.D. Research Intern, supervised by <a href="https://scholar.google.com/citations?user=oe-qvf4AAAAJ&hl=en">Guan-Ming Su</a>.'
   desc: 'Portrait lighting control for text-to-image diffusion models without light stage data. Outcome: ICCV 2025, one patent.'
