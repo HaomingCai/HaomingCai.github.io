@@ -495,13 +495,13 @@ a:hover { text-decoration-color: var(--accent); }
 
 .entry {
   display: grid;
-  grid-template-columns: 136px minmax(0, 1fr);
+  grid-template-columns: 190px minmax(0, 1fr);   // 缩略图 190px（原 136px）：408px 的源视频在 2x 屏上仍然清晰（≤204px）
   gap: 22px;
   padding: 18px 0;
   border-bottom: 1px solid var(--rule);
 
   &__media {
-    width: 136px;
+    width: 190px;
     aspect-ratio: 4 / 3;
     overflow: hidden;
     border-radius: 2px;
@@ -808,8 +808,8 @@ a:hover { text-decoration-color: var(--accent); }
   .intro__bio { font-size: 16px; }
   .sec__title { font-size: 21px; }   // 手机上开头那句 26px，标题再小一档
   .xp__item { grid-template-columns: minmax(0, 1fr); gap: 6px; }
-  // 缩略图再小一档：320 宽时文字栏要留够 ~190px，否则标题一行只剩两三个词
-  .entry { grid-template-columns: 72px minmax(0, 1fr); gap: 14px; &__media { width: 72px; } }
+  // 手机上缩略图跟屏宽走：390 宽时 100px，320 宽时缩到 83px —— 文字栏要留够 ~190px，否则标题一行只剩两三个词
+  .entry { grid-template-columns: clamp(72px, 26vw, 100px) minmax(0, 1fr); gap: 14px; &__media { width: clamp(72px, 26vw, 100px); } }
   .entry--compact { grid-template-columns: minmax(0, 1fr); }
   .news li { grid-template-columns: minmax(0, 1fr); gap: 2px; }
   .cvo__grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
