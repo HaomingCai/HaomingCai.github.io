@@ -2,7 +2,7 @@
 layout: post
 title:  "Large-Scale Light Field Synthesis from Videos Enables Geometrically Consistent Bokeh Editing"
 date:   2025-11-01 22:21:59 +00:00
-image: /videos/vid2bokeh.mp4
+image: /videos/Vid2Bokeh_teaser.mp4
 categories: GenAI
 authors: "<strong>Haoming Cai</strong>, Zhoutong Zhang, Christopher Metzler, Shumian Xin"
 arxiv: https://media.eventhosts.cc/Conferences/ECCV2026/pdfs/6560.pdf
