@@ -2,7 +2,7 @@
 layout: post
 title:  "CodedEvents: Optimal Point-Spread-Function Engineering for 3D-Tracking with Event Cameras"
 date:   2023-08-09 22:21:59 +00:00
-image: /images/CodedEvents.webp
+image: /videos/CodedEvents_teaser.mp4
 categories: AdverseWeather
 author: "Leo Keselman"
 authors: "Sachin Shah, Matthew Albert Chan, <strong>Haoming Cai</strong>, Jingxi Chen, Sakshum Kulshrestha, Chahat Deep Singh, Yiannis Aloimonos, Christopher Metzler."
