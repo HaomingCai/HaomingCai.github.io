@@ -83,6 +83,8 @@ bibtex: |                     # 可选。写了才在论文页显示 —— 不�
 
 分区由 `categories` 决定。现在所有分区都显示缩略图；要让某个分区压成纯文字行，把它写进 `home.html` 的 `compact_cats`（以前 `SR` 是这样）。
 
+首页 Publications 上方的主题筛选（2026-10 改版）在 `_data/topics.yml`：按论文网址列出它属于哪些主题；没列出的新论文按 `categories` 自动归类。加了新论文最好也在这里补一行，否则它可能只出现在 "All" 和兜底主题里。
+
 新建这一个文件，以下都会自动出现：首页列表里的一条、`/papers/<名字>/` 论文页、首页结构化数据里的一篇、`/llms.txt` 里的一行、sitemap 里的一个地址。
 改完跑 `python design_versions/checks/structured_data.py` 确认（作者里要能对上 "Haoming Cai"）。
 
