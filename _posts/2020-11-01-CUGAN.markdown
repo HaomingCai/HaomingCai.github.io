@@ -12,4 +12,4 @@ arxiv: https://openaccess.thecvf.com/content/CVPR2021W/NTIRE/papers/Cai_Toward_I
 website: https://github.com/HaomingCai/CUGAN
 year: 2021
 ---
-Dial deblurring and denoising continuously, on a GAN, without retraining
+One GAN for a range of blur and noise levels, with interactive control
