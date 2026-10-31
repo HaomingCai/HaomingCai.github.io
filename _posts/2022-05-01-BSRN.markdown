@@ -13,4 +13,4 @@ arxiv: https://openaccess.thecvf.com/content/CVPR2022W/NTIRE/papers/Li_Blueprint
 website: https://github.com/xiaom233/BSRN
 year: 2022
 ---
-Super-resolve on a tight compute budget — winner of the NTIRE'22 efficient SR track
+Super-resolve on a tight compute budget with blueprint separable convolutions
