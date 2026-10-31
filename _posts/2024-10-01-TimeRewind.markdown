@@ -2,7 +2,7 @@
 layout: post
 title:  "Repurposing Pre-trained Video Diffusion Models for Event-based Video Interpolation"
 date:   2023-08-09 22:21:59 +00:00
-image: /videos/merged_output.mp4
+image: /videos/EVFI_teaser_v3.mp4
 categories: GenAI
 authors: "Jingxi Chen, Brandon Y. Feng, <strong>Haoming Cai</strong>, Tianfu Wang, Levi Burner, Dehao Yuan, Cornelia Fermuller, Christopher Metzler, Yiannis Aloimonos"
 venue: "<strongvenue>CVPR 2025</strongvenue>"
