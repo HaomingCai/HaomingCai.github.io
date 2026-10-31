@@ -14,7 +14,7 @@
 {%- assign prefix = include.name | append: ":" -%}
 {%- if p.title contains prefix -%}{%- assign label = p.title -%}{%- else -%}{%- assign label = include.name | append: ": " | append: p.title -%}{%- endif -%}
 <h3 class="feat__title"><a href="{{ href }}" title="{{ p.title | escape }}" aria-label="{{ label | escape }}">{{ include.name }}</a></h3>
-<p class="feat__venue">{{ p.venue | strip_html | strip }}{% include fields.html fields=p.fields %}</p>
+<p class="feat__venue">{{ p.venue | strip_html | strip }}{% include fields.html fields=p.fields highlight=p.fields_highlight %}</p>
 <p class="feat__excerpt">{{ p.excerpt | strip_html | split: "—" | first | strip }}</p>
 <p class="chips">
   {%- if p.arxiv %}<a href="{{ p.arxiv }}">PDF</a>{% endif -%}

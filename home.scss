@@ -132,6 +132,7 @@ a:hover { text-decoration-color: var(--accent); }
 // 领域标签（_includes/fields.html）：接在会议名后面的灰字，第一个（主线）深一档
 .field { color: var(--muted); }
 .field--main { color: var(--ink-2); }
+.field__award { color: var(--accent); }   // fields_highlight 指定的那个标签（如获奖），只改颜色
 
 // —————————————————————————— 左侧固定栏
 

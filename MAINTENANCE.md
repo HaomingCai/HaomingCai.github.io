@@ -67,6 +67,8 @@ image: /images/xxx.png        # 或 /videos/xxx.mp4
 categories: GenAI             # GenAI | AdverseWeather | IQA | SR
 authors: "<strong>Haoming Cai</strong>, Other Person"
 venue: "<strongvenue>CVPR 2026</strongvenue>"
+fields: ["Controllable Diffusion", "Data Engine"]   # 领域标签，1–2 个，第一个是主线
+fields_highlight: "…"       # 可选。等于上面某个标签时，那个标签用点缀色轻微突出（如获奖）
 year: 2026                    # 发表年份。别用上面的 date —— 大部分旧 post 的 date 是统一填的 2023-08-09
 arxiv: https://...
 website: https://...

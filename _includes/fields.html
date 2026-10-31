@@ -2,6 +2,7 @@
   领域标签（论文 front matter / upcoming.yml 里的 fields）：接在会议名后面，同一行灰色小字，
   第一个是主线、深一档。圆点前面是不断行空格（粘在上一个词后面），所以换行时圆点只会留在行尾、
   不会出现在下一行开头；标签本身可以在空格处换行（手机上卡片很窄）。
-  用法: <p class="…venue">{{ 会议名 }}{% include fields.html fields=p.fields %}</p>
+  用法: <p class="…venue">{{ 会议名 }}{% include fields.html fields=p.fields highlight=p.fields_highlight %}</p>
+  highlight（可选）：等于其中某个标签时，那一个标签用点缀色轻微突出（如获奖），圆点不变色。
 {%- endcomment -%}
-{%- for f in include.fields -%}<span class="field{% if forloop.first %} field--main{% endif %}">&nbsp;· {{ f | escape }}</span>{%- endfor -%}
+{%- for f in include.fields -%}<span class="field{% if forloop.first %} field--main{% endif %}">&nbsp;· {% if include.highlight and f == include.highlight %}<span class="field__award">{{ f | escape }}</span>{% else %}{{ f | escape }}{% endif %}</span>{%- endfor -%}
