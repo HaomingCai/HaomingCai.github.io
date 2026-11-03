@@ -3,7 +3,7 @@
 # list：筛选按钮，按这个顺序出现在 "All" 后面。id 会写进网址（#topic=<id>），改了旧链接就失效。
 list:
   - id: gen
-    label: Controllable generation
+    label: Generative   # 2026-11-03 站主：原来叫 Controllable generation；id 不变，旧的 #topic=gen 照样能用
   - id: video
     label: Video
   - id: imaging
@@ -41,6 +41,28 @@ papers:
   "/papers/bsrn/": [restore]
   "/papers/cugan/": [restore]
   "/papers/pipal/": [eval]                           # 感知质量评价数据集 / 基准
+
+# tags：每篇论文的标签（2026-11-03 站主定），显示在会议名下面（Publications 左栏、Selected work 卡片）。
+# 不是固定的"类型 + 对象"，而是两三个最能说明这篇看点的词；词表尽量共用，同一个意思只用一个词。
+# 生成类的工作第一个都是 Generative（不写 Diffusion Model）。
+tags:
+  "/whatif/":                 [Generative, Science, Controllability]
+  "/papers/allweathervlm/":   [VLM, Robustness]
+  "/papers/real2sam2real/":   [Generative, Video, Controllability]
+  "/papers/vid2bokeh/":       [Generative, Editing, Camera]
+  "/papers/shadowdirector/":  [Generative, Controllability, Lighting]
+  "/papers/flashsplit/":      [Generative, Reflection removal]      # 扩散模型当先验的 2D 去反射
+  "/papers/timerewind/":      [Generative, Video, Event camera]
+  "/papers/convrt/":          [Video, Turbulence]
+  "/papers/flashsplat/":      [3D, Reflection separation]        # 站主：是分离，不是去除
+  "/papers/codedevent/":      [Optics, Event camera]
+  "/papers/assessor360/":     [Image quality, "360°"]
+  "/papers/snow/":            [Video, Dataset]
+  "/papers/srpo/":            [Super-resolution, Graphics]
+  "/papers/vapsr/":           [Super-resolution, Efficient]
+  "/papers/bsrn/":            [Super-resolution, Efficient]
+  "/papers/cugan/":           [Restoration, Interactive]
+  "/papers/pipal/":           [Image quality, Dataset]
 
 # 兜底：新加的论文没写进上面的 papers 时，按它的 categories（upcoming.yml 里是 category）归类
 by_category:

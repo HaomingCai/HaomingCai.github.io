@@ -1,0 +1,282 @@
+/* ============================================================
+   Shadow Director project page — 在 v2b.css（Vid2Bokeh 项目页）之上只加这几样：
+   方形的 header 视频、"移动光源"交互图、高瘦图的限宽。配色和排版全部沿用 v2b.css。
+   ============================================================ */
+
+/* header 右侧：方形视频（512×512），不裁 */
+.header-media video { aspect-ratio: 1; object-fit: cover; }
+
+/* 高瘦 / 方形的论文图别撑满 920px 宽：限宽居中 */
+.fig.narrow img, .fig.narrow figcaption { max-width: 620px; margin-left: auto; margin-right: auto; }
+.fig.mid img, .fig.mid figcaption { max-width: 760px; margin-left: auto; margin-right: auto; }
+
+/* ---------- 交互图：移动光源（雪碧图，所有状态预渲染好） ---------- */
+.scrub {
+  margin: 0 auto;
+  max-width: 440px;
+  cursor: ew-resize;
+  touch-action: pan-y;          /* 横着拖 = 操作这张图；竖着划照样滚页面 */
+}
+.scrub__view {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1;
+  overflow: hidden;
+  border-radius: 8px;
+  background: #e9ecf1;
+}
+.scrub__l {
+  position: absolute; inset: 0;
+  background-repeat: no-repeat;
+  will-change: opacity;
+}
+.scrub:focus { outline: none; }
+.scrub:focus-visible { outline: 2px solid #2f7fd4; outline-offset: 4px; }
+
+/* 图下那一行：两端小字 + 一根细线 + 当前位置的点。整行都能横扫/横拖 */
+.legend {
+  display: flex; align-items: center; gap: 12px;
+  margin-top: 14px;
+  font: 650 11.5px/16px var(--sans);
+  letter-spacing: .08em; text-transform: uppercase;
+  color: #7c8496;
+}
+.scrub__end { white-space: nowrap; }
+.scrub__track { position: relative; flex: 1; height: 2px; border-radius: 2px; background: #d8dde6; }
+.scrub__dot {
+  position: absolute; top: 50%; left: 50%;
+  width: 14px; height: 14px; margin: -7px 0 0 -7px;
+  border-radius: 50%;
+  background: #fff; border: 2px solid #e0972a;
+  box-shadow: 0 1px 4px rgba(0,0,0,.28);
+  transition: left .12s ease-out;
+}
+.scrub:hover .scrub__track, .scrub.is-live .scrub__track { background: #b9c1d0; }
+@media (hover: none) { .scrub { cursor: default; } }
+
+/* 结果小节之间留一点呼吸 */
+.band-inner h3 + .lead-sm { margin-top: -.2em; }
+.lead-sm { font-size: 1rem; color: #333a48; }
+
+/* ============================================================
+   v2：核心想法两张卡 + 流水线动画（static/js/pipeline.js）+ 结果里两张图并排
+   ============================================================ */
+
+/* 手机上 header 不放视频：首屏留给标题和按钮，动画紧跟在后面 */
+@media (max-width: 600px) { .header-media { display: none; } }
+
+.idea-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px; margin-top: 18px; }
+.idea { background: #fff; border: 1px solid var(--rule); border-radius: 12px; padding: 18px 20px; }
+.band-inner .idea h3 { margin: 0 0 .35em; font-size: 1.05rem; }
+.band-inner .idea p { margin: 0; font-size: .97rem; line-height: 1.55; color: #333a48; }
+.strip { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 6px; margin-top: 14px; }
+.strip img { display: block; width: 100%; aspect-ratio: 1; object-fit: cover; border-radius: 6px; }
+@media (max-width: 700px) { .idea-grid { grid-template-columns: 1fr; } }
+
+.fig-pair { display: grid; grid-template-columns: minmax(0, .8fr) minmax(0, 1.2fr); gap: 22px; align-items: start; }
+@media (max-width: 700px) { .fig-pair { grid-template-columns: 1fr; } }
+
+/* ---------- 流水线动画 ---------- */
+.pipe {
+  background: #fff; border: 1px solid var(--rule); border-radius: 14px;
+  padding: 14px 16px; margin: 18px 0 10px;
+  box-shadow: 0 1px 2px rgba(20,22,28,.04);
+}
+.pipe-head { display: flex; align-items: center; justify-content: space-between; gap: 10px; margin-bottom: 6px; }
+.pipe-tabs { display: inline-flex; background: #f2f3f6; border-radius: 999px; padding: 3px; }
+.pipe-tabs button {
+  font: 650 .86rem var(--sans); border: 0; background: transparent; color: var(--ink-soft);
+  padding: 6px 15px; border-radius: 999px; cursor: pointer;
+}
+.pipe-tabs button[aria-pressed="true"] { background: var(--ink); color: #fff; }
+.pipe-count { font: 600 .8rem var(--mono); color: #7c8496; white-space: nowrap; }
+.pipe-svg { display: block; width: 100%; height: auto; }
+.pipe-cap { min-height: 3.2em; margin: 6px 0 10px !important; font-size: .98rem; line-height: 1.55; color: var(--ink); }
+.pipe-ctrl { display: flex; align-items: center; gap: 8px; }
+.pipe-ctrl button {
+  flex: none; width: 36px; height: 36px; border-radius: 50%;
+  border: 1px solid var(--rule); background: #fff; color: var(--ink);
+  display: grid; place-items: center; cursor: pointer; padding: 0;
+}
+.pipe-ctrl button[data-play] { background: var(--ink); border-color: var(--ink); color: #fff; }
+.pipe-ctrl svg { width: 14px; height: 14px; fill: currentColor; }
+.pipe-range { margin-left: 6px !important; }
+.pipe-steps { list-style: none; display: flex; flex-wrap: wrap; gap: 6px; margin: 12px 0 0; padding: 0; }
+.pipe-steps button {
+  font: 600 .8rem var(--sans); padding: 5px 11px; border-radius: 999px;
+  border: 1px solid var(--rule); background: #fff; color: var(--ink-soft); cursor: pointer;
+}
+.pipe-steps button b { font-family: var(--mono); color: #a2680e; margin-right: 5px; }
+.pipe-steps button[aria-current="step"] { background: var(--ink); border-color: var(--ink); color: #fff; }
+.pipe-steps button[aria-current="step"] b { color: var(--hdr-accent); }
+.pipe button:focus-visible, .pipe-range:focus-visible { outline: 2px solid #2f7fd4; outline-offset: 2px; }
+@media (max-width: 560px) {
+  .pipe { padding: 10px 10px 12px; margin-left: -10px; margin-right: -10px; }
+  .pipe-cap { font-size: .93rem; min-height: 4.7em; }
+}
+
+/* 图里的元素（颜色沿用论文图 2：绿色 latent、肉色 UNet、紫色 SD Estimator、黄色 ID Estimator） */
+.pipe-svg .lbl { font: 650 12.5px var(--sans); fill: #343a48; }
+.pipe-svg .lbl-s { font: 500 11px var(--sans); fill: #667086; }
+.pipe-svg .loss-t { fill: #c2185b; }
+.pipe-svg .edge { fill: none; stroke: #8b93a5; stroke-width: 1.6; }
+.pipe-svg .edge.dash { stroke-dasharray: 5 4; }
+.pipe-svg .edge.loss { stroke: #c2185b; stroke-dasharray: 5 4; }
+.pipe-svg .dot { fill: #e0972a; }
+.pipe-svg .flow.red .dot { fill: #c2185b; }
+.pipe-svg .frame { fill: none; stroke: rgba(20,22,28,.22); }
+.pipe-svg .latent { fill: #79a77c; stroke: #2f3a33; stroke-width: 1.2; }
+.pipe-svg .unet-bar { fill: #f9dccd; stroke: #3a3f4b; stroke-width: 1.3; }
+.pipe-svg .sd-bar { fill: #8f7be0; stroke: #3a3f4b; stroke-width: 1.2; }
+.pipe-svg .id-bar { fill: #f6cf5a; stroke: #3a3f4b; stroke-width: 1.2; }
+.pipe-svg .fmap { stroke: #3a3f4b; stroke-width: 1; }
+.pipe-svg .fgrid { stroke: rgba(20,22,28,.28); stroke-width: .7; }
+.pipe-svg .emb { stroke: #3a3f4b; stroke-width: .8; }
+.pipe-svg .snow line { stroke: #3f9ad8; stroke-width: 1.8; stroke-linecap: round; }
+.pipe-svg .chip { fill: #fff; stroke: #c9cfda; }
+.pipe-svg .glyph { fill: none; stroke: #4a5060; stroke-width: 1.3; }
+.pipe-svg .panel { fill: #fdf1f1; stroke: #f0c6c6; }
+.pipe-svg .ring { fill: none; stroke: #e0972a; stroke-width: 2; }
+.pipe-svg .plotbg { fill: #f5f6f9; stroke: #e3e6ec; }
+.pipe-svg .pt.ink { fill: #343a48; } .pipe-svg .pt.pos { fill: #1a8a56; } .pipe-svg .pt.neg { fill: #c2185b; }
+.pipe-svg .pull { stroke: #1a8a56; stroke-width: 1.6; }
+.pipe-svg .push { stroke: #c2185b; stroke-width: 1.6; stroke-dasharray: 4 3; }
+.pipe-svg .track { fill: #e3e6ec; }
+.pipe-svg .prog { fill: #4a5060; }
+.pipe-svg .head { fill: #fff; stroke: #4a5060; stroke-width: 2; }
+.pipe-svg .mark { stroke: #e0972a; stroke-width: 2; }
+.pipe-svg .pausegl rect { fill: #e0972a; }
+.pipe-svg .pp { transition: opacity .35s ease; }
+.pipe-svg .pp.dim { opacity: .14; }
+.pipe-svg .pp.hid { opacity: 0; pointer-events: none; }
+@media (prefers-reduced-motion: reduce) { .pipe-svg .pp { transition: none; } }
+
+/* ============================================================
+   v3：紧凑的顶部 + 四章动画
+   ============================================================ */
+.header-wrapper.compact { padding: 30px 24px 26px; }
+.sd-title {
+  font-family: var(--serif); font-weight: 600; color: var(--hdr-title);
+  font-size: 2.1rem; line-height: 1.18; letter-spacing: -.01em; margin: 0 0 14px; max-width: 30em;
+}
+.sd-title span { display: block; }
+.compact .authors { margin-bottom: .2em; }
+.compact .affil { margin-bottom: 16px; }
+.compact .button-container { align-items: center; }
+.compact .venue-badge { margin: 0 6px 0 0; }
+.compact .lede { margin: 16px 0 10px; font-size: 1.02rem; }
+.tags { list-style: none; display: flex; flex-wrap: wrap; gap: 7px; margin: 0 0 10px; padding: 0; }
+.tags li {
+  font: 600 .8rem/1 var(--sans); color: #ffd98d;
+  border: 1px solid rgba(255,196,107,.38); border-radius: 999px; padding: 6px 11px;
+}
+.compact .release-note { margin: 4px 0 0; }
+@media (max-width: 560px) {
+  .header-wrapper.compact { padding: 22px 16px 20px; }
+  .sd-title { font-size: 1.5rem; }
+}
+
+/* 四个章节按钮：宽屏一行，手机两行 */
+.pipe-head { flex-wrap: wrap; align-items: flex-start; }
+.pipe-tabs { flex-wrap: wrap; border-radius: 16px; }
+.pipe-tabs button { padding: 6px 12px; font-size: .82rem; }
+.pipe-meta { display: flex; align-items: center; gap: 14px; margin-left: auto; padding-top: 5px; }
+.pipe-legend { display: inline-flex; align-items: center; gap: 5px; font: 600 .78rem var(--sans); color: #667086; white-space: nowrap; }
+.pipe-legend svg { width: 15px; height: 15px; }
+.pipe-legend svg + svg { margin-left: 8px; }
+.lg-snow line { stroke: #3f9ad8; stroke-width: 2; stroke-linecap: round; }
+.pipe-eq {
+  margin: -4px 0 12px !important; font-family: var(--serif); font-size: 1rem; color: #343a48;
+  background: #f5f6f9; border: 1px solid #e9ebf1; border-radius: 8px; padding: 6px 10px; overflow-x: auto; white-space: nowrap;
+}
+.pipe-eq sub { font-size: .7em; }
+@media (max-width: 640px) {
+  .pipe-tabs { display: grid; grid-template-columns: 1fr 1fr; width: 100%; }
+  .pipe-tabs button { padding: 7px 6px; font-size: .78rem; }
+  .pipe-meta { margin-left: 0; width: 100%; justify-content: space-between; padding-top: 8px; }
+  .pipe-eq { font-size: .86rem; white-space: normal; line-height: 1.5; }
+}
+
+/* SVG 新元素 */
+.pipe-svg .lbl-xs { font: 600 9.5px var(--sans); fill: #8b93a5; letter-spacing: .02em; }
+.pipe-svg .tpl { font: 500 11.5px var(--sans); fill: #343a48; }
+.pipe-svg .card { fill: #fff; stroke: #d8dde6; }
+.pipe-svg .bbox { fill: #14161c; }
+.pipe-svg .on-dark { fill: #fff; } .pipe-svg .on-dark2 { fill: #c9d2e8; }
+.pipe-svg .chip.dashed { stroke-dasharray: 4 3; }
+.pipe-svg .chip.strong { stroke: #e0972a; fill: #fff6e0; }
+.pipe-svg .glyph.faint { stroke: #c9cfda; }
+.pipe-svg .track-l { stroke: #d8dde6; stroke-width: 4; stroke-linecap: round; }
+.pipe-svg .fill-l { stroke: #e0972a; stroke-width: 4; stroke-linecap: round; }
+.pipe-svg .knob { fill: #fff; stroke: #e0972a; stroke-width: 2.5; }
+.pipe-svg .pair-t { fill: #b5701a; font-weight: 650; }
+.pipe-svg .pairframe { stroke: #e0972a; stroke-width: 2; }
+.pipe-svg .frame.thick { stroke-width: 3; }
+.pipe-svg .frame.ink { stroke: #343a48; } .pipe-svg .frame.pos { stroke: #1a8a56; } .pipe-svg .frame.neg { stroke: #c2185b; }
+.pipe-svg .ink-t { fill: #343a48; } .pipe-svg .pos-t { fill: #1a8a56; } .pipe-svg .neg-t { fill: #c2185b; }
+.pipe-svg .pull { fill: none; stroke: #1a8a56; stroke-width: 2.4; }
+.pipe-svg .push { fill: none; stroke: #c2185b; stroke-width: 2.2; stroke-dasharray: 6 4; }
+
+/* ============================================================
+   v4：顶部案例图 + 引导循环
+   ============================================================ */
+.sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+.gallery { padding-top: 34px; padding-bottom: 40px; }
+.g-row { display: grid; grid-template-columns: 150px minmax(0, 1fr); gap: 18px; align-items: start; margin-bottom: 22px; }
+.g-head { margin: 4px 0 0 !important; font: 700 .82rem/1.35 var(--sans); letter-spacing: .06em; text-transform: uppercase; color: #8a6410; }
+.g-head span { display: block; text-transform: none; letter-spacing: 0; font-weight: 500; color: #7c8496; }
+.g-tiles { display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 10px; }
+.g-tile { margin: 0; min-width: 0; }
+.g-tile img { display: block; width: 100%; aspect-ratio: 1; object-fit: cover; border-radius: 8px; background: #e9ecf1; }
+.g-tile figcaption { margin-top: 5px; font: 600 .78rem var(--sans); color: #4a5060; text-align: center; }
+.g-note { margin: 6px 0 0 !important; font-size: .84rem; color: #7c8496; }
+@media (max-width: 760px) {
+  .g-row { grid-template-columns: 1fr; gap: 8px; margin-bottom: 18px; }
+  .g-tiles { display: flex; overflow-x: auto; scroll-snap-type: x mandatory; gap: 8px; padding-bottom: 4px; scrollbar-width: thin; }
+  .g-tile { flex: 0 0 116px; scroll-snap-align: start; }
+}
+
+.pipe-svg .tick { stroke: #c9cfda; stroke-width: 1.2; }
+.pipe-svg .tick.sel { stroke: #e0972a; stroke-width: 2.4; }
+.pipe-svg .sel-t { fill: #b5701a; font-weight: 650; }
+.pipe-svg .ring.red { stroke: #c2185b; stroke-width: 2.5; }
+.pipe-svg .lossbox { fill: #fdf1f4; stroke: #f0c6d3; }
+.pipe-svg .lossfill { fill: #c2185b; }
+.pipe-svg .edge.grad-bold { stroke-width: 3.6; stroke-dasharray: none; }
+.pipe-svg .flow.red .dot { r: 4; }
+
+/* ============================================================
+   v5：时间轴上的绕路小循环、步骤列表里的循环组、占位控件（widgets.js 没加载时才用）
+   ============================================================ */
+.pipe-svg .loopring { fill: none; stroke: #e7c48d; stroke-width: 2.2; }
+.pipe-svg .loopring.active { stroke: #e0972a; stroke-width: 3; }
+.pipe-steps .loopgrp {
+  display: flex; flex-wrap: wrap; align-items: center; gap: 6px;
+  border: 1.5px dashed #e0972a; border-radius: 16px; padding: 4px 6px 4px 10px; background: #fffaf0;
+}
+.loopgrp__lbl { font: 700 .74rem var(--sans); color: #b5701a; white-space: nowrap; }
+.loopgrp__steps { display: flex; flex-wrap: wrap; gap: 6px; }
+.pipe-svg .dial-arc { fill: none; stroke: #343a48; stroke-width: 2.5; }
+.pipe-svg .dial-face { fill: #c9cfda; stroke: #343a48; stroke-width: 1.5; }
+.pipe-svg .dial-ray { stroke: #e0972a; stroke-width: 1.5; stroke-dasharray: 3 3; }
+.pipe-svg .dial-sun { fill: #f2c46a; stroke: #e0972a; stroke-width: 1.5; }
+.pipe-svg .wedge-bg { fill: #eef0f4; }
+.pipe-svg .wedge-fill { fill: #8b93a5; }
+.pipe-svg .wedge-line { fill: none; stroke: #343a48; stroke-width: 2.5; stroke-linejoin: round; }
+
+/* ---------- v5 定稿：审阅清单 ---------- */
+/* hidden parts disappear fast (no ghost under the next image) */
+.pipe-svg .pp.hid { transition-duration: .1s; }
+/* backprop path: dashed, through the frozen networks */
+.pipe-svg .edge.grad-back { stroke-width: 2.6; stroke-dasharray: 6 4; }
+/* "What you give it": light model box; card controls in a softer ink at card weights */
+.pipe-svg .sdbox { fill: #fbfbfd; stroke: #8b93a5; stroke-width: 1.5; }
+.pipe-svg .ctl { --sdw-ink: #3a3f4b; }
+/* chapter tabs: short labels on phones, one row */
+.pipe-tabs .t-short { display: none; }
+@media (max-width: 640px) {
+  .pipe-tabs { display: inline-flex; flex-wrap: nowrap; width: auto; grid-template-columns: none; }
+  .pipe-tabs button { padding: 6px 12px; font-size: .8rem; }
+  .pipe-tabs .t-long { display: none; }
+  .pipe-tabs .t-short { display: inline; }
+}

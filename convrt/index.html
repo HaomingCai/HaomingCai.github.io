@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>ConVRT — Temporally Consistent Atmospheric Turbulence Mitigation with Neural Representations</title>
+  <meta name="description" content="ConVRT (NeurIPS 2024) gives its video representation only a few temporal features, so it cannot express fast turbulence jitter: a low-pass filter over time.">
+  <link rel="stylesheet" href="./static/css/page.css?v=7">
+</head>
+<body>
+
+<!-- 草稿 v7（2026-11-03）：Insight 改成一段连续动画（static/js/insight.js）：视频 → y–t 切片 → 一条边的快抖动 + 时间低通 → 时间特征变少、路径只能慢慢变 → 真实 Input | ConVRT 并排 + 标注。没有分步按钮。
+     v6 原注：Insight 先四步动画，再放 v4 的真实切片 + 标注。
+     v4 原注：站主要 Insight 简单 —— 不要分步动画，直接放真实结果：Input 和 ConVRT 的 y–t 切片并排、带标注。
+     标注位置是量出来的（_work_convrt/edges.py）：右边缘抖动最大的两段（第 26–82、126–182 行），和右边缘的慢漂移（x≈196→168）。
+     v1–v3 原样保留在 drafts/convrt/、convrt_v2/、convrt_v3/。文字来自论文（NeurIPS 2024 正式版 PDF）；图从论文 PDF 第 2 / 3 / 5 / 7 页裁出；
+     对比视频和第 4 步的真实切片都来自原 ConVRT 项目页（convrt-2024.github.io）的 "More Results" 视频。 -->
+
+<!-- ============================ HEADER ============================ -->
+<div class="header-wrapper">
+  <div class="header-container">
+
+    <div class="header-top">
+      <span class="venue-badge">NeurIPS 2024</span>
+      <h1>Temporally Consistent Atmospheric Turbulence Mitigation</h1>
+      <p class="subtitle">with Neural Representations</p>
+    </div>
+
+    <div class="header-grid">
+    <div class="header-content">
+
+      <p class="authors">
+        <a href="https://www.hm-cai.com/">Haoming Cai</a><sup>1,*</sup> &nbsp;
+        <a href="https://codingrex.github.io/">Jingxi Chen</a><sup>1,*</sup> &nbsp;
+        <a href="https://brandonyfeng.github.io/">Brandon Y. Feng</a><sup>2</sup> &nbsp;
+        <a href="https://weiyunjiang.github.io/">Weiyun Jiang</a><sup>3</sup> &nbsp;
+        <a href="https://mingyangx.github.io/">Mingyang Xie</a><sup>1</sup> &nbsp;
+        <a href="https://kevinwzhang.com/">Kevin Zhang</a><sup>1</sup> &nbsp;
+        <a href="https://users.umiacs.umd.edu/~fer/">Cornelia Fermüller</a><sup>1</sup> &nbsp;
+        <a href="https://scholar.google.com/citations?user=7QmEsOwAAAAJ&amp;hl=en">Yiannis Aloimonos</a><sup>1</sup> &nbsp;
+        <a href="https://scholar.google.com/citations?user=tI-oUmsAAAAJ&amp;hl=en">Ashok Veeraraghavan</a><sup>3</sup> &nbsp;
+        <a href="https://www.cs.umd.edu/people/metzler">Christopher A. Metzler</a><sup>1</sup>
+      </p>
+      <p class="affil">
+        <sup>1</sup>University of Maryland &nbsp;·&nbsp;
+        <sup>2</sup>Massachusetts Institute of Technology &nbsp;·&nbsp;
+        <sup>3</sup>Rice University &nbsp;·&nbsp;
+        <sup>*</sup>Equal contribution
+      </p>
+
+      <p class="lede">
+        <span class="tldr-badge">TL;DR</span>
+        A representation with only a few temporal features can&rsquo;t express fast jitter: a <em>low-pass filter over time</em>.
+      </p>
+
+      <div class="icon-container">
+        <div class="icon-item">
+          <svg viewBox="0 0 24 24"><path d="M3 12h3l2-6 3 12 2-9 2 5 2-2h4"/></svg>
+          <div><strong>Restored video still flickers.</strong> <a href="#why">Why</a></div>
+        </div>
+        <div class="icon-item">
+          <svg viewBox="0 0 24 24"><path d="M3 15c3 0 4-6 7-6s4 6 7 6 3-3 4-3"/><path d="M3 20h18"/></svg>
+          <div><strong>Limit the time resolution.</strong> <a href="#insight">See it</a></div>
+        </div>
+        <div class="icon-item">
+          <svg viewBox="0 0 24 24"><path d="M4 17V7l8-3 8 3v10l-8 3-8-3Z"/><path d="m4 7 8 3 8-3M12 10v10"/></svg>
+          <div><strong>On top of existing ATM methods.</strong> <a href="#results">Results</a></div>
+        </div>
+      </div>
+
+      <div class="button-container">
+        <a class="btn" href="https://proceedings.neurips.cc/paper_files/paper/2024/file/4eb91efe090f72f7cf42c69aab03fe85-Paper-Conference.pdf" target="_blank" rel="noopener">
+          <svg viewBox="0 0 384 512"><path d="M369.9 97.9 286 14C277 5 264.8-.1 252.1-.1H48C21.5 0 0 21.5 0 48v416c0 26.5 21.5 48 48 48h288c26.5 0 48-21.5 48-48V131.9c0-12.7-5.1-25-14.1-34zM332.1 128H256V51.9l76.1 76.1zM48 464V48h160v104c0 13.3 10.7 24 24 24h104v288H48z"/></svg>
+          Paper
+        </a>
+        <a class="btn" href="https://neurips.cc/virtual/2024/poster/93017" target="_blank" rel="noopener">
+          <svg viewBox="0 0 512 512"><path d="M64 32C28.7 32 0 60.7 0 96v320c0 35.3 28.7 64 64 64h384c35.3 0 64-28.7 64-64V96c0-35.3-28.7-64-64-64H64zm32 96h320v48H96v-48zm0 112h208v48H96v-48zm0 112h128v48H96v-48z"/></svg>
+          NeurIPS page
+        </a>
+        <a class="btn" href="#cite">
+          <svg viewBox="0 0 448 512"><path d="M96 32h256c53 0 96 43 96 96v256c0 53-43 96-96 96H96c-53 0-96-43-96-96V128c0-53 43-96 96-96zm48 128v48h160v-48H144zm0 96v48h112v-48H144z"/></svg>
+          BibTeX
+        </a>
+      </div>
+
+    </div>
+
+    <div class="header-media">
+      <figure>
+        <video src="./static/media/teaser.mp4" poster="./static/images/teaser.jpg" width="816" height="612" autoplay muted loop playsinline preload="metadata" aria-label="Input versus ConVRT on a long-range clip, then a zoom into the tail fin with slices through time"></video>
+        <figcaption>Input vs. <strong>ConVRT</strong>, then slices of the fin through time.</figcaption>
+      </figure>
+    </div>
+    </div>
+
+  </div>
+</div>
+
+
+<!-- ============================ 导航 ============================ -->
+<nav class="nav">
+  <div class="nav-inner">
+    <a class="nav-home" href="/" style="font-weight:600;margin-right:18px;text-decoration:none">&larr; Haoming Cai</a>
+    <span class="nav-brand">ConVRT</span>
+    <a href="#why">Motivation</a>
+    <a href="#insight">Insight</a>
+    <a href="#method">Method</a>
+    <a href="#results">Results</a>
+    <a href="#cite">BibTeX</a>
+  </div>
+</nav>
+
+
+<!-- ─────────── 1 · 为什么会闪（论文图 1，第 2 页） ─────────── -->
+<section id="why" class="band band-b">
+  <div class="band-inner">
+    <div class="roadmap"><span class="rm-step current">1&thinsp;&middot;&thinsp;Motivation</span><span class="rm-step">2&thinsp;&middot;&thinsp;Insight</span><span class="rm-step">3&thinsp;&middot;&thinsp;Method</span><span class="rm-step">4&thinsp;&middot;&thinsp;Results</span></div>
+    <h2>Restored turbulent video still flickers</h2>
+    <p class="lead">Video turbulence-mitigation (ATM) methods clean up each frame, but the result is not consistent from one frame to the next.</p>
+    <figure class="fig plain">
+      <img src="./static/images/fig1_flicker.jpg" width="1612" height="336" alt="Crops of a static pole at three times t0, t1, t2 for the original video, VRT, TMT, DATUM and DATUM plus ours">
+      <figcaption>A static pole flickers after state-of-the-art video ATM methods (crops at t0, t1, t2). Paper Fig. 1.</figcaption>
+    </figure>
+  </div>
+</section>
+
+<!-- ─────────── 2 · 洞察：动画（论文图 2、§1.2、§3.2） ─────────── -->
+<section id="insight" class="band">
+  <div class="band-inner">
+    <div class="roadmap"><span class="rm-step done">1&thinsp;&middot;&thinsp;Motivation</span><span class="rm-step current">2&thinsp;&middot;&thinsp;Insight</span><span class="rm-step">3&thinsp;&middot;&thinsp;Method</span><span class="rm-step">4&thinsp;&middot;&thinsp;Results</span></div>
+    <h2>Limited temporal capacity is the low-pass filter</h2>
+    <p class="lead">Over time, turbulence is high-frequency jitter, like noise. ConVRT gives its video representation only a few temporal features (T<sub>res</sub> &#8810; T; T<sub>res</sub> = 5 in the paper), so it can only learn the low-frequency part: the jitter is removed and the slow motion stays.</p>
+
+    <div class="lp" id="lp">
+      <div class="lp-live">
+        <canvas class="lp-canvas" role="img" aria-label="Animation: the input video with one sampled row stacked frame by frame into a y–t slice; one edge of the fin in the slice jitters fast over time, and a low-pass over time smooths it; the temporal features shrink from one per frame to 5, so the edge path can only change slowly and the jitter disappears; the real Input and ConVRT slices side by side, jitter gone and the slow drift kept."></canvas>
+        <noscript><div class="lp-noscript"><img src="./static/images/slice_input.png" width="320" height="304" alt="Input y–t slice, jagged"><img src="./static/images/slice_ours.png" width="320" height="304" alt="ConVRT y–t slice, smooth"></div></noscript>
+        <div class="lp-ctrl">
+          <button type="button" class="lp-play" aria-label="Pause animation">
+            <svg class="i-pause" viewBox="0 0 16 16" aria-hidden="true"><rect x="3" y="2" width="3.6" height="12" rx="1"/><rect x="9.4" y="2" width="3.6" height="12" rx="1"/></svg>
+            <svg class="i-play" viewBox="0 0 16 16" aria-hidden="true"><path d="M4 2.2v11.6c0 .6.7 1 1.2.6l8.6-5.8a.7.7 0 0 0 0-1.2L5.2 1.6C4.7 1.2 4 1.6 4 2.2Z"/></svg>
+          </button>
+          <input type="range" class="lp-range" min="0" max="1000" step="1" value="0" aria-label="Animation time">
+        </div>
+      </div>
+      <div class="lp-static" hidden></div>
+      <p class="tbl-cap">Real frames and y&ndash;t slices of the aircraft clip below (the clip&rsquo;s own marker lines are removed or dimmed). The edge path with fewer temporal features is fitted to the measured edge, as an illustration.</p>
+    </div>
+
+    <figure class="fig plain small">
+      <img src="./static/images/fig7_tres.jpg" width="1616" height="240" alt="Zoomed y–t slices on a synthetic video: GT, LQ, TurbNet, plus ours, T_res equals 8, without L_temp">
+      <figcaption>Paper Fig. 7 (synthetic video, zoomed y&ndash;t slices): residual turbulence goes with a lower T<sub>res</sub> and L<sub>temp</sub>.</figcaption>
+    </figure>
+  </div>
+</section>
+
+<!-- ─────────── 3 · 方法（论文图 4，第 5 页；§3.1–3.4） ─────────── -->
+<section id="method" class="band band-b">
+  <div class="band-inner">
+    <div class="roadmap"><span class="rm-step done">1&thinsp;&middot;&thinsp;Motivation</span><span class="rm-step done">2&thinsp;&middot;&thinsp;Insight</span><span class="rm-step current">3&thinsp;&middot;&thinsp;Method</span><span class="rm-step">4&thinsp;&middot;&thinsp;Results</span></div>
+    <h2>Two fields, one of them regularized</h2>
+    <p class="lead">A <b>Temporal Deformation Field</b> predicts how far each pixel is shifted from a canonical frame, and a <b>Spatial Content Field</b> reads its colour there. ConVRT is fitted to each video, guided by the output of an existing ATM method.</p>
+    <figure class="fig">
+      <img src="./static/images/fig4_method.jpg" width="1616" height="364" alt="Diagram of the Temporal Deformation Field and the Spatial Content Field">
+      <figcaption>The regularization: a Temporal Feature Map with low time resolution T<sub>res</sub> and a small deformation MLP. Paper Fig. 4.</figcaption>
+    </figure>
+  </div>
+</section>
+
+<!-- ─────────── 4 · 结果（论文图 5，第 7 页 + 原项目页的对比视频） ─────────── -->
+<section id="results" class="band">
+  <div class="band-inner">
+    <div class="roadmap"><span class="rm-step done">1&thinsp;&middot;&thinsp;Motivation</span><span class="rm-step done">2&thinsp;&middot;&thinsp;Insight</span><span class="rm-step done">3&thinsp;&middot;&thinsp;Method</span><span class="rm-step current">4&thinsp;&middot;&thinsp;Results</span></div>
+    <h2>Real-world turbulence</h2>
+    <p class="lead">Added to VRT, TMT or DATUM, ConVRT steadies feature tracks and straightens y&ndash;t slices.</p>
+    <figure class="fig">
+      <img src="./static/images/fig5_real.jpg" width="1560" height="1348" alt="Three real-world scenes: KLT tracks and y–t slices for VRT, TMT and DATUM, each with and without ours">
+      <figcaption>KLT tracks (top) and y&ndash;t slices (bottom), each method with and without ConVRT. Paper Fig. 5.</figcaption>
+    </figure>
+
+    <h3>More results</h3>
+    <div class="clips">
+      <figure class="clip-fig">
+        <video data-src="./static/media/cmp_aircraft.mp4" poster="./static/images/cmp_aircraft.jpg" width="1440" height="624" muted loop playsinline preload="none" aria-label="Aircraft tail: input, TMT, TMT plus ours, DATUM, DATUM plus ours"></video>
+        <figcaption><b>Aircraft tail.</b> Base methods with and without ConVRT (&ldquo;+ Ours&rdquo;).</figcaption>
+      </figure>
+      <figure class="clip-fig">
+        <video data-src="./static/media/cmp_field.mp4" poster="./static/images/cmp_field.jpg" width="1440" height="624" muted loop playsinline preload="none" aria-label="Field target: input, TMT, TMT plus ours, DATUM, DATUM plus ours"></video>
+        <figcaption><b>Target in a field.</b></figcaption>
+      </figure>
+      <figure class="clip-fig">
+        <video data-src="./static/media/cmp_penguin.mp4" poster="./static/images/cmp_penguin.jpg" width="1440" height="624" muted loop playsinline preload="none" aria-label="Penguin: input, TMT, TMT plus ours, DATUM, DATUM plus ours"></video>
+        <figcaption><b>A moving subject.</b></figcaption>
+      </figure>
+      <figure class="clip-fig">
+        <video data-src="./static/media/cmp_chart.mp4" poster="./static/images/cmp_chart.jpg" width="1440" height="624" muted loop playsinline preload="none" aria-label="Resolution chart: input, TMT, TMT plus ours, DATUM, DATUM plus ours"></video>
+        <figcaption><b>Resolution chart.</b></figcaption>
+      </figure>
+      <figure class="clip-fig">
+        <video data-src="./static/media/cmp_chart8.mp4" poster="./static/images/cmp_chart8.jpg" width="1440" height="548" muted loop playsinline preload="none" aria-label="Resolution chart against four base methods, each with and without ours"></video>
+        <figcaption><b>Four base methods.</b> TurbNet, DATUM, TMT and VRT, each with and without ConVRT.</figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<!-- ─────────── BibTeX（站主 2026-11-03 给的条目） ─────────── -->
+<section id="cite" class="band band-b">
+  <div class="band-inner">
+    <p class="section-kicker">After the argument &middot; Citation</p>
+    <h2>BibTeX</h2>
+    <div class="bibtex">@article{cai2024temporally,
+  title={Temporally consistent atmospheric turbulence mitigation with neural representations},
+  author={Cai, Haoming and Chen, Jingxi and Feng, Brandon Y and Jiang, Weiyun and Xie, Mingyang and Zhang, Kevin and Fermuller, Cornelia and Aloimonos, Yiannis and Veeraraghavan, Ashok and Metzler, Christopher A},
+  journal={Advances in Neural Information Processing Systems},
+  volume={37},
+  pages={44554--44574},
+  year={2024}
+}</div>
+  </div>
+</section>
+
+
+<footer class="foot">
+  <p>
+    Comparison videos from the original ConVRT project page.
+    &nbsp;·&nbsp; <a href="https://www.hm-cai.com/">Haoming Cai</a>
+  </p>
+</footer>
+
+<script src="./static/js/v6_data.js?v=1"></script>
+<script src="./static/js/insight.js?v=9"></script>
+<script>
+// 导航高亮（和 Vid2Bokeh 页同一段）
+(function () {
+  var links = Array.prototype.slice.call(document.querySelectorAll('.nav a[href^="#"]'));
+  var map = {};
+  links.forEach(function (a) {
+    var el = document.getElementById(a.getAttribute('href').slice(1));
+    if (el) map[el.id] = a;
+  });
+  var obs = new IntersectionObserver(function (entries) {
+    entries.forEach(function (e) {
+      if (!e.isIntersecting) return;
+      links.forEach(function (a) { a.classList.remove('active'); });
+      if (map[e.target.id]) map[e.target.id].classList.add('active');
+    });
+  }, { rootMargin: '-35% 0px -55% 0px' });
+  Object.keys(map).forEach(function (id) { obs.observe(document.getElementById(id)); });
+})();
+
+// 对比视频：快滚到眼前才下载、进了视口才播，出了视口暂停
+(function () {
+  var vids = document.querySelectorAll('video[data-src]');
+  if (!('IntersectionObserver' in window)) {
+    vids.forEach(function (v) { v.src = v.dataset.src; v.play().catch(function () {}); });
+    return;
+  }
+  var obs = new IntersectionObserver(function (entries) {
+    entries.forEach(function (e) {
+      var v = e.target;
+      if (e.isIntersecting) {
+        if (!v.getAttribute('src')) v.src = v.dataset.src;
+        v.play().catch(function () {});
+      } else if (v.getAttribute('src')) {
+        v.pause();
+      }
+    });
+  }, { rootMargin: '200px 0px' });
+  vids.forEach(function (v) { obs.observe(v); });
+})();
+</script>
+</body>
+</html>

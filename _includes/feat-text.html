@@ -2,7 +2,7 @@
   代表作卡片的图注：会议 / 简称（Newsreader）/ 一句话 / 链接。全部从这篇论文的 _posts 文件读，
   和下面 Publications 列表同源 —— 改 _posts 两边一起变。
 
-  用法: {% include feat-text.html post=p name="Shadow Director" %}
+  用法: {% include feat-text.html post=p name="Shadow Director" line="卡片专用的短句（可选）" %}
 
   - 标题显示简称（站主 2026-10 定）；完整标题放在鼠标悬停提示里，读屏软件读「简称: 完整标题」。
   - 标题链接：有项目主页就去项目主页，没有就去本站的论文页（/papers/<名字>/）。
@@ -21,7 +21,11 @@
     只写会议（和 Publications 同一套样式，见 _includes/venue.html）；领域标签 2026-10-31 起不在首页显示。
   {%- endcomment %}
   {% include venue.html post=p class="feat__venue" %}
-  {%- assign one_liner = p.excerpt | strip_html | split: "—" | first | strip %}
+  {%- comment -%}
+    卡片上的一句话：调用处给了 line 就用它（卡片专用的短句，两行放得下；2026-11-03 站主定），
+    否则从 _posts 摘要里截破折号前面的部分。Publications 列表里的长句不受影响。
+  {%- endcomment -%}
+  {%- if include.line -%}{%- assign one_liner = include.line -%}{%- else -%}{%- assign one_liner = p.excerpt | strip_html | split: "—" | first | strip -%}{%- endif %}
   {%- comment -%} 卡片上最多显示两行（CSS 截断）；全文在 DOM 里，悬停提示里也有一份 {%- endcomment %}
   <p class="feat__excerpt" title="{{ one_liner | escape }}">{{ one_liner }}</p>
   <p class="chips">

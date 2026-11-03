@@ -135,6 +135,15 @@ a:hover { color: var(--accent); text-decoration-color: currentColor; }
   text-wrap: pretty;
   &--status .venue__name { font: italic 400 16px/20px var(--serif); color: var(--muted); }
   &__award { font-weight: 500; color: var(--accent); white-space: nowrap; }
+  // 标签（_data/topics.yml 的 tags）：半透明的胶囊，排在会议名下面
+  &__tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 6px; }   // 会议名下面一行（Publications 左栏、卡片都一样）
+  .tag {
+    font: 500 11.5px/18px var(--sans); letter-spacing: .01em;
+    padding: 0 9px; border-radius: 999px; white-space: nowrap;
+    color: var(--ink-2);
+    background: color-mix(in srgb, var(--ink) 6%, transparent);
+    border: 1px solid color-mix(in srgb, var(--ink) 14%, transparent);
+  }
 }
 
 // 日期：IBM Plex Mono —— 只用在这里
@@ -201,8 +210,8 @@ a:hover { color: var(--accent); text-decoration-color: currentColor; }
   }
 }
 
-// 手机才出现的：顶栏里的短名字 "Work"、CV / Scholar 两个链接；名字块里的短身份行
-.bar__short, .bar__m, .id__short { display: none; }
+// 手机才出现的：顶栏里的短名字 "Work"、CV / Scholar 两个链接
+.bar__short, .bar__m { display: none; }
 
 // —— 明暗切换（收在顶栏里）：两个字，当前生效的那个是墨色 + 下划线 ——
 .theme {
@@ -257,22 +266,27 @@ a:hover { color: var(--accent); text-decoration-color: currentColor; }
 }
 
 // —————————————————————————— 开头
-// 左 7 栏：求职状态 + 大字 + 简介 + 按钮；右 5 栏：肖像 + 名字 + 最近三条新闻。
+// 2026-11-03 收紧（站主："最强的东西第一眼看不到"）：Selected work 那一排要在 1440×900 和 1280×800 的首屏里完整露出来。
+// 左 9 栏：求职状态 / 大字（两行）/ 简介；≥ 1200px 时三个按钮竖着排在简介右边（省掉一整行高度）。
+// 右 3 栏：小肖像（4:5，约 200–225px 高）+ 名字块。小猫挪到 News 下面去了。
 
 .intro {
-  padding-top: 72px;
-  padding-bottom: 48px;
-  row-gap: 56px;
+  padding-top: 24px;
+  padding-bottom: 8px;
+  row-gap: 40px;
 
   &__text {
-    grid-column: 2 / 9;
-    align-self: stretch;          // 撑满这一行，小猫（最后一个）才能沉到底
-    display: flex; flex-direction: column; gap: 32px;
+    grid-column: 2 / 11;
+    display: grid;
+    grid-template-columns: subgrid;   // 9 栏：简介占前 7 栏，按钮占后 2 栏（宽屏）
+    row-gap: 14px;
+    align-content: start;
+    > * { grid-column: 1 / -1; }
   }
-  &__side { grid-column: 9 / 14; display: grid; gap: 28px; align-content: start; }
+  &__side { grid-column: 11 / 14; display: grid; gap: 12px; align-content: start; }
 
   // 求职状态：一句完整的话，正文字体 19px / 500 / 墨色；前面一个 8px 的点（"可约"），很慢地呼吸。
-  // 点用绝对定位钉在第一行的中线上（行高 28 → 上 10px），文字折行时点不跟着跑；后面的 "CV →" 窄屏上可以掉到下一行。
+  // 点用绝对定位钉在第一行的中线上（行高 28 → 上 10px），文字折行时点不跟着跑。
   &__market {
     position: relative;
     padding-left: 20px;
@@ -287,34 +301,29 @@ a:hover { color: var(--accent); text-decoration-color: currentColor; }
       animation: avail 3.2s ease-out infinite;
     }
   }
-  &__cv {
-    margin-left: 12px;
-    font-size: 15px; font-weight: 500;
-    color: var(--muted);
-    white-space: nowrap;
-    &:hover { color: var(--accent); }
-  }
 
-  // 大字 = 研究方向一句话。Newsreader 56/60。
+  // 大字 = 研究方向一句话。Newsreader，1440 屏 48px、1280 屏 42px：两行放下（以前 56px 三行；站主 2026-11-03 要它"占比小一些"）。
   // 有 g、y 这类下伸字母 + .sweep 的 background-clip:text：padding-bottom 兜底，别再收（MAINTENANCE 4.2）
   &__thesis {
-    font: 400 56px/60px var(--serif);
+    font: 400 clamp(38px, 3.3vw, 48px)/1.1 var(--serif);
     letter-spacing: -.022em;
     color: var(--ink);
     padding-bottom: .14em;
     margin-bottom: -.14em;
-    max-width: 15em;
+    text-wrap: balance;
   }
 
   &__bio {
-    display: grid; gap: 16px;
-    max-width: 600px;
+    display: grid; gap: 12px;
+    max-width: 700px;
+    font-size: 16.5px; line-height: 26px;
     color: var(--ink-2);
   }
 
-  // 肖像：4:5 竖版（右栏只剩肖像 + 名字块，和左栏差不多高）
+  // 肖像：4:5 竖版的小图，宽度跟着屏幕走（1280 → 134px 宽 / 168 高，1440 → 151 / 189）
   &__portrait {
     margin: 0;
+    width: clamp(120px, 10.5vw, 160px);
     img {
       width: 100%; height: auto;
       aspect-ratio: 4 / 5;
@@ -326,10 +335,9 @@ a:hover { color: var(--accent); text-decoration-color: currentColor; }
     }
   }
 
-  // 一只团起来睡觉的小猫 + "Meet our chief vibe officer"，点了跳到页尾猫的那一节
+  // 一只团起来睡觉的小猫 + "Meet our chief vibe officer"，点了跳到页尾猫的那一节（2026-11-03 起在 News 那一节的末尾）
   &__cat {
-    margin-top: auto;
-    padding-top: 8px;
+    margin-top: 28px;
     a {
       display: inline-flex; align-items: flex-end; gap: 12px;
       font: 400 13px/18px var(--sans);
@@ -343,22 +351,44 @@ a:hover { color: var(--accent); text-decoration-color: currentColor; }
   }
 }
 
-// 肖像下面的名字块：左边"是谁"，右边"做什么、在哪"，再下面一行 Email / Flickr
+// 手机上简介收起时的 "More about me"（脚本加的）：宽屏不出，见手机那一段
+.intro__more { display: none; }
+
+// 求职那句话 + 按钮同一行（2026-11-03 站主定）：放不下时按钮整组换到下一行，不加高度的情况下和那句话顶对齐
+.intro__lead {
+  display: flex; flex-wrap: wrap; align-items: center;
+  gap: 10px 20px;   // 1280 屏上那句话 + 三样东西刚好一行（量过：约 872 / 882px）
+  .actions { gap: 8px 18px; }
+  .btn--solid { padding: 8px 16px; }
+}
+
+// 肖像下面的名字块：是谁 / 做什么、在哪 / Email · Flickr，紧凑地叠成一栏（右栏只有 3 栏宽）
 .id {
   display: grid;
-  // 右栏够宽（≥ 2×220px）时左右两块并排，否则上下叠 —— 1024 宽时名字不会被挤成两行
+  // 右栏够宽（≥ 2×220px，平板上肖像在左时）左右两块并排，否则上下叠
   grid-template-columns: repeat(auto-fit, minmax(min(100%, 220px), 1fr));
-  gap: 14px 24px;
-  &__name { font: 500 24px/30px var(--serif); letter-spacing: -.01em; color: var(--ink); }
+  gap: 6px 24px;
+  &__name { font: 500 22px/28px var(--serif); letter-spacing: -.01em; color: var(--ink); }
   &__zh { font: 400 15px/1 var(--sans); letter-spacing: .06em; color: var(--muted); margin-left: 4px; }
-  &__say { font-size: 13px; line-height: 20px; color: var(--muted); margin-top: 4px; }
-  &__status { font-size: 14px; line-height: 21px; color: var(--ink-2); margin-top: 8px; }
-  &__focus { font-size: 14px; line-height: 21px; color: var(--ink-2); }
+  &__say { font-size: 13px; line-height: 20px; color: var(--muted); margin-top: 2px; }
+  &__status { display: none; font-size: 14px; line-height: 21px; color: var(--ink-2); margin-top: 8px; }
+  // 方向一行："Generative Media · Computational Imaging"（右栏 3 栏宽时一行放得下；更窄时在点后面折行）
+  &__focus { font-size: 13px; line-height: 20px; color: var(--ink-2); }
   &__tags {
     display: flex; flex-wrap: wrap;
-    list-style: none; margin: 6px 0 0; padding: 0;
+    list-style: none; margin: 4px 0 0; padding: 0;
     li { @extend %meta; font-size: 11.5px; color: var(--muted); }
     li + li::before { content: "·"; margin: 0 .5em; }
+  }
+  // 机构标志一排：同一个字高（14px），颜色跟正文墨色（Adobe 保留红色），中间留白，放不下就换行
+  &__orgs {
+    grid-column: 1 / -1;
+    display: flex; flex-wrap: wrap; align-items: center; gap: 8px 18px;
+    list-style: none; margin: 2px 0 0; padding: 0;
+    color: var(--ink);
+    li { display: flex; }
+    .logo { height: 14px; width: auto; display: block; }
+    .logo--umd_wordmark { height: 15px; }   // 字标两行字，比另外两个看着小一号，稍微放大一点
   }
   &__links {
     grid-column: 1 / -1;
@@ -428,6 +458,15 @@ a:hover { color: var(--accent); text-decoration-color: currentColor; }
   --at: 2 / 14;               // 标题、说明、卡片都从同一条左缘开始
   .sec__title { grid-column: 2 / 14; }
   .sec__note { padding-top: 8px; max-width: none; }   // 说明紧跟标题，桌面上一行放下
+}
+// 宽屏：紧跟在开头下面（2026-11-03）；标题放边栏、说明接在同一行（和其他几节一样），四张卡片紧跟着
+@media (min-width: 1000px) {
+  #work {
+    padding-top: 20px;
+    .sec__title { grid-column: 2 / 5; align-self: baseline; }
+    .sec__note { grid-column: 5 / 14; align-self: baseline; padding-top: 0; }
+  }
+  #work .featured { margin-top: 16px; }
 }
 .featured {
   margin-top: 36px;
@@ -504,7 +543,10 @@ a:hover { color: var(--accent); text-decoration-color: currentColor; }
   .feat {
     &__venue { font-size: 13px; line-height: 18px; }
     &__title { font-size: 17px; line-height: 22px; }
-    &__excerpt { font-size: 14px; line-height: 20px; }
+    &__excerpt { font-size: 14px; line-height: 20px; -webkit-line-clamp: 3; line-clamp: 3; }   // 手机上卡片只有半屏宽：一句话给三行，别截断
+    // 手机上三个标签会折成两行：每张卡的标签区都留两行高，同一排两张卡的标题对齐
+    .venue__tags { min-height: 46px; align-content: flex-start; }   // 两行：(18 + 2) × 2 + 6
+    .tag { font-size: 11px; padding: 0 7px; }
   }
   .legend { gap: 6px; }
 }
@@ -612,6 +654,9 @@ a:hover { color: var(--accent); text-decoration-color: currentColor; }
     > #experience { grid-column: 5 / 14; }
     .sec__title { margin-bottom: 24px; }
   }
+  // 小猫（2026-11-03 起在 News 末尾）：紧凑一点，News 这一栏要比旁边的 Experience 短 —— 不然这一行被它撑高，
+  // 字体加载完还会把下面的内容往下推一截（#topic= 跳转会差 ~20px）
+  .duo .intro__cat { margin-top: 16px; img { width: 52px; } span { padding-bottom: 4px; } }
   .duo .news {
     gap: 18px;
     li { grid-template-columns: minmax(0, 1fr); gap: 2px; font-size: 15px; line-height: 23px; }
@@ -867,11 +912,12 @@ a:hover { color: var(--accent); text-decoration-color: currentColor; }
   .pubs__note { padding-top: 0; }
   .intro {
     &__text { grid-column: 2 / 14; }
-    &__thesis { font-size: 48px; line-height: 52px; }
-    // 右栏挪到下面：肖像在左，名字和最近新闻在右
+    &__thesis { font-size: 44px; line-height: 48px; }
+    &__portrait { width: auto; }   // 小肖像的限宽只管宽屏；平板 / 手机照旧由各自的格子定
+    // 右栏挪到下面：小肖像在左（150px 宽，2026-11-03 起不再是半屏大图），名字块在右
     &__side {
       grid-column: 2 / 14;
-      grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
+      grid-template-columns: 150px minmax(0, 1fr);
       column-gap: var(--gap);
       max-width: none;
       > .intro__portrait { grid-row: 1 / span 2; }
@@ -916,10 +962,28 @@ a:hover { color: var(--accent); text-decoration-color: currentColor; }
     &__short, &__m { display: inline; }
   }
   .intro {
-    padding-top: 40px;
-    row-gap: 44px;
-    &__text { gap: 26px; }
-    &__thesis { font-size: 38px; line-height: 42px; }
+    padding-top: 24px;
+    padding-bottom: 4px;
+    row-gap: 24px;
+    &__text { row-gap: 18px; }
+    &__thesis { font-size: 28px; line-height: 32px; }   // 三行（以前 38px 四行）
+    &__bio { font-size: 15.5px; line-height: 24px; gap: 10px; }
+    // 求职那句话留在最上面，按钮排到简介后面（.intro__lead 拆开，按钮 order 排到最后）
+    &__lead { display: contents; }
+    &__lead > * { grid-column: 1 / -1; }   // 拆开后它们直接是这一栏的格子，要占满整行
+    &__lead .actions { order: 1; }
+    // 简介收起：只留第一段；按钮是一行安静的文字，紧跟在第一段后面
+    &__bio[data-folded] > p + p { display: none; }
+    &__more {
+      display: inline-block; justify-self: start;
+      margin-top: -10px;
+      padding: 4px 0;
+      border: 0; background: none; cursor: pointer;
+      font: 500 14px/20px var(--sans);
+      color: var(--muted);
+      text-decoration: underline; text-decoration-color: var(--line); text-underline-offset: .3em;
+      &:hover { color: var(--accent); }
+    }
     &__market { font-size: 17px; line-height: 26px; padding-left: 18px; &::before { top: 9px; } }
     // 名字块挪到最上面（Lab 版）：88px 方形圆角小头像 + 名字 / 读音 / 身份一行（390 宽时身份一行放得下）。
     // 研究方向、机构、Email / Flickr 手机上不出（页尾有邮箱和按钮）
@@ -934,10 +998,12 @@ a:hover { color: var(--accent); text-decoration-color: currentColor; }
     &__portrait img { aspect-ratio: 1; border-radius: 10px; object-position: 50% 55%; }
   }
   .id { display: block; }
-  .id__what, .id__links, .id__long { display: none; }
-  .id__short { display: inline; }
+  .id__what, .id__links { display: none; }
+  .id__orgs { margin-top: 6px; gap: 6px 14px; .logo { height: 11px; } .logo--umd_wordmark { height: 12px; } }
+  .id__status { display: block; }
   .id__name { font-size: 22px; line-height: 28px; }
   .id__status { margin-top: 4px; font-size: 13.5px; }
+  #work { padding-top: 20px; .featured { margin-top: 16px; } }   // 紧跟在开头下面（2026-11-03）
   .xp__item, .news li { grid-template-columns: minmax(0, 1fr); gap: 2px; }
   .xp { gap: 28px; }
   .xp__org { font-size: 19px; line-height: 26px; }

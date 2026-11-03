@@ -1,0 +1,41 @@
+/* Shadow Director input widgets — colours and alphas as the Selected-work card v6c (see widgets.js).
+ * Default = for dark backgrounds (white ink, like the card band). Add .sdw--light (or theme: 'light') on light paper.
+ * Override any variable on a parent to restyle. */
+.sdw {
+  --sdw-ink: #fff;             /* strokes and fills */
+  --sdw-sun: #ffe49b;          /* sun core  (255, 228, 155) */
+  --sdw-sun-glow: #ffd678;     /* sun glow  (255, 214, 120) */
+  --sdw-label: #fff;
+  --sdw-dim: .28;              /* house rule: inactive control at 28 % */
+  display: inline-flex; align-items: center; gap: .6em;
+  font: 600 15px/1.2 Inter, system-ui, -apple-system, "Segoe UI", sans-serif;
+  color: var(--sdw-label);
+  transition: opacity .35s ease;
+}
+.sdw--light {
+  --sdw-ink: #1c1a17;
+  --sdw-sun: #e9a23b;
+  --sdw-sun-glow: #f2c46a;
+  --sdw-label: #1c1a17;
+}
+.sdw--dim { opacity: var(--sdw-dim); }
+
+/* icon size: set the widget's width via --sdw-icon (48–120 px look right) */
+.sdw__icon { width: var(--sdw-icon, 64px); height: auto; flex: none; overflow: visible; display: block; }
+.sdw-dial .sdw__icon { aspect-ratio: 128 / 92; }
+.sdw-wedge .sdw__icon { aspect-ratio: 110 / 70; }
+.sdw__track { width: var(--sdw-track, 120px); height: auto; aspect-ratio: 256 / 40; flex: none; overflow: visible; display: block; }
+.sdw__label { white-space: nowrap; }
+
+.sdw .sdw-rim  { fill: none; stroke: var(--sdw-ink); stroke-opacity: .92; stroke-width: 4; stroke-linejoin: round; stroke-linecap: round; }
+.sdw .sdw-fill { fill: var(--sdw-ink); fill-opacity: .275; stroke: none; }
+.sdw .sdw-head { fill: var(--sdw-ink); fill-opacity: .275; stroke: var(--sdw-ink); stroke-opacity: .92; stroke-width: 3; }
+.sdw .sdw-sun-glow { fill: var(--sdw-sun-glow); fill-opacity: .235; }
+.sdw .sdw-sun  { fill: var(--sdw-sun); }
+.sdw .sdw-base { fill: var(--sdw-ink); fill-opacity: .12; stroke: none; }
+.sdw .sdw-level { fill: var(--sdw-ink); fill-opacity: .43; stroke: none; }
+
+.sdw .sdw-track-bg  { stroke: var(--sdw-ink); stroke-opacity: .31; stroke-width: 8; stroke-linecap: round; }
+.sdw .sdw-track-fg  { stroke: var(--sdw-ink); stroke-opacity: .92; stroke-width: 8; stroke-linecap: round; }
+.sdw .sdw-track-end { fill: var(--sdw-ink); fill-opacity: .82; }
+.sdw .sdw-knob      { fill: var(--sdw-ink); }

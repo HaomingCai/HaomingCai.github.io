@@ -99,7 +99,7 @@ bibtex: |                     # 可选。写了才在论文页显示 —— 不�
 `home.html` 的 `.news` 列表里加一个 `<li>`。**`<time datetime="2026-01">` 必须写** —— 一年前的条目靠它自动折叠。
 
 ### Experience 机构名前的商标
-`_data/experience.yml` 里写 `logo: <名字>`，对应 `_includes/logos/<名字>.svg`（内联进页面，不另发请求）。没写 `logo` 的行留一个同宽空位，名字照样对齐。
+`_data/experience.yml` 里写 `logo: <名字>`，对应 `_includes/logos/<名字>.svg`（内联进页面，不另发请求）。没写 `logo` 的行不留空位，名字顶格。
 只用官方商标的矢量文件，不用截图。新加一个时：SVG 根元素写 `class="logo"`、`aria-hidden="true"`、`focusable="false"`，`viewBox` 裁到商标本身；
 黑色的商标用 `fill="currentColor"`（深色模式自动变浅），彩色的写死品牌色。格子是 20×16 px，样式在 `home.scss` 的 `.xp__logo`。
 
@@ -107,9 +107,17 @@ bibtex: |                     # 可选。写了才在论文页显示 —— 不�
 |---|---|---|
 | `adobe.svg` | Wikimedia Commons [`File:Adobe Corporate logo.svg`](https://commons.wikimedia.org/wiki/File:Adobe_Corporate_logo.svg)（公有领域，注册商标） | 只取左边红色 "A"（三条路径），颜色 `#fa0c00` 照原文件。Simple Icons 已经下架 Adobe，别从那里拿 |
 | `dolby.svg` | Simple Icons 16.36.0 [`icons/dolby.svg`](https://cdn.jsdelivr.net/npm/simple-icons@16.36.0/icons/dolby.svg)（图标数据 CC0；Simple Icons 记的来源 dolby.com） | 双 D，`viewBox` 裁到 `0 3.564 24 16.872`，`currentColor` |
-| （XPixel / SIAT 那行没有） | Commons 和 Wikipedia 上找不到干净的 SIAT 矢量商标（2026-10-31 查过），所以留空位 | |
+| （XPixel / SIAT 那行没有） | Commons 和 Wikipedia 上找不到干净的 SIAT 矢量商标（2026-10-31 查过），所以不放；那一行名字顶格 | |
 
-商标版权归各公司；这里只是在经历旁边标明机构。
+名字块下面的机构标志一排（2026-11-03）用的是带名字的完整标志，同样在 `_includes/logos/`：
+
+| 文件 | 来源 |
+|---|---|
+| `umd_wordmark.svg` | Wikimedia Commons `File:University of Maryland wordmark.svg`（公有领域，注册商标），黑色改成 `currentColor` |
+| `adobe_lockup.svg` | Wikimedia Commons `File:Adobe Corporate logo.svg`（红 A + Adobe 字，`#fa0c00`） |
+| `dolby_lockup.svg` | Wikimedia Commons `File:Dolby logo 2019.svg`（公有领域），黑色改成 `currentColor` |
+
+商标版权归各机构；这里只是标明在哪里工作 / 读书。
 
 ### 换 Selected Work 的两篇
 这两篇是两张交互图，写死在 `home.html` 的 `#work` 那一节里（每张卡一个 `<figure data-scrub data-atlas="...">`）。

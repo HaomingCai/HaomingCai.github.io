@@ -133,7 +133,7 @@
       const btns = [...document.querySelectorAll('[data-set-theme]')];
       const sys = matchMedia('(prefers-color-scheme: dark)');
       const sync = () => {
-        const eff = d.dataset.theme || (sys.matches ? 'dark' : 'light');
+        const eff = d.dataset.theme || 'light';   // 默认浅色，不看系统
         btns.forEach(b => b.setAttribute('aria-pressed', String(b.dataset.setTheme === eff)));
       };
       btns.forEach(b => b.addEventListener('click', () => {

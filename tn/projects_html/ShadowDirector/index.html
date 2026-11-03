@@ -1,253 +1,237 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
   <meta charset="utf-8">
-  <meta name="description"
-        content="Parametric Shadow Control for Portrait Generation in Text-to-Image Diffusion Models">
-  <meta name="keywords" content="Nerfies, D-NeRF, NeRF">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Shadow Director</title>
-
-  <!-- Global site tag (gtag.js) - Google Analytics -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-PYVRSFMDRL"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-
-    function gtag() {
-      dataLayer.push(arguments);
-    }
-
-    gtag('js', new Date());
-
-    gtag('config', 'G-PYVRSFMDRL');
-  </script>
-
-  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
-        rel="stylesheet">
-
-  <link rel="stylesheet" href="./static/css/bulma.min.css">
-  <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
-  <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
-  <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
-  <link rel="stylesheet"
-        href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
-  <link rel="stylesheet" href="./static/css/index.css">
+  <title>Shadow Director — Parametric Shadow Control for Portrait Generation</title>
+  <meta name="description" content="Simple synthetic relit data is enough to read out the shadows a frozen text-to-image diffusion model already knows, then steer them during portrait generation. ICCV 2025.">
   <link rel="icon" href="./static/images/umdicon.svg">
-
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-  <script defer src="./static/js/fontawesome.all.min.js"></script>
-  <script src="./static/js/bulma-carousel.min.js"></script>
-  <script src="./static/js/bulma-slider.min.js"></script>
-  <script src="./static/js/index.js"></script>
+  <link rel="stylesheet" href="./static/css/v2b.css?v=1">
+  <link rel="stylesheet" href="./static/css/sd.css?v=7">
+  <link rel="stylesheet" href="./static/css/widgets.css?v=1">
 </head>
 <body>
 
-<nav class="navbar" role="navigation" aria-label="main navigation">
-  <div class="navbar-brand">
-    <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
-      <span aria-hidden="true"></span>
-      <span aria-hidden="true"></span>
-      <span aria-hidden="true"></span>
-    </a>
+<!-- ============================ HEADER ============================ -->
+<!-- v5 基于 v4（训练合成一张图、"User input"、引导绕路循环、身份颜色漂移）；v4 基于 v3：顶部紧凑（v3） —— 标题 → 作者 → 机构 → 会议 + 按钮；TL;DR 一句；三个小标签（"轻量"只定性说，不写任何数字）。
+     依据：论文 3.1（两个估计器都是 compact neural networks）、摘要（no costly real-world light-stage data）、3.1（all network parameters remain frozen）。 -->
+<header class="header-wrapper compact">
+  <div class="header-container">
+    <h1 class="sd-title">Parametric Shadow Control for Portrait Generation <span>in Text-to-Image Diffusion Models</span></h1>
+    <p class="authors">
+      <a href="https://www.hm-cai.com/">Haoming Cai</a><sup>1</sup> &nbsp;
+      <a href="https://www.linkedin.com/in/tsung-wei-huang-63b728122/">Tsung-Wei Huang</a><sup>2</sup> &nbsp;
+      <a href="https://scholar.google.com/citations?user=SmSs6d0AAAAJ&amp;hl=en">Shiv Gehlot</a><sup>2</sup> &nbsp;
+      <a href="https://brandonyfeng.github.io/">Brandon Y. Feng</a><sup>3</sup> &nbsp;
+      <a href="https://scholar.google.com/citations?user=kWq6VHIAAAAJ">Sachin Shah</a><sup>1</sup> &nbsp;
+      <a href="https://sites.google.com/site/wwwgmsu/">Guan-Ming Su</a><sup>2</sup> &nbsp;
+      <a href="https://www.cs.umd.edu/people/metzler">Christopher Metzler</a><sup>1</sup>
+    </p>
+    <p class="affil"><sup>1</sup>University of Maryland &nbsp;·&nbsp; <sup>2</sup>Dolby Laboratories &nbsp;·&nbsp; <sup>3</sup>MIT</p>
+
+    <div class="button-container">
+      <span class="venue-badge">ICCV 2025</span>
+      <a class="btn" href="https://openaccess.thecvf.com/content/ICCV2025/papers/Cai_Parametric_Shadow_Control_for_Portrait_Generation_in_Text-to-Image_Diffusion_Models_ICCV_2025_paper.pdf" target="_blank" rel="noopener">
+        <svg viewBox="0 0 384 512"><path d="M369.9 97.9 286 14C277 5 264.8-.1 252.1-.1H48C21.5 0 0 21.5 0 48v416c0 26.5 21.5 48 48 48h288c26.5 0 48-21.5 48-48V131.9c0-12.7-5.1-25-14.1-34zM332.1 128H256V51.9l76.1 76.1zM48 464V48h160v104c0 13.3 10.7 24 24 24h104v288H48z"/></svg>
+        Paper
+      </a>
+      <a class="btn" href="https://arxiv.org/abs/2503.21943" target="_blank" rel="noopener">
+        <svg viewBox="0 0 512 512"><path d="M320 0c-17.7 0-32 14.3-32 32s14.3 32 32 32h82.7L201.4 265.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L448 109.3V192c0 17.7 14.3 32 32 32s32-14.3 32-32V32c0-17.7-14.3-32-32-32H320zM80 32C35.8 32 0 67.8 0 112V432c0 44.2 35.8 80 80 80H400c44.2 0 80-35.8 80-80V320c0-17.7-14.3-32-32-32s-32 14.3-32 32V432c0 8.8-7.2 16-16 16H80c-8.8 0-16-7.2-16-16V112c0-8.8 7.2-16 16-16H192c17.7 0 32-14.3 32-32s-14.3-32-32-32H80z"/></svg>
+        arXiv
+      </a>
+      <a class="btn" href="#cite">
+        <svg viewBox="0 0 448 512"><path d="M96 0C43 0 0 43 0 96V416c0 53 43 96 96 96H384h32c17.7 0 32-14.3 32-32s-14.3-32-32-32V384c17.7 0 32-14.3 32-32V32c0-17.7-14.3-32-32-32H384 96zm0 384H352v64H96c-17.7 0-32-14.3-32-32s14.3-32 32-32zm32-240c0-8.8 7.2-16 16-16H336c8.8 0 16 7.2 16 16s-7.2 16-16 16H144c-8.8 0-16-7.2-16-16zm16 48H336c8.8 0 16 7.2 16 16s-7.2 16-16 16H144c-8.8 0-16-7.2-16-16s7.2-16 16-16z"/></svg>
+        BibTeX
+      </a>
+    </div>
+
+    <p class="lede">Cheap synthetic data is enough to <strong>read out</strong> the shadows a frozen diffusion model already knows.</p>
+    <ul class="tags" aria-label="At a glance">
+      <li>Lightweight: only two small estimators are trained</li>
+      <li>Diffusion model stays frozen</li>
+      <li>No light-stage data</li>
+    </ul>
+    <p class="release-note">Code is not released because of copyright restrictions.</p>
+  </div>
+</header>
+
+
+<!-- ============================ 导航 ============================ -->
+<nav class="nav">
+  <div class="nav-inner">
+    <a class="nav-home" href="/" style="font-weight:600;margin-right:18px;text-decoration:none">&larr; Haoming Cai</a>
+    <span class="nav-brand">Shadow Director</span>
+    <a href="#gallery">Examples</a>
+    <a href="#idea">Key idea</a>
+    <a href="#how">How it works</a>
+    <a href="#results">Comparisons</a>
+    <a href="#limits">Limitations</a>
+    <a href="#cite">BibTeX</a>
   </div>
 </nav>
 
+  <!-- ─────────── 案例图（v4 站主要的：顶部直接放很多生成肖像；全部切自论文图 1 第一行 Ours、图 5、阴影形状图） ─────────── -->
+<section id="gallery" class="band gallery">
+  <div class="band-inner wide">
+    <h2 class="sr-only">Examples</h2>
+    <div class="g-row">
+      <p class="g-head">Light direction</p>
+      <div class="g-tiles">
+          <figure class="g-tile"><img src="./static/images/gallery/dir_hulk_left.jpg" alt="Generated Hulk portrait lit from the left" loading="lazy"><figcaption>left light</figcaption></figure>
+          <figure class="g-tile"><img src="./static/images/gallery/dir_hulk_right.jpg" alt="The same portrait lit from the right" loading="lazy"><figcaption>right light</figcaption></figure>
+          <figure class="g-tile"><img src="./static/images/gallery/dir_man_left.jpg" alt="Generated portrait of a long-haired man lit from the left" loading="lazy"><figcaption>left light</figcaption></figure>
+          <figure class="g-tile"><img src="./static/images/gallery/dir_man_right.jpg" alt="The same portrait lit from the right" loading="lazy"><figcaption>right light</figcaption></figure>
+      </div>
+    </div>
+    <div class="g-row">
+      <p class="g-head">Shadow strength</p>
+      <div class="g-tiles">
+          <figure class="g-tile"><img src="./static/images/gallery/str_weak.jpg" alt="Generated portrait with a weak shadow" loading="lazy"><figcaption>weak</figcaption></figure>
+          <figure class="g-tile"><img src="./static/images/gallery/str_medium.jpg" alt="The same portrait with a medium shadow" loading="lazy"><figcaption>medium</figcaption></figure>
+          <figure class="g-tile"><img src="./static/images/gallery/str_strong.jpg" alt="The same portrait with a strong shadow" loading="lazy"><figcaption>strong</figcaption></figure>
+          <figure class="g-tile"><img src="./static/images/gallery/str_paint_weak.jpg" alt="Painted portrait of a grey-haired man with a weak shadow" loading="lazy"><figcaption>weak</figcaption></figure>
+          <figure class="g-tile"><img src="./static/images/gallery/str_paint_strong.jpg" alt="The same painted portrait with a strong shadow" loading="lazy"><figcaption>strong</figcaption></figure>
+      </div>
+    </div>
+    <div class="g-row">
+      <p class="g-head">Shape from a mask <span>(inset: target shadow)</span></p>
+      <div class="g-tiles">
+          <figure class="g-tile"><img src="./static/images/gallery/shape_star_fig1.jpg" alt="Painted portrait with a star-shaped shadow" loading="lazy"><figcaption>star</figcaption></figure>
+          <figure class="g-tile"><img src="./static/images/gallery/shape_bar.jpg" alt="Portrait in the style of Girl with a Pearl Earring with a bar-shaped shadow" loading="lazy"><figcaption>bar</figcaption></figure>
+          <figure class="g-tile"><img src="./static/images/gallery/shape_star.jpg" alt="Pirate portrait with a star-shaped shadow" loading="lazy"><figcaption>star</figcaption></figure>
+          <figure class="g-tile"><img src="./static/images/gallery/shape_hexagon.jpg" alt="Pink-haired portrait with a hexagon-shaped shadow" loading="lazy"><figcaption>hexagon</figcaption></figure>
+          <figure class="g-tile"><img src="./static/images/gallery/shape_stripes.jpg" alt="Pink-haired painted portrait with striped shadows" loading="lazy"><figcaption>stripes</figcaption></figure>
+          <figure class="g-tile"><img src="./static/images/gallery/shape_cross.jpg" alt="Pirate portrait with a cross-shaped shadow" loading="lazy"><figcaption>cross</figcaption></figure>
+      </div>
+    </div>
+    <p class="g-note">All portraits are generated from text prompts; the shadow is set while each one is generated (paper Fig. 1, 5 and the shadow-shape results).</p>
+  </div>
+</section>
 
-<section class="hero">
-  <div class="hero-body">
-    <div class="container is-widescreen">
-      <div class="columns is-centered">
-        <div class="column has-text-centered">
-          <h1 class="title is-1 publication-title" style="max-width: 1200px; margin: 0 auto;">Parametric Shadow Control for Portrait Generation in Text-to-Image Diffusion Models</h1>
-          <div class="is-size-5 publication-authors">
-            <span class="author-block">
-              <a href="http://www.hm-cai.com">Haoming Cai</a><sup>1</sup>,</span>
-            <span class="author-block">
-              <a href="https://www.linkedin.com/in/tsung-wei-huang-63b728122/">Tsung-Wei Huang</a><sup>2</sup>,</span>
-            <span class="author-block">
-              <a href="https://scholar.google.com/citations?user=SmSs6d0AAAAJ&hl=en">Shiv Gehlot</a><sup>2</sup>,
-            </span>
-            <span class="author-block">
-              <a href="https://brandonyfeng.github.io/">Brandon Y. Feng</a><sup>3</sup>,
-            </span>
-            <span class="author-block">
-              <a href="https://scholar.google.com/citations?user=kWq6VHIAAAAJ">Sachin Shah</a><sup>1</sup>,
-            </span>
-            <span class="author-block">
-              <a href="https://sites.google.com/site/wwwgmsu/">Guan-Ming Su</a><sup>2</sup>,
-            </span>
-            <span class="author-block">
-              <a href="https://www.cs.umd.edu/people/metzler">Christopher Metzler</a><sup>1</sup>
-            </span>
-          </div>
-
-          <div class="is-size-5 publication-authors">
-            <span class="author-block"><sup>1</sup>University of Maryland</span>
-            <span class="author-block"><sup>2</sup>Dolby Labs,</span>
-            <span class="author-block"><sup>3</sup>MIT</span>
-            
-          </div>
-
-          <p class="shadowdirector-venue-iccv has-text-centered">ICCV 2025</p>
-
-          <div class="column has-text-centered">
-            <div class="publication-links">
-              <span class="link-block">
-                <a href="https://openaccess.thecvf.com/content/ICCV2025/papers/Cai_Parametric_Shadow_Control_for_Portrait_Generation_in_Text-to-Image_Diffusion_Models_ICCV_2025_paper.pdf"
-                   class="external-link button is-normal is-rounded is-dark">
-                  <span class="icon">
-                      <i class="fas fa-file-pdf"></i>
-                  </span>
-                  <span>Paper</span>
-                </a>
-              </span>
-              <span class="link-block shadowdirector-tooltip-wrap">
-                <span class="button is-normal is-rounded shadowdirector-btn-code"
-                      role="button"
-                      tabindex="0"
-                      aria-describedby="shadowdirector-code-tip">
-                  <span class="icon">
-                    <i class="fas fa-code"></i>
-                  </span>
-                  <span>Code</span>
-                </span>
-                <span id="shadowdirector-code-tip" class="shadowdirector-tooltip-bubble" role="tooltip">
-                  Due to the copyright issue, we cannot release the code.
-                </span>
-              </span>
-              <span class="link-block">
-                <span class="button is-normal is-rounded shadowdirector-btn-soon"
-                      role="button"
-                      tabindex="0">
-                  <span class="icon">
-                    <i class="fas fa-video"></i>
-                  </span>
-                  <span>Explanation Video (coming soon)</span>
-                </span>
-              </span>
-              <span class="link-block">
-                <a href="#bibtex"
-                   class="external-link button is-normal is-rounded is-dark">
-                  <span class="icon">
-                    <i class="fas fa-book"></i>
-                  </span>
-                  <span>BibTeX</span>
-                </a>
-              </span>
-            </div>
-
-          </div>
+  <!-- ─────────── 核心想法（论文图 4 说明、3.1、附录 S2：灵感来自 Readout Guidance） ─────────── -->
+<section id="idea" class="band band-b">
+  <div class="band-inner">
+    <div class="roadmap"><span class="rm-step current">1&thinsp;&middot;&thinsp;Key idea</span><span class="rm-step">2&thinsp;&middot;&thinsp;How it works</span><span class="rm-step">3&thinsp;&middot;&thinsp;Comparisons</span></div>
+    <h2>The diffusion model already knows the light</h2>
+    <div class="idea-grid">
+      <div class="idea">
+        <h3>Simple data is enough</h3>
+        <p>The training portraits are synthetic relights, far from photoreal. That is enough to read out the lighting the pretrained model already encodes.</p>
+        <div class="strip" aria-label="Three training portraits from the synthetic dataset (paper Fig. 4)">
+          <img src="./static/images/pipe/data_relit_0.jpg" alt="">
+          <img src="./static/images/pipe/data_relit_1.jpg" alt="">
+          <img src="./static/images/pipe/data_relit_2.jpg" alt="">
         </div>
+      </div>
+      <div class="idea">
+        <h3>Readout, not ControlNet</h3>
+        <p>No new conditioning branch and no fine-tuning: a small estimator reads shadows from the frozen UNet's features, and generation is steered by optimizing only the latent.</p>
       </div>
     </div>
   </div>
 </section>
 
+  <!-- ─────────── 流水线动画（论文 3.1、图 2、图 3、图 4、附录 S2.1） ─────────── -->
+<section id="how" class="band">
+  <div class="band-inner">
+    <div class="roadmap"><span class="rm-step done">1&thinsp;&middot;&thinsp;Key idea</span><span class="rm-step current">2&thinsp;&middot;&thinsp;How it works</span><span class="rm-step">3&thinsp;&middot;&thinsp;Comparisons</span></div>
+    <h2>How it works</h2>
+    <p class="lead">Train two small estimators to read shadow, depth and identity from a frozen UNet, then use them to steer generation.</p>
 
-
-<section style="text-align: center; padding: 20px;">
-  <h2 style="font-size: 24px; font-family: Arial, sans-serif;">
-    <strong>Shadow Director</strong> enables parametric shadow control over <span class="shadowdirector-teaser-ul">strength</span>, <span class="shadowdirector-teaser-ul">placement</span>, <span class="shadowdirector-teaser-ul">shape</span>, and <span class="shadowdirector-teaser-ul">directional lighting</span> in generated portraits, with few hours training on single A6000.
-  </h2>
-  <div style="display: flex; justify-content: center; align-items: center; margin-top: 20px;">
-    <img src="static\images\Fig_01_Teaser.png" alt="Neural Gaffer Example" style="max-width: 80%; height: auto; border-radius: 10px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);">
-  </div>
-</section>
-
-
-<!-- <section class="section">
-  <div class="container has-text-centered">
-    <h2 class="title is-3">Video Explaination</h2>
-    <div class="video-container">
-      <iframe width="800" height="450" src="https://www.youtube.com/embed/2CnxQ4YUlbI" frameborder="0" allowfullscreen></iframe>
-    </div>
-  </div>
-</section> -->
-
-
-<!-- <section class="section">
-  <div class="container has-text-centered">
-    <h2 class="title is-3">Video Explaination (Coming Soon)</h2>
-  </div>
-</section> -->
-
-
-<section class="section">
-  <div class="container has-text-centered">
-    <h2 class="title is-3">Directional Light Position - Left Light</h2>
-    <img src="static\images\Fig_04_Exp_LightPos_02.png" alt="Neural Gaffer Example" style="max-width: 70%; height: auto; border-radius: 10px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);">
-  </div>
-</section>
-
-
-<section class="section">
-  <div class="container has-text-centered">
-    <h2 class="title is-3">Directional Light Position - From Left to Right</h2>
-    <img src="static\images\Fig_04_Exp_LightPos.png" alt="Neural Gaffer Example" style="max-width: 90%; height: auto; border-radius: 10px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);">
-  </div>
-</section>
-
-
-<section class="section">
-  <div class="container has-text-centered">
-    <h2 class="title is-3">Shadow Strength</h2>
-    <img src="static\images\Fig_04_Exp_ShadowIntensity.png" alt="Neural Gaffer Example" style="max-width: 60%; height: auto; border-radius: 10px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);">
-  </div>
-</section>
-
-
-<section class="section">
-  <div class="container has-text-centered">
-    <h2 class="title is-3">Shadow Placement and Shape</h2>
-    <img src="static\images\Fig_04_Exp_ShadowShape.png" alt="Neural Gaffer Example" style="max-width: 60%; height: auto; border-radius: 10px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);">
-  </div>
-</section>
-
-
-
-
-
-
-<section class="section" id="bibtex">
-  <div class="container is-max-desktop content">
-    <h2 class="title is-3 has-text-centered">BibTeX</h2>
-    <pre class="shadowdirector-bibtex"><code>@inproceedings{cai2025parametric,
-  title={Parametric shadow control for portrait generation in text-to-image diffusion models},
-  author={Cai, Haoming and Huang, Tsung-Wei and Gehlot, Shiv and Feng, Brandon Y and Shah, Sachin and Su, Guan-Ming and Metzler, Christopher},
-  booktitle={Proceedings of the IEEE/CVF International Conference on Computer Vision},
-  pages={18207--18217},
-  year={2025}
-}</code></pre>
-  </div>
-</section>
-
-
-<footer class="footer">
-  <div class="container">
-    <div class="content has-text-centered">
-    </div>
-    <div class="columns is-centered">
-      <div class="column is-8">
-        <div class="content">
-          <p>
-            This website is licensed under a <a rel="license"
-                                                href="http://creativecommons.org/licenses/by-sa/4.0/">Creative
-            Commons Attribution-ShareAlike 4.0 International License</a>.
-          </p>
-          <p>
-            This means you are free to borrow the <a
-              href="https://github.com/nerfies/nerfies.github.io">source code</a> of this website,
-            we just ask that you link back to this page in the footer.
-            Please remember to remove the analytics code included in the header of the website which
-            you do not want on your website.
-          </p>
+    <div class="pipe" id="pipe">
+      <div class="pipe-head">
+        <div class="pipe-tabs" role="group" aria-label="Chapter">
+          <button type="button" data-tab="0" aria-pressed="true">Training</button>
+          <button type="button" data-tab="5" aria-pressed="false"><span class="t-long">User input</span><span class="t-short">Input</span></button>
+          <button type="button" data-tab="8" aria-pressed="false"><span class="t-long">Inference · guidance</span><span class="t-short">Guidance</span></button>
+        </div>
+        <div class="pipe-meta">
+          <span class="pipe-legend"><svg viewBox="-10 -10 20 20" aria-hidden="true"><g class="lg-snow"><line x1="-7" y1="0" x2="7" y2="0"/><line x1="-3.5" y1="-6.1" x2="3.5" y2="6.1"/><line x1="-3.5" y1="6.1" x2="3.5" y2="-6.1"/></g></svg>frozen
+            <svg viewBox="-10 -10 20 20" aria-hidden="true"><g transform="scale(8)"><path d="M0,-1 C.5,-.45 .75,.05 .52,.5 C.36,.86 -.36,.86 -.52,.5 C-.74,.04 -.24,-.28 0,-1 Z" fill="#f0642c"/><path d="M0,-.35 C.25,-.05 .36,.22 .24,.48 C.14,.66 -.14,.66 -.24,.48 C-.34,.24 -.12,.02 0,-.35 Z" fill="#ffd23f"/></g></svg>trained / updated</span>
+          <span class="pipe-count" aria-hidden="true"></span>
         </div>
       </div>
+      <svg class="pipe-svg" aria-hidden="true" focusable="false"></svg>
+      <noscript><img src="./static/images/Fig_02_Method.jpg" alt="Method overview (paper Fig. 2)" style="width:100%"></noscript>
+      <p class="pipe-cap" aria-live="polite"></p>
+      <p class="pipe-eq" hidden></p>
+      <div class="pipe-ctrl">
+        <button type="button" data-prev aria-label="Previous stage"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3 2.5h2v11H3zM13.5 2.5v11L6 8z"/></svg></button>
+        <button type="button" data-play aria-label="Play"></button>
+        <button type="button" data-next aria-label="Next stage"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M11 2.5h2v11h-2zM2.5 2.5v11L10 8z"/></svg></button>
+        <input class="pipe-range" type="range" min="0" max="1000" value="0" step="1" aria-label="Animation timeline">
+      </div>
+      <ol class="pipe-steps" aria-label="Stages"></ol>
     </div>
+    <p class="tbl-cap">Drawn after the paper’s Fig. 2–5 and Appendix Fig. 12, with their own images. The portraits in “User input” and the final portrait are real outputs (paper Fig. 1; the final one is a different example from the maps shown during guidance). During guidance, ŝ converging to s* and the identity colour drifting and recovering are schematic.</p>
   </div>
+</section>
+
+  <!-- ─────────── 对比（论文图 1、图 7、图 8）。v4："移动光源"交互图先撤掉，以后再改 ─────────── -->
+<section id="results" class="band band-b">
+  <div class="band-inner">
+    <div class="roadmap"><span class="rm-step done">1&thinsp;&middot;&thinsp;Key idea</span><span class="rm-step done">2&thinsp;&middot;&thinsp;How it works</span><span class="rm-step current">3&thinsp;&middot;&thinsp;Comparisons</span></div>
+    <h2>Against other methods</h2>
+    <p class="lead">Relighting methods shift identity or miss the light; Shadow Director keeps the person and the style.</p>
+
+    <figure class="fig plain">
+      <img src="./static/images/Fig_01_Teaser.jpg?v=1" alt="Top row: Shadow Director controlling light direction, shadow strength and shadow shape. Bottom row: baseline methods on the same portraits." loading="lazy">
+      <figcaption><b>Ours (top) vs. baselines (bottom),</b> which shift identity, miss the light, or barely change the shadow.</figcaption>
+    </figure>
+
+    <figure class="fig plain">
+      <img src="./static/images/Fig_04_Exp_LightPos.jpg?v=1" alt="Five relit versions of three portraits by Shadow Director, next to IC-Light, DiFaReli and the original." loading="lazy">
+      <figcaption><b>Ours (left five; inset: target shadow)</b> vs. IC-Light and DiFaReli, with the original at right.</figcaption>
+    </figure>
+    <figure class="fig plain">
+      <img src="./static/images/Fig_04_Exp_LightPos_02.jpg?v=1" alt="Eight generated portraits relit from the left by Hou et al., DiFaReli, SwitchLight, IC-Light and Shadow Director, with the originals." loading="lazy">
+      <figcaption><b>Light from the left:</b> one portrait per column, one method per row.</figcaption>
+    </figure>
+
+  </div>
+</section>
+
+  <!-- ─────────── 局限（论文第 5 节） ─────────── -->
+<section id="limits" class="band">
+  <div class="band-inner">
+    <p class="section-kicker">Limitations</p>
+    <ul class="limits-list">
+      <li>Intricate clothing in full-body shots is hard to keep.</li>
+      <li>Strong lighting words in the prompt, such as neon, can override the control.</li>
+      <li>No control over light color temperature.</li>
+    </ul>
+  </div>
+</section>
+
+  <!-- ─────────── BibTeX（旧项目页里的正式 BibTeX，原样） ─────────── -->
+<section id="cite" class="band band-b">
+  <div class="band-inner">
+    <p class="section-kicker">Citation</p>
+    <h2>BibTeX</h2>
+    <div class="bibtex">@inproceedings{cai2025parametric,
+  title     = {Parametric shadow control for portrait generation
+               in text-to-image diffusion models},
+  author    = {Cai, Haoming and Huang, Tsung-Wei and Gehlot, Shiv and
+               Feng, Brandon Y and Shah, Sachin and Su, Guan-Ming and
+               Metzler, Christopher},
+  booktitle = {Proceedings of the IEEE/CVF International Conference
+               on Computer Vision},
+  pages     = {18207--18217},
+  year      = {2025}
+}</div>
+  </div>
+</section>
+
+
+<footer class="foot">
+  <p>
+    Layout shared with the <a href="https://www.hm-cai.com/vid2bokeh/" target="_blank" rel="noopener">Vid2Bokeh</a> project page.
+    &nbsp;·&nbsp; <a href="https://www.hm-cai.com/">Haoming Cai</a>
+  </p>
 </footer>
 
-<script type='text/javascript' id='clustrmaps' src='//cdn.clustrmaps.com/map_v2.js?cl=ffffff&w=100&t=n&d=Ywtv9TBUjXmIiact7SuwmFbDbwzhN7g_dH0LaN56ptk'></script>
-
+<script src="./static/js/scrub.js?v=1"></script>
+<script src="./static/js/widgets.js?v=1"></script>
+<script src="./static/js/pipeline.js?v=13"></script>
 </body>
 </html>

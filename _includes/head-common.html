@@ -10,7 +10,7 @@
 
   {%- comment -%}
     主题 / 岔路口开关，必须在第一帧之前定下来，否则会先闪一下错的主题。
-    - 主题：记住的选择 > 系统设置（什么都不设 = 跟随系统，由 CSS 媒体查询处理）
+    - 主题：记住的选择 > 浅色（2026-11-03 起默认浅色，不再跟随系统；CSS 里跟随系统的媒体查询因为 data-theme 总有值而不再生效）
     - ?font=serif|sans、?cats=bg|egg：夜里迭代时两版并排截图用。定稿后改下面两个默认值即可。
   {%- endcomment %}
   <script>
@@ -18,7 +18,9 @@
       var d = document.documentElement, q = new URLSearchParams(location.search);
       d.dataset.font = q.get('font') || 'sans';
       d.dataset.cats = q.get('cats') || 'bg';
-      try { var t = localStorage.getItem('theme'); if (t === 'dark' || t === 'light') d.dataset.theme = t; } catch (e) {}
+      // 默认浅色（2026-11-03 站主）：没点过开关就是 light，不跟随系统；点过的照旧记住
+      var t = null; try { t = localStorage.getItem('theme'); } catch (e) {}
+      d.dataset.theme = (t === 'dark' || t === 'light') ? t : 'light';
     })();
   </script>
 

@@ -7,9 +7,10 @@
   会议名统一写成 "NeurIPS 2023"：_posts 里有两篇写的是 "NeurIPS'23" / "CVPRW'21"，这里显示时换掉（不改 _posts）。
 
   用法: {% include venue.html post=p class="entry__venue" %}
+  标签（2026-11-03）：_data/topics.yml 的 tags，按论文网址查；半透明的小胶囊，排在会议名下面。Publications 和代表作卡片同一套。
 {%- endcomment -%}
 {%- assign v = include.post.venue | strip_html | strip | replace: "'2", " 202" -%}
 {%- assign vd = v | downcase -%}
 {%- assign is_status = false -%}
 {%- if vd == "in preparation" or vd == "manuscript" or vd contains "under review" or vd contains "preprint" or vd contains "arxiv" -%}{%- assign is_status = true -%}{%- endif -%}
-<p class="{{ include.class }} venue{% if is_status %} venue--status{% endif %}"><span class="venue__name">{{ v }}</span>{% if include.post.fields_highlight %} <span class="venue__award">{{ include.post.fields_highlight | escape }}</span>{% endif %}</p>
+<p class="{{ include.class }} venue{% if is_status %} venue--status{% endif %}"><span class="venue__name">{{ v }}</span>{% if include.post.fields_highlight %} <span class="venue__award">{{ include.post.fields_highlight | escape }}</span>{% endif %}{%- assign tg = site.data.topics.tags[include.post.url] -%}{% if tg %}<span class="venue__tags">{% for t in tg %}<span class="tag">{{ t | escape }}</span>{% endfor %}</span>{% endif %}</p>

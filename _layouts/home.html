@@ -53,7 +53,7 @@
         <a class="bar__m" href="https://scholar.google.com/citations?hl=en&user=Jzs37TkAAAAJ">Scholar <span aria-hidden="true">&nearr;</span></a>
       </nav>
       <div class="bar__end">
-        <a class="bar__cv" href="/cv.pdf">CV <small>PDF</small></a>
+        {%- comment -%} 原来这里有个 "CV PDF"：2026-11-03 去掉，和第一行的 Download CV 重复（手机上那排链接里的 CV 还在） {%- endcomment %}
         <a class="bar__scholar" href="https://scholar.google.com/citations?hl=en&user=Jzs37TkAAAAJ">Scholar <span aria-hidden="true">&nearr;</span></a>
         {%- comment -%}
           明暗切换。默认跟随系统（这时 <html> 上没有 data-theme，全靠 CSS 媒体查询）；
@@ -71,26 +71,37 @@
 
 
     {%- comment -%}
-      开头。12 栏网格：左 7 栏 = 求职状态 + 大字（研究方向一句话）+ 简介 + 按钮；
-      右 5 栏 = 肖像 + 名字/身份/读音/方向/机构。窄屏叠成一栏，见 home.scss 的 .intro。
+      开头。12 栏网格（2026-11-03 收紧，让 Selected work 那一排在 1440×900 / 1280×800 的首屏里完整露出来）：
+      左 9 栏 = 求职状态和按钮（同一行）+ 大字（两行）+ 简介；右 3 栏 = 小肖像 + 名字/读音/方向/机构。
+      窄屏叠成一栏，见 home.scss 的 .intro。
       （B 版一度在肖像下放过 "Recently" 三条新闻；News 改成和 Experience 并排以后撤掉了，免得同一份新闻出现两次。）
     {%- endcomment %}
     <header class="sec intro" id="top">
       <div class="intro__text">
         {%- comment -%}
           求职状态：一句完整的话（站主 2026-10 要"放大、显眼"），措辞和 meta description / llms.txt 一致，别加词。
-          前面一个点表示"可约"，很慢地呼吸；后面跟一个 CV 链接（这是第四个 /cv.pdf 入口）。
-          原来下面那行 "PhD Student · UMD · expected 2027" 挪进了肖像下面的名字块。
+          前面一个点表示"可约"，很慢地呼吸。
+          2026-11-03（站主定）：Download CV / Google Scholar / 更新日期 跟在这句话后面、同一行 ——
+          先说"在找工作"，紧接着就是简历。原来跟在后面的小 "CV →" 去掉了（按钮就在旁边）。
+          手机上这一行只留求职那句话，按钮排回简介后面（CSS 的 order，见 home.scss 的 .intro__lead）。
         {%- endcomment %}
-        <p class="intro__market"><span>On the job market for full-time roles from&nbsp;2027.</span> <a class="intro__cv" href="/cv.pdf">CV <span aria-hidden="true">&rarr;</span></a></p>
+        <div class="intro__lead">
+          <p class="intro__market"><span>On the job market for full-time roles from&nbsp;2027.</span></p>
+          <div class="actions">
+            <a class="btn btn--solid" href="/cv.pdf">Download CV</a>
+            <a class="btn" href="https://scholar.google.com/citations?hl=en&user=Jzs37TkAAAAJ">Google Scholar <span aria-hidden="true">&nearr;</span></a>
+            <span class="updated">Updated Oct 2026</span>
+          </div>
+        </div>
 
         {%- comment -%}
-          大字写"研究什么"，不写"PhD Student"。措辞由站主定（2026-10）。
+          大字写"研究什么"，不写"PhD Student"。措辞由站主定（2026-10）；2026-11-03 改成现在这句（原来是 "Teaching generative models to respect light, geometry, and the camera."）。
           有下伸字母（g、y）+ background-clip:text 的暖光 → 行高和 padding-bottom 别再收（MAINTENANCE 4.2）。
         {%- endcomment -%}
-        <h2 class="intro__thesis sweep">Teaching generative models to respect light, geometry, and the camera.</h2>
+        <h2 class="intro__thesis sweep">Making generative models obey light, geometry, and optics.</h2>
 
-        <div class="intro__bio">
+        {%- comment -%} 手机上只露第一句，其余两段收在 "More about me" 后面（脚本加按钮；没有脚本时全部显示），给 Selected work 让出首屏 {%- endcomment %}
+        <div class="intro__bio" id="bio">
           <p>
             CS PhD student at the
             <a href="https://www.cs.umd.edu/">University of Maryland</a>, advised by
@@ -116,22 +127,6 @@
           </p>
         </div>
 
-        <div class="actions">
-          <a class="btn btn--solid" href="/cv.pdf">Download CV</a>
-          <a class="btn" href="https://scholar.google.com/citations?hl=en&user=Jzs37TkAAAAJ">Google Scholar <span aria-hidden="true">&nearr;</span></a>
-          <span class="updated">Updated Oct 2026</span>
-        </div>
-
-        {%- comment -%} 一只团起来睡觉的小猫，点了跳到页尾猫的那一节。宽屏上它沉在左栏最底下，和右栏末尾齐平 {%- endcomment %}
-        <p class="intro__cat">
-          <a href="#cvo">
-            <picture>
-              <source srcset="{{ site.baseurl }}/images/decor/cat_curl_sm.webp" type="image/webp">
-              <img src="{{ site.baseurl }}/images/decor/cat_curl_sm.png" alt="" width="400" height="351" decoding="async">
-            </picture>
-            <span>Meet our<br>chief vibe officer</span>
-          </a>
-        </p>
       </div>
 
       <div class="intro__side">
@@ -146,17 +141,24 @@
           <div class="id__who">
             <h1 class="id__name">Haoming Cai <span class="id__zh" lang="zh">蔡昊明</span></h1>
             <p class="id__say">/haʊˈmɪŋ tsaɪ/ · he/him</p>
-            {%- comment -%} 手机上名字块挪到最上面（Lab 版），这一行换成短的那句 {%- endcomment %}
-            <p class="id__status"><span class="id__long">PhD student at the University of Maryland, expected 2027</span><span class="id__short">PhD Student · UMD · expected&nbsp;2027</span></p>
+            {%- comment -%}
+              身份一行只在手机上出（Lab 版名字块）。桌面上原来的 "PhD student at the University of Maryland, expected 2027"
+              2026-11-03 去掉了：简介第一句已经说了。
+            {%- endcomment %}
+            <p class="id__status">PhD Student · UMD · expected&nbsp;2027</p>
           </div>
           <div class="id__what">
-            <p class="id__focus">Generative Media<br>Computational Imaging</p>
-            <ul class="id__tags" aria-label="Affiliations">
-              <li>UMD</li>
-              <li>Adobe</li>
-              <li>Dolby</li>
-            </ul>
+            <p class="id__focus">Generative Media<span class="id__sep">&nbsp;· </span>Computational Imaging</p>
           </div>
+          {%- comment -%}
+            机构标志一排（2026-11-03 站主要的：最强的履历背书要第一眼看得到）：UMD 字标 / Adobe（两次实习）/ Dolby。
+            官方标志的矢量文件，来源见 MAINTENANCE.md；黑色的两个用 currentColor，深色模式自动变浅。手机上也出。
+          {%- endcomment %}
+          <ul class="id__orgs" aria-label="Affiliations">
+            <li>{% include logos/umd_wordmark.svg %}</li>
+            <li>{% include logos/adobe_lockup.svg %}</li>
+            <li>{% include logos/dolby_lockup.svg %}</li>
+          </ul>
           <ul class="id__links">
             <li><a href="mailto:hmcai@umd.edu">Email</a></li>
             <li><a href="https://www.flickr.com/photos/201416778@N04/">Flickr</a></li>
@@ -180,48 +182,34 @@
     {%- assign fp_splat = site.posts | where: "url", "/papers/flashsplat/" | first %}
     <section class="sec" id="work">
       <h2 class="sec__title">Selected work</h2>
-      <p class="sec__note" data-live-note>Four projects from my papers. Move your cursor across the first two to move the light and pull focus.</p>
+      {%- comment -%} 标题旁那句 "Four projects from my papers." 2026-11-03 站主要求去掉 {%- endcomment %}
 
       {%- comment -%}
+        2026-11-03：前两张换成 Selected work 专用的卡片视频（滑块在图下面那条深色带里，和 Publications 的 teaser 是两套文件）：
+        Shadow Director = card v6c（图标都是细线轮廓，两组都是「图标 + 滑轨 + 文字」，和 Hello Kitty 同一套），Vid2Bokeh = Hello Kitty card v3（镜头 / 光圈示意）；两张的深色带同高、同一套排版（common/card_band.py）。源文件和脚本在 HomepageTeasers-src。
         v5：图上什么都不压 —— 交互图的进度条、视频的 Input / Ours 都挪到图下面那一行（.legend），一直显示；
         ConVRT 的视频自带标签，那一行留空，只为和旁边那张对齐。
-        四张一排（手机两张一排），见 home.scss 的 .featured。
+        四张一排（手机两张一排），见 home.scss 的 .featured。顺序 Vid2Bokeh → Shadow Director → ConVRT → Flash-Splat（2026-11-03 站主把前两张对调）。
       {%- endcomment %}
       <div class="featured">
         <article class="feat">
-          <figure class="scrub scrub--pad" data-scrub
-                  data-atlas="/tn/playground/shadow_atlas"
-                  data-mode="1d" data-fade="75" data-ease
-                  data-cycle="1600" data-gap="40">
-            <div class="scrub__view">
-              <div class="scrub__l"></div>
-              <div class="scrub__l"></div>
+          <figure class="clipfig">
+            <div class="clip" style="--poster: url('/tn/images/Vid2Bokeh_kitty_card_v3_poster.jpg?v={{ site.asset_v }}')">
+              <video muted loop playsinline preload="none" data-lazy="view" poster="/tn/images/Vid2Bokeh_kitty_card_v3_poster.jpg?v={{ site.asset_v }}" aria-label="Focus moves between a Hello Kitty figure and a clear box in front of it, then the aperture closes and opens again"><source data-src="/tn/videos/Vid2Bokeh_kitty_card_v3.mp4?v={{ site.asset_v }}" type="video/mp4"></video>
             </div>
-            <figcaption class="scrub__hud legend" data-hud>
-              <span class="scrub__end" data-end0></span>
-              <span class="scrub__track"><i class="scrub__dot" data-dot></i></span>
-              <span class="scrub__end" data-end1></span>
-            </figcaption>
+            <div class="legend" aria-hidden="true"></div>
           </figure>
-          {% include feat-text.html post=fp_shadow name="Shadow Director" %}
+          {% include feat-text.html post=fp_bokeh name="Vid2Bokeh" line="Bokeh editing learned from light fields built from casual videos" %}
         </article>
 
         <article class="feat">
-          <figure class="scrub" data-scrub
-                  data-atlas="/tn/playground/bokeh_atlas"
-                  data-mode="1d" data-fade="0" data-ease
-                  data-cycle="700" data-gap="16">
-            <div class="scrub__view">
-              <div class="scrub__l"></div>
-              <div class="scrub__l"></div>
+          <figure class="clipfig">
+            <div class="clip" style="--poster: url('/tn/images/ShadowDirector_card_v6c_poster.jpg?v={{ site.asset_v }}')">
+              <video muted loop playsinline preload="none" data-lazy="view" poster="/tn/images/ShadowDirector_card_v6c_poster.jpg?v={{ site.asset_v }}" aria-label="A generated portrait whose shadow grows stronger, then a second portrait whose light moves from left to right"><source data-src="/tn/videos/ShadowDirector_card_v6c.mp4?v={{ site.asset_v }}" type="video/mp4"></video>
             </div>
-            <figcaption class="scrub__hud legend" data-hud>
-              <span class="scrub__end" data-end0></span>
-              <span class="scrub__track"><i class="scrub__dot" data-dot></i></span>
-              <span class="scrub__end" data-end1></span>
-            </figcaption>
+            <div class="legend" aria-hidden="true"></div>
           </figure>
-          {% include feat-text.html post=fp_bokeh name="Vid2Bokeh" %}
+          {% include feat-text.html post=fp_shadow name="Shadow Director" %}
         </article>
 
         <article class="feat">
@@ -231,15 +219,16 @@
             </div>
             <div class="legend" aria-hidden="true"></div>
           </figure>
-          {% include feat-text.html post=fp_convrt name="ConVRT" %}
+          {% include feat-text.html post=fp_convrt name="ConVRT" line="Remove turbulence wobble from video with a low-pass over time" %}
         </article>
 
         <article class="feat">
           <figure class="clipfig">
-            <div class="clip" style="--poster: url('/tn/images/FlashSplat_card.jpg?v={{ site.asset_v }}')">
-              <video muted loop playsinline preload="none" data-lazy="view" poster="/tn/images/FlashSplat_card.jpg?v={{ site.asset_v }}" aria-label="Before and after: input on the left, our result on the right"><source data-src="/tn/videos/FlashSplat_card.mp4?v={{ site.asset_v }}" type="video/mp4"></video>
+            {%- comment -%} 2026-11-03：Input / Ours 做进了画面左上 / 右上角（和 ConVRT 一样）；旧卡片左右标反了，这一版改正 {%- endcomment %}
+            <div class="clip" style="--poster: url('/tn/images/FlashSplat_card_v2_poster.jpg?v={{ site.asset_v }}')">
+              <video muted loop playsinline preload="none" data-lazy="view" poster="/tn/images/FlashSplat_card_v2_poster.jpg?v={{ site.asset_v }}" aria-label="Before and after: input on the left, our result on the right"><source data-src="/tn/videos/FlashSplat_card_v2.mp4?v={{ site.asset_v }}" type="video/mp4"></video>
             </div>
-            <figcaption class="legend legend--ab" aria-hidden="true"><span>Input</span><span>Ours</span></figcaption>
+            <div class="legend" aria-hidden="true"></div>
           </figure>
           {% include feat-text.html post=fp_splat name="Flash-Splat" %}
         </article>
@@ -283,13 +272,26 @@
           <p>Two papers accepted to CVPR 2025. Congratulations to <a href="https://tianfwang.github.io/">Tianfu</a>, <a href="https://mingyangx.github.io/">Mingyang</a>, and <a href="https://codingrex.github.io/">Jingxi</a>.</p>
         </li>
       </ol>
+      {%- comment -%}
+        一只团起来睡觉的小猫，点了跳到页尾猫的那一节。2026-11-03 从开头挪到这里（开头要给 Selected work 让出首屏）：
+        宽屏上 News 那一栏比旁边的 Experience 短，小猫正好填在下面的空白里，不加高度。
+      {%- endcomment %}
+      <p class="intro__cat">
+        <a href="#cvo">
+          <picture>
+            <source srcset="{{ site.baseurl }}/images/decor/cat_curl_sm.webp" type="image/webp">
+            <img src="{{ site.baseurl }}/images/decor/cat_curl_sm.png" alt="" width="400" height="351" decoding="async">
+          </picture>
+          <span>Meet our<br>chief vibe officer</span>
+        </a>
+      </p>
     </section>
 
     {%- comment -%}
       经历。数据在 _data/experience.yml（文字原样来自 CV，只排版不改写；/llms.txt 也从那里生成）。
       XPixel 是研究院不是公司，所以标题叫 Experience 而不是 Industry。
       机构名前的小商标（站主 2026-10-31 要的：不用读字也知道是哪家公司）：_data/experience.yml 的 logo 字段 → _includes/logos/*.svg，
-      直接内联（Dolby 用 currentColor，深色模式自动变浅）。名字就在旁边，所以商标 aria-hidden。没有商标的行留一个同宽的空位，名字照样对齐。
+      直接内联（Dolby 用 currentColor，深色模式自动变浅）。名字就在旁边，所以商标 aria-hidden。没有商标的行（XPixel）不留空位，名字直接顶格（2026-11-03 站主要的）。
     {%- endcomment -%}
     <section class="sec" id="experience">
       <h2 class="sec__title">Experience</h2>
@@ -298,7 +300,7 @@
         <li class="xp__item">
           <p class="xp__when">{{ x.when }}</p>
           <div class="xp__body">
-            <h3 class="xp__org"><span class="xp__logo">{% if x.logo %}{% include logos/{{ x.logo }}.svg %}{% endif %}</span>{{ x.org }} <span class="xp__where">{{ x.where }}</span></h3>
+            <h3 class="xp__org">{% if x.logo %}<span class="xp__logo">{% include logos/{{ x.logo }}.svg %}</span>{% endif %}{{ x.org }} <span class="xp__where">{{ x.where }}</span></h3>
             <p class="xp__role">{{ x.role }}</p>
             {%- if x.desc %}
             <p class="xp__desc">{{ x.desc }}</p>
@@ -478,6 +480,28 @@
     })();
 
     // ——————————————————————————————————————————————————
+    //  手机上的简介：只露第一句（我是谁、在哪、导师），研究方向和之前的经历收起来，
+    //  点 "More about me" 展开（2026-11-03：打开页面要先看到人和 Selected work 的动画）。
+    //  宽屏上按钮藏着、三段都在 —— 收不收全由 CSS 的 [data-folded] 决定，脚本只负责加按钮和切换。
+    // ——————————————————————————————————————————————————
+    (function () {
+      const bio = document.getElementById('bio');
+      if (!bio || bio.children.length < 2) return;
+      const btn = document.createElement('button');
+      btn.type = 'button';
+      btn.className = 'intro__more';
+      btn.setAttribute('aria-controls', 'bio');
+      const set = folded => {
+        bio.toggleAttribute('data-folded', folded);
+        btn.setAttribute('aria-expanded', String(!folded));
+        btn.textContent = folded ? 'More about me' : 'Show less';
+      };
+      btn.addEventListener('click', () => set(!bio.hasAttribute('data-folded')));
+      bio.after(btn);
+      set(true);
+    })();
+
+    // ——————————————————————————————————————————————————
     //  顶栏目录：点亮当前读到的那一节
     // ——————————————————————————————————————————————————
     (function () {
@@ -497,18 +521,13 @@
     })();
 
     // ——————————————————————————————————————————————————
-    //  可交互的可视化（代表作的前两张）。
+    //  可交互的可视化（雪碧图）。2026-11-03 起代表作四张都换成了自己播放的视频（站主：打开页面就要看到动画），
+    //  页面上暂时没有 [data-scrub]，这段不会运行；留着，以后想放回交互图时直接用（雪碧图还在 tn/playground/）。
     //
     //  每张是一张雪碧图：所有状态预渲染好，切换只是改 background-position。
     //  没人碰的时候自己来回播；鼠标/手指一上去就交出控制权。
     //  图上不压控件：进度条在图下面那一行（figcaption），整张图和那一行都能横扫/横拖。
     // ——————————————————————————————————————————————————
-    // 桌面上不用"拖" —— 鼠标移过去就行。只有触屏才是拖。
-    if (matchMedia('(hover: none)').matches) {
-      const n = document.querySelector('[data-live-note]');
-      if (n) n.textContent = 'Four projects from my papers. Drag across the first two to move the light and pull focus.';
-    }
-
     document.querySelectorAll('[data-scrub]').forEach(fig => {
       const base  = fig.dataset.atlas;
       const twoD  = fig.dataset.mode === '2d';
@@ -789,7 +808,7 @@
       const btns = [...document.querySelectorAll('[data-set-theme]')];
       const sys = matchMedia('(prefers-color-scheme: dark)');
       const sync = () => {
-        const eff = d.dataset.theme || (sys.matches ? 'dark' : 'light');
+        const eff = d.dataset.theme || 'light';   // 默认浅色，不看系统
         btns.forEach(b => b.setAttribute('aria-pressed', String(b.dataset.setTheme === eff)));
       };
       btns.forEach(b => b.addEventListener('click', () => {
