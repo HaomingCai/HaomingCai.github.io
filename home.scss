@@ -281,6 +281,9 @@ a:hover { color: var(--accent); text-decoration-color: currentColor; }
     grid-template-columns: subgrid;   // 9 栏：简介占前 7 栏，按钮占后 2 栏（宽屏）
     row-gap: 14px;
     align-content: start;
+    // 2026-11-05（站主选的 ①）：开头精简后左边变矮，这一栏的高度由右边照片那栏决定 ——
+    // 左边整块（求职行 + 大标题 + 简介）在这个高度里上下居中，不在简介下面留一块空。叠成一栏时各占一行，这句不起作用。
+    align-self: center;
     > * { grid-column: 1 / -1; }
   }
   &__side { grid-column: 11 / 14; display: grid; gap: 12px; align-content: start; }
@@ -355,6 +358,24 @@ a:hover { color: var(--accent); text-decoration-color: currentColor; }
 .intro__more { display: none; }
 
 // 求职那句话 + 按钮同一行（2026-11-03 站主定）：放不下时按钮整组换到下一行，不加高度的情况下和那句话顶对齐
+// 顶栏右上角的 CV（2026-11-05）：小号实心按钮，和旁边 Scholar 同高
+// （顶栏里 ".bar__end > a" 会把字改成墨色、去掉左右内边距，这里要压过它）
+// 2026-11-05 站主："CV 要好看、显眼"：写全 "Download CV"，前面一个下载图标，白字实心，比旁边的链接大一号
+.bar__end > a.bar__cv {
+  display: inline-flex; align-items: center; gap: 7px;
+  padding: 9px 15px 9px 13px; border-radius: 4px;
+  font: 600 14px/1 var(--sans); letter-spacing: .01em; color: var(--on-accent);
+  box-shadow: 0 1px 2px rgba(0, 0, 0, .12);
+  transition: background .15s, transform .15s;
+  svg { flex: none; transition: transform .2s; }
+  &:hover { color: var(--on-accent); background: color-mix(in srgb, var(--accent) 86%, var(--ink)); svg { transform: translateY(1px); } }
+  &:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+  // 手机上藏（顶栏那排链接里有 CV）；这条选择器比手机段里的 .bar__cv 更具体，所以要在这里再写一次
+  @media (max-width: 639px) { display: none; }
+}
+// 求职状态挪到简介后面（2026-11-05）：和简介之间多留一点
+.intro__bio + .intro__market { margin-top: 8px; }
+
 .intro__lead {
   display: flex; flex-wrap: wrap; align-items: center;
   gap: 10px 20px;   // 1280 屏上那句话 + 三样东西刚好一行（量过：约 872 / 882px）
@@ -424,6 +445,7 @@ a:hover { color: var(--accent); text-decoration-color: currentColor; }
   text-decoration-color: var(--line);
   text-underline-offset: .3em;
   &:hover { color: var(--accent); text-decoration-color: currentColor; }
+  .btn__date { font-weight: 400; opacity: .85; }   // 按钮里的简历更新日期（2026-11-05 从旁边并进来）
   &--solid {
     padding: 12px 20px;
     border-radius: 3px;
@@ -467,6 +489,80 @@ a:hover { color: var(--accent); text-decoration-color: currentColor; }
     .sec__note { grid-column: 5 / 14; align-self: baseline; padding-top: 0; }
   }
   #work .featured { margin-top: 16px; }
+}
+
+// 标题 "Selected work / Explore my research map"（2026-11-05 v5）：后半句小一号、Newsreader 斜体。
+// 一口气 3.4s：一道陶土色细线从左往右"写"出来 → 停一下 → 往右收走；同一拍里字从墨色转成点缀色、箭头往前滑一点。
+// 底下一直留一条浅灰细线，线收走的那一刻也看得出是链接。能悬停的设备上，鼠标放上去弹出研究图预览，移开收回
+#work .worktitle, #publications .worktitle { grid-column: 2 / 14; display: flex; flex-wrap: wrap; align-items: baseline; gap: 0 .4em; position: relative; z-index: 30; }
+.worktitle__slash { color: var(--line); font-weight: 300; }
+.worktitle .mapcue__link {
+  --mapcue-t: 3.4s;
+  position: relative; display: inline-block;
+  font: italic 400 26px/34px var(--serif); letter-spacing: -.005em; color: var(--ink); text-decoration: none;
+  animation: mapcue-ink var(--mapcue-t) cubic-bezier(.45, 0, .25, 1) infinite;
+  .mapcue__text { position: relative; display: inline-block; }
+  // 浅灰底线（一直在）+ 陶土色描线（会动）；放在下伸部（p、y）下面，不和字母打架
+  .mapcue__text::before, .mapcue__text::after { content: ""; position: absolute; left: 0; right: 0; bottom: -1px; height: 1px; background: var(--line); }
+  .mapcue__text::after {
+    height: 2px; margin-bottom: -.5px; border-radius: 1px; background: var(--accent);
+    clip-path: inset(0 100% 0 0); animation: mapcue-draw var(--mapcue-t) infinite;
+  }
+  .mapcue__arrow { display: inline-block; margin-left: .25em; font-style: normal; color: var(--accent); animation: mapcue-glide var(--mapcue-t) infinite; }
+  &:hover, &:focus-visible {
+    animation: none; color: var(--accent);
+    .mapcue__text::after { animation: none; clip-path: none; }
+    .mapcue__arrow { animation: none; transform: translateX(5px); }
+  }
+}
+// 写线：左 → 右画满，停住，再从左边收向右边（两端都是看不见的状态，循环接得上）
+@keyframes mapcue-draw {
+  0%, 4%    { clip-path: inset(0 100% 0 0); animation-timing-function: cubic-bezier(.6, 0, .2, 1); }
+  36%, 58%  { clip-path: inset(0 0 0 0);    animation-timing-function: cubic-bezier(.55, 0, .35, 1); }
+  86%, 100% { clip-path: inset(0 0 0 100%); }
+}
+// 字色：墨色 ↔ 点缀色（两种颜色在两种主题下对比度都够，中间色也够）
+@keyframes mapcue-ink {
+  0%, 6%, 88%, 100% { color: var(--ink); }
+  38%, 58% { color: var(--accent); }
+}
+// 箭头：跟着线一起往前滑 5px，线收走时回来
+@keyframes mapcue-glide {
+  0%, 6%    { transform: translateX(0);   animation-timing-function: cubic-bezier(.6, 0, .2, 1); }
+  36%, 58%  { transform: translateX(5px); animation-timing-function: cubic-bezier(.55, 0, .35, 1); }
+  86%, 100% { transform: translateX(0); }
+}
+// 预览：默认收起；外层的上边距是"桥"，鼠标从文字挪到预览上时不会断开
+.mapcue__peek { display: none; }
+@media (hover: hover) and (pointer: fine) {
+  .mapcue__peek {
+    display: block; position: absolute; left: -12px; top: 100%; padding-top: 10px; width: min(460px, 80vw);
+    visibility: hidden; opacity: 0; transform: translateY(-6px) scale(.97); transform-origin: 24px 0;
+    transition: opacity .22s ease, transform .22s ease, visibility 0s linear .22s;
+  }
+  .mapcue__link:hover .mapcue__peek, .mapcue__link:focus-visible .mapcue__peek {
+    visibility: visible; opacity: 1; transform: none; transition: opacity .22s ease, transform .22s ease, visibility 0s;
+  }
+}
+.mapcue__card {
+  display: block; padding: 10px; border: 1px solid var(--rule); border-radius: 8px; background: var(--paper);
+  box-shadow: 0 18px 40px -18px rgba(0, 0, 0, .35);
+}
+.mapcue__img { display: block; width: 100%; height: auto; border-radius: 4px; }
+.mapcue__img--dark { display: none; }
+:root[data-theme="dark"] { .mapcue__img--light { display: none; } .mapcue__img--dark { display: block; } }
+.mapcue__cap { display: block; padding: 8px 4px 2px; color: var(--muted); font: 400 13px/18px var(--body); letter-spacing: 0; }
+// 手机：后半句另起一行（不要斜杠），字再小一点
+@media (max-width: 600px) {
+  .worktitle__slash { display: none; }
+  .worktitle .mapcue__link { flex-basis: 100%; margin-top: 4px; font-size: 20px; line-height: 28px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  // 不动的版本：陶土色线一直画满、箭头在前面，一眼看得出是链接
+  .worktitle .mapcue__link { animation: none; }
+  .worktitle .mapcue__link .mapcue__arrow { animation: none; transform: translateX(3px); }
+  .worktitle .mapcue__link .mapcue__text::after { animation: none; clip-path: none; }
+  .mapcue__peek, .mapcue__link:hover .mapcue__peek, .mapcue__link:focus-visible .mapcue__peek { transform: none; transition: none; }
 }
 .featured {
   margin-top: 36px;
@@ -685,6 +781,11 @@ a:hover { color: var(--accent); text-decoration-color: currentColor; }
 // 窄于 1000px：会议回到标题上面（见后面的媒体查询）。
 
 .pubs__note { font-size: 14px; line-height: 22px; color: var(--muted); padding-top: 10px; }
+// Google Scholar：原来在标题里另起一行，标题接了研究图入口之后挪到这里（同一个小字样式），和 * 那句并排
+.pubs__scholar {
+  grid-column: 2 / 5; padding-top: 10px; font: 400 14px/22px var(--sans);
+  a { color: var(--muted); text-decoration-color: var(--line); &:hover { color: var(--accent); } }
+}
 
 // 主题筛选（v5）：一排安静的胶囊 —— 细线框、灰字；选中的那个换成墨色字 + 墨色线，没有实心底、没有点缀色。
 // 数字是这个主题下有几篇（脚本数出来的），淡一档。

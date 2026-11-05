@@ -1,0 +1,10 @@
+{%- comment -%}
+  研究图入口（2026-11-05 站主）：节标题后面接 "/ Explore my research map"，用在 Selected work 和 Publications 两处。
+  斜体小一号；一道陶土色细线在字下面反复"写"出来再收走，字色跟着在墨色和点缀色之间呼吸、箭头往前滑；鼠标放上去（或键盘聚焦）弹出研究图预览，移开收回；预览只在能悬停的设备上有（手机直接点进去）。
+  预览图是研究页的截图，亮 / 暗各一张：images/research-map-peek-*.jpg（研究页由 _research/build.py 生成）。样式见 home.scss 的 .worktitle / .mapcue__*。
+{%- endcomment -%}
+<span class="worktitle__slash" aria-hidden="true">/</span><a class="mapcue__link" href="{{ site.baseurl }}/research/"><span class="mapcue__text">Explore my research map</span><span class="mapcue__arrow" aria-hidden="true">→</span><span class="mapcue__peek" aria-hidden="true"><span class="mapcue__card">
+  <img class="mapcue__img mapcue__img--light" src="{{ site.baseurl }}/images/research-map-peek-light.jpg?v={{ site.asset_v }}" alt="" width="880" height="628" loading="lazy" decoding="async">
+  <img class="mapcue__img mapcue__img--dark" src="{{ site.baseurl }}/images/research-map-peek-dark.jpg?v={{ site.asset_v }}" alt="" width="880" height="628" loading="lazy" decoding="async">
+  <span class="mapcue__cap">How all my papers fit together, with each paper's teaser under it.</span>
+</span></span></a>

@@ -33,7 +33,7 @@
     顶栏（v5 Hybrid）：名字在左；目录 · CV / Scholar · 明暗切换全部靠右（v1 Lab 的排法）。
     目录顺序 = 页面顺序：Selected work → News → Experience → Publications（站主 2026-10-31 定）。
     吸顶，所以滚到哪都能跳节、拿 CV；明暗开关收在栏里，不再悬浮压在内容上。
-    CV 入口：这里一个、开头一个、页脚一个 —— /cv.pdf 这个 URL 已经写进求职材料，不能丢。
+    CV 入口：顶栏右上角一个（手机上换成那排链接里的 CV）、页脚一个 —— /cv.pdf 这个 URL 已经写进求职材料，不能丢。（2026-11-05 起开头不再有按钮）
   {%- endcomment %}
   <header class="bar">
     <div class="bar__in">
@@ -53,7 +53,11 @@
         <a class="bar__m" href="https://scholar.google.com/citations?hl=en&user=Jzs37TkAAAAJ">Scholar <span aria-hidden="true">&nearr;</span></a>
       </nav>
       <div class="bar__end">
-        {%- comment -%} 原来这里有个 "CV PDF"：2026-11-03 去掉，和第一行的 Download CV 重复（手机上那排链接里的 CV 还在） {%- endcomment %}
+        {%- comment -%}
+          CV（2026-11-05 站主定）：开头那个 Download CV 挪到这里，小的实心按钮；顶栏一直在，翻到哪都点得到。手机上藏（那排链接里有 CV）。
+          （2026-11-03 曾经去掉过这里的 "CV PDF"，因为和开头的按钮重复；现在开头没有按钮了。）
+        {%- endcomment %}
+        <a class="btn btn--solid bar__cv" href="/cv.pdf" title="Updated Oct 2026"><svg aria-hidden="true" width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M8 2.5v7.5M4.6 6.8 8 10.2l3.4-3.4M3 13.5h10"/></svg>Download CV</a>
         <a class="bar__scholar" href="https://scholar.google.com/citations?hl=en&user=Jzs37TkAAAAJ">Scholar <span aria-hidden="true">&nearr;</span></a>
         {%- comment -%}
           明暗切换。默认跟随系统（这时 <html> 上没有 data-theme，全靠 CSS 媒体查询）；
@@ -72,28 +76,12 @@
 
     {%- comment -%}
       开头。12 栏网格（2026-11-03 收紧，让 Selected work 那一排在 1440×900 / 1280×800 的首屏里完整露出来）：
-      左 9 栏 = 求职状态和按钮（同一行）+ 大字（两行）+ 简介；右 3 栏 = 小肖像 + 名字/读音/方向/机构。
+      左 9 栏 = 大字（两行）+ 简介一句 + 求职状态（2026-11-05 起求职状态在最后、CV 按钮挪到顶栏）；右 3 栏 = 小肖像 + 名字/读音/机构。
       窄屏叠成一栏，见 home.scss 的 .intro。
       （B 版一度在肖像下放过 "Recently" 三条新闻；News 改成和 Experience 并排以后撤掉了，免得同一份新闻出现两次。）
     {%- endcomment %}
     <header class="sec intro" id="top">
       <div class="intro__text">
-        {%- comment -%}
-          求职状态：一句完整的话（站主 2026-10 要"放大、显眼"），措辞和 meta description / llms.txt 一致，别加词。
-          前面一个点表示"可约"，很慢地呼吸。
-          2026-11-03（站主定）：Download CV / Google Scholar / 更新日期 跟在这句话后面、同一行 ——
-          先说"在找工作"，紧接着就是简历。原来跟在后面的小 "CV →" 去掉了（按钮就在旁边）。
-          手机上这一行只留求职那句话，按钮排回简介后面（CSS 的 order，见 home.scss 的 .intro__lead）。
-        {%- endcomment %}
-        <div class="intro__lead">
-          <p class="intro__market"><span>On the job market for full-time roles from&nbsp;2027.</span></p>
-          <div class="actions">
-            <a class="btn btn--solid" href="/cv.pdf">Download CV</a>
-            <a class="btn" href="https://scholar.google.com/citations?hl=en&user=Jzs37TkAAAAJ">Google Scholar <span aria-hidden="true">&nearr;</span></a>
-            <span class="updated">Updated Oct 2026</span>
-          </div>
-        </div>
-
         {%- comment -%}
           大字写"研究什么"，不写"PhD Student"。措辞由站主定（2026-10）；2026-11-03 改成现在这句（原来是 "Teaching generative models to respect light, geometry, and the camera."）。
           有下伸字母（g、y）+ background-clip:text 的暖光 → 行高和 padding-bottom 别再收（MAINTENANCE 4.2）。
@@ -104,28 +92,24 @@
         <div class="intro__bio" id="bio">
           <p>
             CS PhD student at the
-            <a href="https://www.cs.umd.edu/">University of Maryland</a>, advised by
+            <a href="https://www.cs.umd.edu/">University of Maryland</a> working on generative visual media grounded in physics, advised by
             <a href="https://www.cs.umd.edu/people/metzler">Christopher Metzler</a>.
           </p>
           {%- comment -%}
-            研究方向总结（站主 2026-10 批准，替换掉原来逐篇列论文的 A 版 —— 站主觉得像工作清单）。
-            写的是方向，不是论文清单；论文在下面 Selected work / Publications 里。
-            2026-10-31 站主要求大幅缩短，改成现在两句；同日又改：括号里加 and more（站主先要 etc.，后改成 and more），后半句说得更概括（physics and geometry，不点名事件相机）。
-            括号保留：换成逗号读起来像一串并列，分不清哪些是"可控的东西"。
-            第三段同日去掉 (2020–2022)（Experience 里有日期）和 "Always happy to talk…"（页尾 "Interested in the work, or just want to talk?" 已经说了）。
+            2026-11-05（站主同意）：简介只留这一句。原来第二段 "I make image and video generation controllable (light, focus, reflections, camera, and more)
+            and keep it faithful to the real scene by grounding it in physics and geometry." 去掉 —— 下面四张卡片在演示这些控制；
+            "image and video generation" 并进第一句（光看大标题分不清做图像 / 视频还是大语言模型，这几个词也是招人的人会搜的）。
+            同日更早还去掉了 "Earlier work covers…"，"Previously at X-Pixel…" 挪进了 Experience。只剩一段，手机上的 "More about me" 按钮脚本自己不加。
+            同日站主定稿：并进来的那半句是 "working on generative visual media grounded in physics"（和研究图的 Visual Media 同一套词）。
           {%- endcomment %}
-          <p>
-            I make image and video generation controllable (light, focus, reflections, camera, and more)
-            and keep it faithful to the real scene by grounding it in physics and geometry.
-            Earlier work covers restoration, image quality, and robust vision&ndash;language models.
-          </p>
-          <p>
-            Previously at <a href="https://xpixel.group/index.html">X-Pixel</a>
-            with <a href="https://scholar.google.com/citations?user=OSDCB0UAAAAJ&hl=en">Chao Dong</a>
-            and <a href="https://www.jasongt.com/">Jinjin Gu</a>; BEng from
-            <a href="https://www.cuhk.edu.cn/en/about-us" style="white-space:nowrap">CUHK-Shenzhen</a>.
-          </p>
         </div>
+
+        {%- comment -%}
+          求职状态（2026-11-05 站主定）：原来是开头第一行 "On the job market for full-time roles from 2027." + Download CV 按钮 + 更新日期；
+          现在改成这一句，放在简介和 Selected work 之间的空档；CV 挪到顶栏右上角（.bar__cv）。前面一个点（"可约"），很慢地呼吸。
+          注意 meta description / llms.txt / jsonld-person.html 里还是 "On the job market…" 的说法。
+        {%- endcomment %}
+        <p class="intro__market"><span>Open to full-time roles from&nbsp;2027.</span></p>
 
       </div>
 
@@ -147,9 +131,7 @@
             {%- endcomment %}
             <p class="id__status">PhD Student · UMD · expected&nbsp;2027</p>
           </div>
-          <div class="id__what">
-            <p class="id__focus">Generative Media<span class="id__sep">&nbsp;· </span>Computational Imaging</p>
-          </div>
+          {%- comment -%} 原来这里有 "Generative Media · Computational Imaging" 一行，2026-11-05 去掉（大标题已经说了） {%- endcomment %}
           {%- comment -%}
             机构标志一排（2026-11-03 站主要的：最强的履历背书要第一眼看得到）：UMD 字标 / Adobe（两次实习）/ Dolby。
             官方标志的矢量文件，来源见 MAINTENANCE.md；黑色的两个用 currentColor，深色模式自动变浅。手机上也出。
@@ -181,8 +163,11 @@
     {%- assign fp_convrt = site.posts | where: "url", "/papers/convrt/" | first -%}
     {%- assign fp_splat = site.posts | where: "url", "/papers/flashsplat/" | first %}
     <section class="sec" id="work">
-      <h2 class="sec__title">Selected work</h2>
-      {%- comment -%} 标题旁那句 "Four projects from my papers." 2026-11-03 站主要求去掉 {%- endcomment %}
+      {%- comment -%}
+        2026-11-05 站主：标题写成 "Selected work / Explore my research map"（入口见 _includes/mapcue.html）。
+        （标题旁那句 "Four projects from my papers." 2026-11-03 站主要求去掉。）
+      {%- endcomment %}
+      <h2 class="sec__title worktitle">Selected work{% include mapcue.html %}</h2>
 
       {%- comment -%}
         2026-11-03：前两张换成 Selected work 专用的卡片视频（滑块在图下面那条深色带里，和 Publications 的 teaser 是两套文件）：
@@ -331,10 +316,9 @@
       年份标题看不见了（会议名里有年份），年份之间一条细线。窄屏会议回到标题上面。见 home.scss 的 .entry 和 _includes/venue.html。
     {%- endcomment %}
     <section class="sec pubs" id="publications">
-      <h2 class="sec__title">
-        Publications
-        <a href="https://scholar.google.com/citations?hl=en&user=Jzs37TkAAAAJ">Google Scholar &rarr;</a>
-      </h2>
+      {%- comment -%} 2026-11-05 站主：标题也接上 "/ Explore my research map"（和 Selected work 同一个，_includes/mapcue.html）；Google Scholar 挪到标题下一行 {%- endcomment %}
+      <h2 class="sec__title worktitle">Publications{% include mapcue.html %}</h2>
+      <p class="pubs__scholar"><a href="https://scholar.google.com/citations?hl=en&user=Jzs37TkAAAAJ">Google Scholar &rarr;</a></p>
       {%- comment -%}
         v5：主题筛选。主题和"哪篇算哪个主题"在 _data/topics.yml；每条论文的 data-topics 由 _includes/entry.html 写出。
         筛选只是藏条目（藏空了的年份组也一起藏），每个筛选里照旧按年份分组。状态写在网址的 #topic=<id> 里。

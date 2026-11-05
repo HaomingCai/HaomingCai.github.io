@@ -31,5 +31,6 @@
 - when: 2020 – 2022
   org: XPixel Group, SIAT
   where: Shenzhen, China
-  role: 'Undergraduate Research Assistant, supervised by <a href="https://scholar.google.com/citations?user=OSDCB0UAAAAJ&hl=en">Chao Dong</a>.'
+  # 2026-11-05：首页开头 "Previously at X-Pixel with Chao Dong and Jinjin Gu; BEng from CUHK-Shenzhen." 挪到这里（Jinjin Gu、本科学校原来只在开头出现）
+  role: 'Undergraduate Research Assistant (BEng, <a href="https://www.cuhk.edu.cn/en/about-us">CUHK-Shenzhen</a>), supervised by <a href="https://scholar.google.com/citations?user=OSDCB0UAAAAJ&hl=en">Chao Dong</a>, with <a href="https://www.jasongt.com/">Jinjin Gu</a>.'
   desc: 'Efficient and controllable image restoration; image quality and aesthetic assessment. Outcome: two ECCV papers, two CVPR workshops organized, one patent.'
