@@ -52,7 +52,7 @@ def patch(old, new):
     src = src.replace(old, new)
 rect = "    s.append(f'<rect class=\"box\" x=\"{bx - bw / 2:.1f}\" y=\"{top}\" width=\"{bw}\" height=\"{h}\" rx=\"4\"/>')\n"
 patch(rect, "    _k = KEY[lines[0]]; BOXES.append((_k, bx, top, bw, h))\n"
-            "    s.append('<a class=\"pbox\"' + (f' href=\"{LINK[_k]}\"' if LINK.get(_k) else '') + f' aria-label=\"{escape(\" \".join(lines))}\">')\n" + rect)
+            "    s.append('<a class=\"pbox\" data-slug=\"' + _k + '\"' + (f' href=\"{LINK[_k]}\"' if LINK.get(_k) else '') + f' aria-label=\"{escape(\" \".join(lines))}\">')\n" + rect)
 patch("            x += w + 5\n", "            x += w + 5\n    s.append('</a>')\n")
 patch("    y = bottom + (28 if last else 130)\n", "    y = bottom + VGAP + (28 if last else 130)\n")   # 每棵树下面留出视频的高度
 patch("Path(__file__).with_name('index.html').write_text(html)", "")
@@ -90,9 +90,9 @@ for slug, bx, top, bw, h in BOXES:
     if p["video"]:
         inner = (f'<video muted loop playsinline preload="none" poster="posters/{p["poster"]}" data-src="{p["url"]}?v={ASSET_V}" '
                  f'aria-hidden="true"></video>')
-        tiles.append(f'<a class="vid" href="{esc(p["link"])}" style="{style}" aria-label="Teaser: {esc(p["title"])}">{inner}</a>')
+        tiles.append(f'<a class="vid" data-slug="{slug}" href="{esc(p["link"])}" style="{style}" aria-label="Teaser: {esc(p["title"])}">{inner}</a>')
     else:
-        tiles.append(f'<div class="vid vid--soon" style="{style}"><span>Teaser coming soon</span></div>')
+        tiles.append(f'<div class="vid vid--soon" data-slug="{slug}" style="{style}"><span>Teaser coming soon</span></div>')
 
 # 三棵树的根方框（tree_src.py 画的顺序：Generated、Captured、Evaluation）→ 锚点
 ROOTS = [float(y) for y in re.findall(r'<rect class="box root" x="[^"]+" y="([^"]+)"', "".join(ns["s"]))]
@@ -153,6 +153,70 @@ HUB_CSS = r"""
   .hub__box { height: 46px; justify-content: flex-start; padding: 0 12px; font-size: clamp(12.5px, 3.3vw, 15px); }
   .hub__go { align-self: flex-start; margin-left: 12px; font-size: 11px; height: 12px; }
 }
+"""
+
+# 直达某个项目（站主 2026-11-06，给冷邮件用）：/research/#vid2bokeh 这类地址 → 滚到那个方框和它下面的视频（手机上连横向一起滚），
+# 这一对加强调色描边、闪两下，其他项目稍微变暗，视频直接加载播放。名字就是 KEY 里的（和 /papers/ 下的一致），方框和视频上都有 data-slug。
+# 不用 id 让浏览器自己跳（会先跳一下再被脚本挪），全交给脚本；同页改 # 也一样。点页面任何地方 / Esc 取消变暗，描边留着。
+DEEP_CSS = r"""
+.mapbox .pbox, .mapbox .vid { transition: opacity .35s; }
+.mapbox.has-focus .pbox:not(.is-focus), .mapbox.has-focus .vid:not(.is-focus) { opacity: .4; }
+.mapbox.has-focus .pbox:not(.is-focus):hover, .mapbox.has-focus .vid:not(.is-focus):hover { opacity: 1; }
+.map .pbox.is-focus .box { stroke: var(--accent); stroke-width: 4; }
+.map .pbox.is-focus .t-title { fill: var(--accent); }
+.vid.is-focus { outline: 3px solid var(--accent); outline-offset: 3px; }
+.map .pbox.is-arrive .box { animation: deep-box 1.1s ease-out 2; }
+.vid.is-arrive { animation: deep-ring 1.1s ease-out 2; }
+@keyframes deep-box { 0% { stroke-width: 9; } 100% { stroke-width: 4; } }
+@keyframes deep-ring { 0% { box-shadow: 0 0 0 0 color-mix(in srgb, var(--accent) 60%, transparent); } 100% { box-shadow: 0 0 0 18px transparent; } }
+@media (prefers-reduced-motion: reduce) {
+  .mapbox .pbox, .mapbox .vid { transition: none; }
+  .map .pbox.is-arrive .box, .vid.is-arrive { animation: none; }
+}
+"""
+DEEP_JS = r"""
+  (function () {
+    const RM = matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const box = document.querySelector('.mapbox'), sc = document.querySelector('.mapscroll');
+    if (!box || !sc) return;
+    let touched = false;   // 访客自己动过页面，就不再替他挪
+    ['wheel', 'touchstart', 'keydown', 'mousedown'].forEach(t => addEventListener(t, () => { touched = true; }, { passive: true }));
+    const clear = () => { box.classList.remove('has-focus'); box.querySelectorAll('.is-focus').forEach(el => el.classList.remove('is-focus', 'is-arrive')); };
+    function place(els, smooth) {
+      const r = els.map(el => el.getBoundingClientRect()), s = sc.getBoundingClientRect();
+      const L = Math.min(...r.map(x => x.left)), R = Math.max(...r.map(x => x.right));
+      const T = Math.min(...r.map(x => x.top)), B = Math.max(...r.map(x => x.bottom));
+      const behavior = smooth && !RM ? 'smooth' : 'auto';
+      sc.scrollTo({ left: sc.scrollLeft + (L + R) / 2 - (s.left + sc.clientWidth / 2), behavior });
+      window.scrollTo({ top: Math.max(0, scrollY + (T + B) / 2 - innerHeight * 0.45), behavior });
+    }
+    function go(smooth) {
+      let slug = '';
+      try { slug = decodeURIComponent(location.hash.slice(1)).trim().toLowerCase(); } catch (e) {}
+      clear();
+      const sel = s => box.querySelector(s + '[data-slug="' + (window.CSS && CSS.escape ? CSS.escape(slug) : slug) + '"]');
+      const pb = slug && sel('.pbox');
+      if (!pb) return null;
+      const tile = sel('.vid'), els = tile ? [pb, tile] : [pb];
+      box.classList.add('has-focus');
+      els.forEach(el => { el.classList.add('is-focus'); void el.getBoundingClientRect(); el.classList.add('is-arrive'); });
+      place(els, smooth);
+      const v = tile && tile.querySelector('video');
+      if (v && !RM) { if (!v.src) v.src = v.dataset.src; v.play().catch(() => {}); }
+      return els;
+    }
+    const els = go(false);
+    if (els) {   // 字体 / 页面加载完后版面可能挪一点：访客没动过就再对一次
+      if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
+      const again = () => { if (!touched) place(els, false); };
+      if (document.fonts && document.fonts.ready) document.fonts.ready.then(again);
+      addEventListener('load', again);
+    }
+    addEventListener('hashchange', () => { touched = true; go(true); });
+    document.querySelectorAll('.hub a').forEach(a => a.addEventListener('click', clear));
+    addEventListener('pointerdown', e => { if (!(e.target.closest && e.target.closest('.is-focus'))) box.classList.remove('has-focus'); });
+    addEventListener('keydown', e => { if (e.key === 'Escape') box.classList.remove('has-focus'); });
+  })();
 """
 
 PAGE = f'''<!DOCTYPE html>
@@ -228,6 +292,7 @@ a.vid:hover, a.vid:focus-visible {{ outline: 3px solid var(--accent); outline-of
 .map .pbox:focus {{ outline: none; }}
 .foot {{ padding-block: 40px 48px; font-size: 14px; color: var(--muted); }}
 {HUB_CSS}
+{DEEP_CSS}
 .anchor {{ position: absolute; left: 0; width: 1px; height: 1px; scroll-margin-top: 16px; }}
 :focus-visible {{ outline: 2px solid var(--accent); outline-offset: 3px; }}
 </style>
@@ -273,6 +338,8 @@ a.vid:hover, a.vid:focus-visible {{ outline: 3px solid var(--accent); outline-of
     btns.forEach(b => b.addEventListener('click', () => {{ d.dataset.theme = b.dataset.setTheme; try {{ localStorage.setItem('theme', b.dataset.setTheme); }} catch (e) {{}} sync(); }}));
     sync();
   }})();
+  // 直达某个项目：/research/#vid2bokeh
+{DEEP_JS}
 </script>
 </body>
 </html>
