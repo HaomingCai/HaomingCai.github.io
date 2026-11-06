@@ -172,6 +172,9 @@
       {%- comment -%}
         2026-11-03：前两张换成 Selected work 专用的卡片视频（滑块在图下面那条深色带里，和 Publications 的 teaser 是两套文件）：
         Shadow Director = card v6c（图标都是细线轮廓，两组都是「图标 + 滑轨 + 文字」，和 Hello Kitty 同一套），Vid2Bokeh = Hello Kitty card v3（镜头 / 光圈示意）；两张的深色带同高、同一套排版（common/card_band.py）。源文件和脚本在 HomepageTeasers-src。
+        2026-11-05：Vid2Bokeh 换成 card v4e（站主认可）：先 "Training data"（雕像光场视角漫游 + 地球仪 "Light field view"，放大到左边雕像脚，
+        先只动光圈、再只动对焦 近→远），再 "Real-world data"（Hello Kitty 放大，同样先光圈后对焦）。用的是 crf 27 那份（312 KB）。
+        脚本 HomepageTeasers-src/vid2bokeh/src/kitty_card_v4e.py。研究页的小 teaser 还是 v3 的 3 倍速版，没跟着换。
         v5：图上什么都不压 —— 交互图的进度条、视频的 Input / Ours 都挪到图下面那一行（.legend），一直显示；
         ConVRT 的视频自带标签，那一行留空，只为和旁边那张对齐。
         四张一排（手机两张一排），见 home.scss 的 .featured。顺序 Vid2Bokeh → Shadow Director → ConVRT → Flash-Splat（2026-11-03 站主把前两张对调）。
@@ -179,8 +182,8 @@
       <div class="featured">
         <article class="feat">
           <figure class="clipfig">
-            <div class="clip" style="--poster: url('/tn/images/Vid2Bokeh_kitty_card_v3_poster.jpg?v={{ site.asset_v }}')">
-              <video muted loop playsinline preload="none" data-lazy="view" poster="/tn/images/Vid2Bokeh_kitty_card_v3_poster.jpg?v={{ site.asset_v }}" aria-label="Focus moves between a Hello Kitty figure and a clear box in front of it, then the aperture closes and opens again"><source data-src="/tn/videos/Vid2Bokeh_kitty_card_v3.mp4?v={{ site.asset_v }}" type="video/mp4"></video>
+            <div class="clip" style="--poster: url('/tn/images/Vid2Bokeh_card_v4e_poster.jpg?v={{ site.asset_v }}')">
+              <video muted loop playsinline preload="none" data-lazy="view" poster="/tn/images/Vid2Bokeh_card_v4e_poster.jpg?v={{ site.asset_v }}" aria-label="Training data: the viewpoint moves around a statue in a light field, then the aperture and the focus change on a close-up of it. Real-world data: the same on a Hello Kitty figure inside a clear box."><source data-src="/tn/videos/Vid2Bokeh_card_v4e.mp4?v={{ site.asset_v }}" type="video/mp4"></video>
             </div>
             <div class="legend" aria-hidden="true"></div>
           </figure>

@@ -40,7 +40,8 @@ for p in POST.values():   # 视频的网址和本地文件（默认在 tn/videos
 # 研究页上换成 Selected work 的卡片视频（滑块在图下面那版），而且是 3 倍速（站主 2026-11-05：大家想多看点东西）。
 # 用的是重新编码过的 3 倍速文件（时间压成 1/3、按 30 fps 均匀取帧），正常速度播放 ——
 # 让浏览器 playbackRate=3 播原视频会一卡一卡的。源：HomepageTeasers-src 里两张卡片的 816 版，见 research/media/。
-for k, name in {"vid2bokeh": "Vid2Bokeh_kitty_card_v3_3x.mp4", "shadowdirector": "ShadowDirector_card_v6c_3x.mp4"}.items():
+# 2026-11-05：Vid2Bokeh 跟着首页换成 card v4e（每 3 帧取 1 帧，408×306，crf 27）。
+for k, name in {"vid2bokeh": "Vid2Bokeh_card_v4e_3x.mp4", "shadowdirector": "ShadowDirector_card_v6c_3x.mp4"}.items():
     POST[k]["video"], POST[k]["url"], POST[k]["file"] = name, f"/research/media/{name}", os.path.join(OUT, "media", name)
 
 # ── 2. 树：执行 tree_src.py（不让它写自己的 index.html），打补丁 ──
