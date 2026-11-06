@@ -157,14 +157,20 @@ HUB_CSS = r"""
 
 # 直达某个项目（站主 2026-11-06，给冷邮件用）：/research/#vid2bokeh 这类地址 → 滚到那个方框和它下面的视频（手机上连横向一起滚），
 # 这一对加强调色描边、闪两下，其他项目稍微变暗，视频直接加载播放。名字就是 KEY 里的（和 /papers/ 下的一致），方框和视频上都有 data-slug。
-# 不用 id 让浏览器自己跳（会先跳一下再被脚本挪），全交给脚本；同页改 # 也一样。点页面任何地方 / Esc 取消变暗，描边留着。
+# 不用 id 让浏览器自己跳（会先跳一下再被脚本挪），全交给脚本；同页改 # 也一样。
+# 高亮停 HOLD_MS（4 秒）后，变暗和描边一起在 FADE_MS（0.5 秒）里淡出，滚动位置和视频不动；点页面任何地方 / Esc 提前淡出。
 DEEP_CSS = r"""
-.mapbox .pbox, .mapbox .vid { transition: opacity .35s; }
+.mapbox { --deep-fade: .5s; }   /* 脚本按 FADE_MS 改写 */
+.mapbox .pbox, .mapbox .vid { transition: opacity var(--deep-fade); }
 .mapbox.has-focus .pbox:not(.is-focus), .mapbox.has-focus .vid:not(.is-focus) { opacity: .4; }
 .mapbox.has-focus .pbox:not(.is-focus):hover, .mapbox.has-focus .vid:not(.is-focus):hover { opacity: 1; }
-.map .pbox.is-focus .box { stroke: var(--accent); stroke-width: 4; }
-.map .pbox.is-focus .t-title { fill: var(--accent); }
-.vid.is-focus { outline: 3px solid var(--accent); outline-offset: 3px; }
+.map .pbox.is-focus .box { stroke: var(--accent); stroke-width: 4; transition: stroke var(--deep-fade), stroke-width var(--deep-fade); }
+.map .pbox.is-focus .t-title { fill: var(--accent); transition: fill var(--deep-fade); }
+.vid.is-focus { outline: 3px solid var(--accent); outline-offset: 3px; transition: opacity var(--deep-fade), outline-color var(--deep-fade); }
+/* 淡出：描边退回平常的样子，变暗同时退掉（has-focus 先摘掉），淡完再摘 is-focus */
+.map .pbox.is-focus.is-leaving .box { stroke: var(--ink); stroke-width: 2; }
+.map .pbox.is-focus.is-leaving .t-title { fill: var(--ink); }
+.vid.is-focus.is-leaving { outline-color: transparent; }
 .map .pbox.is-arrive .box { animation: deep-box 1.1s ease-out 2; }
 .vid.is-arrive { animation: deep-ring 1.1s ease-out 2; }
 @keyframes deep-box { 0% { stroke-width: 9; } 100% { stroke-width: 4; } }
@@ -179,9 +185,23 @@ DEEP_JS = r"""
     const RM = matchMedia('(prefers-reduced-motion: reduce)').matches;
     const box = document.querySelector('.mapbox'), sc = document.querySelector('.mapscroll');
     if (!box || !sc) return;
+    const HOLD_MS = 4000, FADE_MS = 500;   // 高亮停多久、淡出用多久（站主 2026-11-06：几秒后自动退掉）
+    box.style.setProperty('--deep-fade', FADE_MS + 'ms');
     let touched = false;   // 访客自己动过页面，就不再替他挪
     ['wheel', 'touchstart', 'keydown', 'mousedown'].forEach(t => addEventListener(t, () => { touched = true; }, { passive: true }));
-    const clear = () => { box.classList.remove('has-focus'); box.querySelectorAll('.is-focus').forEach(el => el.classList.remove('is-focus', 'is-arrive')); };
+    let tHold = 0, tFade = 0;
+    const clear = () => {
+      clearTimeout(tHold); clearTimeout(tFade);
+      box.classList.remove('has-focus');
+      box.querySelectorAll('.is-focus').forEach(el => el.classList.remove('is-focus', 'is-arrive', 'is-leaving'));
+    };
+    const release = () => {   // 变暗和描边一起淡出；滚动位置和视频都不动
+      if (!box.querySelector('.is-focus') || box.querySelector('.is-leaving')) return;
+      clearTimeout(tHold);
+      box.classList.remove('has-focus');
+      box.querySelectorAll('.is-focus').forEach(el => { el.classList.remove('is-arrive'); el.classList.add('is-leaving'); });
+      tFade = setTimeout(clear, RM ? 0 : FADE_MS);
+    };
     function place(els, smooth) {
       const r = els.map(el => el.getBoundingClientRect()), s = sc.getBoundingClientRect();
       const L = Math.min(...r.map(x => x.left)), R = Math.max(...r.map(x => x.right));
@@ -203,6 +223,7 @@ DEEP_JS = r"""
       place(els, smooth);
       const v = tile && tile.querySelector('video');
       if (v && !RM) { if (!v.src) v.src = v.dataset.src; v.play().catch(() => {}); }
+      tHold = setTimeout(release, HOLD_MS);
       return els;
     }
     const els = go(false);
@@ -214,8 +235,8 @@ DEEP_JS = r"""
     }
     addEventListener('hashchange', () => { touched = true; go(true); });
     document.querySelectorAll('.hub a').forEach(a => a.addEventListener('click', clear));
-    addEventListener('pointerdown', e => { if (!(e.target.closest && e.target.closest('.is-focus'))) box.classList.remove('has-focus'); });
-    addEventListener('keydown', e => { if (e.key === 'Escape') box.classList.remove('has-focus'); });
+    addEventListener('pointerdown', e => { if (!(e.target.closest && e.target.closest('.is-focus'))) release(); });
+    addEventListener('keydown', e => { if (e.key === 'Escape') release(); });
   })();
 """
 
