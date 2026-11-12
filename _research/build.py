@@ -62,7 +62,21 @@ BOXES = []
 ns = {"KEY": KEY, "LINK": LINK, "BOXES": BOXES, "VGAP": VGAP, "__file__": os.path.join(ROOT, "_research/tree_src.py")}
 exec(compile(src, "tree_src.py", "exec"), ns)
 W, H = ns["W"], ns["H"]
-svg_label = re.search(r'aria-label="([^"]+)"', ns["html"]).group(1) + " Each paper box has its teaser video underneath."
+# 大类直达（站主 2026-11-12，给邮件用）：/research/#model-efficiency 这类地址 → 一个橙色框把大类名字和下面几篇论文（方框 + 视频）
+# 一起框起来，大类名字变成实心橙色，其他变暗，和单篇一样 4 秒后淡出。想加别的大类，这里加一行：名字 → (树上的字, 下面的论文)。
+GROUPS = {
+    "model-efficiency": ("Model efficiency", ["bsrn", "vapsr", "srpo"]),
+    "evaluation": ("Evaluation & Benchmarks", ["pipal", "assessor360", "allweathervlm"]),
+}
+GRECT = {}
+for g, (label, _) in GROUPS.items():   # 大类名字的方框 / 标签包一层 <g class="cat">，记下它的位置
+    hits = [i for i, e in enumerate(ns["s"]) if re.fullmatch(r'<text class="t-(chip|root)"[^>]*>' + re.escape(esc(label, quote=False)) + '</text>', e)]
+    assert len(hits) == 1 and ns["s"][hits[0] - 1].startswith("<rect class="), (label, hits)
+    i = hits[0]
+    GRECT[g] = [float(re.search(f' {a}="([^"]+)"', ns["s"][i - 1]).group(1)) for a in ("x", "y", "width", "height")]
+    ns["s"][i - 1] = f'<g class="cat" data-group="{g}">' + ns["s"][i - 1]
+    ns["s"][i] += "</g>"
+svg_label =re.search(r'aria-label="([^"]+)"', ns["html"]).group(1) + " Each paper box has its teaser video underneath."
 SVG = (f'<svg class="map" viewBox="0 0 {W:.0f} {H:.0f}" role="img" aria-label="{esc(svg_label)}">'
        '<defs><marker id="ah" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z"/></marker></defs>'
        + "".join(ns["s"]) + "</svg>")
@@ -93,6 +107,19 @@ for slug, bx, top, bw, h in BOXES:
         tiles.append(f'<a class="vid" data-slug="{slug}" href="{esc(p["link"])}" style="{style}" aria-label="Teaser: {esc(p["title"])}">{inner}</a>')
     else:
         tiles.append(f'<div class="vid vid--soon" data-slug="{slug}" style="{style}"><span>Teaser coming soon</span></div>')
+
+# 大类的橙色框：包住大类名字 + 那几篇的方框和视频，四周各留 GPAD
+GPAD, frames = 14, []
+for g, (label, members) in GROUPS.items():
+    bx = {b[0]: b for b in BOXES}
+    x0, y0, gw, gh = GRECT[g]
+    L, T, R_, B = x0, y0, x0 + gw, y0 + gh
+    for k in members:
+        _, cx, top, bw, h = bx[k]
+        L, R_, T, B = min(L, cx - bw / 2), max(R_, cx + bw / 2), min(T, top), max(B, top + h + 10 + bw * 3 / 4)
+    L, T, R_, B = L - GPAD, T - GPAD, R_ + GPAD, B + GPAD
+    frames.append(f'<div class="grp" data-group="{g}" data-members="{" ".join(members)}" aria-hidden="true" '
+                  f'style="left:{pct(L, W)};top:{pct(T, H)};width:{pct(R_ - L, W)};height:{pct(B - T, H)}"></div>')
 
 # 三棵树的根方框（tree_src.py 画的顺序：Generated、Captured、Evaluation）→ 锚点
 ROOTS = [float(y) for y in re.findall(r'<rect class="box root" x="[^"]+" y="([^"]+)"', "".join(ns["s"]))]
@@ -162,7 +189,7 @@ HUB_CSS = r"""
 DEEP_CSS = r"""
 .mapbox { --deep-fade: .5s; }   /* 脚本按 FADE_MS 改写 */
 .mapbox .pbox, .mapbox .vid { transition: opacity var(--deep-fade); }
-.mapbox.has-focus .pbox:not(.is-focus), .mapbox.has-focus .vid:not(.is-focus) { opacity: .4; }
+.mapbox.has-focus .pbox:not(.is-focus):not(.is-member), .mapbox.has-focus .vid:not(.is-focus):not(.is-member) { opacity: .4; }
 .mapbox.has-focus .pbox:not(.is-focus):hover, .mapbox.has-focus .vid:not(.is-focus):hover { opacity: 1; }
 .map .pbox.is-focus .box { stroke: var(--accent); stroke-width: 4; transition: stroke var(--deep-fade), stroke-width var(--deep-fade); }
 .map .pbox.is-focus .t-title { fill: var(--accent); transition: fill var(--deep-fade); }
@@ -175,9 +202,20 @@ DEEP_CSS = r"""
 .vid.is-arrive { animation: deep-ring 1.1s ease-out 2; }
 @keyframes deep-box { 0% { stroke-width: 9; } 100% { stroke-width: 4; } }
 @keyframes deep-ring { 0% { box-shadow: 0 0 0 0 color-mix(in srgb, var(--accent) 60%, transparent); } 100% { box-shadow: 0 0 0 18px transparent; } }
+/* 大类：橙色框框住大类名字和那几篇（它们不变暗、不单独描边），大类名字变成实心橙色 */
+.grp { position: absolute; border: 3px solid var(--accent); border-radius: 12px; pointer-events: none; opacity: 0; transition: opacity var(--deep-fade); }
+.grp.is-focus { opacity: 1; }
+.grp.is-focus.is-leaving { opacity: 0; }
+.grp.is-arrive { animation: deep-ring 1.1s ease-out 2; }
+.map .cat .chip, .map .cat .box.root, .map .cat text { transition: fill var(--deep-fade), stroke var(--deep-fade); }
+.map .cat.is-focus .chip, .map .cat.is-focus .box.root { fill: var(--accent); stroke: var(--accent); }
+.map .cat.is-focus text { fill: var(--paper); }
+.map .cat.is-focus.is-leaving .chip { fill: var(--chip); }
+.map .cat.is-focus.is-leaving .box.root { fill: var(--paper); stroke: var(--ink); }
+.map .cat.is-focus.is-leaving text { fill: var(--ink); }
 @media (prefers-reduced-motion: reduce) {
-  .mapbox .pbox, .mapbox .vid { transition: none; }
-  .map .pbox.is-arrive .box, .vid.is-arrive { animation: none; }
+  .mapbox .pbox, .mapbox .vid, .grp, .map .cat .chip, .map .cat .box.root, .map .cat text { transition: none; }
+  .map .pbox.is-arrive .box, .vid.is-arrive, .grp.is-arrive { animation: none; }
 }
 """
 DEEP_JS = r"""
@@ -193,7 +231,7 @@ DEEP_JS = r"""
     const clear = () => {
       clearTimeout(tHold); clearTimeout(tFade);
       box.classList.remove('has-focus');
-      box.querySelectorAll('.is-focus').forEach(el => el.classList.remove('is-focus', 'is-arrive', 'is-leaving'));
+      box.querySelectorAll('.is-focus, .is-member').forEach(el => el.classList.remove('is-focus', 'is-member', 'is-arrive', 'is-leaving'));
     };
     const release = () => {   // 变暗和描边一起淡出；滚动位置和视频都不动
       if (!box.querySelector('.is-focus') || box.querySelector('.is-leaving')) return;
@@ -214,15 +252,24 @@ DEEP_JS = r"""
       let slug = '';
       try { slug = decodeURIComponent(location.hash.slice(1)).trim().toLowerCase(); } catch (e) {}
       clear();
-      const sel = s => box.querySelector(s + '[data-slug="' + (window.CSS && CSS.escape ? CSS.escape(slug) : slug) + '"]');
-      const pb = slug && sel('.pbox');
-      if (!pb) return null;
-      const tile = sel('.vid'), els = tile ? [pb, tile] : [pb];
+      if (!slug) return null;
+      const q = (s, attr, k) => box.querySelector(s + '[' + attr + '="' + (window.CSS && CSS.escape ? CSS.escape(k) : k) + '"]');
+      let focus = [], members = [], els;
+      const pb = q('.pbox', 'data-slug', slug), frame = !pb && q('.grp', 'data-group', slug);
+      if (pb) {          // 单篇：方框 + 视频描边
+        focus = [pb, q('.vid', 'data-slug', slug)].filter(Boolean); els = focus;
+      } else if (frame) {   // 大类：橙色框 + 大类名字；框里那几篇不变暗
+        focus = [frame, q('.cat', 'data-group', slug)].filter(Boolean); els = [frame];
+        members = frame.dataset.members.split(' ').flatMap(k => [q('.pbox', 'data-slug', k), q('.vid', 'data-slug', k)]).filter(Boolean);
+      } else return null;
       box.classList.add('has-focus');
-      els.forEach(el => { el.classList.add('is-focus'); void el.getBoundingClientRect(); el.classList.add('is-arrive'); });
+      members.forEach(el => el.classList.add('is-member'));
+      focus.forEach(el => { el.classList.add('is-focus'); void el.getBoundingClientRect(); el.classList.add('is-arrive'); });
       place(els, smooth);
-      const v = tile && tile.querySelector('video');
-      if (v && !RM) { if (!v.src) v.src = v.dataset.src; v.play().catch(() => {}); }
+      if (!RM) focus.concat(members).forEach(el => {
+        const v = el.matches('.vid') && el.querySelector('video');
+        if (v) { if (!v.src) v.src = v.dataset.src; v.play().catch(() => {}); }
+      });
       tHold = setTimeout(release, HOLD_MS);
       return els;
     }
@@ -235,7 +282,7 @@ DEEP_JS = r"""
     }
     addEventListener('hashchange', () => { touched = true; go(true); });
     document.querySelectorAll('.hub a').forEach(a => a.addEventListener('click', clear));
-    addEventListener('pointerdown', e => { if (!(e.target.closest && e.target.closest('.is-focus'))) release(); });
+    addEventListener('pointerdown', e => { if (!(e.target.closest && e.target.closest('.is-focus, .is-member'))) release(); });
     addEventListener('keydown', e => { if (e.key === 'Escape') release(); });
   })();
 """
@@ -332,6 +379,7 @@ a.vid:hover, a.vid:focus-visible {{ outline: 3px solid var(--accent); outline-of
 </div>
 {HUB}
 <div class="mapwrap"><div class="mapscroll"><div class="mapbox">{SVG}{anchors}
+{chr(10).join(frames)}
 {chr(10).join(tiles)}
 </div></div></div>
 <p class="hint">Swipe sideways to see the whole map.</p>
@@ -359,7 +407,7 @@ a.vid:hover, a.vid:focus-visible {{ outline: 3px solid var(--accent); outline-of
     btns.forEach(b => b.addEventListener('click', () => {{ d.dataset.theme = b.dataset.setTheme; try {{ localStorage.setItem('theme', b.dataset.setTheme); }} catch (e) {{}} sync(); }}));
     sync();
   }})();
-  // 直达某个项目：/research/#vid2bokeh
+  // 直达某个项目 /research/#vid2bokeh，或某个大类 /research/#model-efficiency
 {DEEP_JS}
 </script>
 </body>
