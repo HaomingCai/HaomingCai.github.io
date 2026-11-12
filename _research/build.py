@@ -65,6 +65,7 @@ W, H = ns["W"], ns["H"]
 # 大类直达（站主 2026-11-12，给邮件用）：/research/#model-efficiency 这类地址 → 一个橙色框把大类名字和下面几篇论文（方框 + 视频）
 # 一起框起来，大类名字变成实心橙色，其他变暗，和单篇一样 4 秒后淡出。想加别的大类，这里加一行：名字 → (树上的字, 下面的论文)。
 GROUPS = {
+    "physically-grounded-control": ("Physically grounded control", ["real2sam2real", "vid2bokeh", "shadowdirector"]),   # 站主 2026-11-12 加
     "model-efficiency": ("Model efficiency", ["bsrn", "vapsr", "srpo"]),
     "evaluation": ("Evaluation & Benchmarks", ["pipal", "assessor360", "allweathervlm"]),
 }
